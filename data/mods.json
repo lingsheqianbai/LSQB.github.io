@@ -86,28 +86,5 @@
     "videoUrl": "",
     "note": "",
     "offline": false
-  },
-  {
-    "name": "Chicken Tyson's Trait Pack",
-    "chineseName": "",
-    "id": "3445878532",
-    "status": "待检测",
-    "statusClass": "status-pending",
-    "entries": 0,
-    "videoUrl": "",
-    "note": "",
-    "offline": false
-  },
-  {
-    "name": "Legendary Professions and Traits",
-    "chineseName": "",
-    "id": "3668825372",
-    "status": "待处理",
-    "statusClass": "status-pending",
-    "entries": 0,
-    "videoUrl": "",
-    "note": "",
-    "offline": false
   }
-
 ]
