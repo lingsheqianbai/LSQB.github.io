@@ -84,7 +84,7 @@
     "statusClass": "",
     "entries": 0,
     "videoUrl": "",
-    "note": "",
+    "note": "无法在游戏中看见物品",
     "offline": false
   },
   {
@@ -157,12 +157,12 @@
     "name": "Project Fallout The Caravan Shotgun",
     "chineseName": "",
     "id": "3400681835",
-    "status": "待处理",
+    "status": "非完整",
     "statusClass": "",
     "entries": 0,
     "videoUrl": "",
-    "note": "",
-    "offline": false
+    "note": "写进PFO_CRVN.txt没有lua等定义无法翻译。",
+    "offline": true
   },
   {
     "name": "PaniqeurTrait",
@@ -4213,3 +4213,4 @@
     "offline": false
   }
 ]
+
