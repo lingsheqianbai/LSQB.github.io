@@ -144,32 +144,6 @@
             font-size: 18px;
         }
         
-        /* 搜索框 */
-        .search-box {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .search-box input {
-            flex: 1;
-            padding: 12px 16px;
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.15);
-            background: rgba(0,0,0,0.3);
-            color: white;
-            font-size: 14px;
-            outline: none;
-            transition: all 0.2s;
-        }
-        .search-box input:focus {
-            border-color: #3B82F6;
-            background: rgba(0,0,0,0.5);
-        }
-        .search-box input::placeholder {
-            color: rgba(255,255,255,0.3);
-        }
-        
         /* 筛选折叠面板 */
         .filter-section {
             margin-bottom: 20px;
@@ -250,6 +224,31 @@
             color: white;
         }
         
+        .search-box {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .search-box input {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(0,0,0,0.3);
+            color: white;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.2s;
+        }
+        .search-box input:focus {
+            border-color: #3B82F6;
+            background: rgba(0,0,0,0.5);
+        }
+        .search-box input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+        
         .table-responsive {
             overflow-x: auto;
             border-radius: 12px;
@@ -312,14 +311,31 @@
             background: rgba(0,0,0,0.2);
         }
 
-        /* 音乐播放器卡片 */
-        .music-player-card {
-            margin-top: 20px;
-            padding: 16px;
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(8px);
-            border-radius: 14px;
-            border: 1px solid rgba(255,255,255,0.1);
+        /* 致谢卡片内样式 */
+        .thanks-section {
+            margin-bottom: 16px;
+        }
+        .thanks-section h4 {
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .thanks-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .thanks-section li {
+            padding: 4px 0;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+        }
+        .thanks-note {
+            margin-top: 12px;
+            font-style: italic;
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
         }
     </style>
 </head>
@@ -339,33 +355,20 @@
     </div>
     <div class="bg-blur"></div>
     <div class="container">
-        <!-- 左侧栏 -->
+        <!-- 左侧栏（无头像，无音乐） -->
         <aside class="sidebar">
-            <div class="radio-container" style="--total-radio: 3;">
+            <div class="radio-container" style="--total-radio: 4;">
                 <input type="radio" name="nav" id="nav-about" checked>
                 <label for="nav-about">简介</label>
                 <input type="radio" name="nav" id="nav-projects">
                 <label for="nav-projects">项目</label>
                 <input type="radio" name="nav" id="nav-contact">
                 <label for="nav-contact">联系</label>
+                <input type="radio" name="nav" id="nav-thanks">
+                <label for="nav-thanks">致谢</label>
                 <div class="glider-container">
                     <div class="glider"></div>
                 </div>
-            </div>
-
-            <!-- 音乐播放器 -->
-            <div class="music-player-card">
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-                    <span style="font-size: 20px;">🎵</span>
-                    <span style="font-size: 15px; font-weight: 500;">背景音乐</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <button id="musicPlayBtn" style="flex: 1; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 30px; padding: 10px; color: white; font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s;">
-                        <span id="musicBtnIcon">▶️</span>
-                        <span id="musicBtnText">播放音乐</span>
-                    </button>
-                </div>
-                <audio id="bgMusic" loop preload="auto" style="display: none;"></audio>
             </div>
         </aside>
 
@@ -392,7 +395,7 @@
                 </p>
             </div>
 
-            <!-- 项目卡片区域 -->
+            <!-- ========== 项目卡片区域 ========== -->
             <div class="projects-card" id="projects">
                 <h3 class="section-title">项目</h3>
 
@@ -451,7 +454,7 @@
                     </div>
                 </details>
 
-                <!-- 卡片 3：模组翻译进度（可折叠筛选面板） -->
+                <!-- 卡片 3：模组翻译进度（带筛选） -->
                 <details class="contact-item" style="padding: 0; overflow: hidden; border-radius: 14px; margin-bottom: 16px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255,255,255,0.1);" open>
                     <summary style="cursor: pointer; padding: 16px 20px; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.95); list-style: none; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s;">
                         <span style="font-size: 24px;">📊</span> 模组翻译进度
@@ -535,7 +538,7 @@
                 </details>
             </div>
 
-            <!-- 联系方式模块 -->
+            <!-- ========== 联系方式模块 ========== -->
             <div class="comms-card" id="contact">
                 <div class="comms-header">
                     <h3 class="section-title comms-title">联系我</h3>
@@ -560,25 +563,136 @@
                     </section>
                 </div>
             </div>
+
+            <!-- ========== 致谢模块（两个可折叠卡片） ========== -->
+            <div class="projects-card" id="thanks" style="margin-top: 10px;">
+                <h3 class="section-title">致谢</h3>
+
+                <!-- 卡片 1：网页贡献致谢 -->
+                <details class="contact-item" style="padding: 0; overflow: hidden; border-radius: 14px; margin-bottom: 16px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255,255,255,0.1);">
+                    <summary style="cursor: pointer; padding: 16px 20px; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.95); list-style: none; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s;">
+                        <span style="font-size: 24px;">🌐</span> 网页贡献致谢
+                        <span style="margin-left: auto; font-size: 14px; color: rgba(255,255,255,0.4);">点击展开</span>
+                    </summary>
+                    <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2);">
+                        <div class="thanks-section">
+                            <ul>
+                                <li><a href="https://www.deepseek.com/" target="_blank" style="color: #3B82F6; text-decoration: none;">DeepSeek</a> - AI 助手，提供代码生成与技术支持</li>
+                                <li><a href="https://space.bilibili.com/3493078216215098" target="_blank" style="color: #3B82F6; text-decoration: none;">小狐务器</a> - B站主页，灵感来源与设计参考</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+
+                <!-- 卡片 2：僵尸毁灭工程致谢 -->
+                <details class="contact-item" style="padding: 0; overflow: hidden; border-radius: 14px; margin-bottom: 16px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255,255,255,0.1);">
+                    <summary style="cursor: pointer; padding: 16px 20px; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.95); list-style: none; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s;">
+                        <span style="font-size: 24px;">🧟</span> 僵尸毁灭工程致谢
+                        <span style="margin-left: auto; font-size: 14px; color: rgba(255,255,255,0.4);">点击展开</span>
+                    </summary>
+                    <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2);">
+                        <div class="thanks-section">
+                            <h4>老版汉化组成员</h4>
+                            <ul>
+                                <li>Sky_Orc_Mm</li>
+                                <li>Misha（紗紗）</li>
+                                <li>HennyFishYu（江中小鱼）</li>
+                                <li>Jeff</li>
+                            </ul>
+                        </div>
+                        <div class="thanks-section">
+                            <h4>新版汉化组成员</h4>
+                            <ul>
+                                <li>Alexa-Hong（湖畔镇一枝花）</li>
+                                <li>AZ</li>
+                                <li>Flying penguin</li>
+                                <li>格兰瑞敌击剑</li>
+                                <li>HansKaffee</li>
+                                <li>L'Etranger</li>
+                                <li>Livia</li>
+                                <li>moonlight-pz</li>
+                                <li>轻轻的晚风</li>
+                                <li>RunAbout</li>
+                                <li>Susan Admason（Canada）</li>
+                                <li>taoran</li>
+                                <li>天冷就要吃火锅</li>
+                                <li>TwilightRain（暮雨）</li>
+                                <li>战场蒲公英</li>
+                                <li>zlq4863947</li>
+                            </ul>
+                        </div>
+                        <div class="thanks-section">
+                            <h4>电台内容 汉化员</h4>
+                            <ul>
+                                <li>HenryFishYu</li>
+                                <li>Jeff</li>
+                                <li>HansKaffee</li>
+                                <li>TwilightRain</li>
+                                <li>moonlight-pz</li>
+                                <li>Susan Admason（Canada）</li>
+                                <li>L'Etranger</li>
+                                <li>天冷就要吃火锅</li>
+                                <li>轻轻的晚风</li>
+                                <li>格兰瑞敌击剑</li>
+                                <li>湖畔镇一枝花</li>
+                                <li>Livia</li>
+                                <li>Flying Penguin</li>
+                                <li>AZ</li>
+                                <li>taoran</li>
+                                <li>eva08maicy02</li>
+                            </ul>
+                        </div>
+                        <div class="thanks-section">
+                            <h4>特別鳴謝</h4>
+                            <ul>
+                                <li>YD360</li>
+                                <li>Douggy_Sans(dfr12382)</li>
+                                <li>BigSmoke</li>
+                                <li>Washi(berice152233)</li>
+                                <li>Yuanmo(ligyik00)</li>
+                                <li>mraz#9738</li>
+                                <li>COSeeds</li>
+                            </ul>
+                        </div>
+                        <div class="thanks-section">
+                            <h4>社区汉化</h4>
+                            <ul>
+                                <li>凌社千白 (本网页建设者 & 模组汉化)</li>
+                                <li>DeepSeek (技术支持)</li>
+                                <li>模组编程</li>
+                                <li>DeepSeek (AI协作)</li>
+                            </ul>
+                            <p class="thanks-note">注：是我制作的模组不指代其他人，因为这个网页本身是我建设汉化也是</p>
+                        </div>
+                        <div class="thanks-section">
+                            <h4>感谢以下模组提供的文件参考与灵感（排名不分先后）</h4>
+                            <ul>
+                                <li>[B42]汉化补充包（ID: 3388550747）——已在其基础上进行更新与维护</li>
+                                <li>[B42]简体中文修复（ID: 3386522562）</li>
+                                <li>[B42]统一·中文汉化（ID: 3556544454）——借鉴与修改</li>
+                                <li>42传单汉化（ID: 3395823587）</li>
+                                <li>[B42]出生点地图中文本地化（ID: 3401460152）——提供的地图压缩包</li>
+                                <li>模组备注 ID: 3391537655</li>
+                            </ul>
+                        </div>
+                    </div>
+                </details>
+            </div>
         </main>
     </div>
 
-    <!-- ========== 模组数据加载脚本（数据分离 + 多条件筛选） ========== -->
+    <!-- ========== 模组数据加载脚本（保持不变） ========== -->
     <script>
         (function() {
             const PAGE_SIZE = 10;
             let allMods = [];
             let filteredMods = [];
             let currentPage = 1;
-
-            // 筛选条件
             let searchQuery = '';
-            let statusFilter = '全部';          // 翻译状态
-            let offlineFilter = 'all';           // 'all', 'yes', 'no'
-            let noteFilter = 'all';               // 'all', 'yes', 'no'
-            let chineseFilter = 'all';            // 'all', 'yes', 'no'
-
-            // 折叠面板状态
+            let statusFilter = '全部';
+            let offlineFilter = 'all';
+            let noteFilter = 'all';
+            let chineseFilter = 'all';
             let filterCollapsed = false;
 
             const searchInput = document.getElementById('modSearch');
@@ -591,14 +705,12 @@
             const filterToggle = document.getElementById('filterToggle');
             const filterContent = document.getElementById('filterContent');
 
-            // 折叠切换
             filterToggle.addEventListener('click', function() {
                 filterCollapsed = !filterCollapsed;
                 filterContent.classList.toggle('collapsed', filterCollapsed);
                 filterToggle.classList.toggle('collapsed', filterCollapsed);
             });
 
-            // 从JSON加载数据
             fetch('data/mods.json')
                 .then(response => {
                     if (!response.ok) throw new Error('网络响应失败');
@@ -606,7 +718,6 @@
                 })
                 .then(data => {
                     allMods = data;
-                    // 生成状态按钮（从数据中提取唯一状态）
                     generateStatusButtons(allMods);
                     applyFilters();
                 })
@@ -615,17 +726,14 @@
                     tbody.innerHTML = `<tr><td colspan="7" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 模组数据加载失败，请检查 data/mods.json 文件</td></tr>`;
                 });
 
-            // 生成状态按钮
             function generateStatusButtons(mods) {
                 const statusSet = new Set();
                 mods.forEach(mod => { if (mod.status) statusSet.add(mod.status); });
                 const statusList = ['全部', ...Array.from(statusSet).sort()];
-                
                 statusFilterGroup.innerHTML = statusList.map(status => 
                     `<span class="filter-btn ${status === '全部' ? 'active' : ''}" data-value="${status}">${status}</span>`
                 ).join('');
 
-                // 为状态按钮绑定事件
                 statusFilterGroup.querySelectorAll('.filter-btn').forEach(btn => {
                     btn.addEventListener('click', function() {
                         statusFilterGroup.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -636,7 +744,6 @@
                 });
             }
 
-            // 为其他筛选组绑定事件（离线、备注、中文名）
             function bindFilterGroup(group, callback) {
                 group.querySelectorAll('.filter-btn').forEach(btn => {
                     btn.addEventListener('click', function() {
@@ -647,16 +754,12 @@
                     });
                 });
             }
-
             bindFilterGroup(offlineFilterGroup, (val) => offlineFilter = val);
             bindFilterGroup(noteFilterGroup, (val) => noteFilter = val);
             bindFilterGroup(chineseFilterGroup, (val) => chineseFilter = val);
 
-            // 应用所有筛选
             function applyFilters() {
                 let filtered = allMods;
-
-                // 搜索
                 if (searchQuery.trim() !== '') {
                     const q = searchQuery.trim().toLowerCase();
                     filtered = filtered.filter(mod => 
@@ -665,30 +768,21 @@
                         (mod.chineseName && mod.chineseName.toLowerCase().includes(q))
                     );
                 }
-
-                // 状态筛选
                 if (statusFilter !== '全部') {
                     filtered = filtered.filter(mod => mod.status === statusFilter);
                 }
-
-                // 离线分享
                 if (offlineFilter !== 'all') {
                     const wantOffline = offlineFilter === 'yes';
                     filtered = filtered.filter(mod => mod.offline === wantOffline);
                 }
-
-                // 备注
                 if (noteFilter !== 'all') {
                     const hasNote = noteFilter === 'yes';
                     filtered = filtered.filter(mod => hasNote ? (mod.note && mod.note.trim() !== '') : (!mod.note || mod.note.trim() === ''));
                 }
-
-                // 中文名
                 if (chineseFilter !== 'all') {
                     const hasChinese = chineseFilter === 'yes';
                     filtered = filtered.filter(mod => hasChinese ? (mod.chineseName && mod.chineseName.trim() !== '') : (!mod.chineseName || mod.chineseName.trim() === ''));
                 }
-
                 filteredMods = filtered;
                 currentPage = 1;
                 renderTable();
@@ -699,24 +793,18 @@
                 const start = (currentPage - 1) * PAGE_SIZE;
                 const end = start + PAGE_SIZE;
                 const pageMods = filteredMods.slice(start, end);
-
                 if (pageMods.length === 0) {
                     tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的模组</td></tr>`;
                     return;
                 }
-
                 let html = '';
                 pageMods.forEach(mod => {
                     const videoLink = mod.videoUrl ? `<a href="${mod.videoUrl}" target="_blank" style="color:#3B82F6;">🔗</a>` : '-';
                     const offlineIcon = mod.offline ? '<span class="icon-uploaded">✅</span>' : '<span class="icon-not-uploaded">❌</span>';
                     const statusClass = mod.statusClass ? `status-badge ${mod.statusClass}` : 'status-badge';
                     const chineseName = mod.chineseName || '-';
-                    
                     html += `<tr>
-                        <td>
-                            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.id}" target="_blank">${mod.name}</a>
-                            <span class="mod-id">${mod.id}</span>
-                        </td>
+                        <td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.id}" target="_blank">${mod.name}</a><span class="mod-id">${mod.id}</span></td>
                         <td>${chineseName}</td>
                         <td><span class="${statusClass}">${mod.status}</span></td>
                         <td>${mod.entries}</td>
@@ -734,20 +822,16 @@
                     paginationDiv.innerHTML = '';
                     return;
                 }
-
                 let html = '<button id="prevPage" ' + (currentPage === 1 ? 'disabled' : '') + '>‹ 上一页</button>';
                 html += '<div class="page-numbers">';
-
                 let startPage = Math.max(1, currentPage - 2);
                 let endPage = Math.min(totalPages, startPage + 4);
                 if (endPage - startPage < 4) {
                     startPage = Math.max(1, endPage - 4);
                 }
-
                 for (let i = startPage; i <= endPage; i++) {
                     html += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
                 }
-
                 html += '</div>';
                 html += `<button id="nextPage" ${currentPage === totalPages ? 'disabled' : ''}>下一页 ›</button>`;
                 paginationDiv.innerHTML = html;
@@ -762,21 +846,11 @@
                         }
                     });
                 });
-
                 document.getElementById('prevPage')?.addEventListener('click', () => {
-                    if (currentPage > 1) {
-                        currentPage--;
-                        renderTable();
-                        renderPagination();
-                    }
+                    if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); }
                 });
-
                 document.getElementById('nextPage')?.addEventListener('click', () => {
-                    if (currentPage < totalPages) {
-                        currentPage++;
-                        renderTable();
-                        renderPagination();
-                    }
+                    if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); }
                 });
             }
 
@@ -787,56 +861,14 @@
         })();
     </script>
 
-    <!-- ========== 音乐播放器脚本（昼夜不同音乐） ========== -->
-    <script>
-        (function() {
-            const audio = document.getElementById('bgMusic');
-            const btn = document.getElementById('musicPlayBtn');
-            const icon = document.getElementById('musicBtnIcon');
-            const text = document.getElementById('musicBtnText');
-
-            if (!audio || !btn) return;
-
-            audio.volume = 0.5;
-
-            function getMusicFile() {
-                const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                return isDark ? '明日方舟火山旅梦夜间.MP3' : '明日方舟火山旅梦白日.MP3';
-            }
-
-            btn.addEventListener('click', function() {
-                if (audio.paused) {
-                    audio.src = getMusicFile();
-                    audio.play()
-                        .then(() => {
-                            icon.textContent = '⏸️';
-                            text.textContent = '暂停音乐';
-                        })
-                        .catch(error => {
-                            console.log('播放失败:', error);
-                            alert('无法播放音乐，请检查音乐文件是否存在。');
-                        });
-                } else {
-                    audio.pause();
-                    icon.textContent = '▶️';
-                    text.textContent = '播放音乐';
-                }
-            });
-
-            audio.addEventListener('ended', function() {
-                icon.textContent = '▶️';
-                text.textContent = '播放音乐';
-            });
-        })();
-    </script>
-
-    <!-- 导航滚动脚本 -->
+    <!-- 导航滚动脚本（更新，增加致谢） -->
     <script>
     (function () {
         const navMap = {
             'nav-about': 'about',
             'nav-projects': 'projects',
-            'nav-contact': 'contact'
+            'nav-contact': 'contact',
+            'nav-thanks': 'thanks'
         };
         document.querySelectorAll('.radio-container input[name="nav"]').forEach(function(radio) {
             radio.addEventListener('change', function() {
