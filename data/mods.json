@@ -80,7 +80,7 @@
     "name": "[J&G] Desert Multicam Uniform",
     "chineseName": "",
     "id": "3299457564",
-    "status": "-",
+    "status": "待检测",
     "statusClass": "",
     "entries": 0,
     "videoUrl": "",
@@ -109,4 +109,5 @@
     "note": "",
     "offline": false
   }
+
 ]
