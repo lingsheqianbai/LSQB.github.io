@@ -245,11 +245,11 @@
     "name": "PZLinux",
     "chineseName": "",
     "id": "3414468585",
-    "status": "待处理",
+    "status": "非完整",
     "statusClass": "",
     "entries": 0,
     "videoUrl": "",
-    "note": "",
+    "note": "由于硬编码问题，经过不断设计之后发现的问题就是如果改成中文会报错不适配。",
     "offline": false
   },
   {
@@ -4246,6 +4246,7 @@
     "offline": false
   }
 ]
+
 
 
 
