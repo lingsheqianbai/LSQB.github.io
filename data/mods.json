@@ -2861,7 +2861,7 @@
   },
   {
     "name": "Mod Load Order Sorter [b42]",
-    "chineseName": "",
+    "chineseName": "模组加载顺序管理工具",
     "id": "3423660713",
     "status": "待处理",
     "statusClass": "",
@@ -4213,6 +4213,7 @@
     "offline": false
   }
 ]
+
 
 
 
