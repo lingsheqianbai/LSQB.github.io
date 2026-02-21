@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="千白分享主页 - 个人分享与作品展示">
     <title>个人主页</title>
+    <!-- 不蒜子统计脚本 -->
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <style>
         @font-face {
             font-family: 'ZQKNNY';
@@ -355,7 +357,7 @@
     </div>
     <div class="bg-blur"></div>
     <div class="container">
-        <!-- 左侧栏（无头像，无音乐） -->
+        <!-- 左侧栏 -->
         <aside class="sidebar">
             <div class="radio-container" style="--total-radio: 4;">
                 <input type="radio" name="nav" id="nav-about" checked>
@@ -368,6 +370,22 @@
                 <label for="nav-thanks">致谢</label>
                 <div class="glider-container">
                     <div class="glider"></div>
+                </div>
+            </div>
+
+            <!-- 左下角访问统计卡片 -->
+            <div style="margin-top: 20px; padding: 16px; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(8px); border-radius: 14px; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 16px;">👥</span>
+                        <span style="font-size: 14px; color: rgba(255,255,255,0.8);">今日访问：</span>
+                        <span id="busuanzi_value_site_uv" style="font-size: 16px; font-weight: 600; color: #3B82F6;">0</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 16px;">📊</span>
+                        <span style="font-size: 14px; color: rgba(255,255,255,0.8);">总访问量：</span>
+                        <span id="busuanzi_value_site_pv" style="font-size: 16px; font-weight: 600; color: #3B82F6;">0</span>
+                    </div>
                 </div>
             </div>
         </aside>
@@ -454,7 +472,7 @@
                     </div>
                 </details>
 
-                <!-- 卡片 3：模组翻译进度（带筛选） -->
+                <!-- 卡片 3：模组翻译进度 -->
                 <details class="contact-item" style="padding: 0; overflow: hidden; border-radius: 14px; margin-bottom: 16px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255,255,255,0.1);" open>
                     <summary style="cursor: pointer; padding: 16px 20px; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.95); list-style: none; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s;">
                         <span style="font-size: 24px;">📊</span> 模组翻译进度
@@ -469,20 +487,14 @@
                         <!-- 可折叠筛选面板 -->
                         <div class="filter-section">
                             <div class="filter-header" id="filterToggle">
-                                <span>
-                                    <span>🔍</span> 高级筛选
-                                </span>
+                                <span><span>🔍</span> 高级筛选</span>
                                 <span class="arrow">▼</span>
                             </div>
                             <div class="filter-content" id="filterContent">
-                                <!-- 翻译状态筛选（单选） -->
                                 <div class="filter-group">
                                     <span class="filter-label">翻译状态</span>
-                                    <div class="filter-buttons" id="statusFilterGroup">
-                                        <!-- 动态生成 -->
-                                    </div>
+                                    <div class="filter-buttons" id="statusFilterGroup"></div>
                                 </div>
-                                <!-- 离线分享筛选 -->
                                 <div class="filter-group">
                                     <span class="filter-label">离线分享</span>
                                     <div class="filter-buttons" id="offlineFilterGroup">
@@ -491,7 +503,6 @@
                                         <span class="filter-btn" data-value="no">未上传</span>
                                     </div>
                                 </div>
-                                <!-- 备注筛选 -->
                                 <div class="filter-group">
                                     <span class="filter-label">备注</span>
                                     <div class="filter-buttons" id="noteFilterGroup">
@@ -500,7 +511,6 @@
                                         <span class="filter-btn" data-value="no">无备注</span>
                                     </div>
                                 </div>
-                                <!-- 中文名筛选 -->
                                 <div class="filter-group">
                                     <span class="filter-label">中文名</span>
                                     <div class="filter-buttons" id="chineseFilterGroup">
@@ -512,7 +522,6 @@
                             </div>
                         </div>
 
-                        <!-- 表格容器 -->
                         <div class="table-responsive">
                             <table class="mod-table" id="modTable">
                                 <thead>
@@ -526,13 +535,9 @@
                                         <th>离线分享</th>
                                     </tr>
                                 </thead>
-                                <tbody id="modTableBody">
-                                    <tr><td colspan="7" class="loading">加载中...</td></tr>
-                                </tbody>
+                                <tbody id="modTableBody"><tr><td colspan="7" class="loading">加载中...</td></tr></tbody>
                             </table>
                         </div>
-
-                        <!-- 分页控件 -->
                         <div class="pagination" id="pagination"></div>
                     </div>
                 </details>
@@ -548,23 +553,20 @@
                     <section class="comms-col comms-contact" aria-label="联系方式">
                         <div class="contact-info">
                             <a href="https://space.bilibili.com/498508670" target="_blank" class="contact-item" style="text-decoration: none; color: inherit;">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                                哔哩哔哩：凌社千白
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>哔哩哔哩：凌社千白
                             </a>
                             <a href="https://www.douyin.com/user/MS4wLjABAAAAk63wGgh1qr_pNx8CDzCy26nLh4ZAoCaop9PAmZUu93mjbSj6T5byECm4aXuGqkc_" target="_blank" class="contact-item" style="text-decoration: none; color: inherit;">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>
-                                抖音：凌社千白
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>抖音：凌社千白
                             </a>
                             <a href="https://www.kuaishou.com/profile/3xcatpzc2ejba82" target="_blank" class="contact-item" style="text-decoration: none; color: inherit;">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>
-                                快手：凌社千白
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>快手：凌社千白
                             </a>
                         </div>
                     </section>
                 </div>
             </div>
 
-            <!-- ========== 致谢模块（两个可折叠卡片） ========== -->
+            <!-- ========== 致谢模块 ========== -->
             <div class="projects-card" id="thanks" style="margin-top: 10px;">
                 <h3 class="section-title">致谢</h3>
 
@@ -593,87 +595,28 @@
                     <div style="padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.2);">
                         <div class="thanks-section">
                             <h4>老版汉化组成员</h4>
-                            <ul>
-                                <li>Sky_Orc_Mm</li>
-                                <li>Misha（紗紗）</li>
-                                <li>HennyFishYu（江中小鱼）</li>
-                                <li>Jeff</li>
-                            </ul>
+                            <ul><li>Sky_Orc_Mm</li><li>Misha（紗紗）</li><li>HennyFishYu（江中小鱼）</li><li>Jeff</li></ul>
                         </div>
                         <div class="thanks-section">
                             <h4>新版汉化组成员</h4>
-                            <ul>
-                                <li>Alexa-Hong（湖畔镇一枝花）</li>
-                                <li>AZ</li>
-                                <li>Flying penguin</li>
-                                <li>格兰瑞敌击剑</li>
-                                <li>HansKaffee</li>
-                                <li>L'Etranger</li>
-                                <li>Livia</li>
-                                <li>moonlight-pz</li>
-                                <li>轻轻的晚风</li>
-                                <li>RunAbout</li>
-                                <li>Susan Admason（Canada）</li>
-                                <li>taoran</li>
-                                <li>天冷就要吃火锅</li>
-                                <li>TwilightRain（暮雨）</li>
-                                <li>战场蒲公英</li>
-                                <li>zlq4863947</li>
-                            </ul>
+                            <ul><li>Alexa-Hong（湖畔镇一枝花）</li><li>AZ</li><li>Flying penguin</li><li>格兰瑞敌击剑</li><li>HansKaffee</li><li>L'Etranger</li><li>Livia</li><li>moonlight-pz</li><li>轻轻的晚风</li><li>RunAbout</li><li>Susan Admason（Canada）</li><li>taoran</li><li>天冷就要吃火锅</li><li>TwilightRain（暮雨）</li><li>战场蒲公英</li><li>zlq4863947</li></ul>
                         </div>
                         <div class="thanks-section">
                             <h4>电台内容 汉化员</h4>
-                            <ul>
-                                <li>HenryFishYu</li>
-                                <li>Jeff</li>
-                                <li>HansKaffee</li>
-                                <li>TwilightRain</li>
-                                <li>moonlight-pz</li>
-                                <li>Susan Admason（Canada）</li>
-                                <li>L'Etranger</li>
-                                <li>天冷就要吃火锅</li>
-                                <li>轻轻的晚风</li>
-                                <li>格兰瑞敌击剑</li>
-                                <li>湖畔镇一枝花</li>
-                                <li>Livia</li>
-                                <li>Flying Penguin</li>
-                                <li>AZ</li>
-                                <li>taoran</li>
-                                <li>eva08maicy02</li>
-                            </ul>
+                            <ul><li>HenryFishYu</li><li>Jeff</li><li>HansKaffee</li><li>TwilightRain</li><li>moonlight-pz</li><li>Susan Admason（Canada）</li><li>L'Etranger</li><li>天冷就要吃火锅</li><li>轻轻的晚风</li><li>格兰瑞敌击剑</li><li>湖畔镇一枝花</li><li>Livia</li><li>Flying Penguin</li><li>AZ</li><li>taoran</li><li>eva08maicy02</li></ul>
                         </div>
                         <div class="thanks-section">
                             <h4>特別鳴謝</h4>
-                            <ul>
-                                <li>YD360</li>
-                                <li>Douggy_Sans(dfr12382)</li>
-                                <li>BigSmoke</li>
-                                <li>Washi(berice152233)</li>
-                                <li>Yuanmo(ligyik00)</li>
-                                <li>mraz#9738</li>
-                                <li>COSeeds</li>
-                            </ul>
+                            <ul><li>YD360</li><li>Douggy_Sans(dfr12382)</li><li>BigSmoke</li><li>Washi(berice152233)</li><li>Yuanmo(ligyik00)</li><li>mraz#9738</li><li>COSeeds</li></ul>
                         </div>
                         <div class="thanks-section">
                             <h4>社区汉化</h4>
-                            <ul>
-                                <li>凌社千白 (本网页建设者 & 模组汉化)</li>
-                                <li>DeepSeek (技术支持)</li>
-                                <li>模组编程</li>
-                                <li>DeepSeek (AI协作)</li>
-                            </ul>
+                            <ul><li>凌社千白 (本网页建设者 & 模组汉化)</li><li>DeepSeek (技术支持)</li><li>模组编程</li><li>DeepSeek (AI协作)</li></ul>
                             <p class="thanks-note">注：是我制作的模组不指代其他人，因为这个网页本身是我建设汉化也是</p>
                         </div>
                         <div class="thanks-section">
                             <h4>感谢以下模组提供的文件参考与灵感（排名不分先后）</h4>
-                            <ul>
-                                <li>[B42]汉化补充包（ID: 3388550747）——已在其基础上进行更新与维护</li>
-                                <li>[B42]简体中文修复（ID: 3386522562）</li>
-                                <li>[B42]统一·中文汉化（ID: 3556544454）——借鉴与修改</li>
-                                <li>42传单汉化（ID: 3395823587）</li>
-                                <li>[B42]出生点地图中文本地化（ID: 3401460152）——提供的地图压缩包</li>
-                                <li>模组备注 ID: 3391537655</li>
-                            </ul>
+                            <ul><li>[B42]汉化补充包（ID: 3388550747）——已在其基础上进行更新与维护</li><li>[B42]简体中文修复（ID: 3386522562）</li><li>[B42]统一·中文汉化（ID: 3556544454）——借鉴与修改</li><li>42传单汉化（ID: 3395823587）</li><li>[B42]出生点地图中文本地化（ID: 3401460152）——提供的地图压缩包</li><li>模组备注 ID: 3391537655</li></ul>
                         </div>
                     </div>
                 </details>
@@ -681,7 +624,7 @@
         </main>
     </div>
 
-    <!-- ========== 模组数据加载脚本（保持不变） ========== -->
+    <!-- ========== 模组数据加载脚本 ========== -->
     <script>
         (function() {
             const PAGE_SIZE = 10;
@@ -718,7 +661,32 @@
                 })
                 .then(data => {
                     allMods = data;
-                    generateStatusButtons(allMods);
+                    const statusSet = new Set();
+                    data.forEach(mod => { if (mod.status) statusSet.add(mod.status); });
+                    const statusList = ['全部', ...Array.from(statusSet).sort()];
+                    statusFilterGroup.innerHTML = statusList.map(status => 
+                        `<span class="filter-btn ${status === '全部' ? 'active' : ''}" data-value="${status}">${status}</span>`
+                    ).join('');
+                    statusFilterGroup.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.addEventListener('click', function() {
+                            statusFilterGroup.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                            this.classList.add('active');
+                            statusFilter = this.dataset.value;
+                            applyFilters();
+                        });
+                    });
+                    [offlineFilterGroup, noteFilterGroup, chineseFilterGroup].forEach(group => {
+                        group.querySelectorAll('.filter-btn').forEach(btn => {
+                            btn.addEventListener('click', function() {
+                                group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                                this.classList.add('active');
+                                if (group === offlineFilterGroup) offlineFilter = this.dataset.value;
+                                else if (group === noteFilterGroup) noteFilter = this.dataset.value;
+                                else if (group === chineseFilterGroup) chineseFilter = this.dataset.value;
+                                applyFilters();
+                            });
+                        });
+                    });
                     applyFilters();
                 })
                 .catch(error => {
@@ -726,63 +694,16 @@
                     tbody.innerHTML = `<tr><td colspan="7" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 模组数据加载失败，请检查 data/mods.json 文件</td></tr>`;
                 });
 
-            function generateStatusButtons(mods) {
-                const statusSet = new Set();
-                mods.forEach(mod => { if (mod.status) statusSet.add(mod.status); });
-                const statusList = ['全部', ...Array.from(statusSet).sort()];
-                statusFilterGroup.innerHTML = statusList.map(status => 
-                    `<span class="filter-btn ${status === '全部' ? 'active' : ''}" data-value="${status}">${status}</span>`
-                ).join('');
-
-                statusFilterGroup.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        statusFilterGroup.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        statusFilter = this.dataset.value;
-                        applyFilters();
-                    });
-                });
-            }
-
-            function bindFilterGroup(group, callback) {
-                group.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        callback(this.dataset.value);
-                        applyFilters();
-                    });
-                });
-            }
-            bindFilterGroup(offlineFilterGroup, (val) => offlineFilter = val);
-            bindFilterGroup(noteFilterGroup, (val) => noteFilter = val);
-            bindFilterGroup(chineseFilterGroup, (val) => chineseFilter = val);
-
             function applyFilters() {
                 let filtered = allMods;
-                if (searchQuery.trim() !== '') {
-                    const q = searchQuery.trim().toLowerCase();
-                    filtered = filtered.filter(mod => 
-                        mod.name.toLowerCase().includes(q) || 
-                        mod.id.includes(q) ||
-                        (mod.chineseName && mod.chineseName.toLowerCase().includes(q))
-                    );
+                if (searchQuery.trim()) {
+                    const q = searchQuery.toLowerCase();
+                    filtered = filtered.filter(mod => mod.name.toLowerCase().includes(q) || mod.id.includes(q) || (mod.chineseName && mod.chineseName.toLowerCase().includes(q)));
                 }
-                if (statusFilter !== '全部') {
-                    filtered = filtered.filter(mod => mod.status === statusFilter);
-                }
-                if (offlineFilter !== 'all') {
-                    const wantOffline = offlineFilter === 'yes';
-                    filtered = filtered.filter(mod => mod.offline === wantOffline);
-                }
-                if (noteFilter !== 'all') {
-                    const hasNote = noteFilter === 'yes';
-                    filtered = filtered.filter(mod => hasNote ? (mod.note && mod.note.trim() !== '') : (!mod.note || mod.note.trim() === ''));
-                }
-                if (chineseFilter !== 'all') {
-                    const hasChinese = chineseFilter === 'yes';
-                    filtered = filtered.filter(mod => hasChinese ? (mod.chineseName && mod.chineseName.trim() !== '') : (!mod.chineseName || mod.chineseName.trim() === ''));
-                }
+                if (statusFilter !== '全部') filtered = filtered.filter(mod => mod.status === statusFilter);
+                if (offlineFilter !== 'all') filtered = filtered.filter(mod => mod.offline === (offlineFilter === 'yes'));
+                if (noteFilter !== 'all') filtered = filtered.filter(mod => (noteFilter === 'yes') ? (mod.note && mod.note.trim()) : (!mod.note || !mod.note.trim()));
+                if (chineseFilter !== 'all') filtered = filtered.filter(mod => (chineseFilter === 'yes') ? (mod.chineseName && mod.chineseName.trim()) : (!mod.chineseName || !mod.chineseName.trim()));
                 filteredMods = filtered;
                 currentPage = 1;
                 renderTable();
@@ -797,13 +718,12 @@
                     tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的模组</td></tr>`;
                     return;
                 }
-                let html = '';
-                pageMods.forEach(mod => {
+                tbody.innerHTML = pageMods.map(mod => {
                     const videoLink = mod.videoUrl ? `<a href="${mod.videoUrl}" target="_blank" style="color:#3B82F6;">🔗</a>` : '-';
                     const offlineIcon = mod.offline ? '<span class="icon-uploaded">✅</span>' : '<span class="icon-not-uploaded">❌</span>';
                     const statusClass = mod.statusClass ? `status-badge ${mod.statusClass}` : 'status-badge';
                     const chineseName = mod.chineseName || '-';
-                    html += `<tr>
+                    return `<tr>
                         <td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.id}" target="_blank">${mod.name}</a><span class="mod-id">${mod.id}</span></td>
                         <td>${chineseName}</td>
                         <td><span class="${statusClass}">${mod.status}</span></td>
@@ -812,68 +732,38 @@
                         <td>${mod.note || '-'}</td>
                         <td>${offlineIcon}</td>
                     </tr>`;
-                });
-                tbody.innerHTML = html;
+                }).join('');
             }
 
             function renderPagination() {
                 const totalPages = Math.ceil(filteredMods.length / PAGE_SIZE);
-                if (totalPages <= 1) {
-                    paginationDiv.innerHTML = '';
-                    return;
-                }
-                let html = '<button id="prevPage" ' + (currentPage === 1 ? 'disabled' : '') + '>‹ 上一页</button>';
-                html += '<div class="page-numbers">';
+                if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; }
+                let html = '<button id="prevPage" ' + (currentPage === 1 ? 'disabled' : '') + '>‹ 上一页</button><div class="page-numbers">';
                 let startPage = Math.max(1, currentPage - 2);
                 let endPage = Math.min(totalPages, startPage + 4);
-                if (endPage - startPage < 4) {
-                    startPage = Math.max(1, endPage - 4);
-                }
-                for (let i = startPage; i <= endPage; i++) {
-                    html += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
-                }
-                html += '</div>';
-                html += `<button id="nextPage" ${currentPage === totalPages ? 'disabled' : ''}>下一页 ›</button>`;
+                if (endPage - startPage < 4) startPage = Math.max(1, endPage - 4);
+                for (let i = startPage; i <= endPage; i++) html += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
+                html += '</div><button id="nextPage" ' + (currentPage === totalPages ? 'disabled' : '') + '>下一页 ›</button>';
                 paginationDiv.innerHTML = html;
-
-                document.querySelectorAll('.page-number').forEach(span => {
-                    span.addEventListener('click', function() {
-                        const page = parseInt(this.dataset.page, 10);
-                        if (page !== currentPage) {
-                            currentPage = page;
-                            renderTable();
-                            renderPagination();
-                        }
-                    });
-                });
-                document.getElementById('prevPage')?.addEventListener('click', () => {
-                    if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); }
-                });
-                document.getElementById('nextPage')?.addEventListener('click', () => {
-                    if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); }
-                });
+                document.querySelectorAll('.page-number').forEach(span => span.addEventListener('click', function() {
+                    const page = parseInt(this.dataset.page, 10);
+                    if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); }
+                }));
+                document.getElementById('prevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } });
+                document.getElementById('nextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } });
             }
 
-            searchInput.addEventListener('input', function() {
-                searchQuery = this.value;
-                applyFilters();
-            });
+            searchInput.addEventListener('input', function() { searchQuery = this.value; applyFilters(); });
         })();
     </script>
 
-    <!-- 导航滚动脚本（更新，增加致谢） -->
+    <!-- 导航滚动脚本 -->
     <script>
     (function () {
-        const navMap = {
-            'nav-about': 'about',
-            'nav-projects': 'projects',
-            'nav-contact': 'contact',
-            'nav-thanks': 'thanks'
-        };
-        document.querySelectorAll('.radio-container input[name="nav"]').forEach(function(radio) {
+        const navMap = { 'nav-about': 'about', 'nav-projects': 'projects', 'nav-contact': 'contact', 'nav-thanks': 'thanks' };
+        document.querySelectorAll('.radio-container input[name="nav"]').forEach(radio => {
             radio.addEventListener('change', function() {
-                const targetId = navMap[this.id];
-                const el = targetId && document.getElementById(targetId);
+                const el = document.getElementById(navMap[this.id]);
                 if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
