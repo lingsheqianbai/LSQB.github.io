@@ -3103,13 +3103,13 @@
   },
   {
     "name": "US Military Pack (BUILD 41/42)",
-    "chineseName": "",
+    "chineseName": "美军装备包",
     "id": "612100872",
-    "status": "待处理",
+    "status": "待检测",
     "statusClass": "",
     "entries": 0,
     "videoUrl": "",
-    "note": "",
+    "note": "无法在游戏中看见物品",
     "offline": false
   },
   {
@@ -4213,6 +4213,7 @@
     "offline": false
   }
 ]
+
 
 
 
