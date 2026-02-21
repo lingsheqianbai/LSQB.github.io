@@ -137,6 +137,11 @@
             border-color: rgba(155, 89, 182, 0.4);
             color: #9b59b6;
         }
+        .status-todo {
+            background: rgba(255, 140, 0, 0.2);
+            border-color: rgba(255, 140, 0, 0.4);
+            color: #ff8c00;
+        }
         .icon-uploaded {
             color: #2ecc71;
             font-size: 18px;
@@ -472,7 +477,7 @@
                     </div>
                 </details>
 
-                <!-- 卡片 3：模组翻译进度 -->
+                <!-- 卡片 3：模组翻译进度（带筛选） -->
                 <details class="contact-item" style="padding: 0; overflow: hidden; border-radius: 14px; margin-bottom: 16px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255,255,255,0.1);" open>
                     <summary style="cursor: pointer; padding: 16px 20px; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.95); list-style: none; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s;">
                         <span style="font-size: 24px;">📊</span> 模组翻译进度
@@ -517,6 +522,15 @@
                                         <span class="filter-btn active" data-value="all">全部</span>
                                         <span class="filter-btn" data-value="yes">有中文名</span>
                                         <span class="filter-btn" data-value="no">无中文名</span>
+                                    </div>
+                                </div>
+                                <!-- 新增：视频教程筛选 -->
+                                <div class="filter-group">
+                                    <span class="filter-label">视频教程</span>
+                                    <div class="filter-buttons" id="videoFilterGroup">
+                                        <span class="filter-btn active" data-value="all">全部</span>
+                                        <span class="filter-btn" data-value="yes">有教程</span>
+                                        <span class="filter-btn" data-value="no">无教程</span>
                                     </div>
                                 </div>
                             </div>
@@ -636,6 +650,7 @@
             let offlineFilter = 'all';
             let noteFilter = 'all';
             let chineseFilter = 'all';
+            let videoFilter = 'all'; // 新增视频筛选
             let filterCollapsed = false;
 
             const searchInput = document.getElementById('modSearch');
@@ -645,6 +660,7 @@
             const offlineFilterGroup = document.getElementById('offlineFilterGroup');
             const noteFilterGroup = document.getElementById('noteFilterGroup');
             const chineseFilterGroup = document.getElementById('chineseFilterGroup');
+            const videoFilterGroup = document.getElementById('videoFilterGroup'); // 新增
             const filterToggle = document.getElementById('filterToggle');
             const filterContent = document.getElementById('filterContent');
 
@@ -661,6 +677,7 @@
                 })
                 .then(data => {
                     allMods = data;
+                    // 生成状态按钮
                     const statusSet = new Set();
                     data.forEach(mod => { if (mod.status) statusSet.add(mod.status); });
                     const statusList = ['全部', ...Array.from(statusSet).sort()];
@@ -675,18 +692,25 @@
                             applyFilters();
                         });
                     });
-                    [offlineFilterGroup, noteFilterGroup, chineseFilterGroup].forEach(group => {
-                        group.querySelectorAll('.filter-btn').forEach(btn => {
+
+                    // 为离线分享、备注、中文名、视频教程组绑定事件
+                    const filterGroups = [
+                        { group: offlineFilterGroup, setter: (val) => offlineFilter = val },
+                        { group: noteFilterGroup, setter: (val) => noteFilter = val },
+                        { group: chineseFilterGroup, setter: (val) => chineseFilter = val },
+                        { group: videoFilterGroup, setter: (val) => videoFilter = val }
+                    ];
+                    filterGroups.forEach(item => {
+                        item.group.querySelectorAll('.filter-btn').forEach(btn => {
                             btn.addEventListener('click', function() {
-                                group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                                item.group.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                                 this.classList.add('active');
-                                if (group === offlineFilterGroup) offlineFilter = this.dataset.value;
-                                else if (group === noteFilterGroup) noteFilter = this.dataset.value;
-                                else if (group === chineseFilterGroup) chineseFilter = this.dataset.value;
+                                item.setter(this.dataset.value);
                                 applyFilters();
                             });
                         });
                     });
+
                     applyFilters();
                 })
                 .catch(error => {
@@ -696,14 +720,46 @@
 
             function applyFilters() {
                 let filtered = allMods;
+
+                // 搜索
                 if (searchQuery.trim()) {
                     const q = searchQuery.toLowerCase();
-                    filtered = filtered.filter(mod => mod.name.toLowerCase().includes(q) || mod.id.includes(q) || (mod.chineseName && mod.chineseName.toLowerCase().includes(q)));
+                    filtered = filtered.filter(mod => 
+                        mod.name.toLowerCase().includes(q) || 
+                        mod.id.includes(q) ||
+                        (mod.chineseName && mod.chineseName.toLowerCase().includes(q))
+                    );
                 }
-                if (statusFilter !== '全部') filtered = filtered.filter(mod => mod.status === statusFilter);
-                if (offlineFilter !== 'all') filtered = filtered.filter(mod => mod.offline === (offlineFilter === 'yes'));
-                if (noteFilter !== 'all') filtered = filtered.filter(mod => (noteFilter === 'yes') ? (mod.note && mod.note.trim()) : (!mod.note || !mod.note.trim()));
-                if (chineseFilter !== 'all') filtered = filtered.filter(mod => (chineseFilter === 'yes') ? (mod.chineseName && mod.chineseName.trim()) : (!mod.chineseName || !mod.chineseName.trim()));
+
+                // 状态
+                if (statusFilter !== '全部') {
+                    filtered = filtered.filter(mod => mod.status === statusFilter);
+                }
+
+                // 离线分享
+                if (offlineFilter !== 'all') {
+                    const wantOffline = offlineFilter === 'yes';
+                    filtered = filtered.filter(mod => mod.offline === wantOffline);
+                }
+
+                // 备注
+                if (noteFilter !== 'all') {
+                    const hasNote = noteFilter === 'yes';
+                    filtered = filtered.filter(mod => hasNote ? (mod.note && mod.note.trim()) : (!mod.note || !mod.note.trim()));
+                }
+
+                // 中文名
+                if (chineseFilter !== 'all') {
+                    const hasChinese = chineseFilter === 'yes';
+                    filtered = filtered.filter(mod => hasChinese ? (mod.chineseName && mod.chineseName.trim()) : (!mod.chineseName || !mod.chineseName.trim()));
+                }
+
+                // 视频教程
+                if (videoFilter !== 'all') {
+                    const hasVideo = videoFilter === 'yes';
+                    filtered = filtered.filter(mod => hasVideo ? (mod.videoUrl && mod.videoUrl.trim() !== '') : (!mod.videoUrl || mod.videoUrl.trim() === ''));
+                }
+
                 filteredMods = filtered;
                 currentPage = 1;
                 renderTable();
@@ -714,16 +770,20 @@
                 const start = (currentPage - 1) * PAGE_SIZE;
                 const end = start + PAGE_SIZE;
                 const pageMods = filteredMods.slice(start, end);
+
                 if (pageMods.length === 0) {
                     tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的模组</td></tr>`;
                     return;
                 }
-                tbody.innerHTML = pageMods.map(mod => {
+
+                let html = '';
+                pageMods.forEach(mod => {
                     const videoLink = mod.videoUrl ? `<a href="${mod.videoUrl}" target="_blank" style="color:#3B82F6;">🔗</a>` : '-';
                     const offlineIcon = mod.offline ? '<span class="icon-uploaded">✅</span>' : '<span class="icon-not-uploaded">❌</span>';
                     const statusClass = mod.statusClass ? `status-badge ${mod.statusClass}` : 'status-badge';
                     const chineseName = mod.chineseName || '-';
-                    return `<tr>
+                    
+                    html += `<tr>
                         <td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.id}" target="_blank">${mod.name}</a><span class="mod-id">${mod.id}</span></td>
                         <td>${chineseName}</td>
                         <td><span class="${statusClass}">${mod.status}</span></td>
@@ -732,28 +792,66 @@
                         <td>${mod.note || '-'}</td>
                         <td>${offlineIcon}</td>
                     </tr>`;
-                }).join('');
+                });
+                tbody.innerHTML = html;
             }
 
             function renderPagination() {
                 const totalPages = Math.ceil(filteredMods.length / PAGE_SIZE);
-                if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; }
-                let html = '<button id="prevPage" ' + (currentPage === 1 ? 'disabled' : '') + '>‹ 上一页</button><div class="page-numbers">';
+                if (totalPages <= 1) {
+                    paginationDiv.innerHTML = '';
+                    return;
+                }
+
+                let html = '<button id="prevPage" ' + (currentPage === 1 ? 'disabled' : '') + '>‹ 上一页</button>';
+                html += '<div class="page-numbers">';
+
                 let startPage = Math.max(1, currentPage - 2);
                 let endPage = Math.min(totalPages, startPage + 4);
-                if (endPage - startPage < 4) startPage = Math.max(1, endPage - 4);
-                for (let i = startPage; i <= endPage; i++) html += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
-                html += '</div><button id="nextPage" ' + (currentPage === totalPages ? 'disabled' : '') + '>下一页 ›</button>';
+                if (endPage - startPage < 4) {
+                    startPage = Math.max(1, endPage - 4);
+                }
+
+                for (let i = startPage; i <= endPage; i++) {
+                    html += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
+                }
+
+                html += '</div>';
+                html += `<button id="nextPage" ${currentPage === totalPages ? 'disabled' : ''}>下一页 ›</button>`;
                 paginationDiv.innerHTML = html;
-                document.querySelectorAll('.page-number').forEach(span => span.addEventListener('click', function() {
-                    const page = parseInt(this.dataset.page, 10);
-                    if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); }
-                }));
-                document.getElementById('prevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } });
-                document.getElementById('nextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } });
+
+                document.querySelectorAll('.page-number').forEach(span => {
+                    span.addEventListener('click', function() {
+                        const page = parseInt(this.dataset.page, 10);
+                        if (page !== currentPage) {
+                            currentPage = page;
+                            renderTable();
+                            renderPagination();
+                        }
+                    });
+                });
+
+                document.getElementById('prevPage')?.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderTable();
+                        renderPagination();
+                    }
+                });
+
+                document.getElementById('nextPage')?.addEventListener('click', () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        renderTable();
+                        renderPagination();
+                    }
+                });
             }
 
-            searchInput.addEventListener('input', function() { searchQuery = this.value; applyFilters(); });
+            searchInput.addEventListener('input', function() {
+                searchQuery = this.value;
+                applyFilters();
+            });
         })();
     </script>
 
