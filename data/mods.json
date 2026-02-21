@@ -45,7 +45,7 @@
   },
   {
     "name": "[J&G] Flecktarn Uniform",
-    "chineseName": "",
+    "chineseName": "[J&G]迷彩装备",
     "id": "3206579556",
     "status": "待检测",
     "statusClass": "status-pending",
@@ -78,7 +78,7 @@
   },
   {
     "name": "[J&G] Desert Multicam Uniform",
-    "chineseName": "",
+    "chineseName": "[J&G] 沙漠迷彩制服",
     "id": "3299457564",
     "status": "待检测",
     "statusClass": "",
@@ -89,25 +89,25 @@
   },
   {
     "name": "[J&G] Caution Pack",
-    "chineseName": "",
+    "chineseName": "[J&G] 警戒装备",
     "id": "3369825662",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
     "videoUrl": "",
-    "note": "",
-    "offline": false
+    "note": "无法在游戏中看见物品",
+    "offline": true
   },
   {
     "name": "[J&G] Trauma Responder Uniform",
-    "chineseName": "",
+    "chineseName": "[J&G] 创伤急救员制服",
     "id": "3443982326",
-    "status": "待处理",
+    "status": "待检测",
     "statusClass": "",
     "entries": 0,
     "videoUrl": "",
-    "note": "",
-    "offline": false
+    "note": "无法在游戏中看见物品",
+    "offline"true 
   },
   {
     "name": "[J&G] XKU Uniform",
@@ -177,7 +177,7 @@
   },
   {
     "name": "RestoreUtilities",
-    "chineseName": "",
+    "chineseName": "恢复设施",
     "id": "3409422147",
     "status": "完整",
     "statusClass": "",
@@ -4213,6 +4213,7 @@
     "offline": false
   }
 ]
+
 
 
 
