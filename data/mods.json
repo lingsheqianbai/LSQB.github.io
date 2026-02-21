@@ -107,7 +107,7 @@
     "entries": 0,
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "offline":true
+    "offline": true
   },
   {
     "name": "[J&G] XKU Uniform",
@@ -4226,23 +4226,12 @@
   {
     "name": "[B42][OBSOLETE] BackpackPlusSatchels",
     "chineseName": "背包挎包plus",
-    "id": "3391537655",
+    "id": "3395159487",
     "status": "无需翻译",
     "statusClass": "",
     "entries": 0,
     "videoUrl": "https://www.bilibili.com/video/BV1Qg7WzyEaM?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
-    "note": "功能性模组",
-    "offline": false
-  },
-  {
-    "name": "Legendary Katana Wakizashi",
-    "chineseName": "传奇武士刀胁差",
-    "id": "3668370011",
-    "status": "待检测",
-    "statusClass": "",
-    "entries": 0,
-    "videoUrl": "",
-    "note": "",
+    "note": "功能性模组；",
     "offline": false
   },
   {
@@ -4255,7 +4244,7 @@
     "videoUrl": "https://www.bilibili.com/video/BV1HD7pzbEv9/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "UI功能性模组",
     "offline": false
-  }
+  },
   {
     "name": "Legendary Katana Wakizashi",
     "chineseName": "传奇武士刀",
@@ -4264,7 +4253,7 @@
     "statusClass": "",
     "entries": 0,
     "videoUrl": "https://www.bilibili.com/video/BV1ZtTMzDEGw?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
-    "note": "换皮而已3418366499是前身",
+    "note": "换皮而已3418366499是前身（曾用名：传奇武士刀胁差）",
     "offline": false
   },
   {
@@ -4290,20 +4279,3 @@
     "offline": false
   }
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
