@@ -1024,12 +1024,12 @@
   },
   {
     "name": "Map Mod Manager (41 and 42)",
-    "chineseName": "",
+    "chineseName": "地图模组管理工具",
     "id": "3360392628",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1jJRiYMEcw/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -2863,12 +2863,12 @@
     "name": "Mod Load Order Sorter [b42]",
     "chineseName": "模组加载顺序管理工具",
     "id": "3423660713",
-    "status": "待处理",
+    "status": "非完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
-    "note": "",
-    "offline": false
+    "videoUrl": "https://www.bilibili.com/video/BV1NK3MzrE32/?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "如category等为硬编码待日后调整制作补丁",
+    "offline": true
   },
   {
     "name": "榛果庄园Hazelnut Manor",
@@ -4213,6 +4213,7 @@
     "offline": false
   }
 ]
+
 
 
 
