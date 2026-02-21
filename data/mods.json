@@ -25,11 +25,11 @@
     "name": "[B42.13] Medieval Z [Beta]",
     "chineseName": "",
     "id": "3661164291",
-    "status": "非完整",
+    "status": "完整",
     "statusClass": "status-incomplete",
     "entries": 0,
-    "videoUrl": "",
-    "note": "原作者少了DisplayName无法正常翻译",
+    "videoUrl": "https://www.bilibili.com/video/BV1msfHBQEBP/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "原作者少了DisplayName无法正常翻译,添加脚本复制翻译日后需调整。",
     "offline": false
   },
   {
@@ -4257,6 +4257,7 @@
     "offline": false
   }
 ]
+
 
 
 
