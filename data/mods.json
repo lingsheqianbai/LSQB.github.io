@@ -3587,13 +3587,13 @@
   },
   {
     "name": "Milk Them All [B42]",
-    "chineseName": "",
+    "chineseName": "统统挤奶",
     "id": "3568280195",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
-    "note": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1BUJkzEEH8/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "挤奶按钮为官方的而非模组的",
     "offline": false
   },
   {
@@ -4246,6 +4246,7 @@
     "offline": false
   }
 ]
+
 
 
 
