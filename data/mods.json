@@ -62,8 +62,8 @@
     "statusClass": "status-unneeded",
     "entries": 0,
     "videoUrl": "",
-    "note": "",
-    "offline": false
+    "note": "前置",
+    "offline": true
   },
   {
     "name": "Legion Weaponry",
@@ -73,7 +73,7 @@
     "statusClass": "status-complete",
     "entries": 0,
     "videoUrl": "https://www.bilibili.com/video/BV1L8f3BBELG/",
-    "note": "但需日后需要由于前置等多个问题导致汉化出现中英问题",
+    "note": "需要前置[3378285185]但需日后需要由于前置等多个问题导致汉化出现中英问题",
     "offline": true
   },
   {
@@ -4213,6 +4213,7 @@
     "offline": false
   }
 ]
+
 
 
 
