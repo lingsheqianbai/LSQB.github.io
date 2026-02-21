@@ -2784,12 +2784,12 @@
   },
   {
     "name": "Inspect Weapon",
-    "chineseName": "",
+    "chineseName": "检视武器",
     "id": "2948824747",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1bUg6zMEVv/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -2894,12 +2894,12 @@
   },
   {
     "name": "[B42] More Item Information",
-    "chineseName": "",
+    "chineseName": "更多物品信息",
     "id": "3494474677",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1iWNvzHE3C?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -4126,12 +4126,12 @@
   },
   {
     "name": "Distant Inventory Access",
-    "chineseName": "",
+    "chineseName": "远程库存访问",
     "id": "3543197840",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1cEsbzcERh?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -4211,8 +4211,42 @@
     "videoUrl": "",
     "note": "",
     "offline": false
+  },
+  {
+    "name": "模组备注",
+    "chineseName": "",
+    "id": "3391537655",
+    "status": "无需翻译",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV1e1AoeJEoi?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "国人制作模组",
+    "offline": false
+  },
+  {
+    "name": "[B42][OBSOLETE] BackpackPlusSatchels",
+    "chineseName": "背包挎包plus",
+    "id": "3391537655",
+    "status": "无需翻译",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV1Qg7WzyEaM?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "功能性模组",
+    "offline": false
+  },
+  {
+    "name": "Legendary Katana Wakizashi",
+    "chineseName": "传奇武士刀胁差",
+    "id": "3668370011",
+    "status": "待检测",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "",
+    "note": "",
+    "offline": false
   }
 ]
+
 
 
 
