@@ -386,9 +386,9 @@
   },
   {
     "name": "Auto Cook",
-    "chineseName": "",
+    "chineseName": "自动烹饪",
     "id": "3388721641",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
     "videoUrl": "",
@@ -3807,12 +3807,12 @@
   },
   {
     "name": "TwisTonFire - Better Trapping",
-    "chineseName": "",
+    "chineseName": "陷阱优化",
     "id": "3573232324",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1CAHPzpEhN?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -4286,6 +4286,17 @@
     "statusClass": "",
     "entries": 0,
     "videoUrl": "https://www.bilibili.com/video/BV16Daoz4EeN?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Automatic Stove Shutoff",
+    "chineseName": "自动炉灶关闭",
+    "id": "3526968739",
+    "status": "完整",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV1ttu9zKEAv/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   }
