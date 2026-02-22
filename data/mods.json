@@ -2993,9 +2993,9 @@
   },
   {
     "name": "[B42] Home Inventory",
-    "chineseName": "",
+    "chineseName": "家园库存清单",
     "id": "3496924086",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
     "videoUrl": "",
@@ -4203,9 +4203,9 @@
   },
   {
     "name": "Craftable Metal molds",
-    "chineseName": "",
+    "chineseName": "可制作金属模具",
     "id": "3578791594",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
     "videoUrl": "",
@@ -4297,6 +4297,28 @@
     "statusClass": "",
     "entries": 0,
     "videoUrl": "https://www.bilibili.com/video/BV1ttu9zKEAv/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Two Chicks At The Same Time",
+    "chineseName": "同时拥有两只小鸡",
+    "id": "3404298280",
+    "status": "无需翻译",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV1y7skzMEKh/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "More Car Features + Spawn Zones Expansion",
+    "chineseName": "更多车辆特性与生成区域扩展",
+    "id": "3520758551",
+    "status": "完整",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV1WLyaBBE3g?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   }
