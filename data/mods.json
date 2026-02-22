@@ -254,12 +254,12 @@
   },
   {
     "name": "Picking Meister",
-    "chineseName": "",
+    "chineseName": "拾取大师",
     "id": "3422220305",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1kLxvzJE4k?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -1112,12 +1112,12 @@
   },
   {
     "name": "Bone Scavenger",
-    "chineseName": "",
+    "chineseName": "骨骼拾荒者",
     "id": "3399292171",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1BYxTzPEdw?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -3323,13 +3323,13 @@
   },
   {
     "name": "Boots Expanded 11 for B41 and B42",
-    "chineseName": "",
+    "chineseName": "靴子扩展 11",
     "id": "2850935956",
-    "status": "待处理",
+    "status": "待检测",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
-    "note": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1LDbCzuE8J?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "模组不适配新版",
     "offline": false
   },
   {
@@ -3400,12 +3400,12 @@
   },
   {
     "name": "Smart Hutch",
-    "chineseName": "",
+    "chineseName": "智能鸡舍",
     "id": "3556857572",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1ZhaHzWEec?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -3840,13 +3840,13 @@
   },
   {
     "name": "Animals do not attack buildings",
-    "chineseName": "",
+    "chineseName": "动物不攻击建筑物",
     "id": "3469436421",
-    "status": "待处理",
+    "status": "无需翻译",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
-    "note": "",
+    "videoUrl": "https://www.bilibili.com/video/BV18BgizbEQV?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "功能性模组",
     "offline": false
   },
   {
@@ -4276,6 +4276,17 @@
     "entries": 0,
     "videoUrl": "https://www.bilibili.com/video/BV1ePaZzmE4U/?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "国人制作模组",
+    "offline": false
+  },
+  {
+    "name": "Livestock zones expanded",
+    "chineseName": "牲畜区域扩展",
+    "id": "3434810293",
+    "status": "完整",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV16Daoz4EeN?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
     "offline": false
   }
 ]
