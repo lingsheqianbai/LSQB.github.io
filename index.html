@@ -323,7 +323,7 @@
             margin-bottom: 16px;
         }
         .thanks-section h4 {
-            font-size: 15px;
+            font-size: 14px; /* 稍微调小 */
             color: #fff;
             margin-bottom: 8px;
             font-weight: 600;
@@ -336,13 +336,55 @@
         .thanks-section li {
             padding: 4px 0;
             color: rgba(255,255,255,0.8);
-            font-size: 14px;
+            font-size: 13px; /* 从14px调小 */
         }
         .thanks-note {
             margin-top: 12px;
             font-style: italic;
             color: rgba(255,255,255,0.6);
             font-size: 13px;
+        }
+
+        /* ===== 自定义折叠卡片样式（覆盖内联样式） ===== */
+        .contact-item details > summary {
+            font-size: 15px !important;
+            padding: 10px 16px !important;  /* 减小垂直内边距，更紧凑 */
+            list-style: none !important;    /* 隐藏默认箭头 */
+            position: relative;
+            cursor: pointer;
+            display: flex !important;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.02);
+            transition: background 0.2s;
+            color: rgba(255,255,255,0.95);
+            font-weight: 500;
+            border-bottom: 1px solid transparent; /* 预留，细节 */
+        }
+        .contact-item details > summary::-webkit-details-marker {
+            display: none !important; /* 针对WebKit浏览器隐藏默认箭头 */
+        }
+        .contact-item details > summary::after {
+            content: '▶';  /* 自定义三角形（右箭头） */
+            font-size: 12px;
+            margin-left: auto;  /* 推至右侧 */
+            transition: transform 0.2s;
+            color: rgba(255,255,255,0.6);
+        }
+        .contact-item details[open] > summary::after {
+            transform: rotate(90deg); /* 展开时箭头朝下 */
+        }
+        /* 内容区域字体和内边距微调 */
+        .contact-item details > div {
+            font-size: 13px !important;
+            padding: 16px !important;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.2);
+        }
+        /* 保持表格字体不变 */
+        .contact-item details .mod-table,
+        .contact-item details .mod-table * {
+            font-size: 14px;
         }
     </style>
 </head>
@@ -424,7 +466,7 @@
 
                 <!-- 卡片 1：模组备份与分享 -->
                 <details class="contact-item" style="padding: 0; overflow: hidden; border-radius: 14px; margin-bottom: 16px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255,255,255,0.1);">
-                    <summary style="cursor: pointer; padding: 16px 20px; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.95); list-style: none; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s;">
+                    <summary style="cursor: pointer; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s; color: rgba(255,255,255,0.95); font-weight: 500;">
                         <span style="font-size: 24px;">📦</span> 模组备份与分享
                         <span style="margin-left: auto; font-size: 14px; color: rgba(255,255,255,0.4);">点击展开</span>
                     </summary>
@@ -448,7 +490,7 @@
 
                 <!-- 卡片 2：我的模组 -->
                 <details class="contact-item" style="padding: 0; overflow: hidden; border-radius: 14px; margin-bottom: 16px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255,255,255,0.1);">
-                    <summary style="cursor: pointer; padding: 16px 20px; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.95); list-style: none; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s;">
+                    <summary style="cursor: pointer; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s; color: rgba(255,255,255,0.95); font-weight: 500;">
                         <span style="font-size: 24px;">⚙️</span> 我的模组
                         <span style="margin-left: auto; font-size: 14px; color: rgba(255,255,255,0.4);">点击展开</span>
                     </summary>
@@ -479,7 +521,7 @@
 
                 <!-- 卡片 3：模组翻译进度（带筛选） -->
                 <details class="contact-item" style="padding: 0; overflow: hidden; border-radius: 14px; margin-bottom: 16px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255,255,255,0.1);" open>
-                    <summary style="cursor: pointer; padding: 16px 20px; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.95); list-style: none; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s;">
+                    <summary style="cursor: pointer; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s; color: rgba(255,255,255,0.95); font-weight: 500;">
                         <span style="font-size: 24px;">📊</span> 模组翻译进度
                         <span style="margin-left: auto; font-size: 14px; color: rgba(255,255,255,0.4);">点击展开</span>
                     </summary>
@@ -586,7 +628,7 @@
 
                 <!-- 卡片 1：网页贡献致谢 -->
                 <details class="contact-item" style="padding: 0; overflow: hidden; border-radius: 14px; margin-bottom: 16px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255,255,255,0.1);">
-                    <summary style="cursor: pointer; padding: 16px 20px; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.95); list-style: none; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s;">
+                    <summary style="cursor: pointer; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s; color: rgba(255,255,255,0.95); font-weight: 500;">
                         <span style="font-size: 24px;">🌐</span> 网页贡献致谢
                         <span style="margin-left: auto; font-size: 14px; color: rgba(255,255,255,0.4);">点击展开</span>
                     </summary>
@@ -602,7 +644,7 @@
 
                 <!-- 卡片 2：僵尸毁灭工程致谢 -->
                 <details class="contact-item" style="padding: 0; overflow: hidden; border-radius: 14px; margin-bottom: 16px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255,255,255,0.1);">
-                    <summary style="cursor: pointer; padding: 16px 20px; font-size: 17px; font-weight: 500; color: rgba(255,255,255,0.95); list-style: none; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s;">
+                    <summary style="cursor: pointer; display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); transition: background 0.2s; color: rgba(255,255,255,0.95); font-weight: 500;">
                         <span style="font-size: 24px;">🧟</span> 僵尸毁灭工程致谢
                         <span style="margin-left: auto; font-size: 14px; color: rgba(255,255,255,0.4);">点击展开</span>
                     </summary>
@@ -650,7 +692,7 @@
             let offlineFilter = 'all';
             let noteFilter = 'all';
             let chineseFilter = 'all';
-            let videoFilter = 'all'; // 新增视频筛选
+            let videoFilter = 'all';
             let filterCollapsed = false;
 
             const searchInput = document.getElementById('modSearch');
@@ -660,7 +702,7 @@
             const offlineFilterGroup = document.getElementById('offlineFilterGroup');
             const noteFilterGroup = document.getElementById('noteFilterGroup');
             const chineseFilterGroup = document.getElementById('chineseFilterGroup');
-            const videoFilterGroup = document.getElementById('videoFilterGroup'); // 新增
+            const videoFilterGroup = document.getElementById('videoFilterGroup');
             const filterToggle = document.getElementById('filterToggle');
             const filterContent = document.getElementById('filterContent');
 
@@ -677,7 +719,6 @@
                 })
                 .then(data => {
                     allMods = data;
-                    // 生成状态按钮
                     const statusSet = new Set();
                     data.forEach(mod => { if (mod.status) statusSet.add(mod.status); });
                     const statusList = ['全部', ...Array.from(statusSet).sort()];
@@ -693,7 +734,6 @@
                         });
                     });
 
-                    // 为离线分享、备注、中文名、视频教程组绑定事件
                     const filterGroups = [
                         { group: offlineFilterGroup, setter: (val) => offlineFilter = val },
                         { group: noteFilterGroup, setter: (val) => noteFilter = val },
@@ -721,7 +761,6 @@
             function applyFilters() {
                 let filtered = allMods;
 
-                // 搜索
                 if (searchQuery.trim()) {
                     const q = searchQuery.toLowerCase();
                     filtered = filtered.filter(mod => 
@@ -731,30 +770,25 @@
                     );
                 }
 
-                // 状态
                 if (statusFilter !== '全部') {
                     filtered = filtered.filter(mod => mod.status === statusFilter);
                 }
 
-                // 离线分享
                 if (offlineFilter !== 'all') {
                     const wantOffline = offlineFilter === 'yes';
                     filtered = filtered.filter(mod => mod.offline === wantOffline);
                 }
 
-                // 备注
                 if (noteFilter !== 'all') {
                     const hasNote = noteFilter === 'yes';
                     filtered = filtered.filter(mod => hasNote ? (mod.note && mod.note.trim()) : (!mod.note || !mod.note.trim()));
                 }
 
-                // 中文名
                 if (chineseFilter !== 'all') {
                     const hasChinese = chineseFilter === 'yes';
                     filtered = filtered.filter(mod => hasChinese ? (mod.chineseName && mod.chineseName.trim()) : (!mod.chineseName || !mod.chineseName.trim()));
                 }
 
-                // 视频教程
                 if (videoFilter !== 'all') {
                     const hasVideo = videoFilter === 'yes';
                     filtered = filtered.filter(mod => hasVideo ? (mod.videoUrl && mod.videoUrl.trim() !== '') : (!mod.videoUrl || mod.videoUrl.trim() === ''));
