@@ -408,12 +408,12 @@
   },
   {
     "name": "Wild Fruits",
-    "chineseName": "",
+    "chineseName": "野生水果",
     "id": "2618566294",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1JYuLzEEum?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -716,12 +716,12 @@
   },
   {
     "name": "Make Dried Fruit",
-    "chineseName": "",
+    "chineseName": "果干制作",
     "id": "3417502641",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1k8uLznEA1?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -3037,12 +3037,12 @@
   },
   {
     "name": "Universal Gun Repair",
-    "chineseName": "",
+    "chineseName": "通用枪械修复",
     "id": "2899457928",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1wCgrzhEjR?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -3081,23 +3081,23 @@
   },
   {
     "name": "darlak's H.E.C.U.",
-    "chineseName": "",
+    "chineseName": "H.E.C.U. 装备模组",
     "id": "3452711271",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1sT3JzzEMn?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
   {
     "name": "Ducks+",
-    "chineseName": "",
+    "chineseName": "鸭子+",
     "id": "3409153536",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV16t3UzmEiC?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -3108,7 +3108,7 @@
     "status": "待检测",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1Ao3yzVEum?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "无法在游戏中看见物品",
     "offline": false
   },
@@ -3147,12 +3147,12 @@
   },
   {
     "name": "Random Clothing [B42]",
-    "chineseName": "",
+    "chineseName": "随机服装合集",
     "id": "3397182976",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1aegwzPEVc?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -3224,12 +3224,12 @@
   },
   {
     "name": "Vanilla MRE [B41/B42]",
-    "chineseName": "",
+    "chineseName": "原版风格单兵口粮",
     "id": "3100032203",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1jzuLz5Ey7?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -3246,12 +3246,12 @@
   },
   {
     "name": "Zombaroid",
-    "chineseName": "",
+    "chineseName": "僵尸拍立得",
     "id": "3519916139",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1uLMRzgEaM?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -3609,13 +3609,13 @@
   },
   {
     "name": "Anthro Survivors (the \"Furry Mod\")",
-    "chineseName": "",
+    "chineseName": "拟人幸存者（福瑞模组）",
     "id": "2893930681",
-    "status": "待处理",
+    "status": "非完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
-    "note": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1sJsyzyEpS?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "该模组为硬编码处理丢失了许多文件名，待日后修复。",
     "offline": false
   },
   {
@@ -4043,7 +4043,7 @@
     "status": "待处理",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1uj4BzgEEz?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -4104,12 +4104,12 @@
   },
   {
     "name": "Bushcraft Gear - Tools",
-    "chineseName": "",
+    "chineseName": "丛林生存工具",
     "id": "2423906082",
     "status": "待处理",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1DcWozHEnr?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -4137,23 +4137,23 @@
   },
   {
     "name": "Lost Media",
-    "chineseName": "",
+    "chineseName": "失落媒体",
     "id": "3572808153",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1UZsvzoEJQ?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
   {
     "name": "All In One Tool!",
-    "chineseName": "",
+    "chineseName": "万用工具",
     "id": "3589758717",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1pMsVzQEE6?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -4170,12 +4170,12 @@
   },
   {
     "name": "Canteens And Bottles",
-    "chineseName": "",
+    "chineseName": "水壶与容器",
     "id": "2863949128",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1bbsnznEjg?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -4398,5 +4398,5 @@
     "videoUrl": "",
     "note": "",
     "offline": false
-  },
+  }
 ]
