@@ -2157,12 +2157,12 @@
   },
   {
     "name": "[B42] KR FriOS (Mobile Fridge/Cooler/Freezer/Stove - Solar Battery Charger)",
-    "chineseName": "",
+    "chineseName": "KR FriOS 移动厨房（太阳能冷藏/烹饪站） [开发中]",
     "id": "3463564121",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1w7gBzQEBh?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -2388,13 +2388,13 @@
   },
   {
     "name": "Support Goods Mega Mod [B42.4] - Blizzard Update - SEMI-STABLE",
-    "chineseName": "",
+    "chineseName": "支援物资巨型模组",
     "id": "3434464110",
     "status": "待处理",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
-    "note": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1xDKpzuEbC?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "损坏待修复后制作翻译，新版为3512993822",
     "offline": false
   },
   {
@@ -3059,13 +3059,13 @@
   },
   {
     "name": "[B42] JunkFoodsPH (WIP)",
-    "chineseName": "",
+    "chineseName": "菲律宾风味零食",
     "id": "3390901679",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
-    "note": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1Pr34z8EfX/?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "原作者已经放弃该模组",
     "offline": false
   },
   {
@@ -3257,12 +3257,12 @@
   },
   {
     "name": "Spiffomon 3D [B42]",
-    "chineseName": "",
+    "chineseName": "斯皮福兽3D",
     "id": "3522453285",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1bSgMz7E8U?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -3389,12 +3389,12 @@
   },
   {
     "name": "My So-Called Toy",
-    "chineseName": "",
+    "chineseName": "我的所谓玩具",
     "id": "3540268758",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1iZhDzeE2X?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -3576,12 +3576,12 @@
   },
   {
     "name": "Pocket Kittens (B42)",
-    "chineseName": "",
+    "chineseName": "口袋小猫",
     "id": "3568029240",
     "status": "待处理",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV15SpizNEno?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -3818,12 +3818,12 @@
   },
   {
     "name": "[NPDM] PuppyGirl",
-    "chineseName": "",
+    "chineseName": "小狗女孩 (狐尾狐耳)",
     "id": "3527888311",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1BjHPzCEFK?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -3928,12 +3928,12 @@
   },
   {
     "name": "Baby Animal Food",
-    "chineseName": "",
+    "chineseName": "幼畜口粮",
     "id": "3422249642",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1yuxyzLENQ?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -3961,12 +3961,12 @@
   },
   {
     "name": "[NPDM] Puppy Play",
-    "chineseName": "",
+    "chineseName": "小狗装扮",
     "id": "3564374757",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1iV4HzMEuA?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -3994,12 +3994,12 @@
   },
   {
     "name": "Improvised Backpack!",
-    "chineseName": "",
+    "chineseName": "简易背包",
     "id": "3586145865",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1Vt4UzkEn1?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -4016,12 +4016,12 @@
   },
   {
     "name": "[B41/B42] Hephas Stalker PDA",
-    "chineseName": "",
+    "chineseName": "潜行者PDA",
     "id": "3479108127",
-    "status": "待处理",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1eb4tzHEwL?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
   },
@@ -4321,5 +4321,82 @@
     "videoUrl": "https://www.bilibili.com/video/BV1WLyaBBE3g?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
-  }
+  },
+  {
+    "name": "Put Animals In Bags",
+    "chineseName": "动物装包",
+    "id": "3426738400",
+    "status": "非完整",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV1CG1fBEEsS?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "原作者使用硬编码，使用硬编码翻译出现异常包括翻译键无效。",
+    "offline": false
+  },
+  {
+    "name": "枪托攻击 [B42]",
+    "chineseName": "",
+    "id": "3394044313",
+    "status": "无需翻译",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV1xPCcBQEft?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "国人制作",
+    "offline": false
+  },
+  {
+    "name": "[BROKEN] Animals Can Chill Above Ground Level",
+    "chineseName": "动物可以在地面以上放松",
+    "id": "3435060775",
+    "status": "无需翻译",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV1mcCcBXEZW?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "功能性模组",
+    "offline": false
+  },
+  {
+    "name": "Where are the animals?",
+    "chineseName": "动物定位",
+    "id": "3409035433",
+    "status": "完整",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV1tcCcB9EXr?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Energy Drinks [B42]",
+    "chineseName": "能量饮料",
+    "id": "2674541310",
+    "status": "完整",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV11dGnzUErH?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "B41/B42|Pushpop's FurbyZ",
+    "chineseName": "菲比模组",
+    "id": "3588215974",
+    "status": "完整",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV1bksbzCEm1?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "[BROKEN] Support Goods Mega Mod [B42.10] - PREDATOR",
+    "chineseName": "支援物资巨型模组 [损坏]",
+    "id": "3512993822",
+    "status": "待处理",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "",
+    "note": "",
+    "offline": false
+  },
 ]
