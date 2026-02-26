@@ -64,7 +64,7 @@
             font-size: 14px;
             color: rgba(255,255,255,0.9);
             table-layout: fixed;
-            min-width: 1000px; /* 调整为适合6列 */
+            min-width: 1000px;
         }
         .mod-table th {
             text-align: left;
@@ -99,13 +99,14 @@
         }
         
         /* 列宽分配（6列） */
-        .mod-table th:nth-child(1) { width: 25%; }  /* 模组名称/ID */
-        .mod-table th:nth-child(2) { width: 20%; }  /* 模组中文名 */
-        .mod-table th:nth-child(3) { width: 12%; }  /* 翻译进度 */
-        .mod-table th:nth-child(4) { width: 10%; }  /* 视频教程 */
-        .mod-table th:nth-child(5) { width: 23%; }  /* 备注（增加宽度） */
-        .mod-table th:nth-child(6) { width: 10%; }  /* 离线分享 */
+        .mod-table th:nth-child(1) { width: 25%; }
+        .mod-table th:nth-child(2) { width: 20%; }
+        .mod-table th:nth-child(3) { width: 12%; }
+        .mod-table th:nth-child(4) { width: 10%; }
+        .mod-table th:nth-child(5) { width: 23%; }
+        .mod-table th:nth-child(6) { width: 10%; }
         
+        /* 状态标签基础样式 */
         .status-badge {
             display: inline-block;
             padding: 4px 8px;
@@ -116,6 +117,7 @@
             border: 1px solid rgba(255,255,255,0.15);
             white-space: nowrap;
         }
+        /* 各状态颜色 */
         .status-complete {
             background: rgba(39, 174, 96, 0.2);
             border-color: rgba(39, 174, 96, 0.4);
@@ -344,7 +346,7 @@
             font-size: 13px;
         }
 
-        /* ===== 自定义折叠卡片样式（覆盖内联样式） ===== */
+        /* 自定义折叠卡片样式 */
         .contact-item details > summary {
             font-size: 15px !important;
             padding: 10px 16px !important;
@@ -358,7 +360,6 @@
             transition: background 0.2s;
             color: rgba(255,255,255,0.95);
             font-weight: 500;
-            border-bottom: 1px solid transparent;
         }
         .contact-item details > summary::-webkit-details-marker {
             display: none !important;
@@ -695,7 +696,7 @@
         </main>
     </div>
 
-    <!-- ========== 模组数据加载脚本 ========== -->
+    <!-- ========== 模组数据加载脚本（自动颜色匹配） ========== -->
     <script>
         (function() {
             const PAGE_SIZE = 10;
@@ -773,6 +774,18 @@
                     tbody.innerHTML = `<tr><td colspan="6" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 模组数据加载失败，请检查 data/mods.json 文件</td></tr>`;
                 });
 
+            // 根据状态文本返回对应的 CSS 类名
+            function getStatusClass(status) {
+                const map = {
+                    '完整': 'status-complete',
+                    '非完整': 'status-incomplete',
+                    '待检测': 'status-pending',
+                    '无需翻译': 'status-unneeded',
+                    '待处理': 'status-todo'
+                };
+                return map[status] || ''; // 若未定义，返回空字符串（使用默认灰色）
+            }
+
             function applyFilters() {
                 let filtered = allMods;
 
@@ -829,13 +842,14 @@
                 pageMods.forEach(mod => {
                     const videoLink = mod.videoUrl ? `<a href="${mod.videoUrl}" target="_blank" style="color:#3B82F6;">🔗</a>` : '-';
                     const offlineIcon = mod.offline ? '<span class="icon-uploaded">✅</span>' : '<span class="icon-not-uploaded">❌</span>';
-                    const statusClass = mod.statusClass ? `status-badge ${mod.statusClass}` : 'status-badge';
+                    // 自动获取状态类名
+                    const statusClass = getStatusClass(mod.status);
                     const chineseName = mod.chineseName || '-';
                     
                     html += `<tr>
                         <td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.id}" target="_blank">${mod.name}</a><span class="mod-id">${mod.id}</span></td>
                         <td>${chineseName}</td>
-                        <td><span class="${statusClass}">${mod.status}</span></td>
+                        <td><span class="status-badge ${statusClass}">${mod.status}</span></td>
                         <td>${videoLink}</td>
                         <td>${mod.note || '-'}</td>
                         <td>${offlineIcon}</td>
