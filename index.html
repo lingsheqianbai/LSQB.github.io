@@ -64,7 +64,7 @@
             font-size: 14px;
             color: rgba(255,255,255,0.9);
             table-layout: fixed;
-            min-width: 1200px;
+            min-width: 1000px; /* 调整为适合6列 */
         }
         .mod-table th {
             text-align: left;
@@ -98,14 +98,13 @@
             margin-top: 2px;
         }
         
-        /* 列宽分配 */
-        .mod-table th:nth-child(1) { width: 25%; }
-        .mod-table th:nth-child(2) { width: 20%; }
-        .mod-table th:nth-child(3) { width: 10%; }
-        .mod-table th:nth-child(4) { width: 8%; }
-        .mod-table th:nth-child(5) { width: 8%; }
-        .mod-table th:nth-child(6) { width: 19%; }
-        .mod-table th:nth-child(7) { width: 10%; }
+        /* 列宽分配（6列） */
+        .mod-table th:nth-child(1) { width: 25%; }  /* 模组名称/ID */
+        .mod-table th:nth-child(2) { width: 20%; }  /* 模组中文名 */
+        .mod-table th:nth-child(3) { width: 12%; }  /* 翻译进度 */
+        .mod-table th:nth-child(4) { width: 10%; }  /* 视频教程 */
+        .mod-table th:nth-child(5) { width: 23%; }  /* 备注（增加宽度） */
+        .mod-table th:nth-child(6) { width: 10%; }  /* 离线分享 */
         
         .status-badge {
             display: inline-block;
@@ -323,7 +322,7 @@
             margin-bottom: 16px;
         }
         .thanks-section h4 {
-            font-size: 14px; /* 稍微调小 */
+            font-size: 14px;
             color: #fff;
             margin-bottom: 8px;
             font-weight: 600;
@@ -336,7 +335,7 @@
         .thanks-section li {
             padding: 4px 0;
             color: rgba(255,255,255,0.8);
-            font-size: 13px; /* 从14px调小 */
+            font-size: 13px;
         }
         .thanks-note {
             margin-top: 12px;
@@ -348,8 +347,8 @@
         /* ===== 自定义折叠卡片样式（覆盖内联样式） ===== */
         .contact-item details > summary {
             font-size: 15px !important;
-            padding: 10px 16px !important;  /* 减小垂直内边距，更紧凑 */
-            list-style: none !important;    /* 隐藏默认箭头 */
+            padding: 10px 16px !important;
+            list-style: none !important;
             position: relative;
             cursor: pointer;
             display: flex !important;
@@ -359,29 +358,27 @@
             transition: background 0.2s;
             color: rgba(255,255,255,0.95);
             font-weight: 500;
-            border-bottom: 1px solid transparent; /* 预留，细节 */
+            border-bottom: 1px solid transparent;
         }
         .contact-item details > summary::-webkit-details-marker {
-            display: none !important; /* 针对WebKit浏览器隐藏默认箭头 */
+            display: none !important;
         }
         .contact-item details > summary::after {
-            content: '▶';  /* 自定义三角形（右箭头） */
+            content: '▶';
             font-size: 12px;
-            margin-left: auto;  /* 推至右侧 */
+            margin-left: auto;
             transition: transform 0.2s;
             color: rgba(255,255,255,0.6);
         }
         .contact-item details[open] > summary::after {
-            transform: rotate(90deg); /* 展开时箭头朝下 */
+            transform: rotate(90deg);
         }
-        /* 内容区域字体和内边距微调 */
         .contact-item details > div {
             font-size: 13px !important;
             padding: 16px !important;
             border-top: 1px solid rgba(255,255,255,0.1);
             background: rgba(0,0,0,0.2);
         }
-        /* 保持表格字体不变 */
         .contact-item details .mod-table,
         .contact-item details .mod-table * {
             font-size: 14px;
@@ -566,7 +563,7 @@
                                         <span class="filter-btn" data-value="no">无中文名</span>
                                     </div>
                                 </div>
-                                <!-- 新增：视频教程筛选 -->
+                                <!-- 视频教程筛选 -->
                                 <div class="filter-group">
                                     <span class="filter-label">视频教程</span>
                                     <div class="filter-buttons" id="videoFilterGroup">
@@ -585,13 +582,12 @@
                                         <th>模组名称 / ID</th>
                                         <th>模组中文名</th>
                                         <th>翻译进度</th>
-                                        <th>条目</th>
                                         <th>视频教程</th>
                                         <th>备注</th>
                                         <th>离线分享</th>
                                     </tr>
                                 </thead>
-                                <tbody id="modTableBody"><tr><td colspan="7" class="loading">加载中...</td></tr></tbody>
+                                <tbody id="modTableBody"><tr><td colspan="6" class="loading">加载中...</td></tr></tbody>
                             </table>
                         </div>
                         <div class="pagination" id="pagination"></div>
@@ -774,7 +770,7 @@
                 })
                 .catch(error => {
                     console.error('加载 mods.json 失败:', error);
-                    tbody.innerHTML = `<tr><td colspan="7" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 模组数据加载失败，请检查 data/mods.json 文件</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="6" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 模组数据加载失败，请检查 data/mods.json 文件</td></tr>`;
                 });
 
             function applyFilters() {
@@ -825,7 +821,7 @@
                 const pageMods = filteredMods.slice(start, end);
 
                 if (pageMods.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的模组</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的模组</td></tr>`;
                     return;
                 }
 
@@ -840,7 +836,6 @@
                         <td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.id}" target="_blank">${mod.name}</a><span class="mod-id">${mod.id}</span></td>
                         <td>${chineseName}</td>
                         <td><span class="${statusClass}">${mod.status}</span></td>
-                        <td>${mod.entries}</td>
                         <td>${videoLink}</td>
                         <td>${mod.note || '-'}</td>
                         <td>${offlineIcon}</td>
