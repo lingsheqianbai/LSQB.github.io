@@ -179,10 +179,10 @@
     "name": "RestoreUtilities",
     "chineseName": "恢复设施",
     "id": "3409422147",
-    "status": "待检测",
+    "status": "完整",
     "statusClass": "",
     "entries": 0,
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1tiAazfEBo/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": true
   },
@@ -190,11 +190,11 @@
     "name": "Vanilla-Like Traits and Occupations",
     "chineseName": "",
     "id": "3139034529",
-    "status": "待处理",
+    "status": "待检测",
     "statusClass": "",
     "entries": 0,
     "videoUrl": "",
-    "note": "",
+    "note": "目前模组没有更新无法在新版本中使用与测试",
     "offline": false
   },
   {
@@ -4451,6 +4451,17 @@
     "statusClass": "",
     "entries": 0,
     "videoUrl": "https://www.bilibili.com/video/BV1t8ADz1E6p/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Weapon Experience B42 MP",
+    "chineseName": "武器经验系统",
+    "id": "3671575665",
+    "status": "完整",
+    "statusClass": "",
+    "entries": 0,
+    "videoUrl": "https://www.bilibili.com/video/BV1HXAezdEQG/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
