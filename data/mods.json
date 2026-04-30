@@ -4741,6 +4741,17 @@
     "offline": false
   },
   {
+    "name": "[B42]DebugMenu",
+    "chineseName": "调试菜单",
+    "platform": "steam",
+    "steamId": "3386556284",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "",
+    "offline": false
+  },
+  {
     "name": "EnvironmentalProtectionSuit",
     "chineseName": "",
     "platform": "steam",
