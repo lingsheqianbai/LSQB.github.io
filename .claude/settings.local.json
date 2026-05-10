@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -f \"C:\\\\Users\\\\admin、\\\\Zomboid\\\\Lua\"/*.tbx 2>/dev/null && echo \"ok\")",
+      "Bash(wc -l \"C:\\\\\\\\Users\\\\\\\\admin、\\\\\\\\Zomboid\\\\\\\\Workshop\\\\\\\\ModTemplate - 凌社千白模组汉化\\\\\\\\Contents\\\\\\\\mods\\\\\\\\lingsheqianbai_CN\\\\\\\\42\\\\\\\\media\\\\\\\\lua\\\\\\\\shared\\\\\\\\Translate\\\\\\\\CN\\\\\\\\IG_UI.json\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\admin、\\Zomboid\\Lua"
+    ]
+  }
+}

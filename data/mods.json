@@ -4752,6 +4752,116 @@
     "offline": false
   },
   {
+    "name": "[B42MP] Frockin Splendor! Vol.2",
+    "chineseName": "华丽衣橱！第二卷",
+    "platform": "steam",
+    "steamId": "3411888105",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1CqRJBcENC/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "调试菜单(Debug)",
+    "chineseName": "",
+    "platform": "steam",
+    "steamId": "3720332165",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "",
+    "note": "此为UP（凌社千白自主接手维护）",
+    "offline": false
+  },
+  {
+    "name": "[B42] Playable Pool",
+    "chineseName": "可玩台球",
+    "platform": "steam",
+    "steamId": "3716934959",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "非完整",
+    "videoUrl": "",
+    "note": "待发布",
+    "offline": false
+  },
+  {
+    "name": "JB's Bugs In Lights",
+    "chineseName": "JB的灯光昆虫",
+    "platform": "steam",
+    "steamId": "3717902500",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Military Tents [B42.17+ MP]",
+    "chineseName": "军用帐篷",
+    "platform": "steam",
+    "steamId": "3718884098",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "非完整",
+    "videoUrl": "",
+    "note": "待发布，建筑页面无法翻译",
+    "offline": false
+  },
+  {
+    "name": "[B42] Carry Visible Log Stacks",
+    "chineseName": "手持可见原木堆",
+    "platform": "steam",
+    "steamId": "3719237374",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "无需翻译",
+    "videoUrl": "",
+    "note": "待发布",
+    "offline": false
+  },
+  {
+    "name": "[J&G] ODST [B42/41]",
+    "chineseName": "[J&G] 地狱伞兵",
+    "platform": "steam",
+    "steamId": "3719531113",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "待发布",
+    "offline": false
+  },
+  {
+    "name": "(B42) Hardwood's Swat Pack",
+    "chineseName": "硬木板 SWAT 装备包",
+    "platform": "steam",
+    "steamId": "3687353319",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Open All Containers",
+    "chineseName": "打开所有容器",
+    "platform": "steam",
+    "steamId": "3465040406",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "[42 + MP] GoM - Guns of Marz",
+    "chineseName": "",
+    "platform": "steam",
+    "steamId": "3722134990",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "",
+    "offline": false
+  },
+  {
     "name": "EnvironmentalProtectionSuit",
     "chineseName": "",
     "platform": "steam",
