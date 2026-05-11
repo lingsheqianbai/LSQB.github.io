@@ -876,32 +876,6 @@
                         <div class="pagination" id="pagination"></div>
                     </div>
                 </details>
-                <!-- 洛克王国精灵图鉴 (新增) -->
-                <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
-                    <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
-                        <span style="font-size:24px">🐉</span> 洛克王国精灵图鉴收集资料查询 (仅千白用)<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
-                    </summary>
-                    <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
-                        <div class="search-box" style="margin-bottom:16px">
-                            <input type="text" id="wonderSearch" placeholder="搜索精灵名称或备注...">
-                        </div>
-                        <div class="table-responsive">
-                            <table class="mod-table" id="wonderTable" style="min-width:500px">
-                                <thead>
-                                    <tr>
-                                        <th>编号</th>
-                                        <th>精灵名称</th>
-                                        <th>备注</th>
-                                        <th>视频链接</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="wonderTableBody">
-                                    <tr><td colspan="4" class="loading">加载中...<\/td><\/tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </details>
                 <!-- 我制作的游戏攻略 -->
                 <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
                     <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
@@ -928,6 +902,7 @@
                         <div class="pagination" id="guidePagination"></div>
                     </div>
                 </details>
+                <!-- 我的帖子 -->
                 <div class="posts-section" id="posts">
                     <div class="posts-header">
                         <h3 class="section-title">📝 我的帖子(测试)</h3>
@@ -939,6 +914,86 @@
                         <!-- 帖子卡片会由JS动态渲染 -->
                     </div>
                     <div class="pagination" id="postsPagination"></div>
+                </div>
+                <!-- 千白个人项目（新增） -->
+                <div style="margin-top: 20px;">
+                    <h3 class="section-title">✨ 千白个人项目</h3>
+                    <!-- 1. 洛克王国：世界精灵图鉴收集资料视频查询 -->
+                    <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
+                        <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
+                            <span style="font-size:24px">🐉</span> 洛克王国：世界精灵图鉴收集资料视频查询<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
+                        </summary>
+                        <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
+                            <div class="search-box" style="margin-bottom:16px">
+                                <input type="text" id="wonderSearch" placeholder="搜索编号、精灵名称或备注...">
+                            </div>
+                            <div class="table-responsive">
+                                <table class="mod-table" id="wonderTable" style="min-width:500px">
+                                    <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>精灵名称</th>
+                                            <th>备注</th>
+                                            <th>视频链接</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="wonderTableBody">
+                                        <tr><td colspan="4" class="loading">加载中...<\/td><\/tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+                    <!-- 2. 洛克王国：世界称号获取 -->
+                    <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
+                        <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
+                            <span style="font-size:24px">🏅</span> 洛克王国：世界称号获取<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
+                        </summary>
+                        <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
+                            <div class="search-box" style="margin-bottom:16px">
+                                <input type="text" id="titleSearch" placeholder="搜索称号名称...">
+                            </div>
+                            <div class="table-responsive">
+                                <table class="mod-table" id="titleTable" style="min-width:500px">
+                                    <thead>
+                                        <tr>
+                                            <th>称号名称</th>
+                                            <th>获取方式</th>
+                                            <th>备注</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="titleTableBody">
+                                        <tr><td colspan="3" class="loading">加载中...<\/td><\/tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
+                    <!-- 3. 洛克王国：世界任务攻略 -->
+                    <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
+                        <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
+                            <span style="font-size:24px">📜</span> 洛克王国：世界任务攻略<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
+                        </summary>
+                        <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
+                            <div class="search-box" style="margin-bottom:16px">
+                                <input type="text" id="taskSearch" placeholder="搜索任务名称...">
+                            </div>
+                            <div class="table-responsive">
+                                <table class="mod-table" id="taskTable" style="min-width:600px">
+                                    <thead>
+                                        <tr>
+                                            <th>任务名称</th>
+                                            <th>攻略/说明</th>
+                                            <th>视频链接</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="taskTableBody">
+                                        <tr><td colspan="3" class="loading">加载中...<\/td><\/tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </details>
                 </div>
             </div>
             <div class="comms-card" id="contact">
@@ -1225,7 +1280,7 @@
                 applyFilters()
             }).catch(error => {
                 console.error('加载 mods.json 失败:', error);
-                if (tbody) tbody.innerHTML = `<tr><td colspan="6" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 模组数据加载失败，请检查 data/mods.json 文件<\/td><\/tr>`;
+                if (tbody) tbody.innerHTML = `<td><td colspan="6" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 模组数据加载失败，请检查 data/mods.json 文件<\/td><\/tr>`;
                 setUpdateDate()
             });
 
@@ -1420,10 +1475,10 @@
     </script>
     <script>
         (function() {
-            const PAGE_SIZE = 5;               // 每页显示 5 条
-            let allPosts = [];
-            let filteredPosts = [];
-            let currentPage = 1;
+            const PAGE_SIZE = 5;
+            let allPosts = [],
+                filteredPosts = [],
+                currentPage = 1;
 
             const postsGrid = document.getElementById('postsGrid');
             const paginationDiv = document.getElementById('postsPagination');
@@ -1478,7 +1533,7 @@
                         imageUrl = './' + imageUrl;
                     }
                     html += `
-                        <div class="post-card-item" onclick="window.location.href='post.html?id=${post.id}'">
+                        <div class="post-card-item" onclick="window.location.href='${post.link || 'post.html?id=' + post.id}'">
                             <div class="post-card-cover" style="background-image: url('${escapeHtml(imageUrl)}');"></div>
                             <div class="post-card-info">
                                 <div class="post-card-title">${escapeHtml(post.title)}</div>
@@ -1540,7 +1595,7 @@
             }
         })();
     </script>
-    <!-- 洛克王国精灵图鉴数据加载 -->
+    <!-- 洛克王国精灵图鉴数据加载（支持编号搜索） -->
     <script>
         (function() {
             const wonderTbody = document.getElementById('wonderTableBody');
@@ -1551,6 +1606,7 @@
                 if (!wonderTbody) return;
                 const lowerFilter = filter.toLowerCase();
                 const filtered = wonderData.filter(item =>
+                    item.id.toString().includes(lowerFilter) ||
                     item.name.toLowerCase().includes(lowerFilter) ||
                     (item.note && item.note.toLowerCase().includes(lowerFilter))
                 );
@@ -1599,6 +1655,113 @@
             if (wonderSearch) {
                 wonderSearch.addEventListener('input', function() {
                     renderWonders(this.value.trim().toLowerCase());
+                });
+            }
+        })();
+    </script>
+    <!-- 称号获取数据加载（使用静态示例数据，可替换为JSON） -->
+    <script>
+        (function() {
+            const titleTbody = document.getElementById('titleTableBody');
+            const titleSearch = document.getElementById('titleSearch');
+            // 硬编码示例数据，你可以后续改为 fetch('data/titles.json') 加载外部文件
+            let titlesData = [
+                { name: "新手训练家", method: "完成新手引导", note: "无" },
+                { name: "精灵大师", method: "收集100种精灵", note: "困难" }
+            ];
+
+            function renderTitles(filter = '') {
+                if (!titleTbody) return;
+                const lowerFilter = filter.toLowerCase();
+                const filtered = titlesData.filter(item =>
+                    item.name.toLowerCase().includes(lowerFilter) ||
+                    item.method.toLowerCase().includes(lowerFilter)
+                );
+                if (filtered.length === 0) {
+                    titleTbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px;">没有匹配的称号<\/td><\/tr>';
+                    return;
+                }
+                let html = '';
+                filtered.forEach(item => {
+                    html += `
+                        <tr>
+                            <td>${escapeHtml(item.name)}<\/td>
+                            <td>${escapeHtml(item.method)}<\/td>
+                            <td>${escapeHtml(item.note)}<\/td>
+                        <\/tr>
+                    `;
+                });
+                titleTbody.innerHTML = html;
+            }
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                return str.replace(/[&<>]/g, function(m) {
+                    if (m === '&') return '&amp;';
+                    if (m === '<') return '&lt;';
+                    if (m === '>') return '&gt;';
+                    return m;
+                });
+            }
+
+            renderTitles();
+            if (titleSearch) {
+                titleSearch.addEventListener('input', function() {
+                    renderTitles(this.value.trim().toLowerCase());
+                });
+            }
+        })();
+    </script>
+    <!-- 任务攻略数据加载（使用静态示例数据，可替换为JSON） -->
+    <script>
+        (function() {
+            const taskTbody = document.getElementById('taskTableBody');
+            const taskSearch = document.getElementById('taskSearch');
+            let tasksData = [
+                { name: "初始冒险", guide: "与草系精灵对话，获取地图", video: "https://www.bilibili.com" },
+                { name: "精灵对战", guide: "前往竞技场，学习基本操作", video: "" }
+            ];
+
+            function renderTasks(filter = '') {
+                if (!taskTbody) return;
+                const lowerFilter = filter.toLowerCase();
+                const filtered = tasksData.filter(item =>
+                    item.name.toLowerCase().includes(lowerFilter)
+                );
+                if (filtered.length === 0) {
+                    taskTbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px;">没有匹配的任务<\/td><\/tr>';
+                    return;
+                }
+                let html = '';
+                filtered.forEach(item => {
+                    const videoLink = item.video && item.video.trim() !== '' 
+                        ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>`
+                        : '-';
+                    html += `
+                        <tr>
+                            <td>${escapeHtml(item.name)}<\/td>
+                            <td>${escapeHtml(item.guide)}<\/td>
+                            <td>${videoLink}<\/td>
+                        <\/tr>
+                    `;
+                });
+                taskTbody.innerHTML = html;
+            }
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                return str.replace(/[&<>]/g, function(m) {
+                    if (m === '&') return '&amp;';
+                    if (m === '<') return '&lt;';
+                    if (m === '>') return '&gt;';
+                    return m;
+                });
+            }
+
+            renderTasks();
+            if (taskSearch) {
+                taskSearch.addEventListener('input', function() {
+                    renderTasks(this.value.trim().toLowerCase());
                 });
             }
         })();

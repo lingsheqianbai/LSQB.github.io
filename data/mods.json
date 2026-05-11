@@ -4779,9 +4779,9 @@
     "platform": "steam",
     "steamId": "3716934959",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "非完整",
-    "videoUrl": "",
-    "note": "待发布",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1yv5E6AEkm/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "硬编码翻译",
     "offline": false
   },
   {
@@ -4802,8 +4802,8 @@
     "steamId": "3718884098",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "非完整",
-    "videoUrl": "",
-    "note": "待发布，建筑页面无法翻译",
+    "videoUrl": "https://www.bilibili.com/video/BV1T85E6iEtF/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "建筑页面无法翻译",
     "offline": false
   },
   {
@@ -4813,8 +4813,8 @@
     "steamId": "3719237374",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "无需翻译",
-    "videoUrl": "",
-    "note": "待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV1rk5E64Eg4/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
     "offline": false
   },
   {
@@ -4823,9 +4823,9 @@
     "platform": "steam",
     "steamId": "3719531113",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "待处理",
-    "videoUrl": "",
-    "note": "待发布",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV11Y5E6YE4U/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
     "offline": false
   },
   {
@@ -4852,12 +4852,23 @@
   },
   {
     "name": "[42 + MP] GoM - Guns of Marz",
-    "chineseName": "",
+    "chineseName": "戈兹枪械",
     "platform": "steam",
     "steamId": "3722134990",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "待处理",
     "videoUrl": "",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "[B42:SP/MP] Take A Bath And Shower",
+    "chineseName": "洗澡与淋浴",
+    "platform": "steam",
+    "steamId": "3592172476",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1kz5E6bEKB/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
