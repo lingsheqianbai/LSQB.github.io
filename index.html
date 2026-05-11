@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="style/icon.css">
     <link rel="stylesheet" href="style/aoo.css">
     <style>
-        /* ========== 原有样式保持不变 ========== */
+        /* ========== 原有样式保持不变（仅新增个人项目相关） ========== */
         .sidebar {
             align-items: flex-start;
             padding-left: 0
@@ -721,8 +721,6 @@
                 font-size: 1.1rem
             }
         }
-
-        /* 洛克王国表格样式（继承mod-table）无需额外 */
     </style>
 </head>
 <body>
@@ -944,22 +942,22 @@
                             </div>
                         </div>
                     </details>
-                    <!-- 2. 洛克王国：世界称号获取 -->
+                    <!-- 2. 洛克王国：世界称号获取（加备注） -->
                     <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
                         <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
                             <span style="font-size:24px">🏅</span> 洛克王国：世界称号获取<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
                         </summary>
                         <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
                             <div class="search-box" style="margin-bottom:16px">
-                                <input type="text" id="titleSearch" placeholder="搜索称号名称...">
+                                <input type="text" id="titleSearch" placeholder="搜索称号名称或备注...">
                             </div>
                             <div class="table-responsive">
                                 <table class="mod-table" id="titleTable" style="min-width:500px">
                                     <thead>
                                         <tr>
                                             <th>称号名称</th>
-                                            <th>获取方式</th>
                                             <th>备注</th>
+                                            <th>视频链接</th>
                                         </tr>
                                     </thead>
                                     <tbody id="titleTableBody">
@@ -969,21 +967,21 @@
                             </div>
                         </div>
                     </details>
-                    <!-- 3. 洛克王国：世界任务攻略 -->
+                    <!-- 3. 洛克王国：世界任务攻略（加备注） -->
                     <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
                         <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
                             <span style="font-size:24px">📜</span> 洛克王国：世界任务攻略<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
                         </summary>
                         <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
                             <div class="search-box" style="margin-bottom:16px">
-                                <input type="text" id="taskSearch" placeholder="搜索任务名称...">
+                                <input type="text" id="taskSearch" placeholder="搜索任务名称或备注...">
                             </div>
                             <div class="table-responsive">
-                                <table class="mod-table" id="taskTable" style="min-width:600px">
+                                <table class="mod-table" id="taskTable" style="min-width:500px">
                                     <thead>
                                         <tr>
                                             <th>任务名称</th>
-                                            <th>攻略/说明</th>
+                                            <th>备注</th>
                                             <th>视频链接</th>
                                         </tr>
                                     </thead>
@@ -1136,16 +1134,9 @@
             var modalImg = document.getElementById("modalImage");
             var sponsorImg = document.getElementById("sponsorImg");
             var closeBtn = document.getElementsByClassName("close-modal")[0];
-            if (sponsorImg) sponsorImg.onclick = function() {
-                modal.style.display = "flex";
-                modalImg.src = this.src
-            };
-            if (closeBtn) closeBtn.onclick = function() {
-                modal.style.display = "none"
-            };
-            if (modal) modal.onclick = function(e) {
-                if (e.target === modal) modal.style.display = "none"
-            }
+            if (sponsorImg) sponsorImg.onclick = function() { modal.style.display = "flex"; modalImg.src = this.src };
+            if (closeBtn) closeBtn.onclick = function() { modal.style.display = "none" };
+            if (modal) modal.onclick = function(e) { if (e.target === modal) modal.style.display = "none" }
         })();
     </script>
     <script>
@@ -1161,167 +1152,55 @@
             }
         }
     </script>
+    <!-- 模组数据加载（保持不变） -->
     <script>
         (function() {
             const PAGE_SIZE = 10;
-            let allMods = [],
-                filteredMods = [],
-                currentPage = 1;
-            let searchQuery = '',
-                gameQuery = '',
-                statusFilter = '全部',
-                offlineFilter = 'all',
-                noteFilter = 'all',
-                chineseFilter = 'all',
-                videoFilter = 'all',
-                filterCollapsed = false;
-            const searchInput = document.getElementById('modSearch'),
-                gameSearchInput = document.getElementById('gameSearchInput');
-            const tbody = document.getElementById('modTableBody'),
-                paginationDiv = document.getElementById('pagination');
-            const filterToggle = document.getElementById('filterToggle'),
-                filterContent = document.getElementById('filterContent');
-            const updateDateSpan = document.getElementById('updateDate'),
-                modStatsDiv = document.getElementById('modStats');
-            const statusFilterGroup = document.getElementById('statusFilterGroup'),
-                offlineFilterGroup = document.getElementById('offlineFilterGroup');
-            const noteFilterGroup = document.getElementById('noteFilterGroup'),
-                chineseFilterGroup = document.getElementById('chineseFilterGroup'),
-                videoFilterGroup = document.getElementById('videoFilterGroup');
+            let allMods = [], filteredMods = [], currentPage = 1;
+            let searchQuery = '', gameQuery = '', statusFilter = '全部', offlineFilter = 'all', noteFilter = 'all', chineseFilter = 'all', videoFilter = 'all', filterCollapsed = false;
+            const searchInput = document.getElementById('modSearch'), gameSearchInput = document.getElementById('gameSearchInput');
+            const tbody = document.getElementById('modTableBody'), paginationDiv = document.getElementById('pagination');
+            const filterToggle = document.getElementById('filterToggle'), filterContent = document.getElementById('filterContent');
+            const updateDateSpan = document.getElementById('updateDate'), modStatsDiv = document.getElementById('modStats');
+            const statusFilterGroup = document.getElementById('statusFilterGroup'), offlineFilterGroup = document.getElementById('offlineFilterGroup');
+            const noteFilterGroup = document.getElementById('noteFilterGroup'), chineseFilterGroup = document.getElementById('chineseFilterGroup'), videoFilterGroup = document.getElementById('videoFilterGroup');
             if (filterToggle) filterToggle.addEventListener('click', function() {
                 filterCollapsed = !filterCollapsed;
                 if (filterContent) filterContent.classList.toggle('collapsed', filterCollapsed);
                 filterToggle.classList.toggle('collapsed', filterCollapsed)
             });
-
-            function setUpdateDate() {
-                if (updateDateSpan) {
-                    const today = new Date();
-                    updateDateSpan.textContent = `更新: ${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`
-                }
-            }
-
-            function updateModStats() {
-                if (!modStatsDiv || !allMods.length) return;
-                const total = allMods.length;
-                const countComplete = allMods.filter(m => m.status === '完整').length;
-                const countIncomplete = allMods.filter(m => m.status === '非完整').length;
-                const countPending = allMods.filter(m => m.status === '待检测').length;
-                const countUnneeded = allMods.filter(m => m.status === '无需翻译').length;
-                const countTodo = allMods.filter(m => m.status === '待处理').length;
-                const countHasVideo = allMods.filter(m => m.videoUrl && m.videoUrl.trim() !== '').length;
-                const countNoVideo = total - countHasVideo;
-                modStatsDiv.innerHTML = `<div class="stats-item"><span class="icon">📊</span> 总模组: <span class="stats-number">${total}</span></div><div class="stats-item stats-complete"><span class="icon">✅</span> 完整: <span class="stats-number">${countComplete}</span></div><div class="stats-item stats-todo"><span class="icon">⏳</span> 待处理: <span class="stats-number">${countTodo}</span></div><div class="stats-item stats-pending"><span class="icon">🔍</span> 待检测: <span class="stats-number">${countPending}</span></div><div class="stats-item stats-incomplete"><span class="icon">🟡</span> 非完整: <span class="stats-number">${countIncomplete}</span></div><div class="stats-item stats-unneeded"><span class="icon">🟣</span> 无需翻译: <span class="stats-number">${countUnneeded}</span></div><div class="stats-item"><span class="icon">📹</span> 已拥有视频: <span class="stats-number">${countHasVideo}</span></div><div class="stats-item"><span class="icon">🚫</span> 未拥有视频: <span class="stats-number">${countNoVideo}</span></div>`
-            }
-
-            function getModLink(mod) {
-                if (mod.platform === 'steam' && mod.steamId) return `https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.steamId}`;
-                else if (mod.platform === 'mcmod' && mod.mcmodId) return `https://www.mcmod.cn/class/${mod.mcmodId}.html`;
-                else if (mod.platform === 'custom' && mod.customUrl) return mod.customUrl;
-                else if (mod.id) return `https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.id}`;
-                else return '#'
-            }
-            fetch('data/mods.json').then(r => r.json()).then(data => {
+            function setUpdateDate() { if (updateDateSpan) { const today = new Date(); updateDateSpan.textContent = `更新: ${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}` } }
+            function updateModStats() { if (!modStatsDiv || !allMods.length) return; const total = allMods.length; const countComplete = allMods.filter(m => m.status === '完整').length; const countIncomplete = allMods.filter(m => m.status === '非完整').length; const countPending = allMods.filter(m => m.status === '待检测').length; const countUnneeded = allMods.filter(m => m.status === '无需翻译').length; const countTodo = allMods.filter(m => m.status === '待处理').length; const countHasVideo = allMods.filter(m => m.videoUrl && m.videoUrl.trim() !== '').length; const countNoVideo = total - countHasVideo; modStatsDiv.innerHTML = `<div class="stats-item"><span class="icon">📊</span> 总模组: <span class="stats-number">${total}</span></div><div class="stats-item stats-complete"><span class="icon">✅</span> 完整: <span class="stats-number">${countComplete}</span></div><div class="stats-item stats-todo"><span class="icon">⏳</span> 待处理: <span class="stats-number">${countTodo}</span></div><div class="stats-item stats-pending"><span class="icon">🔍</span> 待检测: <span class="stats-number">${countPending}</span></div><div class="stats-item stats-incomplete"><span class="icon">🟡</span> 非完整: <span class="stats-number">${countIncomplete}</span></div><div class="stats-item stats-unneeded"><span class="icon">🟣</span> 无需翻译: <span class="stats-number">${countUnneeded}</span></div><div class="stats-item"><span class="icon">📹</span> 已拥有视频: <span class="stats-number">${countHasVideo}</span></div><div class="stats-item"><span class="icon">🚫</span> 未拥有视频: <span class="stats-number">${countNoVideo}</span></div>` }
+            function getModLink(mod) { if (mod.platform === 'steam' && mod.steamId) return `https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.steamId}`; else if (mod.platform === 'mcmod' && mod.mcmodId) return `https://www.mcmod.cn/class/${mod.mcmodId}.html`; else if (mod.platform === 'custom' && mod.customUrl) return mod.customUrl; else if (mod.id) return `https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.id}`; else return '#' }
+            fetch('data/mods.json').then(r=>r.json()).then(data => {
                 allMods = data;
-                const statusSet = new Set();
-                data.forEach(mod => {
-                    if (mod.status) statusSet.add(mod.status)
-                });
+                const statusSet = new Set(); data.forEach(mod => { if (mod.status) statusSet.add(mod.status) });
                 const statusList = ['全部', ...Array.from(statusSet).sort()];
-                if (statusFilterGroup) {
-                    statusFilterGroup.innerHTML = statusList.map(s => `<span class="filter-btn ${s === '全部' ? 'active' : ''}" data-group="status" data-value="${s}">${s}</span>`).join('');
-                    document.querySelectorAll('[data-group="status"]').forEach(btn => {
-                        btn.addEventListener('click', function() {
-                            document.querySelectorAll('[data-group="status"]').forEach(b => b.classList.remove('active'));
-                            this.classList.add('active');
-                            statusFilter = this.dataset.value;
-                            applyFilters()
-                        })
-                    })
-                }
-                if (offlineFilterGroup) offlineFilterGroup.querySelectorAll('[data-group="offline"]').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        offlineFilterGroup.querySelectorAll('[data-group="offline"]').forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        offlineFilter = this.dataset.value;
-                        applyFilters()
-                    })
-                });
-                if (noteFilterGroup) noteFilterGroup.querySelectorAll('[data-group="note"]').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        noteFilterGroup.querySelectorAll('[data-group="note"]').forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        noteFilter = this.dataset.value;
-                        applyFilters()
-                    })
-                });
-                if (chineseFilterGroup) chineseFilterGroup.querySelectorAll('[data-group="chinese"]').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        chineseFilterGroup.querySelectorAll('[data-group="chinese"]').forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        chineseFilter = this.dataset.value;
-                        applyFilters()
-                    })
-                });
-                if (videoFilterGroup) videoFilterGroup.querySelectorAll('[data-group="video"]').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        videoFilterGroup.querySelectorAll('[data-group="video"]').forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        videoFilter = this.dataset.value;
-                        applyFilters()
-                    })
-                });
-                if (gameSearchInput) gameSearchInput.addEventListener('input', function() {
-                    gameQuery = this.value.trim().toLowerCase();
-                    applyFilters()
-                });
-                setUpdateDate();
-                updateModStats();
-                applyFilters()
-            }).catch(error => {
-                console.error('加载 mods.json 失败:', error);
-                if (tbody) tbody.innerHTML = `<td><td colspan="6" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 模组数据加载失败，请检查 data/mods.json 文件<\/td><\/tr>`;
-                setUpdateDate()
-            });
-
-            function getStatusClass(status) {
-                const map = {
-                    '完整': 'status-complete',
-                    '非完整': 'status-incomplete',
-                    '待检测': 'status-pending',
-                    '无需翻译': 'status-unneeded',
-                    '待处理': 'status-todo'
-                };
-                return map[status] || ''
-            }
-
+                if (statusFilterGroup) { statusFilterGroup.innerHTML = statusList.map(s => `<span class="filter-btn ${s==='全部'?'active':''}" data-group="status" data-value="${s}">${s}</span>`).join('');
+                document.querySelectorAll('[data-group="status"]').forEach(btn => { btn.addEventListener('click', function() { document.querySelectorAll('[data-group="status"]').forEach(b=>b.classList.remove('active')); this.classList.add('active'); statusFilter = this.dataset.value; applyFilters() }) }) }
+                if (offlineFilterGroup) offlineFilterGroup.querySelectorAll('[data-group="offline"]').forEach(btn => { btn.addEventListener('click', function() { offlineFilterGroup.querySelectorAll('[data-group="offline"]').forEach(b=>b.classList.remove('active')); this.classList.add('active'); offlineFilter = this.dataset.value; applyFilters() }) });
+                if (noteFilterGroup) noteFilterGroup.querySelectorAll('[data-group="note"]').forEach(btn => { btn.addEventListener('click', function() { noteFilterGroup.querySelectorAll('[data-group="note"]').forEach(b=>b.classList.remove('active')); this.classList.add('active'); noteFilter = this.dataset.value; applyFilters() }) });
+                if (chineseFilterGroup) chineseFilterGroup.querySelectorAll('[data-group="chinese"]').forEach(btn => { btn.addEventListener('click', function() { chineseFilterGroup.querySelectorAll('[data-group="chinese"]').forEach(b=>b.classList.remove('active')); this.classList.add('active'); chineseFilter = this.dataset.value; applyFilters() }) });
+                if (videoFilterGroup) videoFilterGroup.querySelectorAll('[data-group="video"]').forEach(btn => { btn.addEventListener('click', function() { videoFilterGroup.querySelectorAll('[data-group="video"]').forEach(b=>b.classList.remove('active')); this.classList.add('active'); videoFilter = this.dataset.value; applyFilters() }) });
+                if (gameSearchInput) gameSearchInput.addEventListener('input', function() { gameQuery = this.value.trim().toLowerCase(); applyFilters() });
+                setUpdateDate(); updateModStats(); applyFilters()
+            }).catch(error => { console.error('加载 mods.json 失败:', error); if (tbody) tbody.innerHTML = `<td><td colspan="6" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 模组数据加载失败，请检查 data/mods.json 文件<\/td><\/tr>`; setUpdateDate() });
+            function getStatusClass(status) { const map = { '完整':'status-complete', '非完整':'status-incomplete', '待检测':'status-pending', '无需翻译':'status-unneeded', '待处理':'status-todo' }; return map[status] || '' }
             function applyFilters() {
                 let filtered = allMods;
-                if (searchQuery.trim()) {
-                    const q = searchQuery.toLowerCase();
-                    filtered = filtered.filter(mod => mod.name.toLowerCase().includes(q) || (mod.steamId && mod.steamId.includes(q)) || (mod.mcmodId && mod.mcmodId.includes(q)) || (mod.chineseName && mod.chineseName.toLowerCase().includes(q)) || (mod.note && mod.note.toLowerCase().includes(q)))
-                }
+                if (searchQuery.trim()) { const q = searchQuery.toLowerCase(); filtered = filtered.filter(mod => mod.name.toLowerCase().includes(q) || (mod.steamId && mod.steamId.includes(q)) || (mod.mcmodId && mod.mcmodId.includes(q)) || (mod.chineseName && mod.chineseName.toLowerCase().includes(q)) || (mod.note && mod.note.toLowerCase().includes(q))) }
                 if (gameQuery) filtered = filtered.filter(mod => mod.game && mod.game.toLowerCase().includes(gameQuery));
                 if (statusFilter !== '全部') filtered = filtered.filter(mod => mod.status === statusFilter);
                 if (offlineFilter !== 'all') filtered = filtered.filter(mod => mod.offline === (offlineFilter === 'yes'));
                 if (noteFilter !== 'all') filtered = filtered.filter(mod => noteFilter === 'yes' ? (mod.note && mod.note.trim()) : (!mod.note || !mod.note.trim()));
                 if (chineseFilter !== 'all') filtered = filtered.filter(mod => chineseFilter === 'yes' ? (mod.chineseName && mod.chineseName.trim()) : (!mod.chineseName || !mod.chineseName.trim()));
                 if (videoFilter !== 'all') filtered = filtered.filter(mod => videoFilter === 'yes' ? (mod.videoUrl && mod.videoUrl.trim() !== '') : (!mod.videoUrl || mod.videoUrl.trim() === ''));
-                filteredMods = filtered;
-                currentPage = 1;
-                renderTable();
-                renderPagination()
+                filteredMods = filtered; currentPage = 1; renderTable(); renderPagination()
             }
-
             function renderTable() {
                 if (!tbody) return;
-                const start = (currentPage - 1) * PAGE_SIZE;
-                const end = start + PAGE_SIZE;
-                const pageMods = filteredMods.slice(start, end);
-                if (pageMods.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的模组<\/td><\/tr>`;
-                    return
-                }
+                const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageMods = filteredMods.slice(start,end);
+                if (pageMods.length === 0) { tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的模组<\/td><\/tr>`; return }
                 let html = '';
                 pageMods.forEach(mod => {
                     const videoLink = mod.videoUrl ? `<a href="${mod.videoUrl}" target="_blank" style="color:#3B82F6;">🔗</a>` : '-';
@@ -1333,266 +1212,51 @@
                     if (mod.steamId) idDisplay = `<span class="mod-id">${mod.steamId}</span>`;
                     else if (mod.mcmodId) idDisplay = `<span class="mod-id">MC百科 ID: ${mod.mcmodId}</span>`;
                     else if (mod.id) idDisplay = `<span class="mod-id">${mod.id}</span>`;
-                    html += `<tr><td><a href="${modLink}" target="_blank">${mod.name}</a>${idDisplay}<\/td><td>${chineseName}<\/td><td><span class="status-badge ${statusClass}">${mod.status}<\/span><\/td><td>${videoLink}<\/td><td>${mod.note || '-'}<\/td><td>${offlineIcon}<\/td><\/tr>`
+                    html += `<tr>}<a href="${modLink}" target="_blank">${mod.name}</a>${idDisplay}<\/td>}<td>${chineseName}<\/td>}<td><span class="status-badge ${statusClass}">${mod.status}<\/span><\/td>}<td>${videoLink}<\/td>}<td>${mod.note||'-'}<\/td>}<td>${offlineIcon}<\/td><\/tr>`;
                 });
                 tbody.innerHTML = html
             }
-
             function renderPagination() {
                 if (!paginationDiv) return;
                 const totalPages = Math.ceil(filteredMods.length / PAGE_SIZE);
-                if (totalPages <= 1) {
-                    paginationDiv.innerHTML = '';
-                    return
-                }
-                let html = '<button id="prevPage" ' + (currentPage === 1 ? 'disabled' : '') + '>‹ 上一页</button><div class="page-numbers">';
-                let startPage = Math.max(1, currentPage - 2);
-                let endPage = Math.min(totalPages, startPage + 4);
-                if (endPage - startPage < 4) startPage = Math.max(1, endPage - 4);
-                for (let i = startPage; i <= endPage; i++) html += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
-                html += '</div><button id="nextPage" ' + (currentPage === totalPages ? 'disabled' : '') + '>下一页 ›</button>';
+                if (totalPages <= 1) { paginationDiv.innerHTML = ''; return }
+                let html = '<button id="prevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">';
+                let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4);
+                if (endPage-startPage < 4) startPage = Math.max(1, endPage-4);
+                for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`;
+                html += '</div><button id="nextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>';
                 paginationDiv.innerHTML = html;
-                document.querySelectorAll('.page-number').forEach(span => {
-                    span.addEventListener('click', function() {
-                        const page = parseInt(this.dataset.page, 10);
-                        if (page !== currentPage) {
-                            currentPage = page;
-                            renderTable();
-                            renderPagination()
-                        }
-                    })
-                });
-                document.getElementById('prevPage')?.addEventListener('click', () => {
-                    if (currentPage > 1) {
-                        currentPage--;
-                        renderTable();
-                        renderPagination()
-                    }
-                });
-                document.getElementById('nextPage')?.addEventListener('click', () => {
-                    if (currentPage < totalPages) {
-                        currentPage++;
-                        renderTable();
-                        renderPagination()
-                    }
-                })
+                document.querySelectorAll('.page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination() } }) });
+                document.getElementById('prevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination() } });
+                document.getElementById('nextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination() } })
             }
-            if (searchInput) searchInput.addEventListener('input', function() {
-                searchQuery = this.value;
-                applyFilters()
-            })
+            if (searchInput) searchInput.addEventListener('input', function() { searchQuery = this.value; applyFilters() })
         })();
     </script>
+    <!-- 游戏攻略加载（保持不变） -->
     <script>
         (function() {
             const PAGE_SIZE = 10;
-            let allGuides = [],
-                filteredGuides = [],
-                currentPage = 1;
-            const searchInput = document.getElementById('guideSearch'),
-                tbody = document.getElementById('guideTableBody'),
-                paginationDiv = document.getElementById('guidePagination'),
-                guideStatsDiv = document.getElementById('guideStats');
-
-            function updateGuideStats() {
-                if (guideStatsDiv) guideStatsDiv.innerHTML = `📚 总攻略: <span class="stats-number">${allGuides.length}</span>`
-            }
-            fetch('data/guides.json').then(r => r.json()).then(data => {
-                allGuides = data;
-                filteredGuides = [...allGuides];
-                updateGuideStats();
-                renderTable();
-                renderPagination()
-            }).catch(error => {
-                console.error('加载 guides.json 失败:', error);
-                if (tbody) tbody.innerHTML = `<tr><td colspan="2" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 攻略数据加载失败，请检查 data/guides.json 文件<\/td><\/tr>`;
-                if (guideStatsDiv) guideStatsDiv.innerHTML = '📚 加载失败'
-            });
-
-            function renderTable() {
-                if (!tbody) return;
-                const start = (currentPage - 1) * PAGE_SIZE,
-                    end = start + PAGE_SIZE,
-                    pageGuides = filteredGuides.slice(start, end);
-                if (pageGuides.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="2" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的攻略<\/td><\/tr>`;
-                    return
-                }
-                let html = '';
-                pageGuides.forEach(guide => {
-                    html += `<tr><td><a href="${guide.url}" target="_blank" style="color:#3B82F6;">${guide.name}</a><\/td><td><a href="${guide.url}" target="_blank" style="color:#3B82F6;">🔗 观看<\/a><\/td><\/tr>`
-                });
-                tbody.innerHTML = html
-            }
-
-            function renderPagination() {
-                if (!paginationDiv) return;
-                const totalPages = Math.ceil(filteredGuides.length / PAGE_SIZE);
-                if (totalPages <= 1) {
-                    paginationDiv.innerHTML = '';
-                    return
-                }
-                let html = '<button id="guidePrevPage" ' + (currentPage === 1 ? 'disabled' : '') + '>‹ 上一页</button><div class="page-numbers">';
-                let startPage = Math.max(1, currentPage - 2);
-                let endPage = Math.min(totalPages, startPage + 4);
-                if (endPage - startPage < 4) startPage = Math.max(1, endPage - 4);
-                for (let i = startPage; i <= endPage; i++) html += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
-                html += '</div><button id="guideNextPage" ' + (currentPage === totalPages ? 'disabled' : '') + '>下一页 ›</button>';
-                paginationDiv.innerHTML = html;
-                document.querySelectorAll('.page-number').forEach(span => {
-                    span.addEventListener('click', function() {
-                        const page = parseInt(this.dataset.page, 10);
-                        if (page !== currentPage) {
-                            currentPage = page;
-                            renderTable();
-                            renderPagination()
-                        }
-                    })
-                });
-                document.getElementById('guidePrevPage')?.addEventListener('click', () => {
-                    if (currentPage > 1) {
-                        currentPage--;
-                        renderTable();
-                        renderPagination()
-                    }
-                });
-                document.getElementById('guideNextPage')?.addEventListener('click', () => {
-                    if (currentPage < totalPages) {
-                        currentPage++;
-                        renderTable();
-                        renderPagination()
-                    }
-                })
-            }
-            if (searchInput) searchInput.addEventListener('input', function() {
-                const query = this.value.trim().toLowerCase();
-                filteredGuides = allGuides.filter(guide => guide.name.toLowerCase().includes(query));
-                currentPage = 1;
-                renderTable();
-                renderPagination()
-            })
+            let allGuides = [], filteredGuides = [], currentPage = 1;
+            const searchInput = document.getElementById('guideSearch'), tbody = document.getElementById('guideTableBody'), paginationDiv = document.getElementById('guidePagination'), guideStatsDiv = document.getElementById('guideStats');
+            function updateGuideStats() { if (guideStatsDiv) guideStatsDiv.innerHTML = `📚 总攻略: <span class="stats-number">${allGuides.length}</span>` }
+            fetch('data/guides.json').then(r=>r.json()).then(data => { allGuides = data; filteredGuides = [...allGuides]; updateGuideStats(); renderTable(); renderPagination() }).catch(error => { console.error('加载 guides.json 失败:', error); if (tbody) tbody.innerHTML = `<tr><td colspan="2" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 攻略数据加载失败，请检查 data/guides.json 文件<\/td><\/tr>`; if (guideStatsDiv) guideStatsDiv.innerHTML = '📚 加载失败' });
+            function renderTable() { if (!tbody) return; const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageGuides = filteredGuides.slice(start,end); if (pageGuides.length === 0) { tbody.innerHTML = `<tr><td colspan="2" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的攻略<\/td><\/tr>`; return } let html = ''; pageGuides.forEach(guide => { html += `<tr>}<a href="${guide.url}" target="_blank" style="color:#3B82F6;">${guide.name}</a><\/td>}<a href="${guide.url}" target="_blank" style="color:#3B82F6;">🔗 观看<\/a><\/td><\/tr>` }); tbody.innerHTML = html }
+            function renderPagination() { if (!paginationDiv) return; const totalPages = Math.ceil(filteredGuides.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return } let html = '<button id="guidePrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`; html += '</div><button id="guideNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('.page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination() } }) }); document.getElementById('guidePrevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination() } }); document.getElementById('guideNextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination() } }) }
+            if (searchInput) searchInput.addEventListener('input', function() { const query = this.value.trim().toLowerCase(); filteredGuides = allGuides.filter(guide => guide.name.toLowerCase().includes(query)); currentPage = 1; renderTable(); renderPagination() })
         })();
     </script>
+    <!-- 帖子加载（支持外部链接，保持不变） -->
     <script>
         (function() {
             const PAGE_SIZE = 5;
-            let allPosts = [],
-                filteredPosts = [],
-                currentPage = 1;
-
-            const postsGrid = document.getElementById('postsGrid');
-            const paginationDiv = document.getElementById('postsPagination');
-            const searchInput = document.getElementById('postsSearchInput');
-
+            let allPosts = [], filteredPosts = [], currentPage = 1;
+            const postsGrid = document.getElementById('postsGrid'), paginationDiv = document.getElementById('postsPagination'), searchInput = document.getElementById('postsSearchInput');
             if (!postsGrid) return;
-
-            fetch('data/posts.json')
-                .then(response => response.json())
-                .then(posts => {
-                    allPosts = posts;
-                    allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
-                    filteredPosts = [...allPosts];
-                    renderPosts();
-                    renderPagination();
-
-                    if (searchInput) {
-                        searchInput.addEventListener('input', function() {
-                            const query = this.value.trim().toLowerCase();
-                            filteredPosts = query === '' ? [...allPosts] : allPosts.filter(post =>
-                                post.title.toLowerCase().includes(query) ||
-                                (post.summary && post.summary.toLowerCase().includes(query)) ||
-                                (post.content && post.content.toLowerCase().includes(query))
-                            );
-                            currentPage = 1;
-                            renderPosts();
-                            renderPagination();
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('加载帖子失败:', error);
-                    postsGrid.innerHTML = '<div style="text-align:center; padding:40px; color:#ff6b6b;">❌ 帖子数据加载失败，请检查 data/posts.json 文件</div>';
-                });
-
-            function renderPosts() {
-                const start = (currentPage - 1) * PAGE_SIZE;
-                const end = start + PAGE_SIZE;
-                const pagePosts = filteredPosts.slice(start, end);
-
-                if (pagePosts.length === 0) {
-                    postsGrid.innerHTML = '<div style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">暂无帖子，敬请期待～</div>';
-                    return;
-                }
-
-                let html = '';
-                pagePosts.forEach(post => {
-                    let summary = post.summary || '';
-                    if (summary.length > 150) summary = summary.substring(0, 150) + '…';
-                    let imageUrl = post.image;
-                    if (imageUrl && !imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) {
-                        imageUrl = './' + imageUrl;
-                    }
-                    html += `
-                        <div class="post-card-item" onclick="window.location.href='${post.link || 'post.html?id=' + post.id}'">
-                            <div class="post-card-cover" style="background-image: url('${escapeHtml(imageUrl)}');"></div>
-                            <div class="post-card-info">
-                                <div class="post-card-title">${escapeHtml(post.title)}</div>
-                                <div class="post-card-meta">
-                                    <span>📅 ${post.date}</span>
-                                </div>
-                                <div class="post-card-summary">${escapeHtml(summary)}</div>
-                            </div>
-                        </div>
-                    `;
-                });
-                postsGrid.innerHTML = html;
-            }
-
-            function renderPagination() {
-                if (!paginationDiv) return;
-                const totalPages = Math.ceil(filteredPosts.length / PAGE_SIZE);
-                if (totalPages <= 1) {
-                    paginationDiv.innerHTML = '';
-                    return;
-                }
-
-                let html = '<button id="postsPrevPage" ' + (currentPage === 1 ? 'disabled' : '') + '>‹ 上一页</button>';
-                html += '<div class="page-numbers">';
-                let startPage = Math.max(1, currentPage - 2);
-                let endPage = Math.min(totalPages, startPage + 4);
-                if (endPage - startPage < 4) startPage = Math.max(1, endPage - 4);
-                for (let i = startPage; i <= endPage; i++) {
-                    html += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
-                }
-                html += '</div>';
-                html += '<button id="postsNextPage" ' + (currentPage === totalPages ? 'disabled' : '') + '>下一页 ›</button>';
-                paginationDiv.innerHTML = html;
-
-                document.querySelectorAll('#postsPagination .page-number').forEach(span => {
-                    span.addEventListener('click', function() {
-                        const page = parseInt(this.dataset.page, 10);
-                        if (page !== currentPage) {
-                            currentPage = page;
-                            renderPosts();
-                            renderPagination();
-                        }
-                    });
-                });
-                const prevBtn = document.getElementById('postsPrevPage');
-                const nextBtn = document.getElementById('postsNextPage');
-                if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPosts(); renderPagination(); } });
-                if (nextBtn) nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderPosts(); renderPagination(); } });
-            }
-
-            function escapeHtml(str) {
-                if (!str) return '';
-                return str.replace(/[&<>]/g, function(m) {
-                    if (m === '&') return '&amp;';
-                    if (m === '<') return '&lt;';
-                    if (m === '>') return '&gt;';
-                    return m;
-                });
-            }
+            fetch('data/posts.json').then(r=>r.json()).then(posts => { allPosts = posts; allPosts.sort((a,b)=>new Date(b.date)-new Date(a.date)); filteredPosts = [...allPosts]; renderPosts(); renderPagination(); if (searchInput) { searchInput.addEventListener('input', function() { const query = this.value.trim().toLowerCase(); filteredPosts = query === '' ? [...allPosts] : allPosts.filter(post => post.title.toLowerCase().includes(query) || (post.summary && post.summary.toLowerCase().includes(query)) || (post.content && post.content.toLowerCase().includes(query))); currentPage = 1; renderPosts(); renderPagination(); }) } }).catch(error => { console.error('加载帖子失败:', error); postsGrid.innerHTML = '<div style="text-align:center; padding:40px; color:#ff6b6b;">❌ 帖子数据加载失败，请检查 data/posts.json 文件</div>'; });
+            function renderPosts() { const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pagePosts = filteredPosts.slice(start,end); if (pagePosts.length === 0) { postsGrid.innerHTML = '<div style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">暂无帖子，敬请期待～</div>'; return; } let html = ''; pagePosts.forEach(post => { let summary = post.summary || ''; if (summary.length > 150) summary = summary.substring(0,150)+'…'; let imageUrl = post.image; if (imageUrl && !imageUrl.startsWith('http://') && !imageUrl.startsWith('https://')) imageUrl = './' + imageUrl; html += `<div class="post-card-item" onclick="window.location.href='${post.link || 'post.html?id=' + post.id}'"><div class="post-card-cover" style="background-image: url('${escapeHtml(imageUrl)}');"></div><div class="post-card-info"><div class="post-card-title">${escapeHtml(post.title)}</div><div class="post-card-meta"><span>📅 ${post.date}</span></div><div class="post-card-summary">${escapeHtml(summary)}</div></div></div>`; }); postsGrid.innerHTML = html; }
+            function renderPagination() { if (!paginationDiv) return; const totalPages = Math.ceil(filteredPosts.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; } let html = '<button id="postsPrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`; html += '</div><button id="postsNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('#postsPagination .page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderPosts(); renderPagination(); } }); }); const prevBtn = document.getElementById('postsPrevPage'), nextBtn = document.getElementById('postsNextPage'); if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPosts(); renderPagination(); } }); if (nextBtn) nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderPosts(); renderPagination(); } }); }
+            function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
         })();
     </script>
     <!-- 洛克王国精灵图鉴数据加载（支持编号搜索） -->
@@ -1601,7 +1265,6 @@
             const wonderTbody = document.getElementById('wonderTableBody');
             const wonderSearch = document.getElementById('wonderSearch');
             let wonderData = [];
-
             function renderWonders(filter = '') {
                 if (!wonderTbody) return;
                 const lowerFilter = filter.toLowerCase();
@@ -1610,179 +1273,71 @@
                     item.name.toLowerCase().includes(lowerFilter) ||
                     (item.note && item.note.toLowerCase().includes(lowerFilter))
                 );
-                if (filtered.length === 0) {
-                    wonderTbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:40px;">没有匹配的精灵<\/td><\/tr>';
-                    return;
-                }
+                if (filtered.length === 0) { wonderTbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:40px;">没有匹配的精灵<\/td><\/tr>'; return; }
                 let html = '';
                 filtered.forEach(item => {
-                    const videoLink = item.video && item.video.trim() !== '' 
-                        ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>`
-                        : '-';
-                    html += `
-                        <tr>
-                            <td>${item.id}<\/td>
-                            <td>${escapeHtml(item.name)}<\/td>
-                            <td>${escapeHtml(item.note || '-')}<\/td>
-                            <td>${videoLink}<\/td>
-                        <\/tr>
-                    `;
+                    const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-';
+                    html += `<tr><td>${item.id}<\/td><td>${escapeHtml(item.name)}<\/td><td>${escapeHtml(item.note||'-')}<\/td><td>${videoLink}<\/td><\/tr>`;
                 });
                 wonderTbody.innerHTML = html;
             }
-
-            function escapeHtml(str) {
-                if (!str) return '';
-                return str.replace(/[&<>]/g, function(m) {
-                    if (m === '&') return '&amp;';
-                    if (m === '<') return '&lt;';
-                    if (m === '>') return '&gt;';
-                    return m;
-                });
-            }
-
-            fetch('data/wonders.json')
-                .then(res => res.json())
-                .then(data => {
-                    wonderData = data;
-                    renderWonders();
-                })
-                .catch(err => {
-                    console.error('加载 wonders.json 失败', err);
-                    if (wonderTbody) wonderTbody.innerHTML = '<tr><td colspan="4" style="color:#ff6b6b; text-align:center;">❌ 数据加载失败，请检查 data/wonders.json<\/td><\/tr>';
-                });
-
-            if (wonderSearch) {
-                wonderSearch.addEventListener('input', function() {
-                    renderWonders(this.value.trim().toLowerCase());
-                });
-            }
+            function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
+            fetch('data/wonders.json').then(res=>res.json()).then(data => { wonderData = data; renderWonders(); }).catch(err => { console.error('加载 wonders.json 失败', err); if (wonderTbody) wonderTbody.innerHTML = '<tr><td colspan="4" style="color:#ff6b6b; text-align:center;">❌ 数据加载失败，请检查 data/wonders.json<\/td><\/tr>'; });
+            if (wonderSearch) wonderSearch.addEventListener('input', function() { renderWonders(this.value.trim().toLowerCase()); });
         })();
     </script>
-    <!-- 称号获取数据加载（使用静态示例数据，可替换为JSON） -->
+    <!-- 称号获取数据加载（JSON，含备注） -->
     <script>
         (function() {
             const titleTbody = document.getElementById('titleTableBody');
             const titleSearch = document.getElementById('titleSearch');
-            // 硬编码示例数据，你可以后续改为 fetch('data/titles.json') 加载外部文件
-            let titlesData = [
-                { name: "新手训练家", method: "完成新手引导", note: "无" },
-                { name: "精灵大师", method: "收集100种精灵", note: "困难" }
-            ];
-
+            let titlesData = [];
             function renderTitles(filter = '') {
                 if (!titleTbody) return;
                 const lowerFilter = filter.toLowerCase();
-                const filtered = titlesData.filter(item =>
-                    item.name.toLowerCase().includes(lowerFilter) ||
-                    item.method.toLowerCase().includes(lowerFilter)
-                );
-                if (filtered.length === 0) {
-                    titleTbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px;">没有匹配的称号<\/td><\/tr>';
-                    return;
-                }
+                const filtered = titlesData.filter(item => item.name.toLowerCase().includes(lowerFilter) || (item.note && item.note.toLowerCase().includes(lowerFilter)));
+                if (filtered.length === 0) { titleTbody.innerHTML = '<table><td colspan="3" style="text-align:center; padding:40px;">没有匹配的称号<\/td><\/tr>'; return; }
                 let html = '';
                 filtered.forEach(item => {
-                    html += `
-                        <tr>
-                            <td>${escapeHtml(item.name)}<\/td>
-                            <td>${escapeHtml(item.method)}<\/td>
-                            <td>${escapeHtml(item.note)}<\/td>
-                        <\/tr>
-                    `;
+                    const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-';
+                    html += `<tr><td>${escapeHtml(item.name)}<\/td><td>${escapeHtml(item.note||'-')}<\/td><td>${videoLink}<\/td><\/tr>`;
                 });
                 titleTbody.innerHTML = html;
             }
-
-            function escapeHtml(str) {
-                if (!str) return '';
-                return str.replace(/[&<>]/g, function(m) {
-                    if (m === '&') return '&amp;';
-                    if (m === '<') return '&lt;';
-                    if (m === '>') return '&gt;';
-                    return m;
-                });
-            }
-
-            renderTitles();
-            if (titleSearch) {
-                titleSearch.addEventListener('input', function() {
-                    renderTitles(this.value.trim().toLowerCase());
-                });
-            }
+            function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
+            fetch('data/titles.json').then(res=>res.json()).then(data => { titlesData = data; renderTitles(); }).catch(err => { console.error('加载 titles.json 失败，使用示例数据', err); titlesData = [{ name:"新手训练家", note:"初始称号", video:"" }, { name:"精灵大师", note:"收集100只精灵", video:"" }]; renderTitles(); });
+            if (titleSearch) titleSearch.addEventListener('input', function() { renderTitles(this.value.trim().toLowerCase()); });
         })();
     </script>
-    <!-- 任务攻略数据加载（使用静态示例数据，可替换为JSON） -->
+    <!-- 任务攻略数据加载（JSON，含备注） -->
     <script>
         (function() {
             const taskTbody = document.getElementById('taskTableBody');
             const taskSearch = document.getElementById('taskSearch');
-            let tasksData = [
-                { name: "初始冒险", guide: "与草系精灵对话，获取地图", video: "https://www.bilibili.com" },
-                { name: "精灵对战", guide: "前往竞技场，学习基本操作", video: "" }
-            ];
-
+            let tasksData = [];
             function renderTasks(filter = '') {
                 if (!taskTbody) return;
                 const lowerFilter = filter.toLowerCase();
-                const filtered = tasksData.filter(item =>
-                    item.name.toLowerCase().includes(lowerFilter)
-                );
-                if (filtered.length === 0) {
-                    taskTbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px;">没有匹配的任务<\/td><\/tr>';
-                    return;
-                }
+                const filtered = tasksData.filter(item => item.name.toLowerCase().includes(lowerFilter) || (item.note && item.note.toLowerCase().includes(lowerFilter)));
+                if (filtered.length === 0) { taskTbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px;">没有匹配的任务<\/td><\/tr>'; return; }
                 let html = '';
                 filtered.forEach(item => {
-                    const videoLink = item.video && item.video.trim() !== '' 
-                        ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>`
-                        : '-';
-                    html += `
-                        <tr>
-                            <td>${escapeHtml(item.name)}<\/td>
-                            <td>${escapeHtml(item.guide)}<\/td>
-                            <td>${videoLink}<\/td>
-                        <\/tr>
-                    `;
+                    const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-';
+                    html += `<tr><td>${escapeHtml(item.name)}<\/td><td>${escapeHtml(item.note||'-')}<\/td><td>${videoLink}<\/td><\/tr>`;
                 });
                 taskTbody.innerHTML = html;
             }
-
-            function escapeHtml(str) {
-                if (!str) return '';
-                return str.replace(/[&<>]/g, function(m) {
-                    if (m === '&') return '&amp;';
-                    if (m === '<') return '&lt;';
-                    if (m === '>') return '&gt;';
-                    return m;
-                });
-            }
-
-            renderTasks();
-            if (taskSearch) {
-                taskSearch.addEventListener('input', function() {
-                    renderTasks(this.value.trim().toLowerCase());
-                });
-            }
+            function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
+            fetch('data/tasks.json').then(res=>res.json()).then(data => { tasksData = data; renderTasks(); }).catch(err => { console.error('加载 tasks.json 失败，使用示例数据', err); tasksData = [{ name:"初始冒险", note:"与草系精灵对话", video:"" }, { name:"精灵对战", note:"竞技场教学", video:"" }]; renderTasks(); });
+            if (taskSearch) taskSearch.addEventListener('input', function() { renderTasks(this.value.trim().toLowerCase()); });
         })();
     </script>
+    <!-- 导航滚动 -->
     <script>
         (function() {
-            const navMap = {
-                'nav-about': 'about',
-                'nav-projects': 'projects',
-                'nav-posts': 'posts',
-                'nav-contact': 'contact',
-                'nav-thanks': 'thanks'
-            };
+            const navMap = { 'nav-about':'about', 'nav-projects':'projects', 'nav-posts':'posts', 'nav-contact':'contact', 'nav-thanks':'thanks' };
             document.querySelectorAll('.radio-container input[name="nav"]').forEach(radio => {
-                radio.addEventListener('change', function() {
-                    const el = document.getElementById(navMap[this.id]);
-                    if (el) el.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    })
-                })
+                radio.addEventListener('change', function() { const el = document.getElementById(navMap[this.id]); if (el) el.scrollIntoView({ behavior:'smooth', block:'start' }); })
             })
         })();
     </script>
