@@ -888,7 +888,7 @@
                                     <tr>
                                         <th>攻略名称</th>
                                         <th>视频</th>
-                                    <tr>
+                                    </tr>
                                 </thead>
                                 <tbody id="guideTableBody">
                                     <tr>
@@ -913,10 +913,10 @@
                     </div>
                     <div class="pagination" id="postsPagination"></div>
                 </div>
-                <!-- 千白个人项目（新增） -->
+                <!-- 千白个人项目 -->
                 <div style="margin-top: 20px;">
                     <h3 class="section-title">✨ 千白个人项目</h3>
-                    <!-- 1. 洛克王国：世界精灵图鉴收集资料视频查询 -->
+                    <!-- 1. 洛克王国：世界精灵图鉴 -->
                     <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
                         <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
                             <span style="font-size:24px">🐉</span> 洛克王国：世界精灵图鉴收集资料视频查询<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
@@ -962,7 +962,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="titleTableBody">
-                                        </table><td colspan="3" class="loading">加载中...<\/td><\/tr>
+                                        <tr><td colspan="3" class="loading">加载中...<\/td><\/tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -995,7 +995,7 @@
                             <div class="pagination" id="taskPagination"></div>
                         </div>
                     </details>
-                    <!-- 4. 洛克王国：世界活动攻略（新增，分页每页10条） -->
+                    <!-- 4. 洛克王国：世界活动攻略 -->
                     <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
                         <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
                             <span style="font-size:24px">🎉</span> 洛克王国：世界活动攻略<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
@@ -1237,9 +1237,18 @@
                     if (mod.steamId) idDisplay = `<span class="mod-id">${mod.steamId}</span>`;
                     else if (mod.mcmodId) idDisplay = `<span class="mod-id">MC百科 ID: ${mod.mcmodId}</span>`;
                     else if (mod.id) idDisplay = `<span class="mod-id">${mod.id}</span>`;
-                    html += `<tr>}<a href="${modLink}" target="_blank">${mod.name}</a>${idDisplay}<\/td>}<td>${chineseName}<\/td>}<td><span class="status-badge ${statusClass}">${mod.status}<\/span><\/td>}<td>${videoLink}<\/td>}<td>${mod.note||'-'}<\/td>}<td>${offlineIcon}<\/td><\/tr>`;
+                    html += `
+                        <tr>
+                            <td><a href="${modLink}" target="_blank">${mod.name}</a>${idDisplay}</td>
+                            <td>${chineseName}</td>
+                            <td><span class="status-badge ${statusClass}">${mod.status}</span></td>
+                            <td>${videoLink}</td>
+                            <td>${mod.note || '-'}</td>
+                            <td>${offlineIcon}</td>
+                        </tr>
+                    `;
                 });
-                tbody.innerHTML = html
+                tbody.innerHTML = html;
             }
             function renderPagination() {
                 if (!paginationDiv) return;
@@ -1284,7 +1293,7 @@
             function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
         })();
     </script>
-    <!-- 洛克王国精灵图鉴（分页每页10条） -->
+    <!-- 精灵图鉴（分页每页10条） -->
     <script>
         (function() {
             let wonderData = [];
@@ -1302,7 +1311,14 @@
                 let html = '';
                 pageData.forEach(item => {
                     const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-';
-                    html += `<tr>}<td>${item.id}<\/td>}<td>${escapeHtml(item.name)}<\/td>}<td>${escapeHtml(item.note||'-')}<\/td>}<td>${videoLink}<\/td><\/tr>`;
+                    html += `
+                        <tr>
+                            <td>${item.id}</td>
+                            <td>${escapeHtml(item.name)}</td>
+                            <td>${escapeHtml(item.note||'-')}</td>
+                            <td>${videoLink}</td>
+                        </tr>
+                    `;
                 });
                 tbody.innerHTML = html;
             }
@@ -1331,7 +1347,7 @@
             if (searchInput) searchInput.addEventListener('input', function() { filterData(this.value.trim().toLowerCase()); });
         })();
     </script>
-    <!-- 称号数据（分页每页10条） -->
+    <!-- 称号获取（分页每页10条） -->
     <script>
         (function() {
             let titlesData = [];
@@ -1349,7 +1365,13 @@
                 let html = '';
                 pageData.forEach(item => {
                     const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-';
-                    html += `</td>}<td>${escapeHtml(item.name)}<\/td>}<td>${escapeHtml(item.note||'-')}<\/td>}<td>${videoLink}<\/td><\/tr>`;
+                    html += `
+                        <tr>
+                            <td>${escapeHtml(item.name)}</td>
+                            <td>${escapeHtml(item.note||'-')}</td>
+                            <td>${videoLink}</td>
+                        </tr>
+                    `;
                 });
                 tbody.innerHTML = html;
             }
@@ -1378,7 +1400,7 @@
             if (searchInput) searchInput.addEventListener('input', function() { filterData(this.value.trim().toLowerCase()); });
         })();
     </script>
-    <!-- 任务数据（分页每页10条） -->
+    <!-- 任务攻略（分页每页10条） -->
     <script>
         (function() {
             let tasksData = [];
@@ -1396,7 +1418,13 @@
                 let html = '';
                 pageData.forEach(item => {
                     const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-';
-                    html += `<tr>}<td>${escapeHtml(item.name)}<\/td>}<td>${escapeHtml(item.note||'-')}<\/td>}<td>${videoLink}<\/td><\/tr>`;
+                    html += `
+                        <tr>
+                            <td>${escapeHtml(item.name)}</td>
+                            <td>${escapeHtml(item.note||'-')}</td>
+                            <td>${videoLink}</td>
+                        </tr>
+                    `;
                 });
                 tbody.innerHTML = html;
             }
@@ -1425,7 +1453,7 @@
             if (searchInput) searchInput.addEventListener('input', function() { filterData(this.value.trim().toLowerCase()); });
         })();
     </script>
-    <!-- 活动数据（分页每页10条） -->
+    <!-- 活动攻略（分页每页10条） -->
     <script>
         (function() {
             let activitiesData = [];
@@ -1443,7 +1471,13 @@
                 let html = '';
                 pageData.forEach(item => {
                     const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-';
-                    html += `<tr>}<td>${escapeHtml(item.name)}<\/td>}<td>${escapeHtml(item.note||'-')}<\/td>}<td>${videoLink}<\/td><\/tr>`;
+                    html += `
+                        <tr>
+                            <td>${escapeHtml(item.name)}</td>
+                            <td>${escapeHtml(item.note||'-')}</td>
+                            <td>${videoLink}</td>
+                        </tr>
+                    `;
                 });
                 tbody.innerHTML = html;
             }

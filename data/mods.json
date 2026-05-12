@@ -4873,6 +4873,17 @@
     "offline": false
   },
   {
+    "name": "Manual Save & Slot Manager",
+    "chineseName": "手动存档与槽位管理器 [B42]",
+    "platform": "steam",
+    "steamId": "3721602150",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "",
+    "videoUrl": "",
+    "note": "",
+    "offline": false
+  },
+  {
     "name": "EnvironmentalProtectionSuit",
     "chineseName": "",
     "platform": "steam",

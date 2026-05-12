@@ -62,37 +62,37 @@
   {
     "id": 11,
     "name": "鸭吉吉(蓬松的样子)",
-    "note": "待补充，首领试炼未开启没有获得国王鸭",
+    "note": "",
     "video": "https://www.bilibili.com/video/BV1DhoLBiEyh/?vd_source=73e550a3569a193e56d345c2b1e1a721"
   },
   {
     "id": 11,
     "name": "鸭吉吉(紧实的样子)",
-    "note": "待补充，首领试炼未开启没有获得国王鸭",
+    "note": "",
     "video": "https://www.bilibili.com/video/BV1DhoLBiEyh/?vd_source=73e550a3569a193e56d345c2b1e1a721"
   },
   {
     "id": 11,
     "name": "急急急鸭",
-    "note": "待补充，首领试炼未开启没有获得国王鸭",
+    "note": "",
     "video": "https://www.bilibili.com/video/BV1DhoLBiEyh/?vd_source=73e550a3569a193e56d345c2b1e1a721"
   },
   {
     "id": 11,
     "name": "等一等鸭",
-    "note": "待补充，首领试炼未开启没有获得国王鸭",
+    "note": "",
     "video": "https://www.bilibili.com/video/BV1DhoLBiEyh/?vd_source=73e550a3569a193e56d345c2b1e1a721"
   },
   {
     "id": 11,
     "name": "起来鸭",
-    "note": "待补充，首领试炼未开启没有获得国王鸭",
+    "note": "",
     "video": "https://www.bilibili.com/video/BV1DhoLBiEyh/?vd_source=73e550a3569a193e56d345c2b1e1a721"
   },
   {
     "id": 11,
     "name": "燃了鸭",
-    "note": "待补充，首领试炼未开启没有获得国王鸭",
+    "note": "",
     "video": "https://www.bilibili.com/video/BV1DhoLBiEyh/?vd_source=73e550a3569a193e56d345c2b1e1a721"
   },
   {
@@ -598,8 +598,42 @@
     "name": "记忆石",
     "note": "",
     "video": "https://www.bilibili.com/video/BV1B25t61EMc?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections"
+  },
+  {
+    "id": 96,
+    "name": "咔咔羽毛",
+    "note": "",
+    "video": "https://www.bilibili.com/video/BV19o5T67EVq/?vd_source=73e550a3569a193e56d345c2b1e1a721"
+  },
+  {
+    "id": 97,
+    "name": "咔咔雀",
+    "note": "",
+    "video": "https://www.bilibili.com/video/BV19o5T67EVq/?vd_source=73e550a3569a193e56d345c2b1e1a721"
+  },
+  {
+    "id": 98,
+    "name": "咔咔鸟",
+    "note": "",
+    "video": "https://www.bilibili.com/video/BV19o5T67EVq/?vd_source=73e550a3569a193e56d345c2b1e1a721"
+  },
+  {
+    "id": 99,
+    "name": "小草虫",
+    "note": "",
+    "video": "https://www.bilibili.com/video/BV1eo5T6EE8C?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections"
+  },
+  {
+    "id": 100,
+    "name": "草衣虫",
+    "note": "",
+    "video": "https://www.bilibili.com/video/BV1eo5T6EE8C?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections"
+  },
+  {
+    "id": 101,
+    "name": "花衣蝶",
+    "note": "",
+    "video": "https://www.bilibili.com/video/BV1eo5T6EE8C?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections"
   }
-
-
 
 ]
