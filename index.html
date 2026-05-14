@@ -23,704 +23,114 @@
     <link rel="stylesheet" href="style/aoo.css">
     <style>
         /* ========== 原有样式保持不变 ========== */
-        .sidebar {
-            align-items: flex-start;
-            padding-left: 0
-        }
-
-        .radio-container {
-            width: 100%;
-            margin-left: 0;
-            padding-left: 0
-        }
-
-        .radio-container label {
-            text-align: left;
-            width: 100%;
-            padding-left: 0;
-            justify-content: flex-start;
-            margin-left: 0
-        }
-
-        .radio-container .glider-container {
-            left: 0
-        }
-
-        .container {
-            position: relative;
-            z-index: 2;
-            width: min(1200px, 100%);
-            margin-left: 0;
-            margin-right: auto;
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 24px;
-            align-items: start
-        }
-
-        .mod-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.9);
-            table-layout: fixed;
-            min-width: 1000px
-        }
-
-        .mod-table th {
-            text-align: left;
-            padding: 12px 8px;
-            background: rgba(255, 255, 255, 0.08);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            font-weight: 600;
-            letter-spacing: .3px;
-            white-space: nowrap
-        }
-
-        .mod-table td {
-            padding: 10px 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            vertical-align: middle;
-            word-wrap: break-word
-        }
-
-        .mod-table tr:hover td {
-            background: rgba(255, 255, 255, 0.03)
-        }
-
-        .mod-table a {
-            color: #3B82F6;
-            text-decoration: none
-        }
-
-        .mod-table a:hover {
-            text-decoration: underline
-        }
-
-        .mod-id {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.5);
-            display: block;
-            margin-top: 2px
-        }
-
-        .mod-table th:nth-child(1) {
-            width: 25%
-        }
-
-        .mod-table th:nth-child(2) {
-            width: 20%
-        }
-
-        .mod-table th:nth-child(3) {
-            width: 12%
-        }
-
-        .mod-table th:nth-child(4) {
-            width: 10%
-        }
-
-        .mod-table th:nth-child(5) {
-            width: 23%
-        }
-
-        .mod-table th:nth-child(6) {
-            width: 10%
-        }
-
-        .guide-table th:nth-child(1) {
-            width: 70%
-        }
-
-        .guide-table th:nth-child(2) {
-            width: 30%
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            white-space: nowrap
-        }
-
-        .status-complete {
-            background: rgba(39, 174, 96, 0.2);
-            border-color: rgba(39, 174, 96, 0.4);
-            color: #2ecc71
-        }
-
-        .status-incomplete {
-            background: rgba(241, 196, 15, 0.2);
-            border-color: rgba(241, 196, 15, 0.4);
-            color: #f1c40f
-        }
-
-        .status-pending {
-            background: rgba(52, 152, 219, 0.2);
-            border-color: rgba(52, 152, 219, 0.4);
-            color: #3498db
-        }
-
-        .status-unneeded {
-            background: rgba(155, 89, 182, 0.2);
-            border-color: rgba(155, 89, 182, 0.4);
-            color: #9b59b6
-        }
-
-        .status-todo {
-            background: rgba(255, 140, 0, 0.2);
-            border-color: rgba(255, 140, 0, 0.4);
-            color: #ff8c00
-        }
-
-        .icon-uploaded {
-            color: #2ecc71;
-            font-size: 18px
-        }
-
-        .icon-not-uploaded {
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 18px
-        }
-
-        .filter-section {
-            margin-bottom: 20px;
-            border-radius: 12px;
-            background: rgba(0, 0, 0, 0.2);
-            overflow: hidden
-        }
-
-        .filter-header {
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1)
-        }
-
-        .filter-header:hover {
-            background: rgba(255, 255, 255, 0.08)
-        }
-
-        .filter-header span:first-child {
-            display: flex;
-            align-items: center;
-            gap: 8px
-        }
-
-        .filter-header .arrow {
-            transition: transform .3s
-        }
-
-        .filter-header.collapsed .arrow {
-            transform: rotate(-90deg)
-        }
-
-        .filter-content {
-            padding: 16px;
-            transition: max-height .3s ease, padding .3s ease;
-            max-height: 800px;
-            overflow: hidden
-        }
-
-        .filter-content.collapsed {
-            max-height: 0;
-            padding-top: 0;
-            padding-bottom: 0
-        }
-
-        .filter-group {
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 16px
-        }
-
-        .filter-group:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0
-        }
-
-        .filter-group-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 10px;
-            cursor: pointer;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-            font-size: 14px
-        }
-
-        .filter-group-header .group-arrow {
-            transition: transform .2s;
-            font-size: 12px
-        }
-
-        .filter-group-header.collapsed .group-arrow {
-            transform: rotate(-90deg)
-        }
-
-        .filter-group-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            transition: max-height .2s ease, opacity .2s ease;
-            max-height: 200px;
-            opacity: 1;
-            overflow: hidden
-        }
-
-        .filter-group-options.collapsed {
-            max-height: 0;
-            opacity: 0;
-            margin: 0
-        }
-
-        .filter-btn {
-            padding: 6px 14px;
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 13px;
-            cursor: pointer;
-            transition: all .2s;
-            white-space: nowrap
-        }
-
-        .filter-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.25)
-        }
-
-        .filter-btn.active {
-            background: #3B82F6;
-            border-color: #3B82F6;
-            color: #fff
-        }
-
-        .game-search-input {
-            width: 100%;
-            padding: 8px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.3);
-            color: #fff;
-            font-size: 13px;
-            outline: none
-        }
-
-        .game-search-input:focus {
-            border-color: #3B82F6;
-            background: rgba(0, 0, 0, 0.5)
-        }
-
-        .game-search-input::placeholder {
-            color: rgba(255, 255, 255, 0.3)
-        }
-
-        .search-box {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px
-        }
-
-        .search-box input {
-            flex: 1;
-            padding: 12px 16px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background: rgba(0, 0, 0, 0.3);
-            color: #fff;
-            font-size: 14px;
-            outline: none;
-            transition: all .2s
-        }
-
-        .search-box input:focus {
-            border-color: #3B82F6;
-            background: rgba(0, 0, 0, 0.5)
-        }
-
-        .search-box input::placeholder {
-            color: rgba(255, 255, 255, 0.3)
-        }
-
-        .table-responsive {
-            overflow-x: auto;
-            border-radius: 12px;
-            margin: 0 -1px
-        }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-            flex-wrap: wrap
-        }
-
-        .pagination button {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #fff;
-            padding: 8px 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: all .2s
-        }
-
-        .pagination button:hover:not(:disabled) {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.3)
-        }
-
-        .pagination button:disabled {
-            opacity: .3;
-            cursor: not-allowed
-        }
-
-        .pagination .page-numbers {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap
-        }
-
-        .pagination .page-number {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px
-        }
-
-        .pagination .page-number.active {
-            background: #3B82F6;
-            border-color: #3B82F6
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: rgba(255, 255, 255, 0.5)
-        }
-
-        details.contact-item>div {
-            padding: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.2)
-        }
-
-        .thanks-section {
-            margin-bottom: 16px
-        }
-
-        .thanks-section h4 {
-            font-size: 14px;
-            color: #fff;
-            margin-bottom: 8px;
-            font-weight: 600
-        }
-
-        .thanks-section ul {
-            list-style: none;
-            padding: 0;
-            margin: 0
-        }
-
-        .thanks-section li {
-            padding: 4px 0;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 13px
-        }
-
-        .thanks-note {
-            margin-top: 12px;
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 13px
-        }
-
-        .contact-item details>summary {
-            font-size: 15px !important;
-            padding: 10px 16px !important;
-            list-style: none !important;
-            position: relative;
-            cursor: pointer;
-            display: flex !important;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.02);
-            transition: background .2s;
-            color: rgba(255, 255, 255, 0.95);
-            font-weight: 500
-        }
-
-        .contact-item details>summary::-webkit-details-marker {
-            display: none !important
-        }
-
-        .contact-item details>summary::after {
-            content: '▶';
-            font-size: 12px;
-            margin-left: auto;
-            transition: transform .2s;
-            color: rgba(255, 255, 255, 0.6)
-        }
-
-        .contact-item details[open]>summary::after {
-            transform: rotate(90deg)
-        }
-
-        .contact-item details>div {
-            font-size: 13px !important;
-            padding: 16px !important;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.2)
-        }
-
-        .contact-item details .mod-table,
-        .contact-item details .mod-table * {
-            font-size: 14px
-        }
-
-        .guide-table {
-            min-width: 600px
-        }
-
-        .guide-table td,
-        .guide-table th {
-            padding: 10px 8px
-        }
-
-        .stats-bar {
-            margin-bottom: 16px;
-            padding: 12px 16px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            font-size: 14px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            align-items: center
-        }
-
-        .stats-item {
-            display: flex;
-            align-items: center;
-            gap: 4px
-        }
-
-        .stats-item .icon {
-            font-size: 16px
-        }
-
-        .stats-number {
-            font-weight: 600
-        }
-
-        .stats-complete {
-            color: #2ecc71
-        }
-
-        .stats-incomplete {
-            color: #f1c40f
-        }
-
-        .stats-pending {
-            color: #3498db
-        }
-
-        .stats-unneeded {
-            color: #9b59b6
-        }
-
-        .stats-todo {
-            color: #ff8c00
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center
-        }
-
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 8px
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer
-        }
-
-        .close-modal:hover {
-            color: #ccc
-        }
-
-        .posts-section {
-            margin: 2rem 0
-        }
-
-        .posts-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-            gap: 1rem;
-        }
-        .posts-header .section-title {
-            margin-bottom: 0;
-        }
-        .posts-search {
-            max-width: 280px;
-            width: 100%;
-        }
-        .posts-search input {
-            width: 100%;
-            padding: 8px 14px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.3);
-            color: #fff;
-            font-size: 13px;
-            outline: none;
-            transition: all 0.2s;
-        }
-        .posts-search input:focus {
-            border-color: #3B82F6;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        .posts-search input::placeholder {
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .posts-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem
-        }
-
-        .post-card-item {
-            display: flex;
-            background: var(--card-bg);
-            backdrop-filter: blur(var(--glass-blur));
-            border-radius: 20px;
-            border: 1px solid var(--card-border);
-            overflow: hidden;
-            transition: transform .2s, box-shadow .2s;
-            cursor: pointer
-        }
-
-        .post-card-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
-            border-color: var(--card-border-hover)
-        }
-
-        .post-card-cover {
-            background-size: cover;
-            background-position: center;
-            width: 50%;
-            padding-top: 20%;
-            border-radius: 12px 0 0 12px;
-            flex-shrink: 0;
-            position: relative;
-        }
-        @media (max-width: 768px) {
-            .post-card-cover {
-                width: 40%;
-                padding-top: 53.33%;
-            }
-        }
-
-        .post-card-info {
-            flex: 1;
-            padding: 1.5rem
-        }
-
-        .post-card-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: .5rem;
-            line-height: 1.3;
-            color: var(--text)
-        }
-
-        .post-card-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-size: .8rem;
-            color: var(--text-muted);
-            margin-bottom: .8rem
-        }
-
-        .post-card-meta span {
-            display: inline-flex;
-            align-items: center;
-            gap: .3rem
-        }
-
-        .post-card-summary {
-            font-size: .9rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            line-clamp: 3;
-            overflow: hidden
-        }
-
-        @media(max-width:768px) {
-            .post-card-title {
-                font-size: 1.2rem
-            }
-            .posts-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .posts-search {
-                max-width: 100%;
-            }
-        }
-
-        @media(max-width:480px) {
-            .post-card-title {
-                font-size: 1.1rem
-            }
-        }
+        .sidebar { align-items: flex-start; padding-left: 0 }
+        .radio-container { width: 100%; margin-left: 0; padding-left: 0 }
+        .radio-container label { text-align: left; width: 100%; padding-left: 0; justify-content: flex-start; margin-left: 0 }
+        .radio-container .glider-container { left: 0 }
+        .container { position: relative; z-index: 2; width: min(1200px, 100%); margin-left: 0; margin-right: auto; display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: start }
+        .mod-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; color: rgba(255, 255, 255, 0.9); table-layout: fixed; min-width: 1000px }
+        .mod-table th { text-align: left; padding: 12px 8px; background: rgba(255, 255, 255, 0.08); border-bottom: 1px solid rgba(255, 255, 255, 0.2); font-weight: 600; letter-spacing: .3px; white-space: nowrap }
+        .mod-table td { padding: 10px 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); vertical-align: middle; word-wrap: break-word }
+        .mod-table tr:hover td { background: rgba(255, 255, 255, 0.03) }
+        .mod-table a { color: #3B82F6; text-decoration: none }
+        .mod-table a:hover { text-decoration: underline }
+        .mod-id { font-size: 12px; color: rgba(255, 255, 255, 0.5); display: block; margin-top: 2px }
+        .mod-table th:nth-child(1) { width: 25% }
+        .mod-table th:nth-child(2) { width: 20% }
+        .mod-table th:nth-child(3) { width: 12% }
+        .mod-table th:nth-child(4) { width: 10% }
+        .mod-table th:nth-child(5) { width: 23% }
+        .mod-table th:nth-child(6) { width: 10% }
+        .guide-table th:nth-child(1) { width: 70% }
+        .guide-table th:nth-child(2) { width: 30% }
+        .status-badge { display: inline-block; padding: 4px 8px; border-radius: 20px; font-size: 12px; font-weight: 500; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15); white-space: nowrap }
+        .status-complete { background: rgba(39, 174, 96, 0.2); border-color: rgba(39, 174, 96, 0.4); color: #2ecc71 }
+        .status-incomplete { background: rgba(241, 196, 15, 0.2); border-color: rgba(241, 196, 15, 0.4); color: #f1c40f }
+        .status-pending { background: rgba(52, 152, 219, 0.2); border-color: rgba(52, 152, 219, 0.4); color: #3498db }
+        .status-unneeded { background: rgba(155, 89, 182, 0.2); border-color: rgba(155, 89, 182, 0.4); color: #9b59b6 }
+        .status-todo { background: rgba(255, 140, 0, 0.2); border-color: rgba(255, 140, 0, 0.4); color: #ff8c00 }
+        .icon-uploaded { color: #2ecc71; font-size: 18px }
+        .icon-not-uploaded { color: rgba(255, 255, 255, 0.3); font-size: 18px }
+        .filter-section { margin-bottom: 20px; border-radius: 12px; background: rgba(0, 0, 0, 0.2); overflow: hidden }
+        .filter-header { padding: 12px 16px; background: rgba(255, 255, 255, 0.05); cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-weight: 500; border-bottom: 1px solid rgba(255, 255, 255, 0.1) }
+        .filter-header:hover { background: rgba(255, 255, 255, 0.08) }
+        .filter-header span:first-child { display: flex; align-items: center; gap: 8px }
+        .filter-header .arrow { transition: transform .3s }
+        .filter-header.collapsed .arrow { transform: rotate(-90deg) }
+        .filter-content { padding: 16px; transition: max-height .3s ease, padding .3s ease; max-height: 800px; overflow: hidden }
+        .filter-content.collapsed { max-height: 0; padding-top: 0; padding-bottom: 0 }
+        .filter-group { margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 16px }
+        .filter-group:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0 }
+        .filter-group-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; cursor: pointer; color: rgba(255, 255, 255, 0.9); font-weight: 500; font-size: 14px }
+        .filter-group-header .group-arrow { transition: transform .2s; font-size: 12px }
+        .filter-group-header.collapsed .group-arrow { transform: rotate(-90deg) }
+        .filter-group-options { display: flex; flex-wrap: wrap; gap: 8px; transition: max-height .2s ease, opacity .2s ease; max-height: 200px; opacity: 1; overflow: hidden }
+        .filter-group-options.collapsed { max-height: 0; opacity: 0; margin: 0 }
+        .filter-btn { padding: 6px 14px; border-radius: 30px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.12); color: rgba(255, 255, 255, 0.7); font-size: 13px; cursor: pointer; transition: all .2s; white-space: nowrap }
+        .filter-btn:hover { background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.25) }
+        .filter-btn.active { background: #3B82F6; border-color: #3B82F6; color: #fff }
+        .game-search-input { width: 100%; padding: 8px 12px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.3); color: #fff; font-size: 13px; outline: none }
+        .game-search-input:focus { border-color: #3B82F6; background: rgba(0, 0, 0, 0.5) }
+        .game-search-input::placeholder { color: rgba(255, 255, 255, 0.3) }
+        .search-box { margin-bottom: 20px; display: flex; align-items: center; gap: 10px }
+        .search-box input { flex: 1; padding: 12px 16px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(0, 0, 0, 0.3); color: #fff; font-size: 14px; outline: none; transition: all .2s }
+        .search-box input:focus { border-color: #3B82F6; background: rgba(0, 0, 0, 0.5) }
+        .search-box input::placeholder { color: rgba(255, 255, 255, 0.3) }
+        .table-responsive { overflow-x: auto; border-radius: 12px; margin: 0 -1px }
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 20px; flex-wrap: wrap }
+        .pagination button { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15); color: #fff; padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; transition: all .2s }
+        .pagination button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.3) }
+        .pagination button:disabled { opacity: .3; cursor: not-allowed }
+        .pagination .page-numbers { display: flex; gap: 4px; flex-wrap: wrap }
+        .pagination .page-number { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 13px }
+        .pagination .page-number.active { background: #3B82F6; border-color: #3B82F6 }
+        .loading { text-align: center; padding: 40px; color: rgba(255, 255, 255, 0.5) }
+        details.contact-item>div { padding: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.2) }
+        .thanks-section { margin-bottom: 16px }
+        .thanks-section h4 { font-size: 14px; color: #fff; margin-bottom: 8px; font-weight: 600 }
+        .thanks-section ul { list-style: none; padding: 0; margin: 0 }
+        .thanks-section li { padding: 4px 0; color: rgba(255, 255, 255, 0.8); font-size: 13px }
+        .thanks-note { margin-top: 12px; font-style: italic; color: rgba(255, 255, 255, 0.6); font-size: 13px }
+        .contact-item details>summary { font-size: 15px !important; padding: 10px 16px !important; list-style: none !important; position: relative; cursor: pointer; display: flex !important; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.02); transition: background .2s; color: rgba(255, 255, 255, 0.95); font-weight: 500 }
+        .contact-item details>summary::-webkit-details-marker { display: none !important }
+        .contact-item details>summary::after { content: '▶'; font-size: 12px; margin-left: auto; transition: transform .2s; color: rgba(255, 255, 255, 0.6) }
+        .contact-item details[open]>summary::after { transform: rotate(90deg) }
+        .contact-item details>div { font-size: 13px !important; padding: 16px !important; border-top: 1px solid rgba(255, 255, 255, 0.1); background: rgba(0, 0, 0, 0.2) }
+        .contact-item details .mod-table, .contact-item details .mod-table * { font-size: 14px }
+        .guide-table { min-width: 600px }
+        .guide-table td, .guide-table th { padding: 10px 8px }
+        .stats-bar { margin-bottom: 16px; padding: 12px 16px; background: rgba(0, 0, 0, 0.2); border-radius: 10px; font-size: 14px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center }
+        .stats-item { display: flex; align-items: center; gap: 4px }
+        .stats-item .icon { font-size: 16px }
+        .stats-number { font-weight: 600 }
+        .stats-complete { color: #2ecc71 }
+        .stats-incomplete { color: #f1c40f }
+        .stats-pending { color: #3498db }
+        .stats-unneeded { color: #9b59b6 }
+        .stats-todo { color: #ff8c00 }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center }
+        .modal-content { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 8px }
+        .close-modal { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer }
+        .close-modal:hover { color: #ccc }
+        .posts-section { margin: 2rem 0 }
+        .posts-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; gap: 1rem; }
+        .posts-header .section-title { margin-bottom: 0; }
+        .posts-search { max-width: 280px; width: 100%; }
+        .posts-search input { width: 100%; padding: 8px 14px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.3); color: #fff; font-size: 13px; outline: none; transition: all 0.2s; }
+        .posts-search input:focus { border-color: #3B82F6; background: rgba(0, 0, 0, 0.5); }
+        .posts-search input::placeholder { color: rgba(255, 255, 255, 0.3); }
+        .posts-grid { display: flex; flex-direction: column; gap: 1.5rem }
+        .post-card-item { display: flex; background: var(--card-bg); backdrop-filter: blur(var(--glass-blur)); border-radius: 20px; border: 1px solid var(--card-border); overflow: hidden; transition: transform .2s, box-shadow .2s; cursor: pointer }
+        .post-card-item:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2); border-color: var(--card-border-hover) }
+        .post-card-cover { background-size: cover; background-position: center; width: 50%; padding-top: 20%; border-radius: 12px 0 0 12px; flex-shrink: 0; position: relative; }
+        @media (max-width: 768px) { .post-card-cover { width: 40%; padding-top: 53.33%; } }
+        .post-card-info { flex: 1; padding: 1.5rem }
+        .post-card-title { font-size: 1.5rem; font-weight: 600; margin-bottom: .5rem; line-height: 1.3; color: var(--text) }
+        .post-card-meta { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .8rem; color: var(--text-muted); margin-bottom: .8rem }
+        .post-card-meta span { display: inline-flex; align-items: center; gap: .3rem }
+        .post-card-summary { font-size: .9rem; line-height: 1.6; color: var(--text-muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; line-clamp: 3; overflow: hidden }
+        @media(max-width:768px) { .post-card-title { font-size: 1.2rem } .posts-header { flex-direction: column; align-items: flex-start; } .posts-search { max-width: 100%; } }
+        @media(max-width:480px) { .post-card-title { font-size: 1.1rem } }
     </style>
 </head>
 <body>
@@ -741,29 +151,18 @@
     <div class="container">
         <aside class="sidebar">
             <div class="radio-container" style="--total-radio:5;">
-                <input type="radio" name="nav" id="nav-about" checked>
-                <label for="nav-about">简介</label>
-                <input type="radio" name="nav" id="nav-projects">
-                <label for="nav-projects">项目</label>
-                <input type="radio" name="nav" id="nav-posts">
-                <label for="nav-posts">帖子</label>
-                <input type="radio" name="nav" id="nav-contact">
-                <label for="nav-contact">联系</label>
-                <input type="radio" name="nav" id="nav-thanks">
-                <label for="nav-thanks">致谢</label>
-                <div class="glider-container">
-                    <div class="glider"></div>
-                </div>
+                <input type="radio" name="nav" id="nav-about" checked><label for="nav-about">简介</label>
+                <input type="radio" name="nav" id="nav-projects"><label for="nav-projects">项目</label>
+                <input type="radio" name="nav" id="nav-posts"><label for="nav-posts">帖子</label>
+                <input type="radio" name="nav" id="nav-contact"><label for="nav-contact">联系</label>
+                <input type="radio" name="nav" id="nav-thanks"><label for="nav-thanks">致谢</label>
+                <div class="glider-container"><div class="glider"></div></div>
             </div>
         </aside>
         <main class="main-content">
             <div class="mobile-avatar-card" id="mobileAvatarCard" style="display:none"></div>
-            <div class="title-card">
-                <h1 class="title-wrap"><span class="title-prefix">欢迎来到</span><span class="title">千白分享主页</span></h1>
-            </div>
-            <div class="subtitle-card">
-                <h2 class="subtitle-wrap"><span class="subtitle-prefix">Welcome everyone to my</span><span class="subtitle-name">Qianbai Share</span></h2>
-            </div>
+            <div class="title-card"><h1 class="title-wrap"><span class="title-prefix">欢迎来到</span><span class="title">千白分享主页</span></h1></div>
+            <div class="subtitle-card"><h2 class="subtitle-wrap"><span class="subtitle-prefix">Welcome everyone to my</span><span class="subtitle-name">Qianbai Share</span></h2></div>
             <div class="intro-card" id="about">
                 <h3 class="section-title">简介</h3>
                 <p class="intro-text">这个静态网页最初是为了展示个人作品、分享技术经验，以及提供模组的离线安装包。</p>
@@ -777,263 +176,112 @@
                 <p class="intro-text" style="margin-top:16px;color:#ffd93d">如果您通过下方的“支持一下”给予我赞助，我十分感谢。您的每一次鼓励，都是我继续创作的重要动力。我渴望通过视频记录和分享更多内容，也希望能一直做下去。谢谢您的支持！</p>
             </div>
             <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
-                <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
-                    <span style="font-size:24px">💖</span> 支持一下<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
-                </summary>
-                <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2);text-align:center">
-                    <img src="sponsor.png" alt="赞赏码" id="sponsorImg" style="max-width:200px;border-radius:12px;border:1px solid rgba(255,255,255,0.2);background:#fff;padding:8px;cursor:pointer" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:#999;\'>请放置 sponsor.png 到根目录</span>'">
-                </div>
+                <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500"><span style="font-size:24px">💖</span> 支持一下<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span></summary>
+                <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2);text-align:center"><img src="sponsor.png" alt="赞赏码" id="sponsorImg" style="max-width:200px;border-radius:12px;border:1px solid rgba(255,255,255,0.2);background:#fff;padding:8px;cursor:pointer" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:#999;\'>请放置 sponsor.png 到根目录</span>'"></div>
             </details>
-            <div id="imageModal" class="modal">
-                <span class="close-modal">&times;</span>
-                <img class="modal-content" id="modalImage">
-            </div>
+            <div id="imageModal" class="modal"><span class="close-modal">&times;</span><img class="modal-content" id="modalImage"></div>
             <div class="projects-card" id="projects">
                 <h3 class="section-title">项目</h3>
                 <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
-                    <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
-                        <span style="font-size:24px">📦</span> 模组备份与分享<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
-                    </summary>
+                    <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500"><span style="font-size:24px">📦</span> 模组备份与分享<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span></summary>
                     <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
                         <div style="margin-bottom:16px"><a href="https://wwavd.lanzoum.com/b011m04e2b" target="_blank" style="color:#3B82F6;text-decoration:none;font-size:16px;font-weight:500;display:inline-block">📁 僵毁模组分享</a></div>
                         <div style="margin-bottom:16px"><span style="color:#ffd93d;font-size:15px">🔐 密码：LSQB</span></div>
-                        <div><a href="https://wwavd.lanzoum.com/b011m04e2b" target="_blank" class="email-submit" style="display:inline-block;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.3);padding:8px 18px;border-radius:40px;font-size:14px;color:#fff;text-decoration:none"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" style="vertical-align:middle;margin-right:6px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>前往下载页面</a></div>
+                        <div><a href="https://wwavd.lanzoum.com/b011m04e2b" target="_blank" class="email-submit" style="display:inline-block;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.3);padding:8px 18px;border-radius:40px;font-size:14px;color:#fff;text-decoration:none"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" style="vertical-align:middle;margin-right:6px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>前往下载页面</a></div>
                     </div>
                 </details>
                 <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
-                    <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
-                        <span style="font-size:24px">⚙️</span> 我的模组<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
-                    </summary>
+                    <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500"><span style="font-size:24px">⚙️</span> 我的模组<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span></summary>
                     <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
-                        <div style="margin-bottom:16px;padding:12px 16px;background:rgba(255,255,255,0.05);border-radius:8px"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3668825372" target="_blank" style="color:#3B82F6;text-decoration:none;font-size:16px;font-weight:500;display:block;margin-bottom:4px">🎮 原版汉化模组</a>
-                            <div style="font-size:13px;color:rgba(255,255,255,0.6)">Steam ID: 3668825372</div>
-                        </div>
-                        <div style="margin-bottom:16px;padding:12px 16px;background:rgba(255,255,255,0.05);border-radius:8px"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3445878532" target="_blank" style="color:#3B82F6;text-decoration:none;font-size:16px;font-weight:500;display:block;margin-bottom:4px">🎮 模组汉化</a>
-                            <div style="font-size:13px;color:rgba(255,255,255,0.6)">Steam ID: 3445878532</div>
-                        </div>
-                        <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)">
-                            <p style="color:rgba(255,255,255,0.7);font-size:14px;margin:0">点击上面的链接可以直接访问Steam创意工坊页面。</p>
-                        </div>
+                        <div style="margin-bottom:16px;padding:12px 16px;background:rgba(255,255,255,0.05);border-radius:8px"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3668825372" target="_blank" style="color:#3B82F6;text-decoration:none;font-size:16px;font-weight:500;display:block;margin-bottom:4px">🎮 原版汉化模组</a><div style="font-size:13px;color:rgba(255,255,255,0.6)">Steam ID: 3668825372</div></div>
+                        <div style="margin-bottom:16px;padding:12px 16px;background:rgba(255,255,255,0.05);border-radius:8px"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3445878532" target="_blank" style="color:#3B82F6;text-decoration:none;font-size:16px;font-weight:500;display:block;margin-bottom:4px">🎮 模组汉化</a><div style="font-size:13px;color:rgba(255,255,255,0.6)">Steam ID: 3445878532</div></div>
+                        <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1)"><p style="color:rgba(255,255,255,0.7);font-size:14px;margin:0">点击上面的链接可以直接访问Steam创意工坊页面。</p></div>
                     </div>
                 </details>
                 <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
-                    <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
-                        <span style="font-size:24px">📊</span> 模组信息统计<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span><span id="updateDate" style="font-size:12px;color:rgba(255,255,255,0.4);margin-left:10px">更新: 加载中...</span>
-                    </summary>
+                    <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500"><span style="font-size:24px">📊</span> 模组信息统计<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span><span id="updateDate" style="font-size:12px;color:rgba(255,255,255,0.4);margin-left:10px">更新: 加载中...</span></summary>
                     <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
                         <div id="modStats" class="stats-bar">加载统计中...</div>
                         <div class="search-box"><input type="text" id="modSearch" placeholder="搜索模组名称、中文名、ID或备注..."></div>
                         <div class="filter-section">
                             <div class="filter-header" id="filterToggle"><span><span>🔍</span> 高级筛选</span><span class="arrow">▼</span></div>
                             <div class="filter-content" id="filterContent">
-                                <div class="filter-group">
-                                    <div class="filter-group-header" onclick="toggleGroup(this)"><span class="group-arrow">▶</span><span>游戏</span></div>
-                                    <div class="filter-group-options collapsed"><input type="text" id="gameSearchInput" class="game-search-input" placeholder="输入游戏名称..."></div>
-                                </div>
-                                <div class="filter-group">
-                                    <div class="filter-group-header" onclick="toggleGroup(this)"><span class="group-arrow">▶</span><span>翻译状态</span></div>
-                                    <div class="filter-group-options collapsed" id="statusFilterGroup"></div>
-                                </div>
-                                <div class="filter-group">
-                                    <div class="filter-group-header" onclick="toggleGroup(this)"><span class="group-arrow">▶</span><span>离线分享</span></div>
-                                    <div class="filter-group-options collapsed" id="offlineFilterGroup"><span class="filter-btn active" data-group="offline" data-value="all">全部</span><span class="filter-btn" data-group="offline" data-value="yes">已上传</span><span class="filter-btn" data-group="offline" data-value="no">未上传</span></div>
-                                </div>
-                                <div class="filter-group">
-                                    <div class="filter-group-header" onclick="toggleGroup(this)"><span class="group-arrow">▶</span><span>备注</span></div>
-                                    <div class="filter-group-options collapsed" id="noteFilterGroup"><span class="filter-btn active" data-group="note" data-value="all">全部</span><span class="filter-btn" data-group="note" data-value="yes">有备注</span><span class="filter-btn" data-group="note" data-value="no">无备注</span></div>
-                                </div>
-                                <div class="filter-group">
-                                    <div class="filter-group-header" onclick="toggleGroup(this)"><span class="group-arrow">▶</span><span>中文名</span></div>
-                                    <div class="filter-group-options collapsed" id="chineseFilterGroup"><span class="filter-btn active" data-group="chinese" data-value="all">全部</span><span class="filter-btn" data-group="chinese" data-value="yes">有中文名</span><span class="filter-btn" data-group="chinese" data-value="no">无中文名</span></div>
-                                </div>
-                                <div class="filter-group">
-                                    <div class="filter-group-header" onclick="toggleGroup(this)"><span class="group-arrow">▶</span><span>视频教程</span></div>
-                                    <div class="filter-group-options collapsed" id="videoFilterGroup"><span class="filter-btn active" data-group="video" data-value="all">全部</span><span class="filter-btn" data-group="video" data-value="yes">有教程</span><span class="filter-btn" data-group="video" data-value="no">无教程</span></div>
-                                </div>
+                                <div class="filter-group"><div class="filter-group-header" onclick="toggleGroup(this)"><span class="group-arrow">▶</span><span>游戏</span></div><div class="filter-group-options collapsed"><input type="text" id="gameSearchInput" class="game-search-input" placeholder="输入游戏名称..."></div></div>
+                                <div class="filter-group"><div class="filter-group-header" onclick="toggleGroup(this)"><span class="group-arrow">▶</span><span>翻译状态</span></div><div class="filter-group-options collapsed" id="statusFilterGroup"></div></div>
+                                <div class="filter-group"><div class="filter-group-header" onclick="toggleGroup(this)"><span class="group-arrow">▶</span><span>离线分享</span></div><div class="filter-group-options collapsed" id="offlineFilterGroup"><span class="filter-btn active" data-group="offline" data-value="all">全部</span><span class="filter-btn" data-group="offline" data-value="yes">已上传</span><span class="filter-btn" data-group="offline" data-value="no">未上传</span></div></div>
+                                <div class="filter-group"><div class="filter-group-header" onclick="toggleGroup(this)"><span class="group-arrow">▶</span><span>备注</span></div><div class="filter-group-options collapsed" id="noteFilterGroup"><span class="filter-btn active" data-group="note" data-value="all">全部</span><span class="filter-btn" data-group="note" data-value="yes">有备注</span><span class="filter-btn" data-group="note" data-value="no">无备注</span></div></div>
+                                <div class="filter-group"><div class="filter-group-header" onclick="toggleGroup(this)"><span class="group-arrow">▶</span><span>中文名</span></div><div class="filter-group-options collapsed" id="chineseFilterGroup"><span class="filter-btn active" data-group="chinese" data-value="all">全部</span><span class="filter-btn" data-group="chinese" data-value="yes">有中文名</span><span class="filter-btn" data-group="chinese" data-value="no">无中文名</span></div></div>
+                                <div class="filter-group"><div class="filter-group-header" onclick="toggleGroup(this)"><span class="group-arrow">▶</span><span>视频教程</span></div><div class="filter-group-options collapsed" id="videoFilterGroup"><span class="filter-btn active" data-group="video" data-value="all">全部</span><span class="filter-btn" data-group="video" data-value="yes">有教程</span><span class="filter-btn" data-group="video" data-value="no">无教程</span></div></div>
                             </div>
                         </div>
-                        <div class="table-responsive">
-                            <table class="mod-table" id="modTable">
-                                <thead>
-                                    <tr>
-                                        <th>模组名称 / ID</th>
-                                        <th>模组中文名</th>
-                                        <th>翻译进度</th>
-                                        <th>视频教程</th>
-                                        <th>备注</th>
-                                        <th>离线分享</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="modTableBody">
-                                    <tr>
-                                        <td colspan="6" class="loading">加载中...<\/td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <div class="table-responsive"><table class="mod-table" id="modTable"><thead><tr><th>模组名称 / ID</th><th>模组中文名</th><th>翻译进度</th><th>视频教程</th><th>备注</th><th>离线分享</th></tr></thead><tbody id="modTableBody"><tr><td colspan="6" class="loading">加载中...</td></tr></tbody></table></div>
                         <div class="pagination" id="pagination"></div>
                     </div>
                 </details>
-                <!-- 我制作的游戏攻略 -->
+                <!-- 我制作的游戏攻略（已移除统计栏，样式对齐） -->
                 <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
                     <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
                         <span style="font-size:24px">🎮</span> 我制作的游戏攻略<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
                     </summary>
                     <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
-                        <div id="guideStats" class="stats-bar">📚 加载中...</div>
-                        <div class="search-box"><input type="text" id="guideSearch" placeholder="搜索攻略名称..."></div>
-                        <div class="table-responsive">
-                            <table class="mod-table guide-table" id="guideTable">
-                                <thead>
-                                    <tr>
-                                        <th>攻略名称</th>
-                                        <th>视频</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="guideTableBody">
-                                    <tr>
-                                        <td colspan="2" class="loading">加载中...<\/td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <div class="search-box" style="margin-bottom:16px"><input type="text" id="guideSearch" placeholder="搜索攻略名称..."></div>
+                        <div class="table-responsive"><table class="mod-table guide-table" id="guideTable"><thead><tr><th>攻略名称</th><th>视频</th></tr></thead><tbody id="guideTableBody"><tr><td colspan="2" class="loading">加载中...</td></tr></tbody></table></div>
                         <div class="pagination" id="guidePagination"></div>
                     </div>
                 </details>
                 <!-- 我的帖子 -->
                 <div class="posts-section" id="posts">
-                    <div class="posts-header">
-                        <h3 class="section-title">📝 我的帖子(测试)</h3>
-                        <div class="posts-search">
-                            <input type="text" id="postsSearchInput" placeholder="搜索帖子标题或内容...">
-                        </div>
-                    </div>
-                    <div id="postsGrid" class="posts-grid">
-                        <!-- 帖子卡片会由JS动态渲染 -->
-                    </div>
-                    <div class="pagination" id="postsPagination"></div>
+                    <div class="posts-header"><h3 class="section-title">📝 我的帖子(测试)</h3><div class="posts-search"><input type="text" id="postsSearchInput" placeholder="搜索帖子标题或内容..."></div></div>
+                    <div id="postsGrid" class="posts-grid"></div><div class="pagination" id="postsPagination"></div>
                 </div>
                 <!-- 千白个人项目 -->
-                <div style="margin-top: 20px;">
-                    <h3 class="section-title">✨ 千白个人项目</h3>
-                    <!-- 1. 洛克王国：世界精灵图鉴 -->
+                <div style="margin-top:20px"><h3 class="section-title">✨ 千白个人项目</h3>
+                    <!-- 精灵图鉴 -->
                     <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
-                        <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
-                            <span style="font-size:24px">🐉</span> 洛克王国：世界精灵图鉴收集资料视频查询<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
-                        </summary>
+                        <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500"><span style="font-size:24px">🐉</span> 洛克王国：世界精灵图鉴收集资料视频查询<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span></summary>
                         <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
-                            <div class="search-box" style="margin-bottom:16px">
-                                <input type="text" id="wonderSearch" placeholder="搜索编号、精灵名称或备注...">
-                            </div>
-                            <div class="table-responsive">
-                                <table class="mod-table" id="wonderTable" style="min-width:500px">
-                                    <thead>
-                                        <tr>
-                                            <th>编号</th>
-                                            <th>精灵名称</th>
-                                            <th>备注</th>
-                                            <th>视频链接</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="wonderTableBody">
-                                        <tr><td colspan="4" class="loading">加载中...<\/td><\/tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <div class="search-box" style="margin-bottom:16px"><input type="text" id="wonderSearch" placeholder="搜索编号、精灵名称或备注..."></div>
+                            <div class="table-responsive"><table class="mod-table" id="wonderTable" style="min-width:500px"><thead><tr><th>编号</th><th>精灵名称</th><th>备注</th><th>视频链接</th></tr></thead><tbody id="wonderTableBody"><tr><td colspan="4" class="loading">加载中...</td></tr></tbody></table></div>
                             <div class="pagination" id="wonderPagination"></div>
                         </div>
                     </details>
-                    <!-- 2. 洛克王国：世界称号获取 -->
+                    <!-- 称号获取 -->
                     <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
-                        <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
-                            <span style="font-size:24px">🏅</span> 洛克王国：世界称号获取<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
-                        </summary>
+                        <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500"><span style="font-size:24px">🏅</span> 洛克王国：世界称号获取<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span></summary>
                         <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
-                            <div class="search-box" style="margin-bottom:16px">
-                                <input type="text" id="titleSearch" placeholder="搜索称号名称或备注...">
-                            </div>
-                            <div class="table-responsive">
-                                <table class="mod-table" id="titleTable" style="min-width:500px">
-                                    <thead>
-                                        <tr>
-                                            <th>称号名称</th>
-                                            <th>备注</th>
-                                            <th>视频链接</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="titleTableBody">
-                                        <tr><td colspan="3" class="loading">加载中...<\/td><\/tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <div class="search-box" style="margin-bottom:16px"><input type="text" id="titleSearch" placeholder="搜索称号名称或备注..."></div>
+                            <div class="table-responsive"><table class="mod-table" id="titleTable" style="min-width:500px"><thead><tr><th>称号名称</th><th>备注</th><th>视频链接</th></tr></thead><tbody id="titleTableBody"><tr><td colspan="3" class="loading">加载中...</td></tr></tbody></table></div>
                             <div class="pagination" id="titlePagination"></div>
                         </div>
                     </details>
-                    <!-- 3. 洛克王国：世界任务攻略 -->
+                    <!-- 任务攻略 -->
                     <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
-                        <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
-                            <span style="font-size:24px">📜</span> 洛克王国：世界任务攻略<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
-                        </summary>
+                        <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500"><span style="font-size:24px">📜</span> 洛克王国：世界任务攻略<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span></summary>
                         <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
-                            <div class="search-box" style="margin-bottom:16px">
-                                <input type="text" id="taskSearch" placeholder="搜索任务名称或备注...">
-                            </div>
-                            <div class="table-responsive">
-                                <table class="mod-table" id="taskTable" style="min-width:500px">
-                                    <thead>
-                                        <tr>
-                                            <th>任务名称</th>
-                                            <th>备注</th>
-                                            <th>视频链接</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="taskTableBody">
-                                        <tr><td colspan="3" class="loading">加载中...<\/td><\/tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <div class="search-box" style="margin-bottom:16px"><input type="text" id="taskSearch" placeholder="搜索任务名称或备注..."></div>
+                            <div class="table-responsive"><table class="mod-table" id="taskTable" style="min-width:500px"><thead><tr><th>任务名称</th><th>备注</th><th>视频链接</th></tr></thead><tbody id="taskTableBody"><tr><td colspan="3" class="loading">加载中...</td></tr></tbody></table></div>
                             <div class="pagination" id="taskPagination"></div>
                         </div>
                     </details>
-                    <!-- 4. 洛克王国：世界活动攻略 -->
+                    <!-- 活动攻略 -->
                     <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
-                        <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
-                            <span style="font-size:24px">🎉</span> 洛克王国：世界活动攻略<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
-                        </summary>
+                        <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500"><span style="font-size:24px">🎉</span> 洛克王国：世界活动攻略<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span></summary>
                         <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
-                            <div class="search-box" style="margin-bottom:16px">
-                                <input type="text" id="activitySearch" placeholder="搜索活动名称或备注...">
-                            </div>
-                            <div class="table-responsive">
-                                <table class="mod-table" id="activityTable" style="min-width:500px">
-                                    <thead>
-                                        <tr>
-                                            <th>活动名称</th>
-                                            <th>备注</th>
-                                            <th>视频链接</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="activityTableBody">
-                                        <tr><td colspan="3" class="loading">加载中...<\/td><\/tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <div class="search-box" style="margin-bottom:16px"><input type="text" id="activitySearch" placeholder="搜索活动名称或备注..."></div>
+                            <div class="table-responsive"><table class="mod-table" id="activityTable" style="min-width:500px"><thead><tr><th>活动名称</th><th>备注</th><th>视频链接</th></tr></thead><tbody id="activityTableBody"><tr><td colspan="3" class="loading">加载中...</td></tr></tbody></table></div>
                             <div class="pagination" id="activityPagination"></div>
                         </div>
                     </details>
                 </div>
             </div>
             <div class="comms-card" id="contact">
-                <div class="comms-header">
-                    <h3 class="section-title comms-title">联系我</h3>
-                    <p class="comms-subtitle">点击图标直接访问我的主页</p>
-                </div>
+                <div class="comms-header"><h3 class="section-title comms-title">联系我</h3><p class="comms-subtitle">点击图标直接访问我的主页</p></div>
                 <div class="comms-grid" style="grid-template-columns:1fr">
                     <section class="comms-col comms-contact">
                         <div class="contact-info">
-                            <a href="https://space.bilibili.com/498508670" target="_blank" class="contact-item" style="text-decoration:none;color:inherit"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>哔哩哔哩：凌社千白</a>
-                            <a href="https://www.douyin.com/user/MS4wLjABAAAAk63wGgh1qr_pNx8CDzCy26nLh4ZAoCaop9PAmZUu93mjbSj6T5byECm4aXuGqkc_" target="_blank" class="contact-item" style="text-decoration:none;color:inherit"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z" /></svg>抖音：凌社千白</a>
-                            <a href="https://www.kuaishou.com/profile/3xcatpzc2ejba82" target="_blank" class="contact-item" style="text-decoration:none;color:inherit"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z" /></svg>快手：凌社千白</a>
+                            <a href="https://space.bilibili.com/498508670" target="_blank" class="contact-item" style="text-decoration:none;color:inherit"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>哔哩哔哩：凌社千白</a>
+                            <a href="https://www.douyin.com/user/MS4wLjABAAAAk63wGgh1qr_pNx8CDzCy26nLh4ZAoCaop9PAmZUu93mjbSj6T5byECm4aXuGqkc_" target="_blank" class="contact-item" style="text-decoration:none;color:inherit"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>抖音：凌社千白</a>
+                            <a href="https://www.kuaishou.com/profile/3xcatpzc2ejba82" target="_blank" class="contact-item" style="text-decoration:none;color:inherit"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>快手：凌社千白</a>
                         </div>
                     </section>
                 </div>
@@ -1041,146 +289,28 @@
             <div class="projects-card" id="thanks" style="margin-top:10px">
                 <h3 class="section-title">致谢</h3>
                 <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
-                    <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
-                        <span style="font-size:24px">🌐</span> 网页贡献致谢<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
-                    </summary>
-                    <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
-                        <div class="thanks-section">
-                            <ul>
-                                <li><a href="https://www.deepseek.com/" target="_blank" style="color:#3B82F6">DeepSeek</a> - AI 助手</li>
-                                <li><a href="https://space.bilibili.com/3493078216215098" target="_blank" style="color:#3B82F6">小狐务器</a> - B站主页</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500"><span style="font-size:24px">🌐</span> 网页贡献致谢<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span></summary>
+                    <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)"><div class="thanks-section"><ul><li><a href="https://www.deepseek.com/" target="_blank" style="color:#3B82F6">DeepSeek</a> - AI 助手</li><li><a href="https://space.bilibili.com/3493078216215098" target="_blank" style="color:#3B82F6">小狐务器</a> - B站主页</li></ul></div></div>
                 </details>
                 <details class="contact-item" style="padding:0;overflow:hidden;border-radius:14px;margin-bottom:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1)">
-                    <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500">
-                        <span style="font-size:24px">🧟</span> 僵尸毁灭工程致谢<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span>
-                    </summary>
+                    <summary style="cursor:pointer;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.02);transition:background .2s;color:rgba(255,255,255,0.95);font-weight:500"><span style="font-size:24px">🧟</span> 僵尸毁灭工程致谢<span style="margin-left:auto;font-size:14px;color:rgba(255,255,255,0.4)">点击展开</span></summary>
                     <div style="padding:20px;border-top:1px solid rgba(255,255,255,0.1);background:rgba(0,0,0,0.2)">
-                        <div class="thanks-section">
-                            <h4>老版汉化组成员</h4>
-                            <ul>
-                                <li>Sky_Orc_Mm</li>
-                                <li>Misha</li>
-                                <li>HennyFishYu</li>
-                                <li>Jeff</li>
-                            </ul>
-                        </div>
-                        <div class="thanks-section">
-                            <h4>新版汉化组成员</h4>
-                            <ul>
-                                <li>Alexa-Hong</li>
-                                <li>AZ</li>
-                                <li>Flying penguin</li>
-                                <li>格兰瑞敌击剑</li>
-                                <li>HansKaffee</li>
-                                <li>L'Etranger</li>
-                                <li>Livia</li>
-                                <li>moonlight-pz</li>
-                                <li>轻轻的晚风</li>
-                                <li>RunAbout</li>
-                                <li>Susan Admason</li>
-                                <li>taoran</li>
-                                <li>天冷就要吃火锅</li>
-                                <li>TwilightRain</li>
-                                <li>战场蒲公英</li>
-                                <li>zlq4863947</li>
-                            </ul>
-                        </div>
-                        <div class="thanks-section">
-                            <h4>电台内容汉化员</h4>
-                            <ul>
-                                <li>HenryFishYu</li>
-                                <li>Jeff</li>
-                                <li>HansKaffee</li>
-                                <li>TwilightRain</li>
-                                <li>moonlight-pz</li>
-                                <li>Susan Admason</li>
-                                <li>L'Etranger</li>
-                                <li>天冷就要吃火锅</li>
-                                <li>轻轻的晚风</li>
-                                <li>格兰瑞敌击剑</li>
-                                <li>湖畔镇一枝花</li>
-                                <li>Livia</li>
-                                <li>Flying Penguin</li>
-                                <li>AZ</li>
-                                <li>taoran</li>
-                                <li>eva08maicy02</li>
-                            </ul>
-                        </div>
-                        <div class="thanks-section">
-                            <h4>特別鳴謝</h4>
-                            <ul>
-                                <li>YD360</li>
-                                <li>Douggy_Sans</li>
-                                <li>BigSmoke</li>
-                                <li>Washi</li>
-                                <li>Yuanmo</li>
-                                <li>mraz#9738</li>
-                                <li>COSeeds</li>
-                            </ul>
-                        </div>
-                        <div class="thanks-section">
-                            <h4>社区汉化</h4>
-                            <ul>
-                                <li>凌社千白</li>
-                                <li>DeepSeek</li>
-                                <li>模组编程</li>
-                                <li>DeepSeek (AI协作)</li>
-                            </ul>
-                            <p class="thanks-note">注：是我制作的模组不指代其他人，因为这个网页本身是我建设汉化也是</p>
-                        </div>
-                        <div class="thanks-section">
-                            <h4>感谢以下模组提供的文件参考与灵感</h4>
-                            <ul>
-                                <li>[B42]汉化补充包（ID: 3388550747）</li>
-                                <li>[B42]简体中文修复（ID: 3386522562）</li>
-                                <li>[B42]统一·中文汉化（ID: 3556544454）</li>
-                                <li>42传单汉化（ID: 3395823587）</li>
-                                <li>[B42]出生点地图中文本地化（ID: 3401460152）</li>
-                                <li>模组备注 ID: 3391537655</li>
-                            </ul>
-                        </div>
-                        <div class="thanks-section">
-                            <h4>原版汉化模组搭建致谢</h4>
-                            <ul>
-                                <li><strong>模组备注</strong> ID: 3391537655 <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3391537655" target="_blank" style="color:#3B82F6">[创意工坊]</a> 原作者 炎天amfysky</li>
-                                <li><strong>B42汉化补充包</strong> ID: 3388550747 <a href="https://steamcommunity.com/workshop/filedetails/?id=3388550747" target="_blank" style="color:#3B82F6">[创意工坊]</a> 原作者 炎天amfysky</li>
-                                <li><strong>B42简体中文修复</strong> ID: 3386522562 <a href="https://steamcommunity.com/workshop/filedetails/?id=3386522562" target="_blank" style="color:#3B82F6">[创意工坊]</a> 原作者 喵了个球</li>
-                                <li><strong>42传单汉化</strong> ID: 3395823587 <a href="https://steamcommunity.com/workshop/filedetails/?id=3395823587" target="_blank" style="color:#3B82F6">[创意工坊]</a> 原作者 Köngwaffle</li>
-                                <li><strong>[B42]出生点地图中文本地化</strong> ID: 3401460152 <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3401460152" target="_blank" style="color:#3B82F6">[创意工坊]</a> 原作者 SillageM</li>
-                            </ul>
-                        </div>
+                        <div class="thanks-section"><h4>老版汉化组成员</h4><ul><li>Sky_Orc_Mm</li><li>Misha</li><li>HennyFishYu</li><li>Jeff</li></ul></div>
+                        <div class="thanks-section"><h4>新版汉化组成员</h4><ul><li>Alexa-Hong</li><li>AZ</li><li>Flying penguin</li><li>格兰瑞敌击剑</li><li>HansKaffee</li><li>L'Etranger</li><li>Livia</li><li>moonlight-pz</li><li>轻轻的晚风</li><li>RunAbout</li><li>Susan Admason</li><li>taoran</li><li>天冷就要吃火锅</li><li>TwilightRain</li><li>战场蒲公英</li><li>zlq4863947</li></ul></div>
+                        <div class="thanks-section"><h4>电台内容汉化员</h4><ul><li>HenryFishYu</li><li>Jeff</li><li>HansKaffee</li><li>TwilightRain</li><li>moonlight-pz</li><li>Susan Admason</li><li>L'Etranger</li><li>天冷就要吃火锅</li><li>轻轻的晚风</li><li>格兰瑞敌击剑</li><li>湖畔镇一枝花</li><li>Livia</li><li>Flying Penguin</li><li>AZ</li><li>taoran</li><li>eva08maicy02</li></ul></div>
+                        <div class="thanks-section"><h4>特別鳴謝</h4><ul><li>YD360</li><li>Douggy_Sans</li><li>BigSmoke</li><li>Washi</li><li>Yuanmo</li><li>mraz#9738</li><li>COSeeds</li></ul></div>
+                        <div class="thanks-section"><h4>社区汉化</h4><ul><li>凌社千白</li><li>DeepSeek</li><li>模组编程</li><li>DeepSeek (AI协作)</li></ul><p class="thanks-note">注：是我制作的模组不指代其他人，因为这个网页本身是我建设汉化也是</p></div>
+                        <div class="thanks-section"><h4>感谢以下模组提供的文件参考与灵感</h4><ul><li>[B42]汉化补充包（ID: 3388550747）</li><li>[B42]简体中文修复（ID: 3386522562）</li><li>[B42]统一·中文汉化（ID: 3556544454）</li><li>42传单汉化（ID: 3395823587）</li><li>[B42]出生点地图中文本地化（ID: 3401460152）</li><li>模组备注 ID: 3391537655</li></ul></div>
+                        <div class="thanks-section"><h4>原版汉化模组搭建致谢</h4><ul><li><strong>模组备注</strong> ID: 3391537655 <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3391537655" target="_blank" style="color:#3B82F6">[创意工坊]</a> 原作者 炎天amfysky</li><li><strong>B42汉化补充包</strong> ID: 3388550747 <a href="https://steamcommunity.com/workshop/filedetails/?id=3388550747" target="_blank" style="color:#3B82F6">[创意工坊]</a> 原作者 炎天amfysky</li><li><strong>B42简体中文修复</strong> ID: 3386522562 <a href="https://steamcommunity.com/workshop/filedetails/?id=3386522562" target="_blank" style="color:#3B82F6">[创意工坊]</a> 原作者 喵了个球</li><li><strong>42传单汉化</strong> ID: 3395823587 <a href="https://steamcommunity.com/workshop/filedetails/?id=3395823587" target="_blank" style="color:#3B82F6">[创意工坊]</a> 原作者 Köngwaffle</li><li><strong>[B42]出生点地图中文本地化</strong> ID: 3401460152 <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3401460152" target="_blank" style="color:#3B82F6">[创意工坊]</a> 原作者 SillageM</li></ul></div>
                     </div>
                 </details>
             </div>
         </main>
     </div>
     <script>
-        (function() {
-            var modal = document.getElementById("imageModal");
-            var modalImg = document.getElementById("modalImage");
-            var sponsorImg = document.getElementById("sponsorImg");
-            var closeBtn = document.getElementsByClassName("close-modal")[0];
-            if (sponsorImg) sponsorImg.onclick = function() { modal.style.display = "flex"; modalImg.src = this.src };
-            if (closeBtn) closeBtn.onclick = function() { modal.style.display = "none" };
-            if (modal) modal.onclick = function(e) { if (e.target === modal) modal.style.display = "none" }
-        })();
+        (function() { var modal = document.getElementById("imageModal"); var modalImg = document.getElementById("modalImage"); var sponsorImg = document.getElementById("sponsorImg"); var closeBtn = document.getElementsByClassName("close-modal")[0]; if (sponsorImg) sponsorImg.onclick = function() { modal.style.display = "flex"; modalImg.src = this.src }; if (closeBtn) closeBtn.onclick = function() { modal.style.display = "none" }; if (modal) modal.onclick = function(e) { if (e.target === modal) modal.style.display = "none" } })();
     </script>
-    <script>
-        function toggleGroup(header) {
-            var options = header.nextElementSibling;
-            var arrow = header.querySelector('.group-arrow');
-            if (options.classList.contains('collapsed')) {
-                options.classList.remove('collapsed');
-                arrow.textContent = '▼';
-            } else {
-                options.classList.add('collapsed');
-                arrow.textContent = '▶';
-            }
-        }
-    </script>
+    <script> function toggleGroup(header) { var options = header.nextElementSibling; var arrow = header.querySelector('.group-arrow'); if (options.classList.contains('collapsed')) { options.classList.remove('collapsed'); arrow.textContent = '▼'; } else { options.classList.add('collapsed'); arrow.textContent = '▶'; } } </script>
     <!-- 模组数据加载 -->
     <script>
         (function() {
@@ -1209,7 +339,7 @@
                 if (videoFilterGroup) videoFilterGroup.querySelectorAll('[data-group="video"]').forEach(btn => { btn.addEventListener('click', function() { videoFilterGroup.querySelectorAll('[data-group="video"]').forEach(b=>b.classList.remove('active')); this.classList.add('active'); videoFilter = this.dataset.value; applyFilters() }) });
                 if (gameSearchInput) gameSearchInput.addEventListener('input', function() { gameQuery = this.value.trim().toLowerCase(); applyFilters() });
                 setUpdateDate(); updateModStats(); applyFilters()
-            }).catch(error => { console.error('加载 mods.json 失败:', error); if (tbody) tbody.innerHTML = `<tr><td colspan="6" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 模组数据加载失败，请检查 data/mods.json 文件<\/td><\/tr>`; setUpdateDate() });
+            }).catch(error => { console.error('加载 mods.json 失败:', error); if (tbody) tbody.innerHTML = `<tr><td colspan="6" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 模组数据加载失败，请检查 data/mods.json 文件</td></tr>`; setUpdateDate() });
             function getStatusClass(status) { const map = { '完整':'status-complete', '非完整':'status-incomplete', '待检测':'status-pending', '无需翻译':'status-unneeded', '待处理':'status-todo' }; return map[status] || '' }
             function applyFilters() {
                 let filtered = allMods;
@@ -1225,7 +355,7 @@
             function renderTable() {
                 if (!tbody) return;
                 const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageMods = filteredMods.slice(start,end);
-                if (pageMods.length === 0) { tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的模组<\/td><\/tr>`; return }
+                if (pageMods.length === 0) { tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的模组</td></tr>`; return }
                 let html = '';
                 pageMods.forEach(mod => {
                     const videoLink = mod.videoUrl ? `<a href="${mod.videoUrl}" target="_blank" style="color:#3B82F6;">🔗</a>` : '-';
@@ -1237,16 +367,7 @@
                     if (mod.steamId) idDisplay = `<span class="mod-id">${mod.steamId}</span>`;
                     else if (mod.mcmodId) idDisplay = `<span class="mod-id">MC百科 ID: ${mod.mcmodId}</span>`;
                     else if (mod.id) idDisplay = `<span class="mod-id">${mod.id}</span>`;
-                    html += `
-                        <tr>
-                            <td><a href="${modLink}" target="_blank">${mod.name}</a>${idDisplay}</td>
-                            <td>${chineseName}</td>
-                            <td><span class="status-badge ${statusClass}">${mod.status}</span></td>
-                            <td>${videoLink}</td>
-                            <td>${mod.note || '-'}</td>
-                            <td>${offlineIcon}</td>
-                        </tr>
-                    `;
+                    html += `<tr><td><a href="${modLink}" target="_blank">${mod.name}</a>${idDisplay}</td><td>${chineseName}</td><td><span class="status-badge ${statusClass}">${mod.status}</span></td><td>${videoLink}</td><td>${mod.note || '-'}</td><td>${offlineIcon}</td></tr>`;
                 });
                 tbody.innerHTML = html;
             }
@@ -1267,16 +388,15 @@
             if (searchInput) searchInput.addEventListener('input', function() { searchQuery = this.value; applyFilters() })
         })();
     </script>
-    <!-- 游戏攻略加载 -->
+    <!-- 游戏攻略加载（无统计栏） -->
     <script>
         (function() {
             const PAGE_SIZE = 10;
             let allGuides = [], filteredGuides = [], currentPage = 1;
-            const searchInput = document.getElementById('guideSearch'), tbody = document.getElementById('guideTableBody'), paginationDiv = document.getElementById('guidePagination'), guideStatsDiv = document.getElementById('guideStats');
-            function updateGuideStats() { if (guideStatsDiv) guideStatsDiv.innerHTML = `📚 总攻略: <span class="stats-number">${allGuides.length}</span>` }
-            fetch('data/guides.json').then(r=>r.json()).then(data => { allGuides = data; filteredGuides = [...allGuides]; updateGuideStats(); renderTable(); renderPagination() }).catch(error => { console.error('加载 guides.json 失败:', error); if (tbody) tbody.innerHTML = `<tr><td colspan="2" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 攻略数据加载失败，请检查 data/guides.json 文件<\/td><\/tr>`; if (guideStatsDiv) guideStatsDiv.innerHTML = '📚 加载失败' });
-            function renderTable() { if (!tbody) return; const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageGuides = filteredGuides.slice(start,end); if (pageGuides.length === 0) { tbody.innerHTML = `<tr><td colspan="2" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的攻略<\/td><\/tr>`; return } let html = ''; pageGuides.forEach(guide => { html += `<tr>}<a href="${guide.url}" target="_blank" style="color:#3B82F6;">${guide.name}</a><\/td>}<a href="${guide.url}" target="_blank" style="color:#3B82F6;">🔗 观看<\/a><\/td><\/tr>` }); tbody.innerHTML = html }
-            function renderPagination() { if (!paginationDiv) return; const totalPages = Math.ceil(filteredGuides.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return } let html = '<button id="guidePrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`; html += '</div><button id="guideNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('.page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination() } }) }); document.getElementById('guidePrevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination() } }); document.getElementById('guideNextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination() } }) }
+            const searchInput = document.getElementById('guideSearch'), tbody = document.getElementById('guideTableBody'), paginationDiv = document.getElementById('guidePagination');
+            fetch('data/guides.json').then(r=>r.json()).then(data => { allGuides = data; filteredGuides = [...allGuides]; renderTable(); renderPagination() }).catch(error => { console.error('加载 guides.json 失败:', error); if (tbody) tbody.innerHTML = `<tr><td colspan="2" style="color:#ff6b6b; text-align:center; padding:40px;">❌ 攻略数据加载失败，请检查 data/guides.json 文件</td></tr>`; });
+            function renderTable() { if (!tbody) return; const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageGuides = filteredGuides.slice(start,end); if (pageGuides.length === 0) { tbody.innerHTML = `<tr><td colspan="2" style="text-align:center; padding:40px; color:rgba(255,255,255,0.5);">没有匹配的攻略</td></tr>`; return } let html = ''; pageGuides.forEach(guide => { html += `<tr><td><a href="${guide.url}" target="_blank" style="color:#3B82F6;">${guide.name}</a></td><td><a href="${guide.url}" target="_blank" style="color:#3B82F6;">🔗 观看</a></td></tr>` }); tbody.innerHTML = html; }
+            function renderPagination() { if (!paginationDiv) return; const totalPages = Math.ceil(filteredGuides.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return } let html = '<button id="guidePrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`; html += '</div><button id="guideNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('#guidePagination .page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination() } }) }); document.getElementById('guidePrevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination() } }); document.getElementById('guideNextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination() } }) }
             if (searchInput) searchInput.addEventListener('input', function() { const query = this.value.trim().toLowerCase(); filteredGuides = allGuides.filter(guide => guide.name.toLowerCase().includes(query)); currentPage = 1; renderTable(); renderPagination() })
         })();
     </script>
@@ -1293,214 +413,53 @@
             function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
         })();
     </script>
-    <!-- 精灵图鉴（分页每页10条） -->
+    <!-- 精灵图鉴（分页） -->
     <script>
         (function() {
-            let wonderData = [];
-            let currentPage = 1;
-            let filteredData = [];
-            const PAGE_SIZE = 10;
-            const tbody = document.getElementById('wonderTableBody');
-            const paginationDiv = document.getElementById('wonderPagination');
-            const searchInput = document.getElementById('wonderSearch');
-            function renderTable() {
-                if (!tbody) return;
-                const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE;
-                const pageData = filteredData.slice(start, end);
-                if (pageData.length === 0) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:40px;">没有匹配的精灵<\/td><\/tr>'; return; }
-                let html = '';
-                pageData.forEach(item => {
-                    const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-';
-                    html += `
-                        <tr>
-                            <td>${item.id}</td>
-                            <td>${escapeHtml(item.name)}</td>
-                            <td>${escapeHtml(item.note||'-')}</td>
-                            <td>${videoLink}</td>
-                        </tr>
-                    `;
-                });
-                tbody.innerHTML = html;
-            }
-            function renderPagination() {
-                if (!paginationDiv) return;
-                const totalPages = Math.ceil(filteredData.length / PAGE_SIZE);
-                if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; }
-                let html = '<button id="wonderPrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">';
-                let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4);
-                if (endPage-startPage < 4) startPage = Math.max(1, endPage-4);
-                for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`;
-                html += '</div><button id="wonderNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>';
-                paginationDiv.innerHTML = html;
-                document.querySelectorAll('#wonderPagination .page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); } }); });
-                document.getElementById('wonderPrevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } });
-                document.getElementById('wonderNextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } });
-            }
-            function filterData(filter) {
-                const lower = filter.toLowerCase();
-                filteredData = wonderData.filter(item => item.id.toString().includes(lower) || item.name.toLowerCase().includes(lower) || (item.note && item.note.toLowerCase().includes(lower)));
-                currentPage = 1;
-                renderTable(); renderPagination();
-            }
+            let wonderData = []; let currentPage = 1; let filteredData = []; const PAGE_SIZE = 10;
+            const tbody = document.getElementById('wonderTableBody'); const paginationDiv = document.getElementById('wonderPagination'); const searchInput = document.getElementById('wonderSearch');
+            function renderTable() { if (!tbody) return; const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageData = filteredData.slice(start,end); if (pageData.length === 0) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:40px;">没有匹配的精灵</td></tr>'; return; } let html = ''; pageData.forEach(item => { const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-'; html += `<tr><td>${item.id}</td><td>${escapeHtml(item.name)}</td><td>${escapeHtml(item.note||'-')}</td><td>${videoLink}</td></tr>`; }); tbody.innerHTML = html; }
+            function renderPagination() { if (!paginationDiv) return; const totalPages = Math.ceil(filteredData.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; } let html = '<button id="wonderPrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`; html += '</div><button id="wonderNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('#wonderPagination .page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); } }); }); document.getElementById('wonderPrevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } }); document.getElementById('wonderNextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } }); }
+            function filterData(filter) { const lower = filter.toLowerCase(); filteredData = wonderData.filter(item => item.id.toString().includes(lower) || item.name.toLowerCase().includes(lower) || (item.note && item.note.toLowerCase().includes(lower))); currentPage = 1; renderTable(); renderPagination(); }
             function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
-            fetch('data/wonders.json').then(res=>res.json()).then(data => { wonderData = data; filteredData = [...wonderData]; renderTable(); renderPagination(); }).catch(err => { console.error('加载 wonders.json 失败', err); if (tbody) tbody.innerHTML = '<tr><td colspan="4" style="color:#ff6b6b; text-align:center;">❌ 加载失败<\/td><\/tr>'; });
+            fetch('data/wonders.json').then(res=>res.json()).then(data => { wonderData = data; filteredData = [...wonderData]; renderTable(); renderPagination(); }).catch(err => { console.error('加载 wonders.json 失败', err); if (tbody) tbody.innerHTML = '<tr><td colspan="4" style="color:#ff6b6b; text-align:center;">❌ 加载失败</td></tr>'; });
             if (searchInput) searchInput.addEventListener('input', function() { filterData(this.value.trim().toLowerCase()); });
         })();
     </script>
-    <!-- 称号获取（分页每页10条） -->
+    <!-- 称号获取（分页） -->
     <script>
         (function() {
-            let titlesData = [];
-            let currentPage = 1;
-            let filteredData = [];
-            const PAGE_SIZE = 10;
-            const tbody = document.getElementById('titleTableBody');
-            const paginationDiv = document.getElementById('titlePagination');
-            const searchInput = document.getElementById('titleSearch');
-            function renderTable() {
-                if (!tbody) return;
-                const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE;
-                const pageData = filteredData.slice(start, end);
-                if (pageData.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px;">没有匹配的称号<\/td><\/tr>'; return; }
-                let html = '';
-                pageData.forEach(item => {
-                    const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-';
-                    html += `
-                        <tr>
-                            <td>${escapeHtml(item.name)}</td>
-                            <td>${escapeHtml(item.note||'-')}</td>
-                            <td>${videoLink}</td>
-                        </tr>
-                    `;
-                });
-                tbody.innerHTML = html;
-            }
-            function renderPagination() {
-                if (!paginationDiv) return;
-                const totalPages = Math.ceil(filteredData.length / PAGE_SIZE);
-                if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; }
-                let html = '<button id="titlePrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">';
-                let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4);
-                if (endPage-startPage < 4) startPage = Math.max(1, endPage-4);
-                for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`;
-                html += '</div><button id="titleNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>';
-                paginationDiv.innerHTML = html;
-                document.querySelectorAll('#titlePagination .page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); } }); });
-                document.getElementById('titlePrevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } });
-                document.getElementById('titleNextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } });
-            }
-            function filterData(filter) {
-                const lower = filter.toLowerCase();
-                filteredData = titlesData.filter(item => item.name.toLowerCase().includes(lower) || (item.note && item.note.toLowerCase().includes(lower)));
-                currentPage = 1;
-                renderTable(); renderPagination();
-            }
+            let titlesData = []; let currentPage = 1; let filteredData = []; const PAGE_SIZE = 10;
+            const tbody = document.getElementById('titleTableBody'); const paginationDiv = document.getElementById('titlePagination'); const searchInput = document.getElementById('titleSearch');
+            function renderTable() { if (!tbody) return; const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageData = filteredData.slice(start,end); if (pageData.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px;">没有匹配的称号</td></tr>'; return; } let html = ''; pageData.forEach(item => { const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-'; html += `<tr><td>${escapeHtml(item.name)}</td><td>${escapeHtml(item.note||'-')}</td><td>${videoLink}</td></tr>`; }); tbody.innerHTML = html; }
+            function renderPagination() { if (!paginationDiv) return; const totalPages = Math.ceil(filteredData.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; } let html = '<button id="titlePrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`; html += '</div><button id="titleNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('#titlePagination .page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); } }); }); document.getElementById('titlePrevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } }); document.getElementById('titleNextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } }); }
+            function filterData(filter) { const lower = filter.toLowerCase(); filteredData = titlesData.filter(item => item.name.toLowerCase().includes(lower) || (item.note && item.note.toLowerCase().includes(lower))); currentPage = 1; renderTable(); renderPagination(); }
             function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
             fetch('data/titles.json').then(res=>res.json()).then(data => { titlesData = data; filteredData = [...titlesData]; renderTable(); renderPagination(); }).catch(err => { console.error('加载 titles.json 失败，使用示例数据', err); titlesData = [{ name:"新手训练家", note:"初始称号", video:"" }, { name:"精灵大师", note:"收集100只精灵", video:"" }]; filteredData = [...titlesData]; renderTable(); renderPagination(); });
             if (searchInput) searchInput.addEventListener('input', function() { filterData(this.value.trim().toLowerCase()); });
         })();
     </script>
-    <!-- 任务攻略（分页每页10条） -->
+    <!-- 任务攻略（分页） -->
     <script>
         (function() {
-            let tasksData = [];
-            let currentPage = 1;
-            let filteredData = [];
-            const PAGE_SIZE = 10;
-            const tbody = document.getElementById('taskTableBody');
-            const paginationDiv = document.getElementById('taskPagination');
-            const searchInput = document.getElementById('taskSearch');
-            function renderTable() {
-                if (!tbody) return;
-                const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE;
-                const pageData = filteredData.slice(start, end);
-                if (pageData.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px;">没有匹配的任务<\/td><\/tr>'; return; }
-                let html = '';
-                pageData.forEach(item => {
-                    const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-';
-                    html += `
-                        <tr>
-                            <td>${escapeHtml(item.name)}</td>
-                            <td>${escapeHtml(item.note||'-')}</td>
-                            <td>${videoLink}</td>
-                        </tr>
-                    `;
-                });
-                tbody.innerHTML = html;
-            }
-            function renderPagination() {
-                if (!paginationDiv) return;
-                const totalPages = Math.ceil(filteredData.length / PAGE_SIZE);
-                if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; }
-                let html = '<button id="taskPrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">';
-                let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4);
-                if (endPage-startPage < 4) startPage = Math.max(1, endPage-4);
-                for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`;
-                html += '</div><button id="taskNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>';
-                paginationDiv.innerHTML = html;
-                document.querySelectorAll('#taskPagination .page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); } }); });
-                document.getElementById('taskPrevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } });
-                document.getElementById('taskNextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } });
-            }
-            function filterData(filter) {
-                const lower = filter.toLowerCase();
-                filteredData = tasksData.filter(item => item.name.toLowerCase().includes(lower) || (item.note && item.note.toLowerCase().includes(lower)));
-                currentPage = 1;
-                renderTable(); renderPagination();
-            }
+            let tasksData = []; let currentPage = 1; let filteredData = []; const PAGE_SIZE = 10;
+            const tbody = document.getElementById('taskTableBody'); const paginationDiv = document.getElementById('taskPagination'); const searchInput = document.getElementById('taskSearch');
+            function renderTable() { if (!tbody) return; const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageData = filteredData.slice(start,end); if (pageData.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px;">没有匹配的任务</td></tr>'; return; } let html = ''; pageData.forEach(item => { const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-'; html += `<tr><td>${escapeHtml(item.name)}</td><td>${escapeHtml(item.note||'-')}</td><td>${videoLink}</td></tr>`; }); tbody.innerHTML = html; }
+            function renderPagination() { if (!paginationDiv) return; const totalPages = Math.ceil(filteredData.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; } let html = '<button id="taskPrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`; html += '</div><button id="taskNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('#taskPagination .page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); } }); }); document.getElementById('taskPrevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } }); document.getElementById('taskNextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } }); }
+            function filterData(filter) { const lower = filter.toLowerCase(); filteredData = tasksData.filter(item => item.name.toLowerCase().includes(lower) || (item.note && item.note.toLowerCase().includes(lower))); currentPage = 1; renderTable(); renderPagination(); }
             function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
             fetch('data/tasks.json').then(res=>res.json()).then(data => { tasksData = data; filteredData = [...tasksData]; renderTable(); renderPagination(); }).catch(err => { console.error('加载 tasks.json 失败，使用示例数据', err); tasksData = [{ name:"初始冒险", note:"与草系精灵对话", video:"" }, { name:"精灵对战", note:"竞技场教学", video:"" }]; filteredData = [...tasksData]; renderTable(); renderPagination(); });
             if (searchInput) searchInput.addEventListener('input', function() { filterData(this.value.trim().toLowerCase()); });
         })();
     </script>
-    <!-- 活动攻略（分页每页10条） -->
+    <!-- 活动攻略（分页） -->
     <script>
         (function() {
-            let activitiesData = [];
-            let currentPage = 1;
-            let filteredData = [];
-            const PAGE_SIZE = 10;
-            const tbody = document.getElementById('activityTableBody');
-            const paginationDiv = document.getElementById('activityPagination');
-            const searchInput = document.getElementById('activitySearch');
-            function renderTable() {
-                if (!tbody) return;
-                const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE;
-                const pageData = filteredData.slice(start, end);
-                if (pageData.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px;">没有匹配的活动<\/td><\/tr>'; return; }
-                let html = '';
-                pageData.forEach(item => {
-                    const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-';
-                    html += `
-                        <tr>
-                            <td>${escapeHtml(item.name)}</td>
-                            <td>${escapeHtml(item.note||'-')}</td>
-                            <td>${videoLink}</td>
-                        </tr>
-                    `;
-                });
-                tbody.innerHTML = html;
-            }
-            function renderPagination() {
-                if (!paginationDiv) return;
-                const totalPages = Math.ceil(filteredData.length / PAGE_SIZE);
-                if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; }
-                let html = '<button id="activityPrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">';
-                let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4);
-                if (endPage-startPage < 4) startPage = Math.max(1, endPage-4);
-                for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`;
-                html += '</div><button id="activityNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>';
-                paginationDiv.innerHTML = html;
-                document.querySelectorAll('#activityPagination .page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); } }); });
-                document.getElementById('activityPrevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } });
-                document.getElementById('activityNextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } });
-            }
-            function filterData(filter) {
-                const lower = filter.toLowerCase();
-                filteredData = activitiesData.filter(item => item.name.toLowerCase().includes(lower) || (item.note && item.note.toLowerCase().includes(lower)));
-                currentPage = 1;
-                renderTable(); renderPagination();
-            }
+            let activitiesData = []; let currentPage = 1; let filteredData = []; const PAGE_SIZE = 10;
+            const tbody = document.getElementById('activityTableBody'); const paginationDiv = document.getElementById('activityPagination'); const searchInput = document.getElementById('activitySearch');
+            function renderTable() { if (!tbody) return; const start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageData = filteredData.slice(start,end); if (pageData.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:40px;">没有匹配的活动</td></tr>'; return; } let html = ''; pageData.forEach(item => { const videoLink = item.video && item.video.trim() !== '' ? `<a href="${item.video}" target="_blank" style="color:#3B82F6;">🔗 视频</a>` : '-'; html += `<tr><td>${escapeHtml(item.name)}</td><td>${escapeHtml(item.note||'-')}</td><td>${videoLink}</td></tr>`; }); tbody.innerHTML = html; }
+            function renderPagination() { if (!paginationDiv) return; const totalPages = Math.ceil(filteredData.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; } let html = '<button id="activityPrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; let startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (let i=startPage; i<=endPage; i++) html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`; html += '</div><button id="activityNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('#activityPagination .page-number').forEach(span => { span.addEventListener('click', function() { const page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); } }); }); document.getElementById('activityPrevPage')?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } }); document.getElementById('activityNextPage')?.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } }); }
+            function filterData(filter) { const lower = filter.toLowerCase(); filteredData = activitiesData.filter(item => item.name.toLowerCase().includes(lower) || (item.note && item.note.toLowerCase().includes(lower))); currentPage = 1; renderTable(); renderPagination(); }
             function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
             fetch('data/activities.json').then(res=>res.json()).then(data => { activitiesData = data; filteredData = [...activitiesData]; renderTable(); renderPagination(); }).catch(err => { console.error('加载 activities.json 失败，使用示例数据', err); activitiesData = [{ name:"夏日冰爽节", note:"收集雪花兑换奖励", video:"" }, { name:"精灵大乱斗", note:"每日挑战得称号", video:"" }]; filteredData = [...activitiesData]; renderTable(); renderPagination(); });
             if (searchInput) searchInput.addEventListener('input', function() { filterData(this.value.trim().toLowerCase()); });
@@ -1510,9 +469,7 @@
     <script>
         (function() {
             const navMap = { 'nav-about':'about', 'nav-projects':'projects', 'nav-posts':'posts', 'nav-contact':'contact', 'nav-thanks':'thanks' };
-            document.querySelectorAll('.radio-container input[name="nav"]').forEach(radio => {
-                radio.addEventListener('change', function() { const el = document.getElementById(navMap[this.id]); if (el) el.scrollIntoView({ behavior:'smooth', block:'start' }); })
-            })
+            document.querySelectorAll('.radio-container input[name="nav"]').forEach(radio => { radio.addEventListener('change', function() { const el = document.getElementById(navMap[this.id]); if (el) el.scrollIntoView({ behavior:'smooth', block:'start' }); }) });
         })();
     </script>
 </body>
