@@ -4878,9 +4878,42 @@
     "platform": "steam",
     "steamId": "3721602150",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "",
+    "status": "完整",
     "videoUrl": "",
     "note": "",
+    "offline": false
+  },
+  {
+    "name": "Tactical Pistol Hold",
+    "chineseName": "战术握持姿势",
+    "platform": "steam",
+    "steamId": "3693258802",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "无需翻译",
+    "videoUrl": "https://www.bilibili.com/video/BV1k95f63EBi/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Tactical Hold",
+    "chineseName": "战术步枪握持姿势",
+    "platform": "steam",
+    "steamId": "3677017550",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "无需翻译",
+    "videoUrl": "https://www.bilibili.com/video/BV1k95f63EBi/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "属于3693258802分支",
+    "offline": false
+  },
+  {
+    "name": "Tactical Pistol Hold",
+    "chineseName": "战术手枪握持姿势",
+    "platform": "steam",
+    "steamId": "3680633169",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "无需翻译",
+    "videoUrl": "https://www.bilibili.com/video/BV1k95f63EBi/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "属于3693258802分支",
     "offline": false
   },
   {
