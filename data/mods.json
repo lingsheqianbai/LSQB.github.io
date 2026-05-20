@@ -4704,7 +4704,7 @@
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "完整",
     "videoUrl": "",
-    "note": "视频待发布",
+    "note": "",
     "offline": false
   },
   {
@@ -4879,7 +4879,7 @@
     "steamId": "3721602150",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "完整",
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1pg5f6rEQM/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -4914,6 +4914,116 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1k95f63EBi/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "属于3693258802分支",
+    "offline": false
+  },
+  {
+    "name": "Faded's Faithful Friends",
+    "chineseName": "Faded 的忠实伙伴",
+    "platform": "steam",
+    "steamId": "3709595350",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV186Ly6mEMi/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "[B42] Antique Swords",
+    "chineseName": "古剑",
+    "platform": "steam",
+    "steamId": "3717809483",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV186Ly6mEpn/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": " Hide Clothing Slot",
+    "chineseName": "隐藏服装外观",
+    "platform": "steam",
+    "steamId": "3725226497",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "作者使用硬编码无法翻译",
+    "offline": false
+  },
+  {
+    "name": "[B42] Fallout: Riot Armor Pack",
+    "chineseName": "辐射：防暴装甲包",
+    "platform": "steam",
+    "steamId": "3723570902",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1GeLy6XEQX/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Infested Lair Conquest",
+    "chineseName": "巢穴征服",
+    "platform": "steam",
+    "steamId": "3689920739",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV18zLy6EE2e/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "[B42] OG Homestead Dairy",
+    "chineseName": "OG 家园乳品",
+    "platform": "steam",
+    "steamId": "3726233497",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "",
+    "note": "无法在游戏中看见制作菜单",
+    "offline": false
+  },
+  {
+    "name": "Upgradeable Storage",
+    "chineseName": "可升级储物增强版",
+    "platform": "steam",
+    "steamId": "3722475598",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "[B42] Buildable Garage Doors",
+    "chineseName": "可建造车库门",
+    "platform": "steam",
+    "steamId": "3727753275",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "视频待发布",
+    "offline": false
+  },
+  {
+    "name": "门框引体向上",
+    "chineseName": "",
+    "platform": "steam",
+    "steamId": "3725961164",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "无需翻译",
+    "videoUrl": "",
+    "note": "视频待发布",
+    "offline": false
+  },
+  {
+    "name": "Horse Mod [B42.14+/MP SOON]",
+    "chineseName": "马匹模组",
+    "platform": "steam",
+    "steamId": "3661336777",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "非完整",
+    "videoUrl": "",
+    "note": "视频待发布",
     "offline": false
   },
   {
