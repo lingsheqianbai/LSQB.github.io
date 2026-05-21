@@ -5000,8 +5000,8 @@
     "steamId": "3727753275",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "待处理",
-    "videoUrl": "",
-    "note": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV1QaLh61EHi/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
     "offline": false
   },
   {
@@ -5011,8 +5011,8 @@
     "steamId": "3725961164",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "无需翻译",
-    "videoUrl": "",
-    "note": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV1KwLh6TEGE/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
     "offline": false
   },
   {
@@ -5022,8 +5022,19 @@
     "steamId": "3661336777",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "非完整",
-    "videoUrl": "",
-    "note": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV1nVLh6fEvG/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "由于版本在更新所以部分东西可能没有翻译",
+    "offline": false
+  },
+  {
+    "name": "More Damaged Objects [42MP]",
+    "chineseName": "更多损坏物体",
+    "platform": "steam",
+    "steamId": "3413150945",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1PKLh6eEG5?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
+    "note": "",
     "offline": false
   },
   {
