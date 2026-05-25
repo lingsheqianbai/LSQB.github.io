@@ -2740,7 +2740,7 @@
   },
   {
     "name": "Tomb's Player Body Overhaul",
-    "chineseName": "",
+    "chineseName": "Tomb 玩家身体大修",
     "platform": "steam",
     "steamId": "3429790870",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
@@ -2850,12 +2850,12 @@
   },
   {
     "name": "Vanilla Gear Expanded",
-    "chineseName": "",
+    "chineseName": "原版装备扩展",
     "platform": "steam",
     "steamId": "3401134276",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "待处理",
-    "videoUrl": "",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1VJGb6KE51/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -3158,13 +3158,13 @@
   },
   {
     "name": "that DAMN Library",
-    "chineseName": "",
+    "chineseName": "那个该死的库",
     "platform": "steam",
     "steamId": "3171167894",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "待处理",
+    "status": "完整",
     "videoUrl": "",
-    "note": "",
+    "note": "框架无需视频教程",
     "offline": false
   },
   {
@@ -3642,13 +3642,13 @@
   },
   {
     "name": "[B42] Useful Barrels",
-    "chineseName": "",
+    "chineseName": "实用油桶",
     "platform": "steam",
     "steamId": "3436537035",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "待处理",
-    "videoUrl": "",
-    "note": "",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1LgG46eEka/",
+    "note": "翻译贡献[浪里个浪2346134]https://steamcommunity.com/profiles/76561198022328017",
     "offline": false
   },
   {
@@ -5038,14 +5038,58 @@
     "offline": false
   },
   {
+    "name": "TV & Radio ReInvented",
+    "chineseName": "电视与广播革新",
+    "platform": "steam",
+    "steamId": "3420581050",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "无需翻译",
+    "videoUrl": "https://www.bilibili.com/video/BV1VJGb6KEpB/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Here Goes the Sun",
+    "chineseName": "日出日落重塑",
+    "platform": "steam",
+    "steamId": "3618557184",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1LGG46AEF6/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Campers!",
+    "chineseName": "露营拖车",
+    "platform": "steam",
+    "steamId": "3670064951",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1igG46eEPc/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Tomb's Wardrobe - Alternative",
+    "chineseName": "Tomb 的衣橱 - 另类风尚",
+    "platform": "steam",
+    "steamId": "3616536783",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1VLG46cE6T/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
     "name": "EnvironmentalProtectionSuit",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3675381512",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "待处理",
-    "videoUrl": "",
-    "note": "无法在游戏中看见物品",
+    "videoUrl": "视频待发布",
+    "note": "",
     "offline": false
   }
 ]
