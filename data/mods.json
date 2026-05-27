@@ -11,7 +11,7 @@
     "offline": true
   },
   {
-    "name": "[B42]Pallontras Crossbows",
+    "name": "Pallontras Crossbows",
     "chineseName": "Pallontras 武器 - 弩",
     "platform": "steam",
     "steamId": "3400528439",
@@ -22,7 +22,7 @@
     "offline": true
   },
   {
-    "name": "[B42.13] Medieval Z [Beta]",
+    "name": "Medieval Z",
     "chineseName": "中世纪装备",
     "platform": "steam",
     "steamId": "3661164291",
@@ -33,7 +33,7 @@
     "offline": false
   },
   {
-    "name": "KATTAJ1 Clothes Core [B41/B42MP]",
+    "name": "KATTAJ1 Clothes Core",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3470422050",
@@ -198,7 +198,7 @@
     "offline": false
   },
   {
-    "name": "Melee-matician Trait [B42 Compatible]",
+    "name": "Melee-matician Trait",
     "chineseName": "近战专家特质",
     "platform": "steam",
     "steamId": "3406242018",
@@ -209,7 +209,7 @@
     "offline": false
   },
   {
-    "name": "Combat Traits [B42 Compatible]",
+    "name": "Combat Traits",
     "chineseName": "战斗快手特质",
     "platform": "steam",
     "steamId": "3427091746",
@@ -375,7 +375,7 @@
   },
   {
     "name": "EfficiencySkillMod",
-    "chineseName": "效率技能模组 2 [B41/B42.13]",
+    "chineseName": "效率技能模组 2",
     "platform": "steam",
     "steamId": "3374408921",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
@@ -693,7 +693,7 @@
     "offline": false
   },
   {
-    "name": "Ammo Converter B42",
+    "name": "Ammo Converter",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3388844065",
@@ -781,7 +781,7 @@
     "offline": false
   },
   {
-    "name": "[B42/B41] Modern & Historical Firearms Bundle",
+    "name": "Modern & Historical Firearms Bundle",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3383901556",
@@ -825,7 +825,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Extended Battery Life",
+    "name": "Extended Battery Life",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3387462212",
@@ -847,7 +847,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Exercise With Corpses",
+    "name": "Exercise With Corpses",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3404074048",
@@ -858,7 +858,7 @@
     "offline": false
   },
   {
-    "name": "[B42] FlipVehiclePlusTrailer",
+    "name": "FlipVehiclePlusTrailer",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3430172149",
@@ -869,7 +869,7 @@
     "offline": false
   },
   {
-    "name": "[B42/41] KATTAJ1 Military Pack",
+    "name": "[J&G] KATTAJ1 Military Pack",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3079948242",
@@ -935,7 +935,7 @@
     "offline": false
   },
   {
-    "name": "Moodle Framework B41",
+    "name": "Moodle Framework",
     "chineseName": "",
     "platform": "steam",
     "steamId": "2859296947",
@@ -968,7 +968,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Knox Event Expanded NPC mod [alpha v0.2.24]",
+    "name": "Knox Event Expanded NPC mod",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3397396843",
@@ -1001,7 +1001,7 @@
     "offline": false
   },
   {
-    "name": "'77 Hayosiko Pace [B41/B42]",
+    "name": "'77 Hayosiko Pace",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3459200930",
@@ -1056,7 +1056,7 @@
     "offline": false
   },
   {
-    "name": "[J&G] SWAT Uniform [B42/41]",
+    "name": "[J&G] SWAT Uniform",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3457969588",
@@ -1067,7 +1067,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Skateboard!",
+    "name": "Skateboard!",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3456675747",
@@ -1089,7 +1089,7 @@
     "offline": false
   },
   {
-    "name": "Light Switch Plus(B42)",
+    "name": "Light Switch Plus",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3418843205",
@@ -1144,7 +1144,7 @@
     "offline": false
   },
   {
-    "name": "Viperel's Recycling Center B42",
+    "name": "Viperel's Recycling Center",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3406753768",
@@ -1166,7 +1166,7 @@
     "offline": false
   },
   {
-    "name": "[B42/41] Read Book Bypassing Level Restrictions",
+    "name": "Read Book Bypassing Level Restrictions",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3319538177",
@@ -1221,7 +1221,7 @@
     "offline": false
   },
   {
-    "name": "[B42] NAVIGATION",
+    "name": "NAVIGATION",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3416036048",
@@ -1254,7 +1254,7 @@
     "offline": false
   },
   {
-    "name": "Draw On The Map - Free Hand Drawing [B42/41]",
+    "name": "Draw On The Map - Free Hand Drawing",
     "chineseName": "",
     "platform": "steam",
     "steamId": "2804531012",
@@ -1287,7 +1287,7 @@
     "offline": false
   },
   {
-    "name": "Escape From Tarkov Backpacks [B42]",
+    "name": "Escape From Tarkov Backpacks",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3432928943",
@@ -1298,7 +1298,7 @@
     "offline": false
   },
   {
-    "name": "Project Fallout: Rob-Co Pip-Boy 3000 [B42]",
+    "name": "Project Fallout: Rob-Co Pip-Boy 3000",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3461031530",
@@ -1336,8 +1336,8 @@
     "platform": "steam",
     "steamId": "3330403100",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "待处理",
-    "videoUrl": "",
+    "status": "完整",
+    "videoUrl": "视频待发布",
     "note": "",
     "offline": false
   },
@@ -1397,7 +1397,7 @@
     "offline": false
   },
   {
-    "name": "Farming Expansion B42",
+    "name": "Farming Expansion",
     "chineseName": "农业扩展",
     "platform": "steam",
     "steamId": "3444499190",
@@ -1408,7 +1408,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Kick Scooter!",
+    "name": "Kick Scooter!",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3453879909",
@@ -1771,7 +1771,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Bag Upgrade Plus",
+    "name": "Bag Upgrade Plus",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3403697073",
@@ -1782,7 +1782,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Bag Upgrade Ultra",
+    "name": "Bag Upgrade Ultra",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3407793320",
@@ -1804,7 +1804,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Brandenburg, Ekron and Irvington Spawns (With animated previews)",
+    "name": "Brandenburg, Ekron and Irvington Spawns (With animated previews)",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3466302973",
@@ -1815,7 +1815,7 @@
     "offline": false
   },
   {
-    "name": "[B42/B41] Bandits Creator",
+    "name": "Bandits Creator",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3469292499",
@@ -1826,7 +1826,7 @@
     "offline": false
   },
   {
-    "name": "True Smoking [B42]",
+    "name": "True Smoking",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3423984426",
@@ -1837,7 +1837,7 @@
     "offline": false
   },
   {
-    "name": "Louisville Quarantine Zone [B41/B42]",
+    "name": "Louisville Quarantine Zone",
     "chineseName": "",
     "platform": "steam",
     "steamId": "2934132344",
@@ -1859,7 +1859,7 @@
     "offline": false
   },
   {
-    "name": "Just Some Hair Styles [B41/B42]",
+    "name": "Just Some Hair Styles",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3116631797",
@@ -1870,7 +1870,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Nik's Hairstyles",
+    "name": "Nik's Hairstyles",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3401996053",
@@ -1881,7 +1881,7 @@
     "offline": false
   },
   {
-    "name": "Ash & Mae's Hair Salon: New Frontier V6 [ B41 ]",
+    "name": "Ash & Mae's Hair Salon: New Frontier V6",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3026307069",
@@ -1914,7 +1914,7 @@
     "offline": false
   },
   {
-    "name": "Tariq's Beards B42",
+    "name": "Tariq's Beards",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3471821554",
@@ -1936,7 +1936,7 @@
     "offline": false
   },
   {
-    "name": "Food Brazil - Comida Brasil B42/B41",
+    "name": "Food Brazil - Comida Brasil",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3469279808",
@@ -2145,7 +2145,7 @@
     "offline": false
   },
   {
-    "name": "[B42] HDCP Immersive Vehicle Paint",
+    "name": "HDCP Immersive Vehicle Paint",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3464606086",
@@ -2156,8 +2156,8 @@
     "offline": false
   },
   {
-    "name": "[B42] KR FriOS (Mobile Fridge/Cooler/Freezer/Stove - Solar Battery Charger)",
-    "chineseName": "KR FriOS 移动厨房（太阳能冷藏/烹饪站） [开发中]",
+    "name": "KR FriOS (Mobile Fridge/Cooler/Freezer/Stove - Solar Battery Charger)",
+    "chineseName": "KR FriOS 移动厨房（太阳能冷藏/烹饪站）",
     "platform": "steam",
     "steamId": "3463564121",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
@@ -2167,7 +2167,7 @@
     "offline": false
   },
   {
-    "name": "More Description for Traits [b42 & b41]",
+    "name": "More Description for Traits",
     "chineseName": "",
     "platform": "steam",
     "steamId": "2685168362",
@@ -2178,7 +2178,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Post Apocalyptic Weapons",
+    "name": "Post Apocalyptic Weapons",
     "chineseName": "后末日武器",
     "platform": "steam",
     "steamId": "3472334215",
@@ -2211,7 +2211,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Bicycle!",
+    "name": "Bicycle!",
     "chineseName": "自行车",
     "platform": "steam",
     "steamId": "3461415167",
@@ -2233,7 +2233,7 @@
     "offline": false
   },
   {
-    "name": "Woodcutting Skill [B42]",
+    "name": "Woodcutting Skill",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3434440605",
@@ -2266,7 +2266,7 @@
     "offline": false
   },
   {
-    "name": "Night Vision [B.41/B.42]",
+    "name": "Night Vision",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3383603346",
@@ -2277,7 +2277,7 @@
     "offline": false
   },
   {
-    "name": "Scavenger Skill [B42]",
+    "name": "Scavenger Skill",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3407792640",
@@ -2299,7 +2299,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Pack Mule",
+    "name": "Pack Mule",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3418366421",
@@ -2310,7 +2310,7 @@
     "offline": false
   },
   {
-    "name": "Lynx Pack [B41/B42]",
+    "name": "Lynx Pack",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3470485566",
@@ -2321,7 +2321,7 @@
     "offline": false
   },
   {
-    "name": "Cerberus Pack [B41/B42]",
+    "name": "Cerberus Pack",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3470478700",
@@ -2332,7 +2332,7 @@
     "offline": false
   },
   {
-    "name": "Night Vision Googles [B41/B42]",
+    "name": "Night Vision Googles",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3470491629",
@@ -2387,7 +2387,7 @@
     "offline": false
   },
   {
-    "name": "Support Goods Mega Mod [B42.4] - Blizzard Update - SEMI-STABLE",
+    "name": "Support Goods Mega Mod - Blizzard Update - SEMI-STABLE",
     "chineseName": "支援物资巨型模组",
     "platform": "steam",
     "steamId": "3434464110",
@@ -2442,7 +2442,7 @@
     "offline": false
   },
   {
-    "name": "Toppling Zombies [B42]",
+    "name": "Toppling Zombies",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3425038705",
@@ -2464,7 +2464,7 @@
     "offline": false
   },
   {
-    "name": "[42] Frogtown (BETA) by TwinCrows",
+    "name": "Frogtown (BETA) by TwinCrows",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3449473111",
@@ -2475,7 +2475,7 @@
     "offline": false
   },
   {
-    "name": "Constown (B42)",
+    "name": "Constown",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3480990544",
@@ -2497,7 +2497,7 @@
     "offline": false
   },
   {
-    "name": "Township Community Center [Build 42]",
+    "name": "Township Community Center",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3426283674",
@@ -2519,7 +2519,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Intuitive Crafting",
+    "name": "Intuitive Crafting",
     "chineseName": "直观制作",
     "platform": "steam",
     "steamId": "3486217110",
@@ -2530,7 +2530,7 @@
     "offline": false
   },
   {
-    "name": "Louisville Riverboat [B41/B42]",
+    "name": "Louisville Riverboat",
     "chineseName": "",
     "platform": "steam",
     "steamId": "2963883586",
@@ -2541,7 +2541,7 @@
     "offline": false
   },
   {
-    "name": "Louisville River Marina [B41/B42]",
+    "name": "Louisville River Marina",
     "chineseName": "",
     "platform": "steam",
     "steamId": "2963467990",
@@ -2552,7 +2552,7 @@
     "offline": false
   },
   {
-    "name": "RaccoonCityB42",
+    "name": "RaccoonCity",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3388468313",
@@ -2563,7 +2563,7 @@
     "offline": false
   },
   {
-    "name": "Taibeiroad4 B42 test",
+    "name": "Taibeiroad4 test",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3401261192",
@@ -2574,7 +2574,7 @@
     "offline": false
   },
   {
-    "name": "Tikitown (B41/B42)",
+    "name": "Tikitown",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3037854728",
@@ -2585,7 +2585,7 @@
     "offline": false
   },
   {
-    "name": "[42] Lilypool (Beta) by TwinCrows",
+    "name": "Lilypool (Beta) by TwinCrows",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3440983634",
@@ -2596,7 +2596,7 @@
     "offline": false
   },
   {
-    "name": "Shield Mode (Secondary Hand Equip) (B41/B42)",
+    "name": "Shield Mode (Secondary Hand Equip)",
     "chineseName": "副手盾牌模式",
     "platform": "steam",
     "steamId": "3383001527",
@@ -2629,7 +2629,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Sandbox Options",
+    "name": "Sandbox Options",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3386906181",
@@ -2860,7 +2860,7 @@
     "offline": false
   },
   {
-    "name": "Mod Load Order Sorter [b42]",
+    "name": "Mod Load Order Sorter",
     "chineseName": "模组加载顺序管理工具",
     "platform": "steam",
     "steamId": "3423660713",
@@ -2882,7 +2882,7 @@
     "offline": false
   },
   {
-    "name": "[B42] SecretZ Pandemic (Alpha) 3494374578",
+    "name": "SecretZ Pandemic (Alpha) 3494374578",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3494374578",
@@ -2893,7 +2893,7 @@
     "offline": false
   },
   {
-    "name": "[B42] More Item Information",
+    "name": "More Item Information",
     "chineseName": "更多物品信息",
     "platform": "steam",
     "steamId": "3494474677",
@@ -2904,7 +2904,7 @@
     "offline": false
   },
   {
-    "name": "[J&G] Neon Vandals Uniform [B42/41]",
+    "name": "[J&G] Neon Vandals Uniform",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3497172953",
@@ -2926,7 +2926,7 @@
     "offline": false
   },
   {
-    "name": "IKEA [Build 42]",
+    "name": "IKEA",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3452443261",
@@ -2937,7 +2937,7 @@
     "offline": false
   },
   {
-    "name": "[B42]Fort Preston",
+    "name": "Fort Preston",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3496507146",
@@ -2948,7 +2948,7 @@
     "offline": false
   },
   {
-    "name": "Miller, SD(Alpha 0.4.1)B42",
+    "name": "Miller, SD(Alpha 0.4.1)",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3493865794",
@@ -2959,7 +2959,7 @@
     "offline": false
   },
   {
-    "name": "Fort Boonesborough [B41/B42]",
+    "name": "Fort Boonesborough",
     "chineseName": "",
     "platform": "steam",
     "steamId": "2968421358",
@@ -2981,7 +2981,7 @@
     "offline": false
   },
   {
-    "name": "Ashenwood B42 Unstable (with no custom tiles)",
+    "name": "Ashenwood (with no custom tiles)",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3493916941",
@@ -2992,7 +2992,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Home Inventory",
+    "name": "Home Inventory",
     "chineseName": "家园库存清单",
     "platform": "steam",
     "steamId": "3496924086",
@@ -3003,7 +3003,7 @@
     "offline": false
   },
   {
-    "name": "[B42] The Defiler from DR2",
+    "name": "The Defiler from DR2",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3492621786",
@@ -3014,7 +3014,7 @@
     "offline": false
   },
   {
-    "name": "[B42/1] Frockin Shirts & Ties!",
+    "name": "Frockin Shirts & Ties!",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3453676250",
@@ -3025,7 +3025,7 @@
     "offline": false
   },
   {
-    "name": "Halo Marine Armor [B41/B42]",
+    "name": "Halo Marine Armor",
     "chineseName": "光环陆战队员盔甲",
     "platform": "steam",
     "steamId": "3507919075",
@@ -3058,7 +3058,7 @@
     "offline": false
   },
   {
-    "name": "[B42] JunkFoodsPH (WIP)",
+    "name": "JunkFoodsPH (WIP)",
     "chineseName": "菲律宾风味零食",
     "platform": "steam",
     "steamId": "3390901679",
@@ -3102,7 +3102,7 @@
     "offline": false
   },
   {
-    "name": "US Military Pack (BUILD 41/42)",
+    "name": "US Military Pack",
     "chineseName": "美军装备包",
     "platform": "steam",
     "steamId": "612100872",
@@ -3135,7 +3135,7 @@
     "offline": false
   },
   {
-    "name": "Random Clothing [B42]",
+    "name": "Random Clothing",
     "chineseName": "随机服装合集",
     "platform": "steam",
     "steamId": "3397182976",
@@ -3212,7 +3212,7 @@
     "offline": false
   },
   {
-    "name": "Vanilla MRE [B41/B42]",
+    "name": "Vanilla MRE",
     "chineseName": "原版风格单兵口粮",
     "platform": "steam",
     "steamId": "3100032203",
@@ -3223,7 +3223,7 @@
     "offline": false
   },
   {
-    "name": "The Last of Us: Factions & Gear [B41/B42]",
+    "name": "The Last of Us: Factions & Gear",
     "chineseName": "最后生还者：派系与装备",
     "platform": "steam",
     "steamId": "3348036710",
@@ -3245,7 +3245,7 @@
     "offline": false
   },
   {
-    "name": "Spiffomon 3D [B42]",
+    "name": "Spiffomon 3D",
     "chineseName": "斯皮福兽3D",
     "platform": "steam",
     "steamId": "3522453285",
@@ -3311,7 +3311,7 @@
     "offline": false
   },
   {
-    "name": "Boots Expanded 11 for B41 and B42",
+    "name": "Boots Expanded 11",
     "chineseName": "靴子扩展 11",
     "platform": "steam",
     "steamId": "2850935956",
@@ -3333,7 +3333,7 @@
     "offline": false
   },
   {
-    "name": "(B42) Immersive Roleplay Professions and Traits",
+    "name": "Immersive Roleplay Professions and Traits",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3387474156",
@@ -3355,7 +3355,7 @@
     "offline": false
   },
   {
-    "name": "[B41/B42] Toughness Skill",
+    "name": "Toughness Skill",
     "chineseName": "韧性技能",
     "platform": "steam",
     "steamId": "3545533939",
@@ -3366,7 +3366,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Water Pipes (aka Plumbing)",
+    "name": "Water Pipes (aka Plumbing)",
     "chineseName": "水管模组",
     "platform": "steam",
     "steamId": "3546314080",
@@ -3410,7 +3410,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Functional Gutters",
+    "name": "Functional Gutters",
     "chineseName": "功能性雨水槽",
     "platform": "steam",
     "steamId": "3439305933",
@@ -3421,7 +3421,7 @@
     "offline": false
   },
   {
-    "name": "Guns of 93: B42 Test Build (Unstable)",
+    "name": "Guns of 93: Test Build (Unstable)",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3183820077",
@@ -3432,7 +3432,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Show Wall Health",
+    "name": "Show Wall Health",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3386498516",
@@ -3454,7 +3454,7 @@
     "offline": false
   },
   {
-    "name": "[B42] M1 Abrams",
+    "name": "M1 Abrams",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3397147307",
@@ -3509,7 +3509,7 @@
     "offline": false
   },
   {
-    "name": "W900 Semi-Truck [B42]",
+    "name": "W900 Semi-Truck",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3409472393",
@@ -3564,7 +3564,7 @@
     "offline": false
   },
   {
-    "name": "Pocket Kittens (B42)",
+    "name": "Pocket Kittens",
     "chineseName": "口袋小猫",
     "platform": "steam",
     "steamId": "3568029240",
@@ -3575,7 +3575,7 @@
     "offline": false
   },
   {
-    "name": "Milk Them All [B42]",
+    "name": "Milk Them All",
     "chineseName": "统统挤奶",
     "platform": "steam",
     "steamId": "3568280195",
@@ -3586,7 +3586,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Make Salami",
+    "name": "Make Salami",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3503089213",
@@ -3619,7 +3619,7 @@
     "offline": false
   },
   {
-    "name": "[B42][ABANDONED] Malwart Plain Moodles",
+    "name": "Malwart Plain Moodles",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3394582336",
@@ -3630,7 +3630,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Home Inventory Improved",
+    "name": "Home Inventory Improved",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3522009163",
@@ -3641,7 +3641,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Useful Barrels",
+    "name": "Useful Barrels",
     "chineseName": "实用油桶",
     "platform": "steam",
     "steamId": "3436537035",
@@ -3652,7 +3652,7 @@
     "offline": false
   },
   {
-    "name": "Inventory Tetris - Grid Based Inventory Overhaul [B42]",
+    "name": "Inventory Tetris - Grid Based Inventory Overhaul",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3397561666",
@@ -3696,7 +3696,7 @@
     "offline": false
   },
   {
-    "name": "They Knew [B42]",
+    "name": "They Knew",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3387110070",
@@ -3707,7 +3707,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Mod Manager",
+    "name": "Mod Manager",
     "chineseName": "模组管理器",
     "platform": "steam",
     "steamId": "3567084868",
@@ -3718,7 +3718,7 @@
     "offline": false
   },
   {
-    "name": "Eggon's Worthwhile Cars 2.0 B42",
+    "name": "Eggon's Worthwhile Cars 2.0",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3569430257",
@@ -3729,7 +3729,7 @@
     "offline": false
   },
   {
-    "name": "[B41/B42] Leyland Princess",
+    "name": "Leyland Princess",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3565795727",
@@ -3751,7 +3751,7 @@
     "offline": false
   },
   {
-    "name": "Project Summer Car [B42]",
+    "name": "Project Summer Car",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3564950449",
@@ -3762,7 +3762,7 @@
     "offline": false
   },
   {
-    "name": "Bushcraft Gear - Rare Weapons [B41 & B42]",
+    "name": "Bushcraft Gear - Rare Weapons",
     "chineseName": "丛林生存稀有武器",
     "platform": "steam",
     "steamId": "2432621382",
@@ -3773,7 +3773,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Pack Pantry",
+    "name": "Pack Pantry",
     "chineseName": "罐头封装模组",
     "platform": "steam",
     "steamId": "3416584592",
@@ -3872,7 +3872,7 @@
     "offline": false
   },
   {
-    "name": "[B42/B41] Bandits NPC",
+    "name": "Bandits NPC",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3268487204",
@@ -3883,7 +3883,7 @@
     "offline": false
   },
   {
-    "name": "[v42] Zombie Butcher",
+    "name": "Zombie Butcher",
     "chineseName": "",
     "platform": "steam",
     "steamId": "2942795802",
@@ -3894,7 +3894,7 @@
     "offline": false
   },
   {
-    "name": "Tame-able Wolves (B42)",
+    "name": "Tame-able Wolves",
     "chineseName": "驯狼记",
     "platform": "steam",
     "steamId": "3581134738",
@@ -3905,7 +3905,7 @@
     "offline": false
   },
   {
-    "name": "[B42]Zevon's Medieval Armory",
+    "name": "Zevon's Medieval Armory",
     "chineseName": "中世纪军械库",
     "platform": "steam",
     "steamId": "3540834058",
@@ -3927,7 +3927,7 @@
     "offline": false
   },
   {
-    "name": "Ramshackle Recipes [B41/B42]",
+    "name": "Ramshackle Recipes",
     "chineseName": "简易配方武器",
     "platform": "steam",
     "steamId": "3355210994",
@@ -3960,7 +3960,7 @@
     "offline": false
   },
   {
-    "name": "[B42]Kill Cell - Armory",
+    "name": "Kill Cell - Armory",
     "chineseName": "杀戮细胞 - 军械库",
     "platform": "steam",
     "steamId": "3569050120",
@@ -3971,7 +3971,7 @@
     "offline": false
   },
   {
-    "name": "[B42] 高级战争:社区武器框架",
+    "name": "高级战争:社区武器框架",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3434653631",
@@ -3993,7 +3993,7 @@
     "offline": false
   },
   {
-    "name": "Somewhat Companions [B42 Compatible]",
+    "name": "Somewhat Companions",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3582919946",
@@ -4004,7 +4004,7 @@
     "offline": false
   },
   {
-    "name": "[B41/B42] Hephas Stalker PDA",
+    "name": "Hephas Stalker PDA",
     "chineseName": "潜行者PDA",
     "platform": "steam",
     "steamId": "3479108127",
@@ -4136,8 +4136,8 @@
     "offline": false
   },
   {
-    "name": "[VFE] VANILLA FIREARMS EXPANSION (B41)",
-    "chineseName": "VFE 原版枪械扩展模组 (B41版)",
+    "name": "[VFE] VANILLA FIREARMS EXPANSION",
+    "chineseName": "VFE 原版枪械扩展模组",
     "platform": "steam",
     "steamId": "2667899942",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
@@ -4169,7 +4169,7 @@
     "offline": false
   },
   {
-    "name": "Somewhat Traits [B42 Compatible]",
+    "name": "Somewhat Traits",
     "chineseName": "某些特质",
     "platform": "steam",
     "steamId": "3498347699",
@@ -4202,7 +4202,7 @@
     "offline": false
   },
   {
-    "name": "[B42][OBSOLETE] BackpackPlusSatchels",
+    "name": "BackpackPlusSatchels",
     "chineseName": "背包挎包plus",
     "platform": "steam",
     "steamId": "3395159487",
@@ -4213,7 +4213,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Bigger Character Avatar",
+    "name": "Bigger Character Avatar",
     "chineseName": "更大的角色展示UI",
     "platform": "steam",
     "steamId": "3387640099",
@@ -4235,7 +4235,7 @@
     "offline": false
   },
   {
-    "name": "[B42] 服装幻化",
+    "name": "服装幻化",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3436130021",
@@ -4312,7 +4312,7 @@
     "offline": false
   },
   {
-    "name": "枪托攻击 [B42]",
+    "name": "枪托攻击",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3394044313",
@@ -4323,7 +4323,7 @@
     "offline": false
   },
   {
-    "name": "[BROKEN] Animals Can Chill Above Ground Level",
+    "name": "Animals Can Chill Above Ground Level",
     "chineseName": "动物可以在地面以上放松",
     "platform": "steam",
     "steamId": "3435060775",
@@ -4345,7 +4345,7 @@
     "offline": false
   },
   {
-    "name": "Energy Drinks [B42]",
+    "name": "Energy Drinks",
     "chineseName": "能量饮料",
     "platform": "steam",
     "steamId": "2674541310",
@@ -4356,7 +4356,7 @@
     "offline": false
   },
   {
-    "name": "B41/B42|Pushpop's FurbyZ",
+    "name": "Pushpop's FurbyZ",
     "chineseName": "菲比模组",
     "platform": "steam",
     "steamId": "3588215974",
@@ -4367,7 +4367,7 @@
     "offline": false
   },
   {
-    "name": "[BROKEN] Support Goods Mega Mod [B42.10] - PREDATOR",
+    "name": "Support Goods Mega Mod - PREDATOR",
     "chineseName": "支援物资巨型模组 [损坏]",
     "platform": "steam",
     "steamId": "3512993822",
@@ -4400,7 +4400,7 @@
     "offline": false
   },
   {
-    "name": "[B42/B41] Motorious Zone - Hot Pursuit Add-on",
+    "name": "Motorious Zone - Hot Pursuit Add-on",
     "chineseName": "名车地带 - 热力追缉扩展包",
     "platform": "steam",
     "steamId": "2841969842",
@@ -4411,7 +4411,7 @@
     "offline": false
   },
   {
-    "name": "HGO Expansion (B42)",
+    "name": "HGO Expansion",
     "chineseName": "HGO扩展包",
     "platform": "steam",
     "steamId": "3424309174",
@@ -4422,7 +4422,7 @@
     "offline": false
   },
   {
-    "name": "[B42.12]Susceptible Trait - Airborne Infection",
+    "name": "Susceptible Trait - Airborne Infection",
     "chineseName": "易感体质特质——空气传播感染",
     "platform": "steam",
     "steamId": "3493150396",
@@ -4455,7 +4455,7 @@
     "offline": false
   },
   {
-    "name": "Weapon Experience B42 MP",
+    "name": "Weapon Experience",
     "chineseName": "武器经验系统",
     "platform": "steam",
     "steamId": "3671575665",
@@ -4466,7 +4466,7 @@
     "offline": false
   },
   {
-    "name": "[J&G] Umbrella Corp Uniform [B42/41]",
+    "name": "[J&G] Umbrella Corp Uniform",
     "chineseName": "保护伞公司制服",
     "platform": "steam",
     "steamId": "3675741487",
@@ -4488,7 +4488,7 @@
     "offline": false
   },
   {
-    "name": "Tanks Have Propane (B42)",
+    "name": "Tanks Have Propane",
     "chineseName": "丙烷补充模组",
     "platform": "steam",
     "steamId": "3676347667",
@@ -4499,7 +4499,7 @@
     "offline": false
   },
   {
-    "name": "Simple Status MP • CO-OP (B42.14)",
+    "name": "Simple Status MP • CO-OP",
     "chineseName": "多人合作简易状态栏",
     "platform": "steam",
     "steamId": "3674165689",
@@ -4510,7 +4510,7 @@
     "offline": false
   },
   {
-    "name": "[B42MP] Frockin Splendor!",
+    "name": "Frockin Splendor!",
     "chineseName": "华丽连衣裙",
     "platform": "steam",
     "steamId": "3307376332",
@@ -4554,8 +4554,8 @@
     "offline": false
   },
   {
-    "name": "Goose's Kentucky National Guard Professions [B42.14.1] [MP]",
-    "chineseName": "Goose的肯塔基国民警卫队职业 [B42.14.1] [多人]",
+    "name": "Goose's Kentucky National Guard Professions",
+    "chineseName": "Goose的肯塔基国民警卫队职业",
     "platform": "steam",
     "steamId": "3659605156",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
@@ -4653,7 +4653,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Functional Contact Lenses (New Moodle)",
+    "name": "Functional Contact Lenses (New Moodle)",
     "chineseName": "隐形眼镜",
     "platform": "steam",
     "steamId": "3682674886",
@@ -4664,7 +4664,7 @@
     "offline": false
   },
   {
-    "name": "[B42.12-15] Nearby Animals v1.0.5 - DBD",
+    "name": "Nearby Animals v1.0.5 - DBD",
     "chineseName": "附近动物",
     "platform": "steam",
     "steamId": "3658756227",
@@ -4675,7 +4675,7 @@
     "offline": false
   },
   {
-    "name": "SnackTime 89 [B42 SP/MP]",
+    "name": "SnackTime 89",
     "chineseName": "零食时光89",
     "platform": "steam",
     "steamId": "3589560764",
@@ -4741,7 +4741,7 @@
     "offline": false
   },
   {
-    "name": "[B42]DebugMenu",
+    "name": "DebugMenu",
     "chineseName": "调试菜单",
     "platform": "steam",
     "steamId": "3386556284",
@@ -4752,7 +4752,7 @@
     "offline": false
   },
   {
-    "name": "[B42MP] Frockin Splendor! Vol.2",
+    "name": "Frockin Splendor! Vol.2",
     "chineseName": "华丽衣橱！第二卷",
     "platform": "steam",
     "steamId": "3411888105",
@@ -4774,7 +4774,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Playable Pool",
+    "name": "Playable Pool",
     "chineseName": "可玩台球",
     "platform": "steam",
     "steamId": "3716934959",
@@ -4796,7 +4796,7 @@
     "offline": false
   },
   {
-    "name": "Military Tents [B42.17+ MP]",
+    "name": "Military Tents",
     "chineseName": "军用帐篷",
     "platform": "steam",
     "steamId": "3718884098",
@@ -4807,7 +4807,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Carry Visible Log Stacks",
+    "name": "Carry Visible Log Stacks",
     "chineseName": "手持可见原木堆",
     "platform": "steam",
     "steamId": "3719237374",
@@ -4818,7 +4818,7 @@
     "offline": false
   },
   {
-    "name": "[J&G] ODST [B42/41]",
+    "name": "[J&G] ODST",
     "chineseName": "[J&G] 地狱伞兵",
     "platform": "steam",
     "steamId": "3719531113",
@@ -4829,7 +4829,7 @@
     "offline": false
   },
   {
-    "name": "(B42) Hardwood's Swat Pack",
+    "name": "Hardwood's Swat Pack",
     "chineseName": "硬木板 SWAT 装备包",
     "platform": "steam",
     "steamId": "3687353319",
@@ -4845,13 +4845,13 @@
     "platform": "steam",
     "steamId": "3465040406",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "待处理",
-    "videoUrl": "",
+    "status": "完整",
+    "videoUrl": "视频待发布",
     "note": "",
     "offline": false
   },
   {
-    "name": "[42 + MP] GoM - Guns of Marz",
+    "name": "GoM - Guns of Marz",
     "chineseName": "戈兹枪械",
     "platform": "steam",
     "steamId": "3722134990",
@@ -4862,7 +4862,7 @@
     "offline": false
   },
   {
-    "name": "[B42:SP/MP] Take A Bath And Shower",
+    "name": "Take A Bath And Shower",
     "chineseName": "洗澡与淋浴",
     "platform": "steam",
     "steamId": "3592172476",
@@ -4874,7 +4874,7 @@
   },
   {
     "name": "Manual Save & Slot Manager",
-    "chineseName": "手动存档与槽位管理器 [B42]",
+    "chineseName": "手动存档与槽位管理器",
     "platform": "steam",
     "steamId": "3721602150",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
@@ -4928,7 +4928,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Antique Swords",
+    "name": "Antique Swords",
     "chineseName": "古剑",
     "platform": "steam",
     "steamId": "3717809483",
@@ -4939,7 +4939,7 @@
     "offline": false
   },
   {
-    "name": " Hide Clothing Slot",
+    "name": "Hide Clothing Slot",
     "chineseName": "隐藏服装外观",
     "platform": "steam",
     "steamId": "3725226497",
@@ -4950,7 +4950,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Fallout: Riot Armor Pack",
+    "name": "Fallout: Riot Armor Pack",
     "chineseName": "辐射：防暴装甲包",
     "platform": "steam",
     "steamId": "3723570902",
@@ -4972,7 +4972,7 @@
     "offline": false
   },
   {
-    "name": "[B42] OG Homestead Dairy",
+    "name": "OG Homestead Dairy",
     "chineseName": "OG 家园乳品",
     "platform": "steam",
     "steamId": "3726233497",
@@ -4994,7 +4994,7 @@
     "offline": false
   },
   {
-    "name": "[B42] Buildable Garage Doors",
+    "name": "Buildable Garage Doors",
     "chineseName": "可建造车库门",
     "platform": "steam",
     "steamId": "3727753275",
@@ -5016,7 +5016,7 @@
     "offline": false
   },
   {
-    "name": "Horse Mod [B42.14+/MP SOON]",
+    "name": "Horse Mod",
     "chineseName": "马匹模组",
     "platform": "steam",
     "steamId": "3661336777",
@@ -5027,7 +5027,7 @@
     "offline": false
   },
   {
-    "name": "More Damaged Objects [42MP]",
+    "name": "More Damaged Objects",
     "chineseName": "更多损坏物体",
     "platform": "steam",
     "steamId": "3413150945",
@@ -5078,6 +5078,28 @@
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1VLG46cE6T/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Vanilla vehicles animated",
+    "chineseName": "原版车辆动画化",
+    "platform": "steam",
+    "steamId": "3281755175",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "无需翻译",
+    "videoUrl": "视频待发布",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Detailed Descriptions for Occupations and",
+    "chineseName": "职业与特质的详细描述",
+    "platform": "steam",
+    "steamId": "3387957272",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "视频待发布",
     "note": "",
     "offline": false
   },
