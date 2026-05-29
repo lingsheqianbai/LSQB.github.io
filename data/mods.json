@@ -1337,7 +1337,7 @@
     "steamId": "3330403100",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "完整",
-    "videoUrl": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV19yV46PE5F/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -1607,12 +1607,12 @@
   },
   {
     "name": "'86 Chevrolet CUCVs + M101A2 Trailer",
-    "chineseName": "",
+    "chineseName": "'86 雪佛兰 CUCV 系列 + M101A2 拖车",
     "platform": "steam",
     "steamId": "3428008364",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "待处理",
-    "videoUrl": "",
+    "status": "完整",
+    "videoUrl": "视频待发布",
     "note": "",
     "offline": false
   },
@@ -4846,7 +4846,7 @@
     "steamId": "3465040406",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "完整",
-    "videoUrl": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV19yV46PEss/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -5088,7 +5088,7 @@
     "steamId": "3281755175",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "无需翻译",
-    "videoUrl": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV1ggV46tE8s/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -5098,9 +5098,9 @@
     "platform": "steam",
     "steamId": "3387957272",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "待处理",
-    "videoUrl": "视频待发布",
-    "note": "",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1ggV46tEgG/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "注：模组翻译键名可能与原版或者其他翻译键名冲突",
     "offline": false
   },
   {
