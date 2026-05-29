@@ -8,7 +8,7 @@ git status
 git add .
 
 # 4. 提交，并写上说明信息
-git commit -m "更新网站：使用 CDN 图片链接等"
+git commit -m "更新网站"
 
 # 5. 推送到远程仓库的 main 分支
 git push origin main
