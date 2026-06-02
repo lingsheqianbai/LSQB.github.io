@@ -98,7 +98,7 @@
         }
         nav .links li a:hover { filter: brightness(0.85); }
 
-        /* 左侧栏 */
+        /* 左侧栏（包含播放器和主题切换） */
         .left-col {
             position: fixed;
             left: 20px;
@@ -117,20 +117,70 @@
         .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
         .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
 
-        /* 语言切换按钮组 */
-        .lang-switch { display: flex; gap: 10px; justify-content: center; margin: 16px 0 12px; }
-        .lang-btn {
+        /* 播放器区域（紧凑垂直布局） */
+        .player {
+            margin: 16px 0 12px;
+            text-align: center;
+        }
+        .vinyl {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #222, #111);
+            box-shadow: 0 0 0 4px #444, 0 0 0 6px #888;
+            margin: 0 auto 8px;
+            animation: spin 0s linear infinite;
+        }
+        .vinyl.playing {
+            animation: spin 5s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+        .player-controls button {
+            background: var(--pink-light);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: 0.2s;
+        }
+        .player-controls button:hover {
+            background: var(--pink);
+        }
+        .song-title {
+            font-size: 10px;
+            color: var(--text-mid);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        /* 主题切换按钮 */
+        .theme-toggle {
+            width: 100%;
             background: var(--pink-light);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 4px 12px;
+            padding: 6px 12px;
+            cursor: pointer;
             font-size: 12px;
             font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
             color: var(--text-dark);
+            text-align: center;
+            margin-top: 8px;
+            transition: 0.2s;
         }
-        .lang-btn.active { background: var(--pink); color: #fff; }
+        .theme-toggle:hover {
+            background: var(--pink);
+        }
 
         /* 右侧内容区 */
         .right-col {
@@ -141,54 +191,6 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 20px;
-        }
-        .toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .player {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: var(--bg-sidebar);
-            padding: 6px 16px;
-            border-radius: 40px;
-            border: 1px solid var(--border-color);
-        }
-        .vinyl {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 35% 35%, #222, #111);
-            box-shadow: 0 0 0 4px #444, 0 0 0 6px #888;
-            position: relative;
-            animation: spin 0s linear infinite;
-        }
-        .vinyl.playing {
-            animation: spin 5s linear infinite;
-        }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        .player-controls button {
-            background: none;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            margin: 0 4px;
-            color: var(--text-dark);
-        }
-        .theme-toggle {
-            background: var(--pink-light);
-            border: 1px solid var(--border-color);
-            border-radius: 32px;
-            padding: 6px 16px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            color: var(--text-dark);
         }
         .section-placeholder {
             margin: 20px 0;
@@ -228,18 +230,6 @@
             <div class="profile-avatar">📦</div>
             <div class="profile-name">凌社千白</div>
             <div class="profile-signature">分享 · 记录 · 创造</div>
-            <!-- 语言切换 -->
-            <div class="lang-switch">
-                <button class="lang-btn" data-lang="zh-CN">简体</button>
-                <button class="lang-btn" data-lang="zh-TW">繁體</button>
-                <button class="lang-btn" data-lang="en">English</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 右侧内容区 -->
-    <div class="right-col">
-        <div class="toolbar">
             <!-- 黑胶唱片播放器 -->
             <div class="player">
                 <div class="vinyl" id="vinylDisc"></div>
@@ -248,12 +238,15 @@
                     <button id="playPauseBtn">▶️</button>
                     <button id="nextBtn">⏭</button>
                 </div>
-                <span id="songTitle" style="font-size:12px;">加载中...</span>
+                <div class="song-title" id="songTitle">加载中...</div>
             </div>
             <!-- 主题切换按钮 -->
             <button class="theme-toggle" id="themeToggle">🌤️ 白天</button>
         </div>
+    </div>
 
+    <!-- 右侧内容区 -->
+    <div class="right-col">
         <div id="home" class="section-placeholder">🏠 主页区域 – 内容建设中</div>
         <div id="projects" class="section-placeholder">📂 项目区域 – 内容建设中</div>
         <div id="posts" class="section-placeholder">📰 帖子区域 – 内容建设中</div>
@@ -331,105 +324,6 @@
                 themeToggle.innerHTML = '🌤️ 白天';
             }
         });
-
-        // ==================== 语言切换（简体/繁体/英语） ====================
-        // 定义翻译映射（只翻译当前可见的文字，包括导航栏、侧边栏、占位文本等）
-        const translations = {
-            'zh-CN': {
-                '主页': '主页', '项目': '项目', '帖子': '帖子', '作品集': '作品集', '联系': '联系', '致谢': '致谢', '仓库': '仓库',
-                '凌社千白': '凌社千白', '分享 · 记录 · 创造': '分享 · 记录 · 创造',
-                '简体': '简体', '繁體': '繁體', 'English': 'English',
-                '加载中...': '加载中...', '示例曲目 1 - 轻音乐': '示例曲目 1 - 轻音乐', '示例曲目 2 - 钢琴曲': '示例曲目 2 - 钢琴曲', '示例曲目 3 - 吉他': '示例曲目 3 - 吉他',
-                '🏠 主页区域 – 内容建设中': '🏠 主页区域 – 内容建设中',
-                '📂 项目区域 – 内容建设中': '📂 项目区域 – 内容建设中',
-                '📰 帖子区域 – 内容建设中': '📰 帖子区域 – 内容建设中',
-                '🎨 作品集区域 – 内容建设中': '🎨 作品集区域 – 内容建设中',
-                '💬 联系区域 – 内容建设中': '💬 联系区域 – 内容建设中',
-                '❤️ 致谢区域 – 内容建设中': '❤️ 致谢区域 – 内容建设中',
-                '白天': '白天', '黑夜': '黑夜', '🌤️ 白天': '🌤️ 白天', '🌙 黑夜': '🌙 黑夜'
-            },
-            'zh-TW': {
-                '主页': '主頁', '项目': '項目', '帖子': '貼文', '作品集': '作品集', '联系': '聯繫', '致谢': '致謝', '仓库': '倉庫',
-                '凌社千白': '凌社千白', '分享 · 记录 · 创造': '分享 · 記錄 · 創造',
-                '简体': '簡體', '繁體': '繁體', 'English': 'English',
-                '加载中...': '載入中...', '示例曲目 1 - 轻音乐': '範例曲目 1 - 輕音樂', '示例曲目 2 - 钢琴曲': '範例曲目 2 - 鋼琴曲', '示例曲目 3 - 吉他': '範例曲目 3 - 吉他',
-                '🏠 主页区域 – 内容建设中': '🏠 主頁區域 – 內容建置中',
-                '📂 项目区域 – 内容建设中': '📂 項目區域 – 內容建置中',
-                '📰 帖子区域 – 内容建设中': '📰 貼文區域 – 內容建置中',
-                '🎨 作品集区域 – 内容建设中': '🎨 作品集區域 – 內容建置中',
-                '💬 联系区域 – 内容建设中': '💬 聯繫區域 – 內容建置中',
-                '❤️ 致谢区域 – 内容建设中': '❤️ 致謝區域 – 內容建置中',
-                '白天': '白天', '黑夜': '黑夜', '🌤️ 白天': '🌤️ 白天', '🌙 黑夜': '🌙 黑夜'
-            },
-            'en': {
-                '主页': 'Home', '项目': 'Projects', '帖子': 'Posts', '作品集': 'Portfolio', '联系': 'Contact', '致谢': 'Thanks', '仓库': 'Repo',
-                '凌社千白': 'Ling She Qianbai', '分享 · 记录 · 创造': 'Share · Record · Create',
-                '简体': 'Simplified', '繁體': 'Traditional', 'English': 'English',
-                '加载中...': 'Loading...', '示例曲目 1 - 轻音乐': 'Demo 1 - Light Music', '示例曲目 2 - 钢琴曲': 'Demo 2 - Piano', '示例曲目 3 - 吉他': 'Demo 3 - Guitar',
-                '🏠 主页区域 – 内容建设中': '🏠 Home – Under Construction',
-                '📂 项目区域 – 内容建设中': '📂 Projects – Under Construction',
-                '📰 帖子区域 – 内容建设中': '📰 Posts – Under Construction',
-                '🎨 作品集区域 – 内容建设中': '🎨 Portfolio – Under Construction',
-                '💬 联系区域 – 内容建设中': '💬 Contact – Under Construction',
-                '❤️ 致谢区域 – 内容建设中': '❤️ Thanks – Under Construction',
-                '白天': 'Day', '黑夜': 'Night', '🌤️ 白天': '🌤️ Day', '🌙 黑夜': '🌙 Night'
-            }
-        };
-        let currentLang = 'zh-CN';
-
-        function updateText(lang) {
-            const dict = translations[lang];
-            if (!dict) return;
-            // 更新导航栏文字（data-target 保持不变，只改显示文字）
-            document.querySelectorAll('nav .links li a[data-target]').forEach(link => {
-                const key = link.innerText.trim().split(' ')[0]; // 获取中文键名
-                if (dict[key]) link.innerText = dict[key];
-            });
-            // 更新仓库链接文字
-            const repoLink = document.querySelector('nav .links li a[href*="github"]');
-            if (repoLink && dict['仓库']) repoLink.innerText = dict['仓库'];
-            // 侧边栏名称和签名
-            const nameEl = document.querySelector('.profile-name');
-            if (nameEl && dict['凌社千白']) nameEl.innerText = dict['凌社千白'];
-            const signEl = document.querySelector('.profile-signature');
-            if (signEl && dict['分享 · 记录 · 创造']) signEl.innerText = dict['分享 · 记录 · 创造'];
-            // 语言切换按钮上的文字
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                const txt = btn.innerText;
-                if (dict[txt]) btn.innerText = dict[txt];
-            });
-            // 歌曲标题
-            const currentSong = playlist[currentTrack]?.title;
-            if (currentSong && dict[currentSong]) songTitleSpan.innerText = dict[currentSong];
-            // 更新所有占位区域
-            const placeholders = document.querySelectorAll('.section-placeholder');
-            placeholders.forEach(ph => {
-                const original = ph.innerText;
-                if (dict[original]) ph.innerText = dict[original];
-            });
-            // 更新主题按钮文字
-            const themeBtn = document.getElementById('themeToggle');
-            const themeText = isDark ? dict['🌙 黑夜'] : dict['🌤️ 白天'];
-            if (themeText) themeBtn.innerHTML = themeText;
-        }
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            updateText(lang);
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
-                else btn.classList.remove('active');
-            });
-        }
-
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const lang = btn.getAttribute('data-lang');
-                setLanguage(lang);
-            });
-        });
-        // 初始化默认语言
-        setLanguage('zh-CN');
 
         // ==================== 平滑滚动和高亮（简化） ====================
         document.querySelectorAll('nav .links li a[data-target]').forEach(link => {
