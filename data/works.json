@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "模组汉化 - 凌社千白汉化合集",
+    "description": "僵尸毁灭工程模组汉化，包含大量常用模组的简体中文翻译。",
+    "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3445878532",
+    "icon": "🎮",
+    "platform": "Steam"
+  },
+  {
+    "id": 2,
+    "title": "原版汉化模组",
+    "description": "僵尸毁灭工程原版游戏文本汉化补充，修复部分缺失翻译。",
+    "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3668825372",
+    "icon": "📦",
+    "platform": "Steam"
+  },
+  {
+    "id": 3,
+    "title": "调试菜单 (DebugMenu) 维护版",
+    "description": "由凌社千白接手的调试菜单模组，适配最新游戏版本。",
+    "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3735377688",
+    "icon": "🔧",
+    "platform": "Steam"
+  }
+]
