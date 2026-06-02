@@ -1,9 +1,9 @@
 [
   { "id": "pz", "name": "僵尸毁灭工程", "icon": "🧟", "description": "模组汉化、攻略教程、视频合集" },
   { "id": "luoke", "name": "洛克王国：世界", "icon": "🐉", "description": "精灵图鉴、任务攻略、活动称号" },
-  { "id": "terror", "name": "恐怖学校:白色情人节", "icon": "🏫", "description": "攻略教程" },
+  { "id": "whiteday", "name": "恐怖学校:白色情人节", "icon": "🏫", "description": "攻略教程" },
   { "id": "minecraft", "name": "我的世界", "icon": "⛏️", "description": "存档投影、模组教程" },
+  { "id": "lifeisstrange", "name": "奇异人生", "icon": "📸", "description": "通过与收集流程" },
   { "id": "kingdom", "name": "王国：两位君主", "icon": "👑", "description": "暂无内容，后续补充" },
-  { "id": "jojo", "name": "JOJO群星之战", "icon": "⭐", "description": "暂无内容，后续补充" },
-  { "id": "lifeisstrange", "name": "奇异人生", "icon": "📸", "description": "通过与收集流程" }
+  { "id": "jojo", "name": "JOJO群星之战", "icon": "⭐", "description": "暂无内容，后续补充" }
 ]
