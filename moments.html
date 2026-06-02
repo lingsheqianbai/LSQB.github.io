@@ -5,8 +5,314 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>全部动态 - 千白分享</title>
     <style>
-        /* 复制 index.html 中完整的 <style> 内容，此处略（否则消息过长） */
-        /* 实际使用时，请将 index.html 中的 style 完整复制到这里 */
+        /* ========== 基础复古风格 ========== */
+        :root {
+            --sidebar-width: 260px;
+            --nav-offset: 60px;
+            --pink: #f9bddd;
+            --pink-dark: #c44569;
+            --pink-light: #ffcfe2;
+            --text-dark: #2a1a2e;
+            --text-mid: #5a3e4b;
+            --text-light: #bba3ad;
+            --border-color: #000;
+            --bg-card: #fff;
+            --bg-sidebar: #fff;
+            --shadow: 4px 4px 0 rgba(0,0,0,0.1);
+            --bg-body: navajowhite;
+        }
+        body.dark {
+            --bg-card: #16213e;
+            --bg-sidebar: #0f3460;
+            --text-dark: #e2e2e2;
+            --text-mid: #b0b0b0;
+            --text-light: #888;
+            --border-color: #3a3a5a;
+            --pink: #c44569;
+            --pink-light: #5c2e3a;
+            --shadow: 4px 4px 0 rgba(0,0,0,0.3);
+            --bg-body: #1a1a2e;
+        }
+
+        @font-face {
+            font-family: 'ZQKNNY';
+            src: url('ZQKNNY-Medium-2.woff2') format('woff2');
+            font-weight: 500; font-style: normal; font-display: swap;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
+            background: var(--bg-body);
+            background-image: repeating-conic-gradient(#f9bddd33 0% 25%, transparent 0% 50%) 50% / 40px 40px;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding-top: var(--nav-offset);
+            transition: background 0.3s, color 0.2s;
+            color: var(--text-dark);
+        }
+
+        /* 导航栏（彩虹色） */
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            background: var(--bg-card);
+            border-bottom: 2px solid var(--border-color);
+        }
+        nav .links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            padding: 8px 16px;
+            margin: 0;
+            gap: 12px;
+        }
+        nav .links li a {
+            display: inline-block;
+            padding: 8px 32px;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            text-shadow: 0 0 3px rgba(0,0,0,0.5);
+            transition: filter 0.2s;
+            cursor: pointer;
+        }
+        nav .links li a:hover { filter: brightness(0.85); }
+
+        /* 左侧栏 */
+        .left-col {
+            position: fixed;
+            left: 20px;
+            top: var(--nav-offset);
+            width: var(--sidebar-width);
+            z-index: 950;
+        }
+        .profile-card {
+            background: var(--bg-sidebar);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+        }
+        .profile-avatar {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .profile-avatar img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+        .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
+        .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
+
+        /* 播放器 */
+        .player {
+            margin: 16px 0 12px;
+            text-align: center;
+        }
+        .vinyl {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 35% 35%, #222, #111);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #444, 0 0 0 6px #888;
+        }
+        .vinyl.playing {
+            animation: spin 5s linear infinite;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+        .vinyl-center-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.9);
+            object-fit: cover;
+            z-index: 2;
+            pointer-events: none;
+            background: #fff;
+        }
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+        .player-controls button {
+            background: var(--pink-light);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: 0.2s;
+        }
+        .player-controls button:hover { background: var(--pink); }
+        .song-title {
+            font-size: 10px;
+            color: var(--text-mid);
+            text-align: center;
+            background: var(--bg-card);
+            padding: 2px 8px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            display: inline-block;
+            max-width: 180px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .theme-toggle {
+            width: 100%;
+            background: var(--pink-light);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--text-dark);
+            text-align: center;
+            margin-top: 8px;
+            transition: 0.2s;
+        }
+        .theme-toggle:hover { background: var(--pink); }
+
+        /* 右侧内容区 */
+        .right-col {
+            margin-left: calc(var(--sidebar-width) + 40px);
+            margin-right: 20px;
+            max-width: 1200px;
+        }
+        .page-header {
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .page-header h2 {
+            font-size: 24px;
+            display: inline-block;
+            background: var(--pink-light);
+            padding: 4px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+        .moment-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+        .moment-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .moment-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--pink-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border: 1px solid var(--border-color);
+        }
+        .moment-nickname {
+            font-weight: bold;
+            font-size: 15px;
+            color: var(--text-dark);
+        }
+        .moment-time {
+            font-size: 11px;
+            color: var(--text-mid);
+        }
+        .moment-content {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .moment-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .moment-images img {
+            max-width: calc(33% - 8px);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .moment-images img:hover {
+            transform: scale(1.02);
+        }
+        .moment-stats {
+            font-size: 12px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border-color);
+            padding-top: 10px;
+            margin-top: 4px;
+        }
+
+        /* 分页 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .pagination button, .pagination .page-number {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 24px;
+            cursor: pointer;
+            font-size: 13px;
+            color: var(--text-dark);
+            transition: 0.2s;
+        }
+        .pagination button:hover, .pagination .page-number:hover {
+            background: var(--pink-light);
+        }
+        .pagination .page-number.active {
+            background: var(--pink);
+            color: #fff;
+            border-color: var(--pink-dark);
+        }
+
+        @media (max-width: 800px) {
+            .left-col { display: none; }
+            .right-col { margin-left: 20px; }
+            .moment-images img { max-width: calc(50% - 8px); }
+        }
+        @media (max-width: 768px) {
+            nav .links li a { padding: 6px 20px; font-size: 12px; }
+        }
     </style>
 </head>
 <body>
@@ -22,7 +328,27 @@
         </ul>
     </nav>
 
-    <div class="left-col" id="sidebarContainer"></div>
+    <div class="left-col">
+        <div class="profile-card">
+            <div class="profile-avatar">
+                <img src="images/lingsheqianbai.jpg" alt="凌社千白">
+            </div>
+            <div class="profile-name">凌社千白</div>
+            <div class="profile-signature">分享 · 记录 · 创造</div>
+            <div class="player">
+                <div class="vinyl" id="vinylDisc">
+                    <img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img">
+                </div>
+                <div class="player-controls">
+                    <button id="prevBtn">⏮</button>
+                    <button id="playPauseBtn">▶️</button>
+                    <button id="nextBtn">⏭</button>
+                </div>
+                <div class="song-title" id="songTitle">Morning BGM</div>
+            </div>
+            <button class="theme-toggle" id="themeToggle">🌙 黑夜</button>
+        </div>
+    </div>
 
     <div class="right-col">
         <div class="page-header">
@@ -35,98 +361,77 @@
     <audio id="audioPlayer" preload="auto"></audio>
 
     <script>
-        // 加载左侧栏组件（与主页相同）
-        async function loadSidebar() {
-            const resp = await fetch('sidebar.html');
-            const html = await resp.text();
-            document.getElementById('sidebarContainer').innerHTML = html;
-            initMusicPlayer();
-            initThemeToggle();
-        }
-
-        // 音乐播放器（与主页完全一致）
-        let playlist = [
+        // ==================== 音乐播放器（支持上下曲切换） ====================
+        const playlist = [
             { title: "Morning BGM", url: "music/morning.mp3" },
             { title: "Night BGM", url: "music/night.mp3" }
         ];
         let currentTrack = 0;
-        let audio = null;
-        let vinyl = null;
-        let playPauseBtn = null;
-        let songTitleSpan = null;
+        const audio = document.getElementById('audioPlayer');
+        const vinyl = document.getElementById('vinylDisc');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const songTitleSpan = document.getElementById('songTitle');
 
-        function initMusicPlayer() {
-            audio = document.getElementById('audioPlayer');
-            vinyl = document.getElementById('vinylDisc');
-            playPauseBtn = document.getElementById('playPauseBtn');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            songTitleSpan = document.getElementById('songTitle');
+        function loadTrack(index) {
+            const track = playlist[index % playlist.length];
+            audio.src = track.url;
+            songTitleSpan.textContent = track.title;
+            audio.load();
+            // 如果之前是播放状态，则继续播放
+            if (!audio.paused) {
+                audio.play().catch(() => {});
+                vinyl.classList.add('playing');
+                playPauseBtn.textContent = '⏸️';
+            } else {
+                playPauseBtn.textContent = '▶️';
+                vinyl.classList.remove('playing');
+            }
+        }
 
-            if (!audio || !vinyl || !playPauseBtn) return;
-
-            function loadTrack(index) {
-                const track = playlist[index % playlist.length];
-                audio.src = track.url;
-                songTitleSpan.textContent = track.title;
-                audio.load();
-                if (!audio.paused) {
-                    audio.play().catch(() => {});
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => {
                     vinyl.classList.add('playing');
                     playPauseBtn.textContent = '⏸️';
-                } else {
-                    playPauseBtn.textContent = '▶️';
-                    vinyl.classList.remove('playing');
-                }
+                }).catch(() => {});
+            } else {
+                audio.pause();
+                vinyl.classList.remove('playing');
+                playPauseBtn.textContent = '▶️';
             }
+        });
 
-            playPauseBtn.addEventListener('click', () => {
-                if (audio.paused) {
-                    audio.play().then(() => {
-                        vinyl.classList.add('playing');
-                        playPauseBtn.textContent = '⏸️';
-                    }).catch(() => {});
-                } else {
-                    audio.pause();
-                    vinyl.classList.remove('playing');
-                    playPauseBtn.textContent = '▶️';
-                }
-            });
-
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-                    loadTrack(currentTrack);
-                });
-            }
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    currentTrack = (currentTrack + 1) % playlist.length;
-                    loadTrack(currentTrack);
-                });
-            }
-
+        prevBtn.addEventListener('click', () => {
+            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
             loadTrack(currentTrack);
-        }
+        });
 
-        function initThemeToggle() {
-            const themeToggle = document.getElementById('themeToggle');
-            if (!themeToggle) return;
-            let isDark = false;
-            themeToggle.textContent = '🌙 黑夜';
-            themeToggle.addEventListener('click', () => {
-                isDark = !isDark;
-                if (isDark) {
-                    document.body.classList.add('dark');
-                    themeToggle.textContent = '🌤️ 白天';
-                } else {
-                    document.body.classList.remove('dark');
-                    themeToggle.textContent = '🌙 黑夜';
-                }
-            });
-        }
+        nextBtn.addEventListener('click', () => {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            loadTrack(currentTrack);
+        });
 
-        // 动态分页
+        // 初始加载第一首
+        loadTrack(currentTrack);
+
+        // ==================== 主题切换（手动） ====================
+        const themeToggle = document.getElementById('themeToggle');
+        let isDark = false;
+        themeToggle.textContent = '🌙 黑夜';
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            if (isDark) {
+                document.body.classList.add('dark');
+                themeToggle.textContent = '🌤️ 白天';
+            } else {
+                document.body.classList.remove('dark');
+                themeToggle.textContent = '🌙 黑夜';
+            }
+        });
+
+        // ==================== 动态分页 ====================
         let allMoments = [];
         let currentPage = 1;
         const PAGE_SIZE = 10;
@@ -242,13 +547,27 @@
         }
         window.showImageModal = function(src) {
             const modal = document.createElement('div');
-            modal.style.position = 'fixed'; modal.style.top = '0'; modal.style.left = '0'; modal.style.width = '100%'; modal.style.height = '100%';
-            modal.style.backgroundColor = 'rgba(0,0,0,0.85)'; modal.style.display = 'flex'; modal.style.alignItems = 'center'; modal.style.justifyContent = 'center'; modal.style.zIndex = '10000';
-            const img = document.createElement('img'); img.src = src; img.style.maxWidth = '90%'; img.style.maxHeight = '90%'; img.style.border = '2px solid #fff'; img.style.borderRadius = '8px';
-            modal.appendChild(img); modal.addEventListener('click', () => modal.remove()); document.body.appendChild(modal);
+            modal.style.position = 'fixed';
+            modal.style.top = '0';
+            modal.style.left = '0';
+            modal.style.width = '100%';
+            modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.85)';
+            modal.style.display = 'flex';
+            modal.style.alignItems = 'center';
+            modal.style.justifyContent = 'center';
+            modal.style.zIndex = '10000';
+            const img = document.createElement('img');
+            img.src = src;
+            img.style.maxWidth = '90%';
+            img.style.maxHeight = '90%';
+            img.style.border = '2px solid #fff';
+            img.style.borderRadius = '8px';
+            modal.appendChild(img);
+            modal.addEventListener('click', () => modal.remove());
+            document.body.appendChild(modal);
         };
 
-        loadSidebar();
         loadAllMoments();
     </script>
 </body>

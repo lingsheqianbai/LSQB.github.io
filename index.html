@@ -86,7 +86,7 @@
         }
         nav .links li a:hover { filter: brightness(0.85); }
 
-        /* 左侧栏容器 - 由 sidebar.html 动态填充 */
+        /* 左侧栏 */
         .left-col {
             position: fixed;
             left: 20px;
@@ -94,8 +94,6 @@
             width: var(--sidebar-width);
             z-index: 950;
         }
-
-        /* 播放器、主题切换等样式已经在 sidebar.html 中定义，但为了确保样式统一，这里也保留一份 */
         .profile-card {
             background: var(--bg-sidebar);
             border: 1px solid var(--border-color);
@@ -117,6 +115,7 @@
         .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
         .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
 
+        /* 播放器 */
         .player {
             margin: 16px 0 12px;
             text-align: center;
@@ -367,18 +366,37 @@
 <body>
     <nav>
         <ul class="links">
-            <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
-            <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
-            <li><a href="#" style="background-color: #FFD700;">项目</a></li>
-            <li><a href="#" style="background-color: #32CD32;">作品集</a></li>
-            <li><a href="#" style="background-color: #00CED1;">联系</a></li>
-            <li><a href="#" style="background-color: #1E90FF;">致谢</a></li>
+            <li><a href="#" data-target="top" style="background-color: #FF4D4D;">主页</a></li>
+            <li><a href="#" data-target="top" style="background-color: #FFA500;">动态</a></li>
+            <li><a href="#" data-target="top" style="background-color: #FFD700;">项目</a></li>
+            <li><a href="#" data-target="top" style="background-color: #32CD32;">作品集</a></li>
+            <li><a href="#" data-target="top" style="background-color: #00CED1;">联系</a></li>
+            <li><a href="#" data-target="top" style="background-color: #1E90FF;">致谢</a></li>
             <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>
         </ul>
     </nav>
 
-    <!-- 左侧栏容器，由 sidebar.html 动态填充 -->
-    <div class="left-col" id="sidebarContainer"></div>
+    <div class="left-col">
+        <div class="profile-card">
+            <div class="profile-avatar">
+                <img src="images/lingsheqianbai.jpg" alt="凌社千白">
+            </div>
+            <div class="profile-name">凌社千白</div>
+            <div class="profile-signature">分享 · 记录 · 创造</div>
+            <div class="player">
+                <div class="vinyl" id="vinylDisc">
+                    <img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img">
+                </div>
+                <div class="player-controls">
+                    <button id="prevBtn">⏮</button>
+                    <button id="playPauseBtn">▶️</button>
+                    <button id="nextBtn">⏭</button>
+                </div>
+                <div class="song-title" id="songTitle">加载中...</div>
+            </div>
+            <button class="theme-toggle" id="themeToggle">🌙 黑夜</button>
+        </div>
+    </div>
 
     <div class="right-col" id="top">
         <div class="banner">
@@ -413,104 +431,78 @@
     <audio id="audioPlayer" preload="auto"></audio>
 
     <script>
-        // 加载左侧栏组件
-        async function loadSidebar() {
-            const resp = await fetch('sidebar.html');
-            const html = await resp.text();
-            document.getElementById('sidebarContainer').innerHTML = html;
-
-            // 绑定音乐播放器和主题切换事件（因为元素是动态添加的）
-            initMusicPlayer();
-            initThemeToggle();
-        }
-
-        // 音乐播放器（带上一首/下一首）
-        let playlist = [
+        // ==================== 音乐播放器（可切换上一首/下一首） ====================
+        // 歌单，请确保 music/morning.mp3 和 music/night.mp3 存在
+        const playlist = [
             { title: "Morning BGM", url: "music/morning.mp3" },
             { title: "Night BGM", url: "music/night.mp3" }
-            // 可以继续添加更多歌曲
         ];
         let currentTrack = 0;
-        let audio = null;
-        let vinyl = null;
-        let playPauseBtn = null;
-        let songTitleSpan = null;
+        const audio = document.getElementById('audioPlayer');
+        const vinyl = document.getElementById('vinylDisc');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const songTitleSpan = document.getElementById('songTitle');
 
-        function initMusicPlayer() {
-            audio = document.getElementById('audioPlayer');
-            vinyl = document.getElementById('vinylDisc');
-            playPauseBtn = document.getElementById('playPauseBtn');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            songTitleSpan = document.getElementById('songTitle');
+        function loadTrack(index) {
+            const track = playlist[index % playlist.length];
+            audio.src = track.url;
+            songTitleSpan.textContent = track.title;
+            audio.load();
+            // 如果之前是在播放状态，则继续播放
+            if (!audio.paused) {
+                audio.play().catch(() => {});
+                vinyl.classList.add('playing');
+                playPauseBtn.textContent = '⏸️';
+            } else {
+                playPauseBtn.textContent = '▶️';
+                vinyl.classList.remove('playing');
+            }
+        }
 
-            if (!audio || !vinyl || !playPauseBtn) return;
-
-            function loadTrack(index) {
-                const track = playlist[index % playlist.length];
-                audio.src = track.url;
-                songTitleSpan.textContent = track.title;
-                audio.load();
-                // 如果之前是在播放状态，则继续播放
-                if (!audio.paused) {
-                    audio.play().catch(() => {});
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => {
                     vinyl.classList.add('playing');
                     playPauseBtn.textContent = '⏸️';
-                } else {
-                    playPauseBtn.textContent = '▶️';
-                    vinyl.classList.remove('playing');
-                }
+                }).catch(() => {});
+            } else {
+                audio.pause();
+                vinyl.classList.remove('playing');
+                playPauseBtn.textContent = '▶️';
             }
+        });
 
-            playPauseBtn.addEventListener('click', () => {
-                if (audio.paused) {
-                    audio.play().then(() => {
-                        vinyl.classList.add('playing');
-                        playPauseBtn.textContent = '⏸️';
-                    }).catch(() => {});
-                } else {
-                    audio.pause();
-                    vinyl.classList.remove('playing');
-                    playPauseBtn.textContent = '▶️';
-                }
-            });
-
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-                    loadTrack(currentTrack);
-                });
-            }
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    currentTrack = (currentTrack + 1) % playlist.length;
-                    loadTrack(currentTrack);
-                });
-            }
-
-            // 初始加载第一首
+        prevBtn.addEventListener('click', () => {
+            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
             loadTrack(currentTrack);
-        }
+        });
 
-        // 主题切换（手动）
-        function initThemeToggle() {
-            const themeToggle = document.getElementById('themeToggle');
-            if (!themeToggle) return;
-            let isDark = false;
-            themeToggle.textContent = '🌙 黑夜';
-            themeToggle.addEventListener('click', () => {
-                isDark = !isDark;
-                if (isDark) {
-                    document.body.classList.add('dark');
-                    themeToggle.textContent = '🌤️ 白天';
-                } else {
-                    document.body.classList.remove('dark');
-                    themeToggle.textContent = '🌙 黑夜';
-                }
-            });
-        }
+        nextBtn.addEventListener('click', () => {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            loadTrack(currentTrack);
+        });
 
-        // 紧凑周历
+        // 初始加载第一首
+        loadTrack(currentTrack);
+
+        // ==================== 主题切换（手动，不自动） ====================
+        const themeToggle = document.getElementById('themeToggle');
+        let isDark = false;
+        themeToggle.textContent = '🌙 黑夜';
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            if (isDark) {
+                document.body.classList.add('dark');
+                themeToggle.textContent = '🌤️ 白天';
+            } else {
+                document.body.classList.remove('dark');
+                themeToggle.textContent = '🌙 黑夜';
+            }
+        });
+
+        // ==================== 紧凑周历 ====================
         let calendarTargetDate = new Date();
         const weekdayNames = ['日', '一', '二', '三', '四', '五', '六'];
         function updateCompactCalendar(targetDate) {
@@ -555,7 +547,7 @@
         });
         updateCompactCalendar(calendarTargetDate);
 
-        // 动态加载
+        // ==================== 动态加载（前3条） ====================
         async function loadMoments() {
             const container = document.getElementById('momentsContainer');
             const defaultMoments = [
@@ -630,13 +622,10 @@
             sponsorImg.addEventListener('click', () => showImageModal(sponsorImg.src));
         }
 
-        // 加载左侧栏
-        loadSidebar();
-
         // 导航平滑滚动（非必要，但保留）
-        document.querySelectorAll('nav .links li a[href]').forEach(link => {
+        document.querySelectorAll('nav .links li a[data-target]').forEach(link => {
             link.addEventListener('click', function(e) {
-                if (this.getAttribute('href') === '#') {
+                if (this.getAttribute('data-target') === 'top') {
                     e.preventDefault();
                     document.querySelector('.right-col').scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
