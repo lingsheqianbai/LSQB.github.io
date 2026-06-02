@@ -3,12 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        function adjustZoom() { document.body.style.zoom = 1; }
-        adjustZoom();
-        window.addEventListener('resize', adjustZoom);
-    </script>
-    <meta name="description" content="千白分享主页 - 重构中">
     <title>千白分享主页</title>
     <style>
         /* ========== 基础复古风格 ========== */
@@ -26,10 +20,6 @@
             --bg-card: #fff;
             --bg-sidebar: #fff;
             --shadow: 4px 4px 0 rgba(0,0,0,0.1);
-            --calendar-bg: #fff;
-            --calendar-header: var(--pink-light);
-            --heatmap-bg: #fff;
-            --heatmap-empty: #ebedf0;
         }
         body.dark {
             --bg-body: #1a1a2e;
@@ -42,10 +32,6 @@
             --pink: #c44569;
             --pink-light: #5c2e3a;
             --shadow: 4px 4px 0 rgba(0,0,0,0.3);
-            --calendar-bg: #1e2a3a;
-            --calendar-header: #0f3460;
-            --heatmap-bg: #1e2a3a;
-            --heatmap-empty: #2a3a4a;
         }
 
         @font-face {
@@ -67,20 +53,15 @@
             color: var(--text-dark);
         }
 
-        /* Win98 滚动条 */
-        ::-webkit-scrollbar { width: 16px; }
-        ::-webkit-scrollbar:horizontal { height: 17px; }
-        ::-webkit-scrollbar-corner { background: #dfdfdf; }
-        ::-webkit-scrollbar-track { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='2' height='2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1 0H0v1h1v1h1V1H1V0z' fill='silver'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 0H1v1H0v1h1V1h1V0z' fill='%23fff'/%3E%3C/svg%3E"); }
-        ::-webkit-scrollbar-thumb { background-color: #dfdfdf; box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf; }
-        ::-webkit-scrollbar-button:vertical:start { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 6H7v1H6v1H5v1H4v1h7V9h-1V8H9V7H8V6z' fill='%23000'/%3E%3C/svg%3E"); height: 17px; }
-        ::-webkit-scrollbar-button:vertical:end { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 6H4v1h1v1h1v1h1v1h1V9h1V8h1V7h1V6z' fill='%23000'/%3E%3C/svg%3E"); height: 17px; }
-        ::-webkit-scrollbar-button:horizontal:start { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 4H8v1H7v1H6v1H5v1h1v1h1v1h1v1h1V4z' fill='%23000'/%3E%3C/svg%3E"); width: 16px; }
-        ::-webkit-scrollbar-button:horizontal:end { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 4H6v7h1v-1h1V9h1V8h1V7H9V6H8V5H7V4z' fill='%23000'/%3E%3C/svg%3E"); width: 16px; }
-        ::selection { color: #b4dffb; background: #ffffe0; }
-
         /* 导航栏（彩虹色） */
-        nav { width: 100%; position: fixed; top: 0; z-index: 999; background: var(--bg-card); border-bottom: 2px solid var(--border-color); }
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            background: var(--bg-card);
+            border-bottom: 2px solid var(--border-color);
+        }
         nav .links {
             display: flex;
             flex-wrap: wrap;
@@ -126,28 +107,59 @@
 
         /* 播放器 */
         .player { margin: 16px 0 12px; text-align: center; }
-        .vinyl { width: 64px; height: 64px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #222, #111); box-shadow: 0 0 0 4px #444, 0 0 0 6px #888; margin: 0 auto 8px; animation: spin 0s linear infinite; }
+        .vinyl {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #222, #111);
+            box-shadow: 0 0 0 4px #444, 0 0 0 6px #888;
+            margin: 0 auto 8px;
+            animation: spin 0s linear infinite;
+        }
         .vinyl.playing { animation: spin 5s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         .player-controls { display: flex; justify-content: center; gap: 12px; margin-bottom: 6px; }
-        .player-controls button { background: var(--pink-light); border: 1px solid var(--border-color); border-radius: 50%; width: 32px; height: 32px; font-size: 14px; cursor: pointer; color: var(--text-dark); transition: 0.2s; }
+        .player-controls button {
+            background: var(--pink-light);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+            cursor: pointer;
+            color: var(--text-dark);
+            transition: 0.2s;
+        }
         .player-controls button:hover { background: var(--pink); }
         .song-title { font-size: 10px; color: var(--text-mid); text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .theme-toggle { width: 100%; background: var(--pink-light); border: 1px solid var(--border-color); border-radius: 24px; padding: 6px 12px; cursor: pointer; font-size: 12px; font-weight: bold; color: var(--text-dark); text-align: center; margin-top: 8px; transition: 0.2s; }
+        .theme-toggle {
+            width: 100%;
+            background: var(--pink-light);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--text-dark);
+            text-align: center;
+            margin-top: 8px;
+            transition: 0.2s;
+        }
         .theme-toggle:hover { background: var(--pink); }
 
-        /* 右侧主区域 */
+        /* 右侧主区域（极简） */
         .right-col {
             margin-left: calc(var(--sidebar-width) + 40px);
             margin-right: 20px;
-            max-width: 1100px;
+            max-width: 800px;
         }
         /* Banner 空白框 */
         .banner {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            height: 180px;
+            border-radius: 16px;
+            height: 160px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -156,54 +168,61 @@
             color: var(--text-mid);
             font-size: 14px;
         }
-        /* 双列布局 */
+        /* 双列：日历 + 公告栏 */
         .two-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin-bottom: 24px;
         }
-        /* 日历容器 */
-        .calendar-container {
+        .card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 12px;
+            border-radius: 16px;
+            padding: 16px;
             box-shadow: var(--shadow);
         }
-        .calendar-header {
+        /* 紧凑周历 */
+        .compact-calendar .cal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
             padding: 0 4px;
         }
-        .calendar-header button {
+        .compact-calendar .cal-header button {
             background: var(--pink-light);
             border: 1px solid var(--border-color);
             border-radius: 20px;
-            padding: 4px 12px;
+            padding: 2px 12px;
             cursor: pointer;
             font-family: monospace;
+            font-size: 12px;
         }
-        .calendar-grid {
+        .compact-calendar .weekdays-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 4px;
-            text-align: center;
+            margin-bottom: 6px;
         }
-        .calendar-weekday {
+        .compact-calendar .weekday {
+            text-align: center;
+            font-size: 11px;
             font-weight: bold;
             color: var(--text-dark);
-            font-size: 12px;
             padding: 4px;
         }
+        .compact-calendar .days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
         .calendar-day {
-            padding: 6px 0;
-            background: var(--calendar-bg);
+            text-align: center;
+            padding: 4px 0;
+            background: var(--bg-card);
             border-radius: 6px;
             cursor: pointer;
-            font-size: 12px;
+            font-size: 11px;
             border: 1px solid var(--border-color);
             transition: 0.1s;
         }
@@ -212,95 +231,21 @@
             color: #fff;
             font-weight: bold;
         }
-        .calendar-day.other-month {
-            opacity: 0.4;
-        }
-
-        /* 热力图容器 */
-        .heatmap-container {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 12px;
-            box-shadow: var(--shadow);
-        }
-        .heatmap-header {
-            margin-bottom: 12px;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-        }
-        .contrib-grid {
-            display: grid;
-            grid-template-rows: repeat(7, 1fr);
-            grid-auto-flow: column;
-            gap: 3px;
-            overflow-x: auto;
-            padding-bottom: 6px;
-        }
-        .contrib-week {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
-        .contrib-day {
-            width: 14px;
-            height: 14px;
-            border-radius: 3px;
-            background: var(--heatmap-empty);
-        }
-        .contrib-level-0 { background: var(--heatmap-empty); }
-        .contrib-level-1 { background: #9be9a8; }
-        .contrib-level-2 { background: #40c463; }
-        .contrib-level-3 { background: #30a14e; }
-        .contrib-level-4 { background: #216e39; }
-        body.dark .contrib-level-1 { background: #2d6a4f; }
-        body.dark .contrib-level-2 { background: #1e855c; }
-        body.dark .contrib-level-3 { background: #15a76f; }
-        body.dark .contrib-level-4 { background: #1bce8c; }
-        .heatmap-legend {
-            display: flex;
-            justify-content: flex-end;
-            gap: 4px;
-            margin-top: 8px;
-            font-size: 10px;
-            align-items: center;
-        }
-        .legend-colors { display: flex; gap: 2px; }
-
         /* 公告栏 */
-        .announcement {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px;
-            box-shadow: var(--shadow);
-            margin-bottom: 24px;
-        }
         .announcement h3 {
             font-size: 16px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 6px;
         }
         .announcement p {
             font-size: 13px;
-            line-height: 1.5;
+            line-height: 1.6;
             color: var(--text-mid);
+            margin-bottom: 10px;
         }
-
-        /* 占位区块（供导航滚动） */
-        .section-placeholder {
-            margin: 30px 0;
-            padding: 20px;
-            border: 1px dashed var(--border-color);
-            background: var(--bg-card);
-            border-radius: 12px;
-            text-align: center;
-            color: var(--text-mid);
-        }
-
+        /* 响应式 */
         @media (max-width: 800px) {
             .left-col { display: none; }
             .right-col { margin-left: 20px; }
@@ -312,15 +257,15 @@
     </style>
 </head>
 <body>
-    <!-- 顶部彩虹导航栏 -->
+    <!-- 彩虹导航栏 -->
     <nav>
         <ul class="links">
-            <li><a href="#" data-target="home" style="background-color: #FF4D4D;">主页</a></li>
-            <li><a href="#" data-target="projects" style="background-color: #FFA500;">项目</a></li>
-            <li><a href="#" data-target="posts" style="background-color: #FFD700;">帖子</a></li>
-            <li><a href="#" data-target="portfolio" style="background-color: #32CD32;">作品集</a></li>
-            <li><a href="#" data-target="contact" style="background-color: #00CED1;">联系</a></li>
-            <li><a href="#" data-target="thanks" style="background-color: #1E90FF;">致谢</a></li>
+            <li><a href="#" data-target="top" style="background-color: #FF4D4D;">主页</a></li>
+            <li><a href="#" data-target="top" style="background-color: #FFA500;">项目</a></li>
+            <li><a href="#" data-target="top" style="background-color: #FFD700;">帖子</a></li>
+            <li><a href="#" data-target="top" style="background-color: #32CD32;">作品集</a></li>
+            <li><a href="#" data-target="top" style="background-color: #00CED1;">联系</a></li>
+            <li><a href="#" data-target="top" style="background-color: #1E90FF;">致谢</a></li>
             <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>
         </ul>
     </nav>
@@ -347,55 +292,33 @@
     </div>
 
     <!-- 右侧主区域 -->
-    <div class="right-col">
-        <!-- 顶部 Banner 空白框 -->
+    <div class="right-col" id="top">
+        <!-- Banner 图片占位 -->
         <div class="banner">
-            🖼️ 图片占位区（后续可放置横幅图像）
+            🖼️ 图片占位区（可替换为横幅图像）
         </div>
 
-        <!-- 双列：日历 + GitHub热力图 -->
+        <!-- 双列：日历 + 公告栏 -->
         <div class="two-columns">
-            <!-- 日历 -->
-            <div class="calendar-container">
-                <div class="calendar-header">
-                    <button id="prevMonthBtn">&lt;</button>
-                    <span id="monthYear"></span>
-                    <button id="nextMonthBtn">&gt;</button>
+            <!-- 紧凑周历 -->
+            <div class="card compact-calendar">
+                <div class="cal-header">
+                    <button id="compactPrevBtn">&lt;</button>
+                    <span id="compactMonthYear"></span>
+                    <button id="compactNextBtn">&gt;</button>
                 </div>
-                <div class="calendar-grid" id="calendarGrid"></div>
+                <div class="weekdays-grid" id="weekdaysGrid"></div>
+                <div class="days-grid" id="compactCalendarGrid"></div>
             </div>
 
-            <!-- GitHub 热力图（模拟） -->
-            <div class="heatmap-container">
-                <div class="heatmap-header">📅 GitHub 活动（近一年 · 模拟数据）</div>
-                <div id="contribHeatmap" class="contrib-grid"></div>
-                <div class="heatmap-legend">
-                    <span>少</span>
-                    <div class="legend-colors">
-                        <div class="contrib-day contrib-level-0"></div>
-                        <div class="contrib-day contrib-level-1"></div>
-                        <div class="contrib-day contrib-level-2"></div>
-                        <div class="contrib-day contrib-level-3"></div>
-                        <div class="contrib-day contrib-level-4"></div>
-                    </div>
-                    <span>多</span>
-                </div>
+            <!-- 公告栏 -->
+            <div class="card announcement">
+                <h3>📢 公告栏</h3>
+                <p>✨ 网站正在全面重构中，新功能将陆续上线！感谢大家的关注与支持。</p>
+                <p>🎉 如果你有建议或发现 Bug，欢迎通过左侧联系方式与我反馈。</p>
+                <p>📅 预计下周发布模组表格和精灵图鉴模块。</p>
             </div>
         </div>
-
-        <!-- 公告栏 -->
-        <div class="announcement">
-            <h3>📢 公告栏</h3>
-            <p>✨ 网站正在全面重构中，新功能将陆续上线！感谢大家的关注与支持。</p>
-            <p>🎉 如果你有建议或发现 Bug，欢迎通过左侧联系方式与我反馈。</p>
-        </div>
-
-        <!-- 导航栏对应的区块占位（点击后滚动到此） -->
-        <div id="projects" class="section-placeholder">📂 项目区域 – 后续将添加模组、游戏攻略等内容</div>
-        <div id="posts" class="section-placeholder">📰 帖子区域 – 后续将添加文章动态</div>
-        <div id="portfolio" class="section-placeholder">🎨 作品集区域 – 后续展示个人作品</div>
-        <div id="contact" class="section-placeholder">💬 联系区域 – 社交链接及留言方式</div>
-        <div id="thanks" class="section-placeholder">❤️ 致谢区域 – 感谢所有贡献者</div>
     </div>
 
     <audio id="audioPlayer" preload="auto"></audio>
@@ -467,101 +390,58 @@
             }
         });
 
-        // ==================== 日历 ====================
-        let currentDate = new Date();
-        function renderCalendar() {
-            const year = currentDate.getFullYear();
-            const month = currentDate.getMonth();
-            const firstDay = new Date(year, month, 1).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            const prevMonthDays = new Date(year, month, 0).getDate();
-            const today = new Date();
-            const isCurrentMonth = (today.getFullYear() === year && today.getMonth() === month);
-
-            const calendarGrid = document.getElementById('calendarGrid');
-            calendarGrid.innerHTML = '';
-            const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
-            weekdays.forEach(wd => {
+        // ==================== 紧凑周历 ====================
+        let calendarTargetDate = new Date();
+        const weekdayNames = ['日', '一', '二', '三', '四', '五', '六'];
+        function updateCompactCalendar(targetDate) {
+            const startDate = new Date(targetDate);
+            startDate.setDate(targetDate.getDate() - 3);
+            const weekDays = [];
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(startDate);
+                date.setDate(startDate.getDate() + i);
+                weekDays.push(date);
+            }
+            const weekdaysGrid = document.getElementById('weekdaysGrid');
+            weekdaysGrid.innerHTML = '';
+            weekdayNames.forEach(wd => {
                 const div = document.createElement('div');
-                div.className = 'calendar-weekday';
+                div.className = 'weekday';
                 div.textContent = wd;
-                calendarGrid.appendChild(div);
+                weekdaysGrid.appendChild(div);
             });
-
-            let date = 1;
-            for (let i = 0; i < 42; i++) {
-                let dayNum, isOther = false;
-                if (i < firstDay) {
-                    dayNum = prevMonthDays - (firstDay - i) + 1;
-                    isOther = true;
-                } else if (date <= daysInMonth) {
-                    dayNum = date++;
-                    isOther = false;
-                } else {
-                    dayNum = (date++ - daysInMonth);
-                    isOther = true;
-                }
+            const daysGrid = document.getElementById('compactCalendarGrid');
+            daysGrid.innerHTML = '';
+            const today = new Date();
+            weekDays.forEach((date) => {
+                const isToday = date.toDateString() === today.toDateString();
                 const cell = document.createElement('div');
                 cell.className = 'calendar-day';
-                if (isOther) cell.classList.add('other-month');
-                if (!isOther && isCurrentMonth && dayNum === today.getDate()) cell.classList.add('today');
-                cell.textContent = dayNum;
-                calendarGrid.appendChild(cell);
-            }
-            document.getElementById('monthYear').textContent = `${year}年 ${month+1}月`;
+                if (isToday) cell.classList.add('today');
+                cell.textContent = `${date.getDate()}`;
+                cell.onclick = () => updateCompactCalendar(date);
+                daysGrid.appendChild(cell);
+            });
+            const monthYear = `${targetDate.getFullYear()}年 ${targetDate.getMonth()+1}月`;
+            document.getElementById('compactMonthYear').textContent = monthYear;
         }
-        document.getElementById('prevMonthBtn').addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            renderCalendar();
+        document.getElementById('compactPrevBtn').addEventListener('click', () => {
+            calendarTargetDate.setDate(calendarTargetDate.getDate() - 7);
+            updateCompactCalendar(calendarTargetDate);
         });
-        document.getElementById('nextMonthBtn').addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            renderCalendar();
+        document.getElementById('compactNextBtn').addEventListener('click', () => {
+            calendarTargetDate.setDate(calendarTargetDate.getDate() + 7);
+            updateCompactCalendar(calendarTargetDate);
         });
-        renderCalendar();
+        updateCompactCalendar(calendarTargetDate);
 
-        // ==================== GitHub 热力图（模拟数据） ====================
-        function generateHeatmapData() {
-            const weeks = 52;
-            const daysPerWeek = 7;
-            const data = [];
-            for (let w = 0; w < weeks; w++) {
-                const week = [];
-                for (let d = 0; d < daysPerWeek; d++) {
-                    let level = Math.floor(Math.random() * 5);
-                    week.push(level);
-                }
-                data.push(week);
-            }
-            return data;
-        }
-        function renderHeatmap() {
-            const data = generateHeatmapData();
-            const container = document.getElementById('contribHeatmap');
-            container.innerHTML = '';
-            for (let w = 0; w < data.length; w++) {
-                const weekDiv = document.createElement('div');
-                weekDiv.className = 'contrib-week';
-                for (let d = 0; d < data[w].length; d++) {
-                    const dayDiv = document.createElement('div');
-                    dayDiv.className = `contrib-day contrib-level-${data[w][d]}`;
-                    weekDiv.appendChild(dayDiv);
-                }
-                container.appendChild(weekDiv);
-            }
-        }
-        renderHeatmap();
-
-        // ==================== 导航平滑滚动 ====================
+        // 导航点击平滑滚动到顶部
         document.querySelectorAll('nav .links li a[data-target]').forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('data-target');
-                let targetEl = document.getElementById(targetId);
-                if (targetId === 'home') {
-                    targetEl = document.querySelector('.right-col');
+                if (this.getAttribute('data-target') === 'top') {
+                    e.preventDefault();
+                    document.querySelector('.right-col').scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-                if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
