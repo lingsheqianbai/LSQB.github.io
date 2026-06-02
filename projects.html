@@ -239,51 +239,112 @@
             padding: 6px 16px;
             cursor: pointer;
             font-size: 13px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             display: inline-block;
         }
-        .content-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+        .back-btn:hover { background: var(--pink); }
+
+        /* 分组折叠块 */
+        .section-details {
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
         }
-        .content-item {
-            border-bottom: 1px solid #eee;
-            padding: 10px 0;
-        }
-        .content-title {
+        .section-details summary {
+            background: var(--pink-light);
+            padding: 12px 16px;
+            cursor: pointer;
             font-weight: bold;
-            font-size: 15px;
-        }
-        .content-subtitle {
-            font-size: 12px;
-            color: var(--text-mid);
-            margin-left: 8px;
-        }
-        .content-links {
-            margin-top: 6px;
+            font-size: 16px;
             display: flex;
-            gap: 12px;
-            font-size: 12px;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
         }
-        .content-links a {
+        .section-details summary::-webkit-details-marker { display: none; }
+        .section-details summary::after {
+            content: '▼';
+            margin-left: auto;
+            transition: transform 0.2s;
+        }
+        .section-details[open] summary::after {
+            transform: rotate(180deg);
+        }
+        .section-content {
+            padding: 16px;
+            background: var(--bg-card);
+        }
+        .section-search {
+            margin-bottom: 16px;
+        }
+        .section-search input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            background: #fff;
+            font-size: 13px;
+        }
+        .mod-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+        .mod-table th, .mod-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .mod-table th {
+            background: var(--pink-light);
+            font-weight: bold;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 11px;
+            background: #eee;
+        }
+        .status-complete { background: #c8e6c9; color: #2e7d32; }
+        .status-incomplete { background: #ffecb3; color: #b26a00; }
+        .status-pending { background: #ffcdd2; color: #c62828; }
+        .video-link, .mod-link {
             color: var(--pink-dark);
             text-decoration: none;
         }
-        .content-note {
-            font-size: 11px;
-            color: var(--text-light);
-            margin-top: 4px;
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        .pagination button, .pagination .page-number {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .pagination .page-number.active {
+            background: var(--pink);
+            color: #fff;
         }
         .empty-tip {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             color: var(--text-mid);
         }
 
         @media (max-width: 800px) {
             .left-col { display: none; }
             .right-col { margin-left: 20px; }
+            .mod-table th, .mod-table td { font-size: 11px; padding: 4px; }
         }
         @media (max-width: 768px) {
             nav .links li a { padding: 6px 20px; font-size: 12px; }
@@ -338,8 +399,7 @@
         <div id="gameDetailView" style="display: none;">
             <div class="detail-view">
                 <button class="back-btn" id="backToGridBtn">← 返回游戏列表</button>
-                <h3 id="detailGameName" style="margin-bottom: 16px;"></h3>
-                <div id="detailContent" class="content-list"></div>
+                <div id="detailContent"></div>
             </div>
         </div>
     </div>
@@ -387,10 +447,270 @@
         nextBtn.addEventListener('click', () => { currentTrack = (currentTrack + 1) % playlist.length; loadTrack(currentTrack); });
         loadTrack(currentTrack);
 
-        // ---------- 项目页面核心逻辑 ----------
+        // ---------- 全局变量 ----------
         let gamesData = [];
         let currentFilter = '';
 
+        // ---------- 辅助函数 ----------
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        // 通用分页表格渲染（用于简单数据，如精灵、任务等）
+        function renderSimpleTable(containerId, data, columns, pageSize = 10) {
+            let currentPage = 1;
+            let filteredData = [...data];
+            let searchInput = null;
+
+            function render() {
+                const start = (currentPage - 1) * pageSize;
+                const pageData = filteredData.slice(start, start + pageSize);
+                const tbody = document.querySelector(`#${containerId} tbody`);
+                if (!tbody) return;
+                if (pageData.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="999" class="empty-tip">没有匹配的内容</td></tr>';
+                } else {
+                    tbody.innerHTML = pageData.map(row => {
+                        let cells = '';
+                        columns.forEach(col => {
+                            let value = row[col.key] || '-';
+                            if (col.type === 'video' && value && value !== '') {
+                                value = `<a href="${value}" target="_blank" class="video-link">🎬 视频</a>`;
+                            } else if (col.type === 'url' && value && value !== '') {
+                                value = `<a href="${value}" target="_blank" class="mod-link">🔗 详情</a>`;
+                            }
+                            cells += `<td>${value}</td>`;
+                        });
+                        return `<tr>${cells}</tr>`;
+                    }).join('');
+                }
+                // 分页
+                const totalPages = Math.ceil(filteredData.length / pageSize);
+                const paginationDiv = document.querySelector(`#${containerId}-pagination`);
+                if (paginationDiv) {
+                    if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; }
+                    let pagesHtml = '';
+                    for (let i = 1; i <= totalPages; i++) {
+                        pagesHtml += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
+                    }
+                    paginationDiv.innerHTML = `<button class="prev-page" ${currentPage===1?'disabled':''}>‹ 上一页</button>${pagesHtml}<button class="next-page" ${currentPage===totalPages?'disabled':''}>下一页 ›</button>`;
+                    paginationDiv.querySelectorAll('.page-number').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            currentPage = parseInt(btn.dataset.page);
+                            render();
+                        });
+                    });
+                    const prevBtn = paginationDiv.querySelector('.prev-page');
+                    const nextBtn = paginationDiv.querySelector('.next-page');
+                    if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; render(); } });
+                    if (nextBtn) nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; render(); } });
+                }
+            }
+
+            function filterData(query) {
+                if (!query) filteredData = [...data];
+                else filteredData = data.filter(row => {
+                    return columns.some(col => {
+                        let val = row[col.key];
+                        return val && val.toLowerCase().includes(query.toLowerCase());
+                    });
+                });
+                currentPage = 1;
+                render();
+            }
+
+            // 添加搜索框
+            const searchHtml = `<div class="section-search"><input type="text" placeholder="搜索..." id="${containerId}-search"></div>`;
+            const container = document.getElementById(containerId);
+            if (container && !container.querySelector('.section-search')) {
+                container.insertAdjacentHTML('afterbegin', searchHtml);
+                const searchBox = document.getElementById(`${containerId}-search`);
+                if (searchBox) searchBox.addEventListener('input', (e) => filterData(e.target.value));
+            }
+            render();
+        }
+
+        // 渲染模组表格（带状态分类筛选等，简化版）
+        function renderModsTable(containerId, mods, pageSize = 10) {
+            let currentPage = 1;
+            let filteredMods = [...mods];
+            let searchQuery = '';
+            let statusFilter = '全部';
+
+            function render() {
+                const start = (currentPage - 1) * pageSize;
+                const pageMods = filteredMods.slice(start, start + pageSize);
+                const tbody = document.querySelector(`#${containerId} tbody`);
+                if (!tbody) return;
+                if (pageMods.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" class="empty-tip">没有匹配的模组</td></tr>';
+                } else {
+                    tbody.innerHTML = pageMods.map(mod => {
+                        const statusClass = {
+                            '完整': 'status-complete',
+                            '非完整': 'status-incomplete',
+                            '待检测': 'status-pending',
+                            '无需翻译': 'status-complete',
+                            '待处理': 'status-pending'
+                        }[mod.status] || '';
+                        const videoHtml = mod.videoUrl && mod.videoUrl !== '视频待发布' ? `<a href="${mod.videoUrl}" target="_blank" class="video-link">🎬 视频</a>` : '-';
+                        const steamLink = mod.steamId ? `https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.steamId}` : '#';
+                        return `<tr>
+                            <td><a href="${steamLink}" target="_blank" class="mod-link">${escapeHtml(mod.name)}</a></td>
+                            <td>${escapeHtml(mod.chineseName || '-')}</td>
+                            <td><span class="status-badge ${statusClass}">${mod.status || '未知'}</span></td>
+                            <td>${videoHtml}</td>
+                            <td>${escapeHtml(mod.note || '-')}</td>
+                            <td>${mod.offline ? '✅ 已上传' : '❌ 未上传'}</td>
+                        </tr>`;
+                    }).join('');
+                }
+                const totalPages = Math.ceil(filteredMods.length / pageSize);
+                const paginationDiv = document.querySelector(`#${containerId}-pagination`);
+                if (paginationDiv) {
+                    if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; }
+                    let pagesHtml = '';
+                    for (let i = 1; i <= totalPages; i++) {
+                        pagesHtml += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
+                    }
+                    paginationDiv.innerHTML = `<button class="prev-page" ${currentPage===1?'disabled':''}>‹ 上一页</button>${pagesHtml}<button class="next-page" ${currentPage===totalPages?'disabled':''}>下一页 ›</button>`;
+                    paginationDiv.querySelectorAll('.page-number').forEach(btn => {
+                        btn.addEventListener('click', () => { currentPage = parseInt(btn.dataset.page); render(); });
+                    });
+                    const prevBtn = paginationDiv.querySelector('.prev-page');
+                    const nextBtn = paginationDiv.querySelector('.next-page');
+                    if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; render(); } });
+                    if (nextBtn) nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; render(); } });
+                }
+            }
+
+            function filterData() {
+                let filtered = [...mods];
+                if (searchQuery) {
+                    const q = searchQuery.toLowerCase();
+                    filtered = filtered.filter(m => m.name.toLowerCase().includes(q) || (m.chineseName && m.chineseName.toLowerCase().includes(q)) || (m.note && m.note.toLowerCase().includes(q)));
+                }
+                if (statusFilter !== '全部') {
+                    filtered = filtered.filter(m => m.status === statusFilter);
+                }
+                filteredMods = filtered;
+                currentPage = 1;
+                render();
+            }
+
+            // 添加搜索和筛选控件
+            const container = document.getElementById(containerId);
+            if (container && !container.querySelector('.mod-filters')) {
+                const filterHtml = `
+                    <div class="mod-filters" style="margin-bottom:16px; display:flex; gap:12px; flex-wrap:wrap;">
+                        <input type="text" id="${containerId}-search" placeholder="搜索模组名称/中文名/备注..." style="flex:1; padding:6px 12px; border:1px solid var(--border-color); border-radius:30px;">
+                        <select id="${containerId}-status" style="padding:6px 12px; border:1px solid var(--border-color); border-radius:30px;">
+                            <option value="全部">全部状态</option>
+                            <option value="完整">完整</option>
+                            <option value="非完整">非完整</option>
+                            <option value="待检测">待检测</option>
+                            <option value="待处理">待处理</option>
+                        </select>
+                    </div>
+                `;
+                container.insertAdjacentHTML('afterbegin', filterHtml);
+                const searchBox = document.getElementById(`${containerId}-search`);
+                const statusSelect = document.getElementById(`${containerId}-status`);
+                if (searchBox) searchBox.addEventListener('input', (e) => { searchQuery = e.target.value; filterData(); });
+                if (statusSelect) statusSelect.addEventListener('change', (e) => { statusFilter = e.target.value; filterData(); });
+            }
+            render();
+        }
+
+        // ---------- 游戏详情加载 ----------
+        async function loadGameDetail(game) {
+            const detailDiv = document.getElementById('detailContent');
+            detailDiv.innerHTML = '<div class="empty-tip">加载中...</div>';
+
+            if (game.id === 'pz') {
+                // 僵尸毁灭工程：加载模组 + 攻略
+                const [modsRes, guidesRes] = await Promise.all([
+                    fetch('data/Project Zomboid Mods.json').catch(() => null),
+                    fetch('data/guides.json').catch(() => null)
+                ]);
+                let mods = [];
+                let guides = [];
+                if (modsRes && modsRes.ok) mods = await modsRes.json();
+                if (guidesRes && guidesRes.ok) guides = await guidesRes.json();
+                // 筛选模组：game 字段包含“僵毁”或“僵尸毁灭工程”
+                const pzMods = mods.filter(m => m.game && (m.game.includes('僵毁') || m.game.includes('僵尸毁灭工程')));
+                // 筛选攻略：名称以 [僵尸毁灭工程] 开头
+                const pzGuides = guides.filter(g => g.name && g.name.startsWith('[僵尸毁灭工程]'));
+
+                let html = '';
+                // 模组折叠块
+                html += `<details class="section-details" open><summary>📦 模组信息 (${pzMods.length}个)</summary><div class="section-content"><div id="pzModsTableContainer"><table class="mod-table" id="pzModsTable"><thead><tr><th>模组名称</th><th>中文名</th><th>状态</th><th>视频</th><th>备注</th><th>离线分享</th></tr></thead><tbody></tbody></table><div id="pzModsTable-pagination"></div></div></div></details>`;
+                // 攻略折叠块
+                if (pzGuides.length) {
+                    html += `<details class="section-details"><summary>📖 游戏攻略 (${pzGuides.length}个)</summary><div class="section-content"><div id="pzGuidesTableContainer"><table class="mod-table" id="pzGuidesTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="pzGuidesTable-pagination"></div></div></div></details>`;
+                }
+                detailDiv.innerHTML = html;
+                renderModsTable('pzModsTable', pzMods, 15);
+                if (pzGuides.length) {
+                    const guideData = pzGuides.map(g => ({ name: g.name, url: g.url }));
+                    renderSimpleTable('pzGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                }
+            }
+            else if (game.id === 'luoke') {
+                // 洛克王国：世界：加载 wonders, tasks, activities, titles
+                const [wondersRes, tasksRes, activitiesRes, titlesRes] = await Promise.all([
+                    fetch('data/wonders.json').catch(() => null),
+                    fetch('data/tasks.json').catch(() => null),
+                    fetch('data/activities.json').catch(() => null),
+                    fetch('data/titles.json').catch(() => null)
+                ]);
+                let wonders = wondersRes && wondersRes.ok ? await wondersRes.json() : [];
+                let tasks = tasksRes && tasksRes.ok ? await tasksRes.json() : [];
+                let activities = activitiesRes && activitiesRes.ok ? await activitiesRes.json() : [];
+                let titles = titlesRes && titlesRes.ok ? await titlesRes.json() : [];
+
+                let html = '';
+                if (wonders.length) {
+                    html += `<details class="section-details" open><summary>🐉 精灵图鉴 (${wonders.length}个)</summary><div class="section-content"><div id="luokeWondersTableContainer"><table class="mod-table" id="luokeWondersTable"><thead><tr><th>编号</th><th>精灵名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeWondersTable-pagination"></div></div></div></details>`;
+                }
+                if (tasks.length) {
+                    html += `<details class="section-details"><summary>📜 任务攻略 (${tasks.length}个)</summary><div class="section-content"><div id="luokeTasksTableContainer"><table class="mod-table" id="luokeTasksTable"><thead><tr><th>任务名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeTasksTable-pagination"></div></div></div></details>`;
+                }
+                if (activities.length) {
+                    html += `<details class="section-details"><summary>🎉 活动攻略 (${activities.length}个)</summary><div class="section-content"><div id="luokeActivitiesTableContainer"><table class="mod-table" id="luokeActivitiesTable"><thead><tr><th>活动名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeActivitiesTable-pagination"></div></div></div></details>`;
+                }
+                if (titles.length) {
+                    html += `<details class="section-details"><summary>🏅 称号获取 (${titles.length}个)</summary><div class="section-content"><div id="luokeTitlesTableContainer"><table class="mod-table" id="luokeTitlesTable"><thead><tr><th>称号名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeTitlesTable-pagination"></div></div></div></details>`;
+                }
+                detailDiv.innerHTML = html || '<div class="empty-tip">暂无内容</div>';
+                if (wonders.length) renderSimpleTable('luokeWondersTable', wonders, [{ key: 'id', label: '编号' }, { key: 'name', label: '名称' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
+                if (tasks.length) renderSimpleTable('luokeTasksTable', tasks, [{ key: 'name', label: '任务名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
+                if (activities.length) renderSimpleTable('luokeActivitiesTable', activities, [{ key: 'name', label: '活动名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
+                if (titles.length) renderSimpleTable('luokeTitlesTable', titles, [{ key: 'name', label: '称号名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
+            }
+            else if (game.id === 'terror' || game.id === 'minecraft' || game.id === 'lifeisstrange') {
+                // 从 guides.json 中按前缀筛选
+                const prefix = game.id === 'terror' ? '[恐怖学校' : (game.id === 'minecraft' ? '[我的世界' : '[奇异人生');
+                const guidesRes = await fetch('data/guides.json').catch(() => null);
+                let guides = guidesRes && guidesRes.ok ? await guidesRes.json() : [];
+                const filtered = guides.filter(g => g.name && g.name.startsWith(prefix));
+                const html = `<details class="section-details" open><summary>📖 攻略教程 (${filtered.length}个)</summary><div class="section-content"><div id="${game.id}GuidesTableContainer"><table class="mod-table" id="${game.id}GuidesTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="${game.id}GuidesTable-pagination"></div></div></div></details>`;
+                detailDiv.innerHTML = html;
+                const guideData = filtered.map(g => ({ name: g.name, url: g.url }));
+                renderSimpleTable(`${game.id}GuidesTable`, guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+            }
+            else {
+                detailDiv.innerHTML = '<div class="empty-tip">暂无内容，后续补充~</div>';
+            }
+        }
+
+        // ---------- 游戏卡片列表 ----------
         async function loadGames() {
             const grid = document.getElementById('gamesGrid');
             try {
@@ -420,66 +740,22 @@
                 </div>
             `).join('');
 
-            // 绑定卡片点击事件
             document.querySelectorAll('.project-card').forEach(card => {
-                card.addEventListener('click', () => {
+                card.addEventListener('click', async () => {
                     const id = card.dataset.id;
                     const game = gamesData.find(g => g.id === id);
-                    if (game) showGameDetail(game);
+                    if (game) {
+                        document.getElementById('gamesGridView').style.display = 'none';
+                        document.getElementById('gameDetailView').style.display = 'block';
+                        await loadGameDetail(game);
+                    }
                 });
             });
-        }
-
-        function showGameDetail(game) {
-            document.getElementById('gamesGridView').style.display = 'none';
-            document.getElementById('gameDetailView').style.display = 'block';
-            document.getElementById('detailGameName').innerHTML = `${game.icon || '🎮'} ${escapeHtml(game.name)}`;
-            const contentDiv = document.getElementById('detailContent');
-            if (!game.content || game.content.length === 0) {
-                contentDiv.innerHTML = '<div class="empty-tip">暂无内容，后续补充~</div>';
-                return;
-            }
-            contentDiv.innerHTML = game.content.map(item => {
-                let typeLabel = '';
-                switch(item.type) {
-                    case 'mod': typeLabel = '📦 模组'; break;
-                    case 'guide': typeLabel = '📖 攻略'; break;
-                    case 'wonder': typeLabel = '🐉 精灵'; break;
-                    case 'task': typeLabel = '📜 任务'; break;
-                    case 'activity': typeLabel = '🎉 活动'; break;
-                    case 'title': typeLabel = '🏅 称号'; break;
-                    default: typeLabel = '🔹';
-                }
-                let linksHtml = '';
-                if (item.url) linksHtml += `<a href="${item.url}" target="_blank">🔗 详情</a>`;
-                if (item.video) linksHtml += `<a href="${item.video}" target="_blank">🎬 视频</a>`;
-                return `
-                    <div class="content-item">
-                        <div><span class="content-title">${escapeHtml(item.title)}</span><span class="content-subtitle">${item.subtitle ? escapeHtml(item.subtitle) : ''}</span></div>
-                        <div class="content-links">${linksHtml || '—'}</div>
-                        ${item.note ? `<div class="content-note">📝 ${escapeHtml(item.note)}</div>` : ''}
-                    </div>
-                `;
-            }).join('');
         }
 
         function backToGrid() {
             document.getElementById('gamesGridView').style.display = 'block';
             document.getElementById('gameDetailView').style.display = 'none';
-            // 可选：重置搜索
-            // document.getElementById('searchInput').value = '';
-            // currentFilter = '';
-            // renderGameCards();
-        }
-
-        function escapeHtml(str) {
-            if (!str) return '';
-            return str.replace(/[&<>]/g, function(m) {
-                if (m === '&') return '&amp;';
-                if (m === '<') return '&lt;';
-                if (m === '>') return '&gt;';
-                return m;
-            });
         }
 
         document.getElementById('searchInput').addEventListener('input', (e) => {
