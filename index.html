@@ -11,10 +11,18 @@
     <meta name="description" content="千白分享主页 - 重构测试">
     <title>千白分享主页 - 重构中</title>
     <style>
-        /* ========== Win98 复古风格（保留基础样式） ========== */
+        /* ========== Win98 复古风格 ========== */
         :root {
+            --sidebar-width: 260px;
+            --layout-gap: 20px;
+            --nav-offset: 60px;
+            --pink: #f9bddd;
+            --pink-dark: #c44569;
+            --pink-light: #ffcfe2;
+            --text-dark: #2a1a2e;
+            --text-mid: #5a3e4b;
+            --text-light: #bba3ad;
             --border-color: #000;
-            --text-light: #fff;
         }
 
         @font-face {
@@ -31,7 +39,7 @@
             background-image: repeating-conic-gradient(#f9bddd33 0% 25%, transparent 0% 50%) 50% / 40px 40px;
             background-attachment: fixed;
             min-height: 100vh;
-            padding-top: 70px;
+            padding-top: var(--nav-offset);
         }
 
         /* Win98 滚动条 */
@@ -46,7 +54,7 @@
         ::-webkit-scrollbar-button:horizontal:end { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 4H6v7h1v-1h1V9h1V8h1V7H9V6H8V5H7V4z' fill='%23000'/%3E%3C/svg%3E"); width: 16px; }
         ::selection { color: #b4dffb; background: #ffffe0; }
 
-        /* 导航栏 */
+        /* ========== 导航栏（彩虹色按钮，加长） ========== */
         nav { width: 100%; position: fixed; top: 0; z-index: 999; background: #fff; border-bottom: 2px solid var(--border-color); }
         nav .links {
             display: flex;
@@ -55,13 +63,13 @@
             list-style: none;
             padding: 8px 16px;
             margin: 0;
-            gap: 8px;
+            gap: 12px;
         }
         nav .links li { display: inline-block; }
         nav .links li a {
             display: inline-block;
-            padding: 8px 28px;      /* 加长按钮 */
-            border-radius: 24px;    /* 圆角更大，更现代，但仍保留复古感 */
+            padding: 8px 32px;
+            border-radius: 32px;
             border: 1px solid var(--border-color);
             font-family: SimSun, "Microsoft YaHei", sans-serif;
             font-size: 14px;
@@ -74,23 +82,73 @@
             text-align: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-        nav .links li a:hover {
-            filter: brightness(0.85);
-            transform: translateY(-1px);
-        }
-        nav .links li.active a {
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
-            transform: translateY(1px);
-        }
+        nav .links li a:hover { filter: brightness(0.85); transform: translateY(-1px); }
+        nav .links li.active a { box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); transform: translateY(1px); }
 
-        /* 主内容区 - 空白占位 */
-        .content-placeholder {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
+        /* ========== 左侧栏（参考 xnmoe.com） ========== */
+        .left-col {
+            position: fixed;
+            left: 20px;
+            top: var(--nav-offset);
+            width: var(--sidebar-width);
+            z-index: 950;
+        }
+        .profile-card {
             background: #fff;
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 12px;
+            padding: 16px 12px;
+            text-align: center;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+        }
+        .profile-avatar {
+            font-size: 64px;
+            margin-bottom: 8px;
+        }
+        .profile-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+        .profile-signature {
+            font-size: 11px;
+            color: var(--text-mid);
+            border-top: 1px dashed #e0cfd6;
+            padding-top: 6px;
+            margin-top: 6px;
+        }
+        .profile-links {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .profile-links a {
+            display: block;
+            background: var(--pink-light);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 5px 8px;
+            font-size: 11px;
+            color: var(--pink-dark);
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .profile-links a:hover {
+            background: var(--pink);
+            color: #fff;
+        }
+
+        /* ========== 右侧内容区 ========== */
+        .right-col {
+            margin-left: calc(var(--sidebar-width) + 40px);
+            margin-right: 20px;
+            max-width: 900px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
         }
         .section-placeholder {
             margin: 20px 0;
@@ -99,28 +157,52 @@
             background: #fffbfd;
             text-align: center;
             font-size: 18px;
-            color: #5a3e4b;
+            color: var(--text-mid);
         }
 
+        @media (max-width: 800px) {
+            .left-col { display: none; }
+            .right-col { margin-left: 20px; }
+        }
         @media (max-width: 768px) {
-            nav .links li a { padding: 6px 16px; font-size: 12px; }
+            nav .links li a { padding: 6px 20px; font-size: 12px; }
         }
     </style>
 </head>
 <body>
+    <!-- 顶部导航栏 -->
     <nav>
         <ul class="links">
-            <li><a href="#" data-target="home" style="background-color: #FF4D4D;">主页</a></li>        <!-- 红 -->
-            <li><a href="#" data-target="projects" style="background-color: #FFA500;">项目</a></li>   <!-- 橙 -->
-            <li><a href="#" data-target="posts" style="background-color: #FFD700;">帖子</a></li>      <!-- 黄 -->
-            <li><a href="#" data-target="portfolio" style="background-color: #32CD32;">作品集</a></li><!-- 绿 -->
-            <li><a href="#" data-target="contact" style="background-color: #00CED1;">联系</a></li>    <!-- 青 -->
-            <li><a href="#" data-target="thanks" style="background-color: #1E90FF;">致谢</a></li>     <!-- 蓝 -->
-            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li> <!-- 紫 -->
+            <li><a href="#" data-target="home" style="background-color: #FF4D4D;">主页</a></li>
+            <li><a href="#" data-target="projects" style="background-color: #FFA500;">项目</a></li>
+            <li><a href="#" data-target="posts" style="background-color: #FFD700;">帖子</a></li>
+            <li><a href="#" data-target="portfolio" style="background-color: #32CD32;">作品集</a></li>
+            <li><a href="#" data-target="contact" style="background-color: #00CED1;">联系</a></li>
+            <li><a href="#" data-target="thanks" style="background-color: #1E90FF;">致谢</a></li>
+            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>
         </ul>
     </nav>
 
-    <div class="content-placeholder">
+    <!-- 左侧栏 -->
+    <div class="left-col">
+        <div class="profile-card">
+            <div class="profile-avatar">📦</div>
+            <div class="profile-name">凌社千白</div>
+            <div class="profile-signature">分享 · 记录 · 创造</div>
+            <div class="profile-links">
+                <a href="#" data-target="home">🏠 主页</a>
+                <a href="#" data-target="projects">📂 项目</a>
+                <a href="#" data-target="posts">📰 帖子</a>
+                <a href="#" data-target="portfolio">🎨 作品集</a>
+                <a href="#" data-target="contact">💬 联系</a>
+                <a href="#" data-target="thanks">❤️ 致谢</a>
+                <a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank">📦 仓库</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 右侧内容区 -->
+    <div class="right-col">
         <div id="home" class="section-placeholder">🏠 主页区域 – 内容建设中</div>
         <div id="projects" class="section-placeholder">📂 项目区域 – 内容建设中</div>
         <div id="posts" class="section-placeholder">📰 帖子区域 – 内容建设中</div>
@@ -130,10 +212,10 @@
     </div>
 
     <script>
-        // 平滑滚动
-        document.querySelectorAll('nav .links li a[data-target]').forEach(link => {
+        // 平滑滚动 + 高亮激活
+        document.querySelectorAll('nav .links li a[data-target], .profile-links a[data-target]').forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
+                if (this.getAttribute('href') !== '#') e.preventDefault();
                 const targetId = this.getAttribute('data-target');
                 const targetElement = document.getElementById(targetId);
                 if (targetElement) {
@@ -141,17 +223,16 @@
                 }
             });
         });
-        // 高亮当前可见区域
+
         const sections = ['home', 'projects', 'posts', 'portfolio', 'contact', 'thanks'];
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const id = entry.target.id;
-                    document.querySelectorAll('nav .links li a').forEach(link => {
-                        const target = link.getAttribute('data-target');
-                        if (target === id) {
+                    document.querySelectorAll('nav .links li a[data-target]').forEach(link => {
+                        if (link.getAttribute('data-target') === id) {
                             link.parentElement.classList.add('active');
-                        } else if (link.getAttribute('href') !== 'https://github.com/lingsheqianbai/lingsheqianbai.github.io') {
+                        } else {
                             link.parentElement.classList.remove('active');
                         }
                     });
