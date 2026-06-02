@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>千白分享主页</title>
+    <title>全部动态 - 千白分享</title>
     <style>
-        /* ========== 基础复古风格 ========== */
+        /* 复用主页样式，只调整右侧内容区域 */
         :root {
             --sidebar-width: 260px;
             --nav-offset: 60px;
@@ -16,11 +16,13 @@
             --text-mid: #5a3e4b;
             --text-light: #bba3ad;
             --border-color: #000;
+            --bg-body: navajowhite;
             --bg-card: #fff;
             --bg-sidebar: #fff;
             --shadow: 4px 4px 0 rgba(0,0,0,0.1);
         }
         body.dark {
+            --bg-body: #1a1a2e;
             --bg-card: #16213e;
             --bg-sidebar: #0f3460;
             --text-dark: #e2e2e2;
@@ -42,15 +44,15 @@
 
         body {
             font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
-            background: url('images/beijin1.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background: var(--bg-body);
+            background-image: repeating-conic-gradient(#f9bddd33 0% 25%, transparent 0% 50%) 50% / 40px 40px;
+            background-attachment: fixed;
             min-height: 100vh;
             padding-top: var(--nav-offset);
             transition: background 0.3s, color 0.2s;
             color: var(--text-dark);
         }
 
-        /* 导航栏（彩虹色） */
         nav {
             width: 100%;
             position: fixed;
@@ -83,7 +85,6 @@
         }
         nav .links li a:hover { filter: brightness(0.85); }
 
-        /* 左侧栏 */
         .left-col {
             position: fixed;
             left: 20px;
@@ -102,7 +103,6 @@
         .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
         .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
 
-        /* 播放器 */
         .player { margin: 16px 0 12px; text-align: center; }
         .vinyl {
             width: 64px;
@@ -145,119 +145,33 @@
         }
         .theme-toggle:hover { background: var(--pink); }
 
-        /* 右侧主区域 */
+        /* 右侧内容区 */
         .right-col {
             margin-left: calc(var(--sidebar-width) + 40px);
             margin-right: 20px;
             max-width: 1200px;
         }
-        /* Banner 图片占位符：直接显示 pngzhuye.png */
-        .banner {
-            background: rgba(0,0,0,0.2);
-            border-radius: 16px;
-            height: 350px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
+        .page-header {
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
         }
-        .banner-img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        /* 双列：日历 + 公告栏 */
-        .two-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 24px;
-        }
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 16px;
-            box-shadow: var(--shadow);
-        }
-        /* 紧凑周历 */
-        .compact-calendar .cal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            padding: 0 4px;
-        }
-        .compact-calendar .cal-header button {
+        .page-header h2 {
+            font-size: 24px;
+            display: inline-block;
             background: var(--pink-light);
+            padding: 4px 20px;
+            border-radius: 30px;
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2px 12px;
-            cursor: pointer;
-            font-family: monospace;
-            font-size: 12px;
         }
-        .compact-calendar .weekdays-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-            margin-bottom: 6px;
-        }
-        .compact-calendar .weekday {
-            text-align: center;
-            font-size: 11px;
-            font-weight: bold;
-            color: var(--text-dark);
-            padding: 4px;
-        }
-        .compact-calendar .days-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 4px;
-        }
-        .calendar-day {
-            text-align: center;
-            padding: 4px 0;
-            background: var(--bg-card);
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 11px;
-            border: 1px solid var(--border-color);
-            transition: 0.1s;
-        }
-        .calendar-day.today {
-            background: var(--pink);
-            color: #fff;
-            font-weight: bold;
-        }
-        /* 公告栏 */
-        .announcement h3 {
-            font-size: 16px;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .announcement p {
-            font-size: 13px;
-            line-height: 1.6;
-            color: var(--text-mid);
-            margin-bottom: 10px;
-        }
-
-        /* 动态卡片（QQ空间风格） */
         .moment-item {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 16px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             box-shadow: var(--shadow);
-            transition: transform 0.2s;
         }
-        .moment-item:hover { transform: translateY(-2px); }
         .moment-header {
             display: flex;
             align-items: center;
@@ -275,9 +189,6 @@
             font-size: 24px;
             border: 1px solid var(--border-color);
         }
-        .moment-info {
-            flex: 1;
-        }
         .moment-nickname {
             font-weight: bold;
             font-size: 15px;
@@ -291,7 +202,6 @@
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 12px;
-            color: var(--text-dark);
         }
         .moment-images {
             display: flex;
@@ -316,79 +226,37 @@
             padding-top: 10px;
             margin-top: 4px;
         }
-        .moments-more {
-            text-align: center;
-            margin-top: 8px;
-        }
-        .moments-more a {
-            display: inline-block;
-            background: var(--pink-light);
-            padding: 6px 16px;
-            border-radius: 24px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 12px;
-            font-weight: bold;
-            border: 1px solid var(--border-color);
-        }
-        .moments-more a:hover {
-            background: var(--pink);
-        }
 
-        /* 支持一下折叠块 */
-        .sponsor-block {
-            margin-top: 24px;
-            margin-bottom: 24px;
-        }
-        .sponsor-summary {
-            background: var(--pink-light);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 8px 16px;
-            cursor: pointer;
-            font-weight: bold;
+        /* 分页 */
+        .pagination {
             display: flex;
-            align-items: center;
+            justify-content: center;
             gap: 8px;
-            user-select: none;
+            margin-top: 24px;
+            flex-wrap: wrap;
         }
-        .sponsor-summary:hover {
-            background: var(--pink);
-        }
-        .sponsor-summary::after {
-            content: '▼';
-            margin-left: auto;
-            font-size: 12px;
-            transition: transform 0.2s;
-        }
-        .sponsor-block.open .sponsor-summary::after {
-            transform: rotate(180deg);
-        }
-        .sponsor-content {
-            display: none;
+        .pagination button, .pagination .page-number {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
-            border-top: none;
-            border-radius: 0 0 12px 12px;
-            padding: 16px;
-            text-align: center;
-        }
-        .sponsor-block.open .sponsor-content {
-            display: block;
-        }
-        .sponsor-img {
-            max-width: 180px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background: #fff;
-            padding: 4px;
+            padding: 6px 14px;
+            border-radius: 24px;
             cursor: pointer;
+            font-size: 13px;
+            color: var(--text-dark);
+            transition: 0.2s;
+        }
+        .pagination button:hover, .pagination .page-number:hover {
+            background: var(--pink-light);
+        }
+        .pagination .page-number.active {
+            background: var(--pink);
+            color: #fff;
+            border-color: var(--pink-dark);
         }
 
         @media (max-width: 800px) {
             .left-col { display: none; }
             .right-col { margin-left: 20px; }
-            .two-columns { grid-template-columns: 1fr; }
             .moment-images img { max-width: calc(50% - 8px); }
         }
         @media (max-width: 768px) {
@@ -399,12 +267,12 @@
 <body>
     <nav>
         <ul class="links">
-            <li><a href="#" data-target="top" style="background-color: #FF4D4D;">主页</a></li>
+            <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
             <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
-            <li><a href="#" data-target="top" style="background-color: #FFD700;">项目</a></li>
-            <li><a href="#" data-target="top" style="background-color: #32CD32;">作品集</a></li>
-            <li><a href="#" data-target="top" style="background-color: #00CED1;">联系</a></li>
-            <li><a href="#" data-target="top" style="background-color: #1E90FF;">致谢</a></li>
+            <li><a href="#" style="background-color: #FFD700;">项目</a></li>
+            <li><a href="#" style="background-color: #32CD32;">作品集</a></li>
+            <li><a href="#" style="background-color: #00CED1;">联系</a></li>
+            <li><a href="#" style="background-color: #1E90FF;">致谢</a></li>
             <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>
         </ul>
     </nav>
@@ -427,47 +295,18 @@
         </div>
     </div>
 
-    <div class="right-col" id="top">
-        <!-- Banner 图片占位符：显示 pngzhuye.png -->
-        <div class="banner">
-            <img src="images/pngzhuye.png" alt="主页图片" class="banner-img">
+    <div class="right-col">
+        <div class="page-header">
+            <h2>📰 全部动态</h2>
         </div>
-
-        <!-- 双列：日历 + 公告栏 -->
-        <div class="two-columns">
-            <div class="card compact-calendar">
-                <div class="cal-header">
-                    <button id="compactPrevBtn">&lt;</button>
-                    <span id="compactMonthYear"></span>
-                    <button id="compactNextBtn">&gt;</button>
-                </div>
-                <div class="weekdays-grid" id="weekdaysGrid"></div>
-                <div class="days-grid" id="compactCalendarGrid"></div>
-            </div>
-            <div class="card announcement">
-                <h3>📢 公告栏</h3>
-                <p>✨ 网站正在全面重构中，新功能将陆续上线！感谢大家的关注与支持。</p>
-                <p>🎉 如果你有建议或发现 Bug，欢迎通过左侧联系方式与我反馈。</p>
-                <p>📅 预计下周发布模组表格和精灵图鉴模块。</p>
-            </div>
-        </div>
-
-        <!-- 动态区域：从 JSON 加载最近3条 -->
-        <div id="momentsContainer"></div>
-
-        <!-- 支持一下折叠块 -->
-        <div class="sponsor-block" id="sponsorBlock">
-            <div class="sponsor-summary">💖 支持一下</div>
-            <div class="sponsor-content">
-                <img src="sponsor.png" alt="赞赏码" class="sponsor-img" id="sponsorImg" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:var(--text-mid);\'>请放置 sponsor.png 到根目录</span>'">
-            </div>
-        </div>
+        <div id="momentsList"></div>
+        <div id="pagination" class="pagination"></div>
     </div>
 
     <audio id="audioPlayer" preload="auto"></audio>
 
     <script>
-        // ==================== 音乐播放器 ====================
+        // 音乐播放器（与主页相同，复用逻辑）
         const playlist = [
             { title: "示例曲目 1 - 轻音乐", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
             { title: "示例曲目 2 - 钢琴曲", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
@@ -533,93 +372,101 @@
             }
         });
 
-        // 紧凑周历
-        let calendarTargetDate = new Date();
-        const weekdayNames = ['日', '一', '二', '三', '四', '五', '六'];
-        function updateCompactCalendar(targetDate) {
-            const startDate = new Date(targetDate);
-            startDate.setDate(targetDate.getDate() - 3);
-            const weekDays = [];
-            for (let i = 0; i < 7; i++) {
-                const date = new Date(startDate);
-                date.setDate(startDate.getDate() + i);
-                weekDays.push(date);
-            }
-            const weekdaysGrid = document.getElementById('weekdaysGrid');
-            weekdaysGrid.innerHTML = '';
-            weekdayNames.forEach(wd => {
-                const div = document.createElement('div');
-                div.className = 'weekday';
-                div.textContent = wd;
-                weekdaysGrid.appendChild(div);
-            });
-            const daysGrid = document.getElementById('compactCalendarGrid');
-            daysGrid.innerHTML = '';
-            const today = new Date();
-            weekDays.forEach((date) => {
-                const isToday = date.toDateString() === today.toDateString();
-                const cell = document.createElement('div');
-                cell.className = 'calendar-day';
-                if (isToday) cell.classList.add('today');
-                cell.textContent = `${date.getDate()}`;
-                cell.onclick = () => updateCompactCalendar(date);
-                daysGrid.appendChild(cell);
-            });
-            const monthYear = `${targetDate.getFullYear()}年 ${targetDate.getMonth()+1}月`;
-            document.getElementById('compactMonthYear').textContent = monthYear;
-        }
-        document.getElementById('compactPrevBtn').addEventListener('click', () => {
-            calendarTargetDate.setDate(calendarTargetDate.getDate() - 7);
-            updateCompactCalendar(calendarTargetDate);
-        });
-        document.getElementById('compactNextBtn').addEventListener('click', () => {
-            calendarTargetDate.setDate(calendarTargetDate.getDate() + 7);
-            updateCompactCalendar(calendarTargetDate);
-        });
-        updateCompactCalendar(calendarTargetDate);
+        // 动态分页
+        let allMoments = [];
+        let currentPage = 1;
+        const PAGE_SIZE = 10;
 
-        // 加载动态（最近3条）
-        async function loadMoments() {
-            const container = document.getElementById('momentsContainer');
+        async function loadAllMoments() {
             try {
                 const res = await fetch('data/moments.json');
                 if (!res.ok) throw new Error('加载失败');
-                const moments = await res.json();
-                // 按时间倒序排序，取前3条
-                const recent = moments.sort((a,b) => new Date(b.time) - new Date(a.time)).slice(0, 3);
-                if (recent.length === 0) {
-                    container.innerHTML = '<div class="card" style="text-align:center; padding:20px;">暂无动态，敬请期待~</div>';
-                    return;
-                }
-                let html = '';
-                recent.forEach(m => {
-                    const imagesHtml = (m.images && m.images.length) ? 
-                        `<div class="moment-images">${m.images.map(img => `<img src="${img}" alt="配图" loading="lazy" onclick="showImageModal(this.src)">`).join('')}</div>` : '';
-                    html += `
-                        <div class="moment-item">
-                            <div class="moment-header">
-                                <div class="moment-avatar">${escapeHtml(m.avatar || '📦')}</div>
-                                <div class="moment-info">
-                                    <div class="moment-nickname">${escapeHtml(m.nickname || '凌社千白')}</div>
-                                    <div class="moment-time">${formatTime(m.time)}</div>
-                                </div>
-                            </div>
-                            <div class="moment-content">${escapeHtml(m.content)}</div>
-                            ${imagesHtml}
-                            <div class="moment-stats">
-                                <span>❤️ ${m.likes || 0}</span>&nbsp;&nbsp;
-                                <span>💬 ${m.comments || 0}</span>
-                            </div>
-                        </div>
-                    `;
-                });
-                html += `<div class="moments-more"><a href="moments.html">📲 查看更多动态</a></div>`;
-                container.innerHTML = html;
-            } catch (err) {
-                console.error(err);
-                container.innerHTML = '<div class="card" style="text-align:center; padding:20px;">加载动态失败，请检查 data/moments.json</div>';
+                const data = await res.json();
+                // 按时间倒序
+                allMoments = data.sort((a,b) => new Date(b.time) - new Date(a.time));
+                renderPage();
+                renderPagination();
+            } catch(err) {
+                document.getElementById('momentsList').innerHTML = '<div class="moment-item" style="text-align:center;">加载动态失败，请检查 data/moments.json</div>';
             }
         }
+
+        function renderPage() {
+            const start = (currentPage - 1) * PAGE_SIZE;
+            const pageMoments = allMoments.slice(start, start + PAGE_SIZE);
+            if (!pageMoments.length) {
+                document.getElementById('momentsList').innerHTML = '<div class="moment-item" style="text-align:center;">暂无动态</div>';
+                return;
+            }
+            let html = '';
+            pageMoments.forEach(m => {
+                const imagesHtml = (m.images && m.images.length) ? 
+                    `<div class="moment-images">${m.images.map(img => `<img src="${img}" alt="配图" loading="lazy" onclick="showImageModal(this.src)">`).join('')}</div>` : '';
+                html += `
+                    <div class="moment-item">
+                        <div class="moment-header">
+                            <div class="moment-avatar">${escapeHtml(m.avatar || '📦')}</div>
+                            <div class="moment-info">
+                                <div class="moment-nickname">${escapeHtml(m.nickname || '凌社千白')}</div>
+                                <div class="moment-time">${formatTime(m.time)}</div>
+                            </div>
+                        </div>
+                        <div class="moment-content">${escapeHtml(m.content)}</div>
+                        ${imagesHtml}
+                        <div class="moment-stats">
+                            <span>❤️ ${m.likes || 0}</span>&nbsp;&nbsp;
+                            <span>💬 ${m.comments || 0}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('momentsList').innerHTML = html;
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(allMoments.length / PAGE_SIZE);
+            if (totalPages <= 1) {
+                document.getElementById('pagination').innerHTML = '';
+                return;
+            }
+            let html = `<button id="prevPageBtn" ${currentPage === 1 ? 'disabled' : ''}>‹ 上一页</button>`;
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
+            }
+            html += `<button id="nextPageBtn" ${currentPage === totalPages ? 'disabled' : ''}>下一页 ›</button>`;
+            document.getElementById('pagination').innerHTML = html;
+
+            document.querySelectorAll('.page-number').forEach(span => {
+                span.addEventListener('click', (e) => {
+                    const page = parseInt(e.target.getAttribute('data-page'), 10);
+                    if (!isNaN(page) && page !== currentPage) {
+                        currentPage = page;
+                        renderPage();
+                        renderPagination();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            });
+            const prevBtn = document.getElementById('prevPageBtn');
+            const nextBtn = document.getElementById('nextPageBtn');
+            if (prevBtn) prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderPage();
+                    renderPagination();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+            if (nextBtn) nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderPage();
+                    renderPagination();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        }
+
         function escapeHtml(str) {
             if (!str) return '';
             return str.replace(/[&<>]/g, function(m) {
@@ -640,8 +487,6 @@
             if (diff < 86400*7) return `${Math.floor(diff/86400)}天前`;
             return `${date.getMonth()+1}月${date.getDate()}日`;
         }
-
-        // 图片灯箱
         window.showImageModal = function(src) {
             const modal = document.createElement('div');
             modal.style.position = 'fixed';
@@ -665,29 +510,7 @@
             document.body.appendChild(modal);
         };
 
-        loadMoments();
-
-        // 支持一下折叠
-        const sponsorBlock = document.getElementById('sponsorBlock');
-        const sponsorSummary = document.querySelector('.sponsor-summary');
-        sponsorSummary.addEventListener('click', (e) => {
-            e.stopPropagation();
-            sponsorBlock.classList.toggle('open');
-        });
-        const sponsorImg = document.getElementById('sponsorImg');
-        if (sponsorImg) {
-            sponsorImg.addEventListener('click', () => showImageModal(sponsorImg.src));
-        }
-
-        // 导航平滑滚动
-        document.querySelectorAll('nav .links li a[data-target]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (this.getAttribute('data-target') === 'top') {
-                    e.preventDefault();
-                    document.querySelector('.right-col').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+        loadAllMoments();
     </script>
 </body>
 </html>
