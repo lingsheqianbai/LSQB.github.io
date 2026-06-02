@@ -11,7 +11,7 @@
     <meta name="description" content="千白分享主页 - 重构测试">
     <title>千白分享主页 - 重构中</title>
     <style>
-        /* ========== Win98 复古风格 ========== */
+        /* ========== 基础复古风格 ========== */
         :root {
             --sidebar-width: 260px;
             --layout-gap: 20px;
@@ -23,6 +23,22 @@
             --text-mid: #5a3e4b;
             --text-light: #bba3ad;
             --border-color: #000;
+            --bg-body: navajowhite;
+            --bg-card: #fff;
+            --bg-sidebar: #fff;
+            --shadow: 4px 4px 0 rgba(0,0,0,0.1);
+        }
+        body.dark {
+            --bg-body: #1a1a2e;
+            --bg-card: #16213e;
+            --bg-sidebar: #0f3460;
+            --text-dark: #e2e2e2;
+            --text-mid: #b0b0b0;
+            --text-light: #888;
+            --border-color: #3a3a5a;
+            --pink: #c44569;
+            --pink-light: #5c2e3a;
+            --shadow: 4px 4px 0 rgba(0,0,0,0.3);
         }
 
         @font-face {
@@ -35,14 +51,16 @@
 
         body {
             font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
-            background: navajowhite;
+            background: var(--bg-body);
             background-image: repeating-conic-gradient(#f9bddd33 0% 25%, transparent 0% 50%) 50% / 40px 40px;
             background-attachment: fixed;
             min-height: 100vh;
             padding-top: var(--nav-offset);
+            transition: background 0.3s, color 0.2s;
+            color: var(--text-dark);
         }
 
-        /* Win98 滚动条 */
+        /* Win98 滚动条保持不变 */
         ::-webkit-scrollbar { width: 16px; }
         ::-webkit-scrollbar:horizontal { height: 17px; }
         ::-webkit-scrollbar-corner { background: #dfdfdf; }
@@ -54,8 +72,8 @@
         ::-webkit-scrollbar-button:horizontal:end { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 4H6v7h1v-1h1V9h1V8h1V7H9V6H8V5H7V4z' fill='%23000'/%3E%3C/svg%3E"); width: 16px; }
         ::selection { color: #b4dffb; background: #ffffe0; }
 
-        /* ========== 导航栏（彩虹色按钮，加长） ========== */
-        nav { width: 100%; position: fixed; top: 0; z-index: 999; background: #fff; border-bottom: 2px solid var(--border-color); }
+        /* 导航栏（彩虹色） */
+        nav { width: 100%; position: fixed; top: 0; z-index: 999; background: var(--bg-card); border-bottom: 2px solid var(--border-color); }
         nav .links {
             display: flex;
             flex-wrap: wrap;
@@ -65,27 +83,22 @@
             margin: 0;
             gap: 12px;
         }
-        nav .links li { display: inline-block; }
         nav .links li a {
             display: inline-block;
             padding: 8px 32px;
             border-radius: 32px;
             border: 1px solid var(--border-color);
-            font-family: SimSun, "Microsoft YaHei", sans-serif;
             font-size: 14px;
             font-weight: bold;
             text-decoration: none;
             color: #fff;
             text-shadow: 0 0 3px rgba(0,0,0,0.5);
-            transition: filter 0.2s, transform 0.1s;
+            transition: filter 0.2s;
             cursor: pointer;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-        nav .links li a:hover { filter: brightness(0.85); transform: translateY(-1px); }
-        nav .links li.active a { box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); transform: translateY(1px); }
+        nav .links li a:hover { filter: brightness(0.85); }
 
-        /* ========== 左侧栏（参考 xnmoe.com） ========== */
+        /* 左侧栏 */
         .left-col {
             position: fixed;
             left: 20px;
@@ -94,61 +107,88 @@
             z-index: 950;
         }
         .profile-card {
-            background: #fff;
+            background: var(--bg-sidebar);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 16px 12px;
-            text-align: center;
-            box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+            padding: 16px;
+            box-shadow: var(--shadow);
         }
-        .profile-avatar {
-            font-size: 64px;
-            margin-bottom: 8px;
-        }
-        .profile-name {
-            font-size: 16px;
-            font-weight: bold;
-            color: var(--text-dark);
-            margin-bottom: 4px;
-        }
-        .profile-signature {
-            font-size: 11px;
-            color: var(--text-mid);
-            border-top: 1px dashed #e0cfd6;
-            padding-top: 6px;
-            margin-top: 6px;
-        }
-        .profile-links {
-            margin-top: 12px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .profile-links a {
-            display: block;
+        .profile-avatar { font-size: 64px; text-align: center; margin-bottom: 8px; }
+        .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
+        .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
+
+        /* 语言切换按钮组 */
+        .lang-switch { display: flex; gap: 10px; justify-content: center; margin: 16px 0 12px; }
+        .lang-btn {
             background: var(--pink-light);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 5px 8px;
-            font-size: 11px;
-            color: var(--pink-dark);
-            text-decoration: none;
-            transition: background 0.2s;
+            border-radius: 24px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            color: var(--text-dark);
         }
-        .profile-links a:hover {
-            background: var(--pink);
-            color: #fff;
-        }
+        .lang-btn.active { background: var(--pink); color: #fff; }
 
-        /* ========== 右侧内容区 ========== */
+        /* 右侧内容区 */
         .right-col {
             margin-left: calc(var(--sidebar-width) + 40px);
             margin-right: 20px;
             max-width: 900px;
-            background: #fff;
+            background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 20px;
+        }
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .player {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-sidebar);
+            padding: 6px 16px;
+            border-radius: 40px;
+            border: 1px solid var(--border-color);
+        }
+        .vinyl {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #222, #111);
+            box-shadow: 0 0 0 4px #444, 0 0 0 6px #888;
+            position: relative;
+            animation: spin 0s linear infinite;
+        }
+        .vinyl.playing {
+            animation: spin 5s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .player-controls button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 0 4px;
+            color: var(--text-dark);
+        }
+        .theme-toggle {
+            background: var(--pink-light);
+            border: 1px solid var(--border-color);
+            border-radius: 32px;
+            padding: 6px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--text-dark);
         }
         .section-placeholder {
             margin: 20px 0;
@@ -159,7 +199,6 @@
             font-size: 18px;
             color: var(--text-mid);
         }
-
         @media (max-width: 800px) {
             .left-col { display: none; }
             .right-col { margin-left: 20px; }
@@ -170,7 +209,7 @@
     </style>
 </head>
 <body>
-    <!-- 顶部导航栏 -->
+    <!-- 顶部导航栏（彩虹色） -->
     <nav>
         <ul class="links">
             <li><a href="#" data-target="home" style="background-color: #FF4D4D;">主页</a></li>
@@ -189,20 +228,32 @@
             <div class="profile-avatar">📦</div>
             <div class="profile-name">凌社千白</div>
             <div class="profile-signature">分享 · 记录 · 创造</div>
-            <div class="profile-links">
-                <a href="#" data-target="home">🏠 主页</a>
-                <a href="#" data-target="projects">📂 项目</a>
-                <a href="#" data-target="posts">📰 帖子</a>
-                <a href="#" data-target="portfolio">🎨 作品集</a>
-                <a href="#" data-target="contact">💬 联系</a>
-                <a href="#" data-target="thanks">❤️ 致谢</a>
-                <a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank">📦 仓库</a>
+            <!-- 语言切换 -->
+            <div class="lang-switch">
+                <button class="lang-btn" data-lang="zh-CN">简体</button>
+                <button class="lang-btn" data-lang="zh-TW">繁體</button>
+                <button class="lang-btn" data-lang="en">English</button>
             </div>
         </div>
     </div>
 
     <!-- 右侧内容区 -->
     <div class="right-col">
+        <div class="toolbar">
+            <!-- 黑胶唱片播放器 -->
+            <div class="player">
+                <div class="vinyl" id="vinylDisc"></div>
+                <div class="player-controls">
+                    <button id="prevBtn">⏮</button>
+                    <button id="playPauseBtn">▶️</button>
+                    <button id="nextBtn">⏭</button>
+                </div>
+                <span id="songTitle" style="font-size:12px;">加载中...</span>
+            </div>
+            <!-- 主题切换按钮 -->
+            <button class="theme-toggle" id="themeToggle">🌤️ 白天</button>
+        </div>
+
         <div id="home" class="section-placeholder">🏠 主页区域 – 内容建设中</div>
         <div id="projects" class="section-placeholder">📂 项目区域 – 内容建设中</div>
         <div id="posts" class="section-placeholder">📰 帖子区域 – 内容建设中</div>
@@ -211,37 +262,183 @@
         <div id="thanks" class="section-placeholder">❤️ 致谢区域 – 内容建设中</div>
     </div>
 
+    <audio id="audioPlayer" preload="auto"></audio>
+
     <script>
-        // 平滑滚动 + 高亮激活
-        document.querySelectorAll('nav .links li a[data-target], .profile-links a[data-target]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (this.getAttribute('href') !== '#') e.preventDefault();
-                const targetId = this.getAttribute('data-target');
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+        // ==================== 音乐播放器（黑胶唱片） ====================
+        const playlist = [
+            { title: "示例曲目 1 - 轻音乐", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
+            { title: "示例曲目 2 - 钢琴曲", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
+            { title: "示例曲目 3 - 吉他", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" }
+        ];
+        let currentTrack = 0;
+        const audio = document.getElementById('audioPlayer');
+        const vinyl = document.getElementById('vinylDisc');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const songTitleSpan = document.getElementById('songTitle');
+
+        function loadTrack(index) {
+            const track = playlist[index % playlist.length];
+            audio.src = track.url;
+            songTitleSpan.textContent = track.title;
+            audio.load();
+            audio.play().then(() => {
+                playPauseBtn.textContent = '⏸️';
+                vinyl.classList.add('playing');
+            }).catch(() => {
+                playPauseBtn.textContent = '▶️';
+                vinyl.classList.remove('playing');
             });
+        }
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.textContent = '⏸️';
+                vinyl.classList.add('playing');
+            } else {
+                audio.pause();
+                playPauseBtn.textContent = '▶️';
+                vinyl.classList.remove('playing');
+            }
+        });
+        prevBtn.addEventListener('click', () => {
+            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrack);
+        });
+        nextBtn.addEventListener('click', () => {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            loadTrack(currentTrack);
+        });
+        audio.addEventListener('ended', () => {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            loadTrack(currentTrack);
+        });
+        // 初始加载第一首
+        loadTrack(0);
+
+        // ==================== 主题切换（白天/黑夜） ====================
+        const themeToggle = document.getElementById('themeToggle');
+        let isDark = false;
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            if (isDark) {
+                document.body.classList.add('dark');
+                themeToggle.innerHTML = '🌙 黑夜';
+            } else {
+                document.body.classList.remove('dark');
+                themeToggle.innerHTML = '🌤️ 白天';
+            }
         });
 
-        const sections = ['home', 'projects', 'posts', 'portfolio', 'contact', 'thanks'];
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    document.querySelectorAll('nav .links li a[data-target]').forEach(link => {
-                        if (link.getAttribute('data-target') === id) {
-                            link.parentElement.classList.add('active');
-                        } else {
-                            link.parentElement.classList.remove('active');
-                        }
-                    });
-                }
+        // ==================== 语言切换（简体/繁体/英语） ====================
+        // 定义翻译映射（只翻译当前可见的文字，包括导航栏、侧边栏、占位文本等）
+        const translations = {
+            'zh-CN': {
+                '主页': '主页', '项目': '项目', '帖子': '帖子', '作品集': '作品集', '联系': '联系', '致谢': '致谢', '仓库': '仓库',
+                '凌社千白': '凌社千白', '分享 · 记录 · 创造': '分享 · 记录 · 创造',
+                '简体': '简体', '繁體': '繁體', 'English': 'English',
+                '加载中...': '加载中...', '示例曲目 1 - 轻音乐': '示例曲目 1 - 轻音乐', '示例曲目 2 - 钢琴曲': '示例曲目 2 - 钢琴曲', '示例曲目 3 - 吉他': '示例曲目 3 - 吉他',
+                '🏠 主页区域 – 内容建设中': '🏠 主页区域 – 内容建设中',
+                '📂 项目区域 – 内容建设中': '📂 项目区域 – 内容建设中',
+                '📰 帖子区域 – 内容建设中': '📰 帖子区域 – 内容建设中',
+                '🎨 作品集区域 – 内容建设中': '🎨 作品集区域 – 内容建设中',
+                '💬 联系区域 – 内容建设中': '💬 联系区域 – 内容建设中',
+                '❤️ 致谢区域 – 内容建设中': '❤️ 致谢区域 – 内容建设中',
+                '白天': '白天', '黑夜': '黑夜', '🌤️ 白天': '🌤️ 白天', '🌙 黑夜': '🌙 黑夜'
+            },
+            'zh-TW': {
+                '主页': '主頁', '项目': '項目', '帖子': '貼文', '作品集': '作品集', '联系': '聯繫', '致谢': '致謝', '仓库': '倉庫',
+                '凌社千白': '凌社千白', '分享 · 记录 · 创造': '分享 · 記錄 · 創造',
+                '简体': '簡體', '繁體': '繁體', 'English': 'English',
+                '加载中...': '載入中...', '示例曲目 1 - 轻音乐': '範例曲目 1 - 輕音樂', '示例曲目 2 - 钢琴曲': '範例曲目 2 - 鋼琴曲', '示例曲目 3 - 吉他': '範例曲目 3 - 吉他',
+                '🏠 主页区域 – 内容建设中': '🏠 主頁區域 – 內容建置中',
+                '📂 项目区域 – 内容建设中': '📂 項目區域 – 內容建置中',
+                '📰 帖子区域 – 内容建设中': '📰 貼文區域 – 內容建置中',
+                '🎨 作品集区域 – 内容建设中': '🎨 作品集區域 – 內容建置中',
+                '💬 联系区域 – 内容建设中': '💬 聯繫區域 – 內容建置中',
+                '❤️ 致谢区域 – 内容建设中': '❤️ 致謝區域 – 內容建置中',
+                '白天': '白天', '黑夜': '黑夜', '🌤️ 白天': '🌤️ 白天', '🌙 黑夜': '🌙 黑夜'
+            },
+            'en': {
+                '主页': 'Home', '项目': 'Projects', '帖子': 'Posts', '作品集': 'Portfolio', '联系': 'Contact', '致谢': 'Thanks', '仓库': 'Repo',
+                '凌社千白': 'Ling She Qianbai', '分享 · 记录 · 创造': 'Share · Record · Create',
+                '简体': 'Simplified', '繁體': 'Traditional', 'English': 'English',
+                '加载中...': 'Loading...', '示例曲目 1 - 轻音乐': 'Demo 1 - Light Music', '示例曲目 2 - 钢琴曲': 'Demo 2 - Piano', '示例曲目 3 - 吉他': 'Demo 3 - Guitar',
+                '🏠 主页区域 – 内容建设中': '🏠 Home – Under Construction',
+                '📂 项目区域 – 内容建设中': '📂 Projects – Under Construction',
+                '📰 帖子区域 – 内容建设中': '📰 Posts – Under Construction',
+                '🎨 作品集区域 – 内容建设中': '🎨 Portfolio – Under Construction',
+                '💬 联系区域 – 内容建设中': '💬 Contact – Under Construction',
+                '❤️ 致谢区域 – 内容建设中': '❤️ Thanks – Under Construction',
+                '白天': 'Day', '黑夜': 'Night', '🌤️ 白天': '🌤️ Day', '🌙 黑夜': '🌙 Night'
+            }
+        };
+        let currentLang = 'zh-CN';
+
+        function updateText(lang) {
+            const dict = translations[lang];
+            if (!dict) return;
+            // 更新导航栏文字（data-target 保持不变，只改显示文字）
+            document.querySelectorAll('nav .links li a[data-target]').forEach(link => {
+                const key = link.innerText.trim().split(' ')[0]; // 获取中文键名
+                if (dict[key]) link.innerText = dict[key];
             });
-        }, { rootMargin: '-20% 0px -70% 0px' });
-        sections.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) observer.observe(el);
+            // 更新仓库链接文字
+            const repoLink = document.querySelector('nav .links li a[href*="github"]');
+            if (repoLink && dict['仓库']) repoLink.innerText = dict['仓库'];
+            // 侧边栏名称和签名
+            const nameEl = document.querySelector('.profile-name');
+            if (nameEl && dict['凌社千白']) nameEl.innerText = dict['凌社千白'];
+            const signEl = document.querySelector('.profile-signature');
+            if (signEl && dict['分享 · 记录 · 创造']) signEl.innerText = dict['分享 · 记录 · 创造'];
+            // 语言切换按钮上的文字
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                const txt = btn.innerText;
+                if (dict[txt]) btn.innerText = dict[txt];
+            });
+            // 歌曲标题
+            const currentSong = playlist[currentTrack]?.title;
+            if (currentSong && dict[currentSong]) songTitleSpan.innerText = dict[currentSong];
+            // 更新所有占位区域
+            const placeholders = document.querySelectorAll('.section-placeholder');
+            placeholders.forEach(ph => {
+                const original = ph.innerText;
+                if (dict[original]) ph.innerText = dict[original];
+            });
+            // 更新主题按钮文字
+            const themeBtn = document.getElementById('themeToggle');
+            const themeText = isDark ? dict['🌙 黑夜'] : dict['🌤️ 白天'];
+            if (themeText) themeBtn.innerHTML = themeText;
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            updateText(lang);
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+        }
+
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+        // 初始化默认语言
+        setLanguage('zh-CN');
+
+        // ==================== 平滑滚动和高亮（简化） ====================
+        document.querySelectorAll('nav .links li a[data-target]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
         });
     </script>
 </body>
