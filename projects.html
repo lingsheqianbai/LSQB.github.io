@@ -162,6 +162,24 @@
             text-overflow: ellipsis;
         }
 
+        .contact-info {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 12px;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 12px;
+        }
+        .contact-info p {
+            margin: 6px 0;
+        }
+        .contact-info a {
+            color: var(--pink-dark);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
         .right-col {
             margin-left: calc(var(--sidebar-width) + 40px);
             margin-right: 20px;
@@ -224,7 +242,6 @@
         .project-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; }
         .project-desc { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
 
-        /* 详情视图 */
         .detail-view {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -244,7 +261,6 @@
         }
         .back-btn:hover { background: var(--pink); }
 
-        /* 折叠块样式 */
         .section-details {
             margin-bottom: 20px;
             border: 1px solid var(--border-color);
@@ -461,13 +477,14 @@
 <body>
     <nav>
         <ul class="links">
-    <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
-    <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
-    <li><a href="projects.html" style="background-color: #FFD700;">项目</a></li>
-    <li><a href="works.html" style="background-color: #32CD32;">作品集</a></li>
-    <li><a href="posts.html" style="background-color: #00CED1;">帖子</a></li>
-    <li><a href="thanks.html" style="background-color: #1E90FF;">致谢</a></li>
-    <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>        </ul>
+            <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
+            <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
+            <li><a href="projects.html" style="background-color: #FFD700;">项目</a></li>
+            <li><a href="works.html" style="background-color: #32CD32;">作品集</a></li>
+            <li><a href="posts.html" style="background-color: #00CED1;">帖子</a></li>
+            <li><a href="thanks.html" style="background-color: #1E90FF;">致谢</a></li>
+            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" style="background-color: #9370DB;">仓库</a></li>
+        </ul>
     </nav>
 
     <div class="left-col">
@@ -484,6 +501,12 @@
                 </div>
                 <div class="song-title" id="songTitle">Morning BGM</div>
             </div>
+            <div class="contact-info">
+                <p>📺 B站: <a href="https://space.bilibili.com/498508670?spm_id_from=333.1007.0.0" target="_blank">凌社千白</a></p>
+                <p>🎵 抖音: <a href="https://www.douyin.com/user/self" target="_blank">凌社千白</a></p>
+                <p>📱 快手: <a href="https://www.kuaishou.com/profile/3xcatpzc2ejba82" target="_blank">凌社千白</a></p>
+            </div>
+            <button class="theme-toggle" id="themeToggle" style="display: none;">🌙 黑夜</button>
         </div>
     </div>
 
@@ -564,7 +587,6 @@
             });
         }
 
-        // 全局函数，用于折叠组
         window.toggleGroup = function(header) {
             const options = header.nextElementSibling;
             const arrow = header.querySelector('.group-arrow');
@@ -585,7 +607,6 @@
                 container.innerHTML = '';
                 return;
             }
-            // 生成页码数组，带 "..." 占位符
             let pages = [];
             if (totalPages <= 7) {
                 for (let i = 1; i <= totalPages; i++) pages.push(i);
@@ -594,12 +615,8 @@
                 if (currentPage > 3) pages.push('...');
                 let start = Math.max(2, currentPage - 1);
                 let end = Math.min(totalPages - 1, currentPage + 1);
-                if (currentPage <= 3) {
-                    start = 2; end = 4;
-                }
-                if (currentPage >= totalPages - 2) {
-                    start = totalPages - 3; end = totalPages - 1;
-                }
+                if (currentPage <= 3) { start = 2; end = 4; }
+                if (currentPage >= totalPages - 2) { start = totalPages - 3; end = totalPages - 1; }
                 for (let i = start; i <= end; i++) pages.push(i);
                 if (currentPage < totalPages - 2) pages.push('...');
                 pages.push(totalPages);
@@ -615,7 +632,6 @@
             html += `<button class="next-page" ${currentPage===totalPages?'disabled':''}>下一页 ›</button>`;
             container.innerHTML = html;
 
-            // 绑定事件
             container.querySelectorAll('.page-number').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const page = parseInt(btn.dataset.page);
@@ -657,9 +673,7 @@
                 this.init();
             }
 
-            init() {
-                this.render();
-            }
+            init() { this.render(); }
 
             getStatusClass(status) {
                 const map = { '完整':'status-complete', '非完整':'status-incomplete', '待检测':'status-pending', '无需翻译':'status-unneeded', '待处理':'status-todo' };
@@ -760,7 +774,6 @@
             render() {
                 const container = document.getElementById(this.containerId);
                 if (!container) return;
-                // 构建完整UI
                 let html = `
                     <div id="${this.containerId}-stats" class="stats-bar">加载统计中...</div>
                     <div class="search-box"><input type="text" id="${this.containerId}-search" placeholder="搜索模组名称、中文名、ID或备注..."></div>
@@ -780,7 +793,6 @@
                 `;
                 container.innerHTML = html;
 
-                // 绑定筛选事件
                 const filterToggle = document.getElementById(`${this.containerId}-filterToggle`);
                 const filterContent = document.getElementById(`${this.containerId}-filterContent`);
                 if (filterToggle) {
@@ -791,7 +803,6 @@
                     });
                 }
 
-                // 状态筛选按钮
                 const statusSet = new Set();
                 this.allMods.forEach(mod => { if (mod.status) statusSet.add(mod.status); });
                 const statusList = ['全部', ...Array.from(statusSet).sort()];
@@ -799,7 +810,7 @@
                 if (statusGroup) {
                     statusGroup.innerHTML = statusList.map(s => `<span class="filter-btn ${s==='全部'?'active':''}" data-group="status" data-value="${s}">${s}</span>`).join('');
                     statusGroup.querySelectorAll('[data-group="status"]').forEach(btn => {
-                        btn.addEventListener('click', (e) => {
+                        btn.addEventListener('click', () => {
                             statusGroup.querySelectorAll('[data-group="status"]').forEach(b=>b.classList.remove('active'));
                             btn.classList.add('active');
                             this.statusFilter = btn.dataset.value;
@@ -808,7 +819,6 @@
                     });
                 }
 
-                // 离线、备注等筛选
                 const offlineGroup = document.getElementById(`${this.containerId}-offlineFilterGroup`);
                 if (offlineGroup) {
                     offlineGroup.querySelectorAll('[data-group="offline"]').forEach(btn => {
@@ -854,7 +864,6 @@
                     });
                 }
 
-                // 搜索框
                 const searchBox = document.getElementById(`${this.containerId}-search`);
                 if (searchBox) {
                     searchBox.addEventListener('input', (e) => {
@@ -875,7 +884,7 @@
             }
         }
 
-        // ---------- 简单表格渲染（用于教程、精灵、任务等）----------
+        // ---------- 简单表格渲染 ----------
         function renderSimpleTable(containerId, data, columns, pageSize = 10) {
             let currentPage = 1;
             let filteredData = [...data];
@@ -938,7 +947,6 @@
             detailDiv.innerHTML = '<div class="empty-tip">加载中...</div>';
 
             if (game.id === 'pz') {
-                // 僵毁
                 const [modsRes, guidesRes] = await Promise.all([
                     fetch('data/Project%20Zomboid/mods.json').catch(() => null),
                     fetch('data/Project%20Zomboid/guides.json').catch(() => null)
@@ -949,18 +957,13 @@
                 let html = `
                     <details class="section-details">
                         <summary>📦 模组信息统计 (${mods.length}个模组)</summary>
-                        <div class="section-content">
-                            <div id="pzModsStatsContainer"></div>
-                        </div>
+                        <div class="section-content"><div id="pzModsStatsContainer"></div></div>
                     </details>
                     <details class="section-details">
                         <summary>📖 自制僵尸毁灭工程教程 (${guides.length}个教程)</summary>
                         <div class="section-content">
                             <div id="pzGuidesTableContainer">
-                                <table class="mod-table" id="pzGuidesTable">
-                                    <thead><tr><th>教程名称</th><th>链接</th></tr></thead>
-                                    <tbody></tbody>
-                                </table>
+                                <table class="mod-table" id="pzGuidesTable"><thead><tr><th>教程名称</th><th>链接</th></tr></thead><tbody></tbody></table>
                                 <div id="pzGuidesTable-pagination"></div>
                             </div>
                         </div>
@@ -972,7 +975,6 @@
                 renderSimpleTable('pzGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
             }
             else if (game.id === 'luoke') {
-                // 洛克王国
                 const [wondersRes, tasksRes, activitiesRes, titlesRes] = await Promise.all([
                     fetch('data/Roco%20Kingdom%20World/wonders.json').catch(() => null),
                     fetch('data/Roco%20Kingdom%20World/tasks.json').catch(() => null),
@@ -1033,6 +1035,9 @@
         }
 
         // ---------- 游戏卡片列表 ----------
+        let gamesData = [];
+        let currentFilter = '';
+
         async function loadGames() {
             const grid = document.getElementById('gamesGrid');
             try {
@@ -1044,9 +1049,6 @@
                 grid.innerHTML = '<div style="text-align:center; padding:20px;">加载失败，请检查 data/games.json</div>';
             }
         }
-
-        let gamesData = [];
-        let currentFilter = '';
 
         function renderGameCards() {
             const grid = document.getElementById('gamesGrid');

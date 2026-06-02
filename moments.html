@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>全部动态 - 千白分享</title>
     <style>
-        /* ========== 基础风格（固定背景） ========== */
+        /* ========== 基础风格 ========== */
         :root {
             --sidebar-width: 260px;
             --nav-offset: 60px;
@@ -38,7 +38,7 @@
             color: var(--text-dark);
         }
 
-        /* 导航栏（彩虹色） */
+        /* 导航栏 */
         nav {
             width: 100%;
             position: fixed;
@@ -97,7 +97,7 @@
             object-fit: cover;
             border: 2px solid var(--border-color);
         }
-        .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
+        .profile-name { font-size: 18px; font-weight: bold; text-align: center; }
         .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
 
         /* 播放器 */
@@ -129,8 +129,6 @@
             border-radius: 50%;
             border: 2px solid rgba(255,255,255,0.9);
             object-fit: cover;
-            z-index: 2;
-            pointer-events: none;
             background: #fff;
         }
         .player-controls {
@@ -147,7 +145,6 @@
             height: 32px;
             font-size: 14px;
             cursor: pointer;
-            color: var(--text-dark);
             transition: 0.2s;
         }
         .player-controls button:hover { background: var(--pink); }
@@ -164,6 +161,25 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        /* 联系方式 */
+        .contact-info {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 12px;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 12px;
+        }
+        .contact-info p {
+            margin: 6px 0;
+        }
+        .contact-info a {
+            color: var(--pink-dark);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
         }
 
         /* 右侧内容区 */
@@ -210,43 +226,13 @@
             font-size: 24px;
             border: 1px solid var(--border-color);
         }
-        .moment-nickname {
-            font-weight: bold;
-            font-size: 15px;
-            color: var(--text-dark);
-        }
-        .moment-time {
-            font-size: 11px;
-            color: var(--text-mid);
-        }
-        .moment-content {
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-        .moment-images {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-        .moment-images img {
-            max-width: calc(33% - 8px);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .moment-images img:hover {
-            transform: scale(1.02);
-        }
-        .moment-stats {
-            font-size: 12px;
-            color: var(--text-light);
-            border-top: 1px solid var(--border-color);
-            padding-top: 10px;
-            margin-top: 4px;
-        }
+        .moment-nickname { font-weight: bold; font-size: 15px; color: var(--text-dark); }
+        .moment-time { font-size: 11px; color: var(--text-mid); }
+        .moment-content { font-size: 14px; line-height: 1.6; margin-bottom: 12px; }
+        .moment-images { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .moment-images img { max-width: calc(33% - 8px); border-radius: 8px; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s; }
+        .moment-images img:hover { transform: scale(1.02); }
+        .moment-stats { font-size: 12px; color: var(--text-light); border-top: 1px solid var(--border-color); padding-top: 10px; margin-top: 4px; }
 
         /* 分页 */
         .pagination {
@@ -266,14 +252,8 @@
             color: var(--text-dark);
             transition: 0.2s;
         }
-        .pagination button:hover, .pagination .page-number:hover {
-            background: var(--pink-light);
-        }
-        .pagination .page-number.active {
-            background: var(--pink);
-            color: #fff;
-            border-color: var(--pink-dark);
-        }
+        .pagination button:hover, .pagination .page-number:hover { background: var(--pink-light); }
+        .pagination .page-number.active { background: var(--pink); color: #fff; border-color: var(--pink-dark); }
 
         @media (max-width: 800px) {
             .left-col { display: none; }
@@ -288,26 +268,23 @@
 <body>
     <nav>
         <ul class="links">
-    <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
-    <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
-    <li><a href="projects.html" style="background-color: #FFD700;">项目</a></li>
-    <li><a href="works.html" style="background-color: #32CD32;">作品集</a></li>
-    <li><a href="posts.html" style="background-color: #00CED1;">帖子</a></li>
-    <li><a href="thanks.html" style="background-color: #1E90FF;">致谢</a></li>
-    <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>        </ul>
+            <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
+            <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
+            <li><a href="projects.html" style="background-color: #FFD700;">项目</a></li>
+            <li><a href="works.html" style="background-color: #32CD32;">作品集</a></li>
+            <li><a href="posts.html" style="background-color: #00CED1;">帖子</a></li>
+            <li><a href="thanks.html" style="background-color: #1E90FF;">致谢</a></li>
+            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>
+        </ul>
     </nav>
 
     <div class="left-col">
         <div class="profile-card">
-            <div class="profile-avatar">
-                <img src="images/lingsheqianbai.jpg" alt="凌社千白">
-            </div>
+            <div class="profile-avatar"><img src="images/lingsheqianbai.jpg" alt="凌社千白"></div>
             <div class="profile-name">凌社千白</div>
             <div class="profile-signature">分享 · 记录 · 创造</div>
             <div class="player">
-                <div class="vinyl" id="vinylDisc">
-                    <img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img">
-                </div>
+                <div class="vinyl" id="vinylDisc"><img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img"></div>
                 <div class="player-controls">
                     <button id="prevBtn">⏮</button>
                     <button id="playPauseBtn">▶️</button>
@@ -315,13 +292,17 @@
                 </div>
                 <div class="song-title" id="songTitle">Morning BGM</div>
             </div>
+            <div class="contact-info">
+                <p>📺 B站: <a href="https://space.bilibili.com/498508670?spm_id_from=333.1007.0.0" target="_blank">凌社千白</a></p>
+                <p>🎵 抖音: <a href="https://www.douyin.com/user/self" target="_blank">凌社千白</a></p>
+                <p>📱 快手: <a href="https://www.kuaishou.com/profile/3xcatpzc2ejba82" target="_blank">凌社千白</a></p>
+            </div>
+            <button class="theme-toggle" id="themeToggle" style="display: none;">🌙 黑夜</button>
         </div>
     </div>
 
     <div class="right-col">
-        <div class="page-header">
-            <h2>📰 全部动态</h2>
-        </div>
+        <div class="page-header"><h2>📰 全部动态</h2></div>
         <div id="momentsList"></div>
         <div id="pagination" class="pagination"></div>
     </div>
@@ -329,7 +310,7 @@
     <audio id="audioPlayer" preload="auto"></audio>
 
     <script>
-        // ==================== 音乐播放器（支持上下曲切换）====================
+        // 音乐播放器
         const playlist = [
             { title: "Morning BGM", url: "music/morning.mp3" },
             { title: "Night BGM", url: "music/night.mp3" }
@@ -359,30 +340,18 @@
 
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
-                audio.play().then(() => {
-                    vinyl.classList.add('playing');
-                    playPauseBtn.textContent = '⏸️';
-                }).catch(() => {});
+                audio.play().then(() => { vinyl.classList.add('playing'); playPauseBtn.textContent = '⏸️'; }).catch(() => {});
             } else {
                 audio.pause();
                 vinyl.classList.remove('playing');
                 playPauseBtn.textContent = '▶️';
             }
         });
-
-        prevBtn.addEventListener('click', () => {
-            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-            loadTrack(currentTrack);
-        });
-
-        nextBtn.addEventListener('click', () => {
-            currentTrack = (currentTrack + 1) % playlist.length;
-            loadTrack(currentTrack);
-        });
-
+        prevBtn.addEventListener('click', () => { currentTrack = (currentTrack - 1 + playlist.length) % playlist.length; loadTrack(currentTrack); });
+        nextBtn.addEventListener('click', () => { currentTrack = (currentTrack + 1) % playlist.length; loadTrack(currentTrack); });
         loadTrack(currentTrack);
 
-        // ==================== 动态分页 ====================
+        // 动态分页
         let allMoments = [];
         let currentPage = 1;
         const PAGE_SIZE = 10;
@@ -422,10 +391,7 @@
                         </div>
                         <div class="moment-content">${escapeHtml(m.content)}</div>
                         ${imagesHtml}
-                        <div class="moment-stats">
-                            <span>❤️ ${m.likes || 0}</span>&nbsp;&nbsp;
-                            <span>💬 ${m.comments || 0}</span>
-                        </div>
+                        <div class="moment-stats"><span>❤️ ${m.likes || 0}</span>&nbsp;&nbsp;<span>💬 ${m.comments || 0}</span></div>
                     </div>
                 `;
             });
@@ -434,17 +400,13 @@
 
         function renderPagination() {
             const totalPages = Math.ceil(allMoments.length / PAGE_SIZE);
-            if (totalPages <= 1) {
-                document.getElementById('pagination').innerHTML = '';
-                return;
-            }
+            if (totalPages <= 1) { document.getElementById('pagination').innerHTML = ''; return; }
             let html = `<button id="prevPageBtn" ${currentPage === 1 ? 'disabled' : ''}>‹ 上一页</button>`;
             for (let i = 1; i <= totalPages; i++) {
                 html += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
             }
             html += `<button id="nextPageBtn" ${currentPage === totalPages ? 'disabled' : ''}>下一页 ›</button>`;
             document.getElementById('pagination').innerHTML = html;
-
             document.querySelectorAll('.page-number').forEach(span => {
                 span.addEventListener('click', (e) => {
                     const page = parseInt(e.target.getAttribute('data-page'), 10);
@@ -458,33 +420,11 @@
             });
             const prevBtn = document.getElementById('prevPageBtn');
             const nextBtn = document.getElementById('nextPageBtn');
-            if (prevBtn) prevBtn.addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    renderPage();
-                    renderPagination();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            });
-            if (nextBtn) nextBtn.addEventListener('click', () => {
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    renderPage();
-                    renderPagination();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-            });
+            if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPage(); renderPagination(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+            if (nextBtn) nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; renderPage(); renderPagination(); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
         }
 
-        function escapeHtml(str) {
-            if (!str) return '';
-            return str.replace(/[&<>]/g, function(m) {
-                if (m === '&') return '&amp;';
-                if (m === '<') return '&lt;';
-                if (m === '>') return '&gt;';
-                return m;
-            });
-        }
+        function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
         function formatTime(iso) {
             if (!iso) return '';
             const date = new Date(iso);

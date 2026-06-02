@@ -13,16 +13,13 @@
             --text-dark: #2a1a2e; --text-mid: #5a3e4b; --text-light: #bba3ad;
             --border-color: #000;
         }
-
         @font-face {
             font-family: 'ZQKNNY';
             src: url('ZQKNNY-Medium-2.woff2') format('woff2');
             font-weight: 500; font-style: normal; font-display: swap;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { line-height: 1.2; }
-
         body {
             position: relative; overflow-x: hidden; overflow-y: auto;
             font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
@@ -31,8 +28,6 @@
             background-attachment: fixed;
             margin: 0; padding: 0; min-height: 100vh; width: 100%;
         }
-
-        /* Win98 Scrollbar */
         ::-webkit-scrollbar { width: 16px; }
         ::-webkit-scrollbar:horizontal { height: 17px; }
         ::-webkit-scrollbar-corner { background: #dfdfdf; }
@@ -154,22 +149,11 @@
         .article-container ul, .article-container ol { margin: 0 0 .8rem 1.5rem; }
         .article-container li { margin: .3rem 0; }
 
-        /* POST META */
         .post-meta { font-size: 11px; color: var(--text-light); margin-top: 6px; display: flex; flex-wrap: wrap; gap: 10px; }
-
-        /* POST NAV */
-        .post-nav-bottom { display: flex; justify-content: space-between; padding: 8px 0; font-size: 11px; }
-        .post-nav-bottom a { color: var(--pink-dark); text-decoration: none; }
-        .post-nav-bottom a:hover { text-decoration: underline; }
-
-        /* POST FOOTER INFO */
         .post-copyright { font-size: 10px; color: var(--text-light); line-height: 1.6; margin-top: 8px; }
         .post-copyright a { color: var(--pink-dark); }
-
-        /* LOADING */
         .loading-text { text-align: center; padding: 30px; color: var(--text-light); font-size: 12px; }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .left-col { display: none !important; }
             .col.right { width: 100%; margin-left: 0; margin-right: 0; border-left: none; border-right: none; border-top: 1px solid var(--border-color); padding: 0 4px 10px; }
@@ -181,7 +165,6 @@
     </style>
 </head>
 <body>
-    <!-- NAV -->
     <nav>
         <ul class="links">
             <li><a href="index.html" data-label="主页"></a></li>
@@ -195,28 +178,20 @@
     </nav>
 
     <main>
-        <!-- LEFT SIDEBAR -->
         <div class="left-col profile">
             <div class="profile-title">千白分享</div>
             <div class="profile-card">
-                <div class="avatar-area">
-                    <span class="avatar-icon">📖</span>
-                    <div class="profile-name">凌社千白</div>
-                    <div class="profile-status">● ONLINE!</div>
-                </div>
-                <div class="profile-note">
-                    阅读帖子详情。
-                </div>
+                <div class="avatar-area"><span class="avatar-icon">📖</span><div class="profile-name">凌社千白</div><div class="profile-status">● ONLINE!</div></div>
+                <div class="profile-note">阅读帖子详情。</div>
                 <a href="index.html" class="side-link">← 返回首页</a>
             </div>
         </div>
 
-        <!-- RIGHT CONTENT -->
         <div class="col right">
             <div class="block">
                 <div class="heading"><h4>📖 帖子详情</h4></div>
                 <div class="inner">
-                    <h2 class="archive-hero-title" id="postTitle" style="font-size:1.4rem;font-weight:bold;color:var(--text-dark);margin:0 0 4px;font-family:SimSun,Microsoft YaHei,monospace">加载中...</h2>
+                    <h2 id="postTitle" style="font-size:1.4rem;font-weight:bold;color:var(--text-dark);margin:0 0 4px;">加载中...</h2>
                     <div class="post-meta" id="postMeta"></div>
                     <hr style="border:none;border-top:1px solid #e0cfd6;margin:10px 0">
                     <div class="article-container" id="articleContainer"><p class="loading-text">加载中...</p></div>
@@ -232,7 +207,6 @@
     </main>
 
     <script>
-        // 获取URL参数id
         const urlParams = new URLSearchParams(window.location.search);
         const postId = urlParams.get('id');
 

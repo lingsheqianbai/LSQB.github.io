@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>致谢 - 千白分享</title>
     <style>
-        /* ========== 基础风格（与主页一致） ========== */
+        /* ========== 基础风格 ========== */
         :root {
             --sidebar-width: 260px;
             --nav-offset: 60px;
@@ -20,15 +20,12 @@
             --pink-dark: #c44569;
             --pink-light: #ffcfe2;
         }
-
         @font-face {
             font-family: 'ZQKNNY';
             src: url('ZQKNNY-Medium-2.woff2') format('woff2');
             font-weight: 500; font-style: normal; font-display: swap;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
             background: url('images/beijin1.jpg') no-repeat center center fixed;
@@ -37,7 +34,6 @@
             padding-top: var(--nav-offset);
             color: var(--text-dark);
         }
-
         /* 导航栏 */
         nav {
             width: 100%;
@@ -70,8 +66,7 @@
             cursor: pointer;
         }
         nav .links li a:hover { filter: brightness(0.85); }
-
-        /* 左侧栏（完全统一） */
+        /* 左侧栏 */
         .left-col {
             position: fixed;
             left: 20px;
@@ -97,9 +92,8 @@
             object-fit: cover;
             border: 2px solid var(--border-color);
         }
-        .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
+        .profile-name { font-size: 18px; font-weight: bold; text-align: center; }
         .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
-
         /* 播放器 */
         .player {
             margin: 16px 0 12px;
@@ -117,20 +111,14 @@
             border-radius: 50%;
             box-shadow: 0 0 0 4px #444, 0 0 0 6px #888;
         }
-        .vinyl.playing {
-            animation: spin 5s linear infinite;
-        }
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
+        .vinyl.playing { animation: spin 5s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
         .vinyl-center-img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             border: 2px solid rgba(255,255,255,0.9);
             object-fit: cover;
-            z-index: 2;
-            pointer-events: none;
             background: #fff;
         }
         .player-controls {
@@ -164,8 +152,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-
-        /* 联系方式（统一放在播放器下方） */
+        /* 联系方式 */
         .contact-info {
             margin-top: 16px;
             text-align: center;
@@ -173,17 +160,9 @@
             border-top: 1px dashed var(--border-color);
             padding-top: 12px;
         }
-        .contact-info p {
-            margin: 6px 0;
-        }
-        .contact-info a {
-            color: var(--pink-dark);
-            text-decoration: none;
-        }
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
+        .contact-info p { margin: 6px 0; }
+        .contact-info a { color: var(--pink-dark); text-decoration: none; }
+        .contact-info a:hover { text-decoration: underline; }
         /* 右侧主区域 */
         .right-col {
             margin-left: calc(var(--sidebar-width) + 40px);
@@ -211,40 +190,14 @@
             margin-bottom: 20px;
             box-shadow: var(--shadow);
         }
-        .thanks-section h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: var(--text-dark);
-        }
-        .thanks-section ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .thanks-section li {
-            padding: 4px 0;
-            font-size: 14px;
-        }
-        .thanks-section a {
-            color: var(--pink-dark);
-            text-decoration: none;
-        }
-        .thanks-section a:hover {
-            text-decoration: underline;
-        }
-        .thanks-note {
-            margin-top: 12px;
-            font-style: italic;
-            color: var(--text-mid);
-            font-size: 13px;
-        }
-
-        @media (max-width: 800px) {
-            .left-col { display: none; }
-            .right-col { margin-left: 20px; }
-        }
-        @media (max-width: 768px) {
-            nav .links li a { padding: 6px 20px; font-size: 12px; }
-        }
+        .thanks-section h3 { font-size: 18px; margin-bottom: 12px; color: var(--text-dark); }
+        .thanks-section ul { list-style: none; padding-left: 0; }
+        .thanks-section li { padding: 4px 0; font-size: 14px; }
+        .thanks-section a { color: var(--pink-dark); text-decoration: none; }
+        .thanks-section a:hover { text-decoration: underline; }
+        .thanks-note { margin-top: 12px; font-style: italic; color: var(--text-mid); font-size: 13px; }
+        @media (max-width: 800px) { .left-col { display: none; } .right-col { margin-left: 20px; } }
+        @media (max-width: 768px) { nav .links li a { padding: 6px 20px; font-size: 12px; } }
     </style>
 </head>
 <body>
@@ -260,18 +213,13 @@
         </ul>
     </nav>
 
-    <!-- 左侧栏（统一内容） -->
     <div class="left-col">
         <div class="profile-card">
-            <div class="profile-avatar">
-                <img src="images/lingsheqianbai.jpg" alt="凌社千白">
-            </div>
+            <div class="profile-avatar"><img src="images/lingsheqianbai.jpg" alt="凌社千白"></div>
             <div class="profile-name">凌社千白</div>
             <div class="profile-signature">分享 · 记录 · 创造</div>
             <div class="player">
-                <div class="vinyl" id="vinylDisc">
-                    <img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img">
-                </div>
+                <div class="vinyl" id="vinylDisc"><img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img"></div>
                 <div class="player-controls">
                     <button id="prevBtn">⏮</button>
                     <button id="playPauseBtn">▶️</button>
@@ -280,57 +228,40 @@
                 <div class="song-title" id="songTitle">Morning BGM</div>
             </div>
             <div class="contact-info">
-                <p>📺 B站: <a href="https://space.bilibili.com/498508670" target="_blank">凌社千白</a></p>
+                <p>📺 B站: <a href="https://space.bilibili.com/498508670?spm_id_from=333.1007.0.0" target="_blank">凌社千白</a></p>
                 <p>🎵 抖音: <a href="https://www.douyin.com/user/self" target="_blank">凌社千白</a></p>
                 <p>📱 快手: <a href="https://www.kuaishou.com/profile/3xcatpzc2ejba82" target="_blank">凌社千白</a></p>
             </div>
+            <button class="theme-toggle" id="themeToggle" style="display: none;">🌙 黑夜</button>
         </div>
     </div>
 
     <div class="right-col">
-        <div class="page-header">
-            <h2>✨ 致谢</h2>
-        </div>
+        <div class="page-header"><h2>✨ 致谢</h2></div>
 
         <div class="thanks-section">
             <h3>🌐 网页贡献致谢</h3>
-            <ul>
-                <li><a href="https://www.deepseek.com/" target="_blank">DeepSeek</a> - AI 助手</li>
-                <li><a href="https://space.bilibili.com/3493078216215098" target="_blank">小狐务器</a> - B站主页</li>
-            </ul>
+            <ul><li><a href="https://www.deepseek.com/" target="_blank">DeepSeek</a> - AI 助手</li><li><a href="https://space.bilibili.com/3493078216215098" target="_blank">小狐务器</a> - B站主页</li></ul>
         </div>
-
         <div class="thanks-section">
             <h3>🎨 灵感设计</h3>
-            <ul>
-                <li><a href="https://www.xnmoe.com/index.html" target="_blank">NNNullptr's Blog</a> - 网站设计风格参考，特别感谢！</li>
-            </ul>
+            <ul><li><a href="https://www.xnmoe.com/index.html" target="_blank">NNNullptr's Blog</a> - 网站设计风格参考，特别感谢！</li></ul>
         </div>
-
         <div class="thanks-section">
             <h3>🧟 僵尸毁灭工程汉化致谢</h3>
             <ul>
-                <li><strong>老版汉化组成员</strong>：Sky_Orc_Mm, Misha, HennyFishYu, Jeff</li>
-                <li><strong>新版汉化组成员</strong>：Alexa-Hong, AZ, Flying penguin, 格兰瑞敌击剑, HansKaffee, L'Etranger, Livia, moonlight-pz, 轻轻的晚风, RunAbout, Susan Admason, taoran, 天冷就要吃火锅, TwilightRain, 战场蒲公英, zlq4863947</li>
-                <li><strong>电台内容汉化员</strong>：HenryFishYu, Jeff, HansKaffee, TwilightRain, moonlight-pz, Susan Admason, L'Etranger, 天冷就要吃火锅, 轻轻的晚风, 格兰瑞敌击剑, 湖畔镇一枝花, Livia, Flying Penguin, AZ, taoran, eva08maicy02</li>
-                <li><strong>特別鳴謝</strong>：YD360, Douggy_Sans, BigSmoke, Washi, Yuanmo, mraz#9738, COSeeds</li>
-                <li><strong>社区汉化</strong>：凌社千白, DeepSeek</li>
+                <li>老版汉化组成员：Sky_Orc_Mm, Misha, HennyFishYu, Jeff</li>
+                <li>新版汉化组成员：Alexa-Hong, AZ, Flying penguin, 格兰瑞敌击剑, HansKaffee, L'Etranger, Livia, moonlight-pz, 轻轻的晚风, RunAbout, Susan Admason, taoran, 天冷就要吃火锅, TwilightRain, 战场蒲公英, zlq4863947</li>
+                <li>电台内容汉化员：HenryFishYu, Jeff, HansKaffee, TwilightRain, moonlight-pz, Susan Admason, L'Etranger, 天冷就要吃火锅, 轻轻的晚风, 格兰瑞敌击剑, 湖畔镇一枝花, Livia, Flying Penguin, AZ, taoran, eva08maicy02</li>
+                <li>特別鳴謝：YD360, Douggy_Sans, BigSmoke, Washi, Yuanmo, mraz#9738, COSeeds</li>
+                <li>社区汉化：凌社千白, DeepSeek</li>
             </ul>
             <p class="thanks-note">注：是我制作的模组不指代其他人，因为这个网页本身是我建设汉化也是</p>
         </div>
-
         <div class="thanks-section">
             <h3>📚 模组文件参考与灵感</h3>
-            <ul>
-                <li>[B42]汉化补充包（ID: 3388550747）</li>
-                <li>[B42]简体中文修复（ID: 3386522562）</li>
-                <li>[B42]统一·中文汉化（ID: 3556544454）</li>
-                <li>42传单汉化（ID: 3395823587）</li>
-                <li>[B42]出生点地图中文本地化（ID: 3401460152）</li>
-                <li>模组备注（ID: 3391537655）</li>
-            </ul>
+            <ul><li>[B42]汉化补充包（ID: 3388550747）</li><li>[B42]简体中文修复（ID: 3386522562）</li><li>[B42]统一·中文汉化（ID: 3556544454）</li><li>42传单汉化（ID: 3395823587）</li><li>[B42]出生点地图中文本地化（ID: 3401460152）</li><li>模组备注（ID: 3391537655）</li></ul>
         </div>
-
         <div class="thanks-section">
             <h3>🔧 原版汉化模组搭建致谢</h3>
             <ul>
@@ -344,9 +275,7 @@
     </div>
 
     <audio id="audioPlayer" preload="auto"></audio>
-
     <script>
-        // ---------- 音乐播放器 ----------
         const playlist = [
             { title: "Morning BGM", url: "music/morning.mp3" },
             { title: "Night BGM", url: "music/night.mp3" }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>千白分享主页</title>
     <style>
-        /* ========== 基础风格（固定背景） ========== */
+        /* ========== 基础风格 ========== */
         :root {
             --sidebar-width: 260px;
             --nav-offset: 60px;
@@ -38,7 +38,7 @@
             color: var(--text-dark);
         }
 
-        /* 导航栏（彩虹色） */
+        /* 导航栏 */
         nav {
             width: 100%;
             position: fixed;
@@ -97,7 +97,7 @@
             object-fit: cover;
             border: 2px solid var(--border-color);
         }
-        .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
+        .profile-name { font-size: 18px; font-weight: bold; text-align: center; }
         .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
 
         /* 播放器 */
@@ -129,8 +129,6 @@
             border-radius: 50%;
             border: 2px solid rgba(255,255,255,0.9);
             object-fit: cover;
-            z-index: 2;
-            pointer-events: none;
             background: #fff;
         }
         .player-controls {
@@ -147,7 +145,6 @@
             height: 32px;
             font-size: 14px;
             cursor: pointer;
-            color: var(--text-dark);
             transition: 0.2s;
         }
         .player-controls button:hover { background: var(--pink); }
@@ -164,6 +161,25 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        /* 联系方式 */
+        .contact-info {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 12px;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 12px;
+        }
+        .contact-info p {
+            margin: 6px 0;
+        }
+        .contact-info a {
+            color: var(--pink-dark);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
         }
 
         /* 右侧主区域 */
@@ -336,13 +352,14 @@
 <body>
     <nav>
         <ul class="links">
-    <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
-    <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
-    <li><a href="projects.html" style="background-color: #FFD700;">项目</a></li>
-    <li><a href="works.html" style="background-color: #32CD32;">作品集</a></li>
-    <li><a href="posts.html" style="background-color: #00CED1;">帖子</a></li>
-    <li><a href="thanks.html" style="background-color: #1E90FF;">致谢</a></li>
-    <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>        </ul>
+            <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
+            <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
+            <li><a href="projects.html" style="background-color: #FFD700;">项目</a></li>
+            <li><a href="works.html" style="background-color: #32CD32;">作品集</a></li>
+            <li><a href="posts.html" style="background-color: #00CED1;">帖子</a></li>
+            <li><a href="thanks.html" style="background-color: #1E90FF;">致谢</a></li>
+            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>
+        </ul>
     </nav>
 
     <div class="left-col">
@@ -363,6 +380,12 @@
                 </div>
                 <div class="song-title" id="songTitle">Morning BGM</div>
             </div>
+            <div class="contact-info">
+                <p>📺 B站: <a href="https://space.bilibili.com/498508670?spm_id_from=333.1007.0.0" target="_blank">凌社千白</a></p>
+                <p>🎵 抖音: <a href="https://www.douyin.com/user/self" target="_blank">凌社千白</a></p>
+                <p>📱 快手: <a href="https://www.kuaishou.com/profile/3xcatpzc2ejba82" target="_blank">凌社千白</a></p>
+            </div>
+            <button class="theme-toggle" id="themeToggle" style="display: none;">🌙 黑夜</button>
         </div>
     </div>
 
@@ -399,7 +422,7 @@
     <audio id="audioPlayer" preload="auto"></audio>
 
     <script>
-        // ==================== 音乐播放器（支持上下曲切换）====================
+        // 音乐播放器
         const playlist = [
             { title: "Morning BGM", url: "music/morning.mp3" },
             { title: "Night BGM", url: "music/night.mp3" }
@@ -452,7 +475,7 @@
 
         loadTrack(currentTrack);
 
-        // ==================== 紧凑周历 ====================
+        // 紧凑周历
         let calendarTargetDate = new Date();
         const weekdayNames = ['日', '一', '二', '三', '四', '五', '六'];
         function updateCompactCalendar(targetDate) {
@@ -497,7 +520,7 @@
         });
         updateCompactCalendar(calendarTargetDate);
 
-        // ==================== 动态加载 ====================
+        // 动态加载
         async function loadMoments() {
             const container = document.getElementById('momentsContainer');
             const defaultMoments = [
@@ -572,7 +595,7 @@
             sponsorImg.addEventListener('click', () => showImageModal(sponsorImg.src));
         }
 
-        // 导航平滑滚动（主页内）
+        // 导航平滑滚动
         document.querySelectorAll('nav .links li a[href="#"]').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();

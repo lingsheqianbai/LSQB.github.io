@@ -163,7 +163,7 @@
             text-overflow: ellipsis;
         }
 
-        /* 联系方式 */
+        /* 联系方式（B站、抖音、快手） */
         .contact-info {
             margin-top: 16px;
             text-align: center;
@@ -178,8 +178,11 @@
             color: var(--pink-dark);
             text-decoration: none;
         }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
 
-        /* 右侧内容区 - 帖子卡片样式（旧版尺寸） */
+        /* ========== 帖子卡片样式（可调整尺寸区域） ========== */
         .right-col {
             margin-left: calc(var(--sidebar-width) + 40px);
             margin-right: 20px;
@@ -203,6 +206,7 @@
             flex-direction: column;
             gap: 20px;
         }
+
         /* 卡片整体 */
         .post-card-item {
             display: flex;
@@ -212,6 +216,7 @@
             overflow: hidden;
             transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
+            /* ↓↓↓ 卡片最大宽度（可修改） ↓↓↓ */
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -220,44 +225,54 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 28px rgba(0,0,0,0.2);
         }
-        /* 封面图区域 - 宽度50%，高度由 padding-top 撑开（模拟旧版比例） */
+
+        /* 封面图区域 */
         .post-card-cover {
+            /* ↓↓↓ 封面宽度（占卡片宽度的百分比） ↓↓↓ */
             width: 50%;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             flex-shrink: 0;
-            padding-top: 20%; /* 高度为父容器宽度的20% */
+            /* ↓↓↓ 封面高度（通过 padding-top 控制，数值越小越扁） ↓↓↓ */
+            padding-top: 20%;
         }
+
         /* 右侧信息区域 */
         .post-card-info {
             flex: 1;
+            /* ↓↓↓ 内边距（可修改） ↓↓↓ */
             padding: 1.5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
+        /* 标题字号 */
         .post-card-title {
             font-size: 1.3rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
             line-height: 1.3;
         }
+        /* 日期 */
         .post-card-meta {
             font-size: 0.8rem;
             color: var(--text-mid);
             margin-bottom: 0.8rem;
         }
+        /* 摘要 */
         .post-card-summary {
             font-size: 0.9rem;
             line-height: 1.5;
             color: var(--text-dark);
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 3;   /* 显示行数 */
             line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
+
+        /* 分页按钮 */
         .pagination {
             display: flex;
             justify-content: center;
@@ -276,12 +291,21 @@
             background: var(--pink);
             color: #fff;
         }
+
+        /* 手机端适配（屏幕宽度 ≤800px） */
         @media (max-width: 800px) {
             .left-col { display: none; }
             .right-col { margin-left: 20px; }
-            .post-card-cover { width: 40%; padding-top: 28%; }
-            .post-card-info { padding: 1rem; }
-            .post-card-title { font-size: 1.1rem; }
+            .post-card-cover {
+                width: 40%;          /* 手机端封面宽度 */
+                padding-top: 28%;    /* 手机端封面高度比例 */
+            }
+            .post-card-info {
+                padding: 1rem;       /* 手机端内边距 */
+            }
+            .post-card-title {
+                font-size: 1.1rem;   /* 手机端标题大小 */
+            }
         }
         @media (max-width: 768px) {
             nav .links li a { padding: 6px 20px; font-size: 12px; }
@@ -301,13 +325,18 @@
         </ul>
     </nav>
 
+    <!-- 左侧栏 -->
     <div class="left-col">
         <div class="profile-card">
-            <div class="profile-avatar"><img src="images/lingsheqianbai.jpg" alt="凌社千白"></div>
+            <div class="profile-avatar">
+                <img src="images/lingsheqianbai.jpg" alt="凌社千白">
+            </div>
             <div class="profile-name">凌社千白</div>
             <div class="profile-signature">分享 · 记录 · 创造</div>
             <div class="player">
-                <div class="vinyl" id="vinylDisc"><img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img"></div>
+                <div class="vinyl" id="vinylDisc">
+                    <img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img">
+                </div>
                 <div class="player-controls">
                     <button id="prevBtn">⏮</button>
                     <button id="playPauseBtn">▶️</button>
@@ -316,13 +345,15 @@
                 <div class="song-title" id="songTitle">Morning BGM</div>
             </div>
             <div class="contact-info">
-                <p>📺 B站: <a href="https://space.bilibili.com/498508670" target="_blank">凌社千白</a></p>
+                <p>📺 B站: <a href="https://space.bilibili.com/498508670?spm_id_from=333.1007.0.0" target="_blank">凌社千白</a></p>
                 <p>🎵 抖音: <a href="https://www.douyin.com/user/self" target="_blank">凌社千白</a></p>
                 <p>📱 快手: <a href="https://www.kuaishou.com/profile/3xcatpzc2ejba82" target="_blank">凌社千白</a></p>
             </div>
+            <button class="theme-toggle" id="themeToggle" style="display: none;">🌙 黑夜</button>
         </div>
     </div>
 
+    <!-- 右侧帖子列表 -->
     <div class="right-col">
         <div class="page-header">
             <h2>📰 全部帖子</h2>
@@ -334,7 +365,7 @@
     <audio id="audioPlayer" preload="auto"></audio>
 
     <script>
-        // 音乐播放器
+        // ==================== 音乐播放器 ====================
         const playlist = [
             { title: "Morning BGM", url: "music/morning.mp3" },
             { title: "Night BGM", url: "music/night.mp3" }
@@ -374,7 +405,7 @@
         nextBtn.addEventListener('click', () => { currentTrack = (currentTrack + 1) % playlist.length; loadTrack(currentTrack); });
         loadTrack(currentTrack);
 
-        // 加载帖子列表
+        // ==================== 加载帖子数据 ====================
         let allPosts = [];
         let currentPage = 1;
         const PAGE_SIZE = 5;
