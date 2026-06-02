@@ -11,13 +11,10 @@
     <meta name="description" content="千白分享主页 - 重构测试">
     <title>千白分享主页 - 重构中</title>
     <style>
-        /* ========== Win98 复古风格（仅保留基础） ========== */
+        /* ========== Win98 复古风格（保留基础样式） ========== */
         :root {
-            --pink: #f9bddd;
-            --pink-dark: #c44569;
-            --pink-light: #ffcfe2;
-            --text-dark: #2a1a2e;
             --border-color: #000;
+            --text-light: #fff;
         }
 
         @font-face {
@@ -34,7 +31,7 @@
             background-image: repeating-conic-gradient(#f9bddd33 0% 25%, transparent 0% 50%) 50% / 40px 40px;
             background-attachment: fixed;
             min-height: 100vh;
-            padding-top: 60px;
+            padding-top: 70px;
         }
 
         /* Win98 滚动条 */
@@ -56,30 +53,35 @@
             flex-wrap: wrap;
             justify-content: center;
             list-style: none;
-            padding: 5px 16px;
+            padding: 8px 16px;
             margin: 0;
-            gap: 4px;
+            gap: 8px;
         }
         nav .links li { display: inline-block; }
         nav .links li a {
             display: inline-block;
-            padding: 3px 12px;
-            border-radius: 10px 10px 0 0;
+            padding: 8px 28px;      /* 加长按钮 */
+            border-radius: 24px;    /* 圆角更大，更现代，但仍保留复古感 */
             border: 1px solid var(--border-color);
-            border-bottom: none;
-            background: var(--pink-light);
             font-family: SimSun, "Microsoft YaHei", sans-serif;
-            font-size: 13px;
-            font-weight: 400;
+            font-size: 14px;
+            font-weight: bold;
             text-decoration: none;
-            color: #fff !important;
-            text-shadow: 1px 1px 0 color-mix(in srgb, #f9bddd 70%, #000);
-            box-shadow: 0 -2px 2px 3px rgba(255,255,255,0.5) inset;
-            transition: background 0.2s;
+            color: #fff;
+            text-shadow: 0 0 3px rgba(0,0,0,0.5);
+            transition: filter 0.2s, transform 0.1s;
             cursor: pointer;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-        nav .links li a:hover { background: var(--pink); }
-        nav .links li.active a { background: var(--pink); font-weight: bold; }
+        nav .links li a:hover {
+            filter: brightness(0.85);
+            transform: translateY(-1px);
+        }
+        nav .links li.active a {
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+            transform: translateY(1px);
+        }
 
         /* 主内容区 - 空白占位 */
         .content-placeholder {
@@ -89,35 +91,32 @@
             background: #fff;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            font-size: 14px;
-            color: var(--text-dark);
         }
-
         .section-placeholder {
             margin: 20px 0;
-            padding: 16px;
-            border: 1px dashed var(--pink-dark);
+            padding: 40px;
+            border: 1px dashed var(--border-color);
             background: #fffbfd;
             text-align: center;
-            color: var(--text-mid);
+            font-size: 18px;
+            color: #5a3e4b;
         }
 
-        /* 响应式 */
         @media (max-width: 768px) {
-            nav .links li a { padding: 3px 8px; font-size: 11px; }
+            nav .links li a { padding: 6px 16px; font-size: 12px; }
         }
     </style>
 </head>
 <body>
     <nav>
         <ul class="links">
-            <li><a href="#" data-target="home">主页</a></li>
-            <li><a href="#" data-target="projects">项目</a></li>
-            <li><a href="#" data-target="posts">帖子</a></li>
-            <li><a href="#" data-target="portfolio">作品集</a></li>
-            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer">仓库</a></li>
-            <li><a href="#" data-target="contact">联系</a></li>
-            <li><a href="#" data-target="thanks">致谢</a></li>
+            <li><a href="#" data-target="home" style="background-color: #FF4D4D;">主页</a></li>        <!-- 红 -->
+            <li><a href="#" data-target="projects" style="background-color: #FFA500;">项目</a></li>   <!-- 橙 -->
+            <li><a href="#" data-target="posts" style="background-color: #FFD700;">帖子</a></li>      <!-- 黄 -->
+            <li><a href="#" data-target="portfolio" style="background-color: #32CD32;">作品集</a></li><!-- 绿 -->
+            <li><a href="#" data-target="contact" style="background-color: #00CED1;">联系</a></li>    <!-- 青 -->
+            <li><a href="#" data-target="thanks" style="background-color: #1E90FF;">致谢</a></li>     <!-- 蓝 -->
+            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li> <!-- 紫 -->
         </ul>
     </nav>
 
@@ -142,7 +141,7 @@
                 }
             });
         });
-        // 高亮当前可见区域（可选，简单实现）
+        // 高亮当前可见区域
         const sections = ['home', 'projects', 'posts', 'portfolio', 'contact', 'thanks'];
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
