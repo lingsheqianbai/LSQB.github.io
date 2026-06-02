@@ -30,6 +30,8 @@
             --pink: #c44569;
             --pink-light: #5c2e3a;
             --shadow: 4px 4px 0 rgba(0,0,0,0.3);
+            background: url('images/beijin2.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
 
         @font-face {
@@ -98,24 +100,59 @@
             padding: 16px;
             box-shadow: var(--shadow);
         }
-        .profile-avatar { font-size: 64px; text-align: center; margin-bottom: 8px; }
-        .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
-        .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
-
-        /* 播放器 */
-        .player { margin: 16px 0 12px; text-align: center; }
-        .vinyl {
+        .profile-avatar {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .profile-avatar img {
             width: 64px;
             height: 64px;
             border-radius: 50%;
-            background: radial-gradient(circle at 35% 35%, #222, #111);
-            box-shadow: 0 0 0 4px #444, 0 0 0 6px #888;
-            margin: 0 auto 8px;
-            animation: spin 0s linear infinite;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
         }
-        .vinyl.playing { animation: spin 5s linear infinite; }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-        .player-controls { display: flex; justify-content: center; gap: 12px; margin-bottom: 6px; }
+        .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
+        .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
+
+        /* 播放器 - 简化版，根据时间/主题切换 morning / night */
+        .player {
+            margin: 16px 0 12px;
+            text-align: center;
+        }
+        .vinyl {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 35% 35%, #222, #111);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #444, 0 0 0 6px #888;
+        }
+        .vinyl.playing {
+            animation: spin 5s linear infinite;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+        .vinyl-center-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.9);
+            object-fit: cover;
+            z-index: 2;
+            pointer-events: none;
+            background: #fff;
+        }
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
         .player-controls button {
             background: var(--pink-light);
             border: 1px solid var(--border-color);
@@ -128,7 +165,20 @@
             transition: 0.2s;
         }
         .player-controls button:hover { background: var(--pink); }
-        .song-title { font-size: 10px; color: var(--text-mid); text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .song-title {
+            font-size: 10px;
+            color: var(--text-mid);
+            text-align: center;
+            background: var(--bg-card);
+            padding: 2px 8px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            display: inline-block;
+            max-width: 180px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
         .theme-toggle {
             width: 100%;
             background: var(--pink-light);
@@ -145,13 +195,12 @@
         }
         .theme-toggle:hover { background: var(--pink); }
 
-        /* 右侧主区域 */
+        /* 右侧主区域（其他样式不变） */
         .right-col {
             margin-left: calc(var(--sidebar-width) + 40px);
             margin-right: 20px;
             max-width: 1200px;
         }
-        /* Banner 图片占位符：直接显示 pngzhuye.png */
         .banner {
             background: rgba(0,0,0,0.2);
             border-radius: 16px;
@@ -168,7 +217,6 @@
             max-height: 100%;
             object-fit: contain;
         }
-        /* 双列：日历 + 公告栏 */
         .two-columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -182,7 +230,6 @@
             padding: 16px;
             box-shadow: var(--shadow);
         }
-        /* 紧凑周历 */
         .compact-calendar .cal-header {
             display: flex;
             justify-content: space-between;
@@ -232,7 +279,6 @@
             color: #fff;
             font-weight: bold;
         }
-        /* 公告栏 */
         .announcement h3 {
             font-size: 16px;
             margin-bottom: 12px;
@@ -246,8 +292,6 @@
             color: var(--text-mid);
             margin-bottom: 10px;
         }
-
-        /* 动态卡片（QQ空间风格） */
         .moment-item {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -275,71 +319,18 @@
             font-size: 24px;
             border: 1px solid var(--border-color);
         }
-        .moment-info {
-            flex: 1;
-        }
-        .moment-nickname {
-            font-weight: bold;
-            font-size: 15px;
-            color: var(--text-dark);
-        }
-        .moment-time {
-            font-size: 11px;
-            color: var(--text-mid);
-        }
-        .moment-content {
-            font-size: 14px;
-            line-height: 1.6;
-            margin-bottom: 12px;
-            color: var(--text-dark);
-        }
-        .moment-images {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-        .moment-images img {
-            max-width: calc(33% - 8px);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .moment-images img:hover {
-            transform: scale(1.02);
-        }
-        .moment-stats {
-            font-size: 12px;
-            color: var(--text-light);
-            border-top: 1px solid var(--border-color);
-            padding-top: 10px;
-            margin-top: 4px;
-        }
-        .moments-more {
-            text-align: center;
-            margin-top: 8px;
-        }
-        .moments-more a {
-            display: inline-block;
-            background: var(--pink-light);
-            padding: 6px 16px;
-            border-radius: 24px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 12px;
-            font-weight: bold;
-            border: 1px solid var(--border-color);
-        }
-        .moments-more a:hover {
-            background: var(--pink);
-        }
-
-        /* 支持一下折叠块 */
-        .sponsor-block {
-            margin-top: 24px;
-            margin-bottom: 24px;
-        }
+        .moment-info { flex: 1; }
+        .moment-nickname { font-weight: bold; font-size: 15px; color: var(--text-dark); }
+        .moment-time { font-size: 11px; color: var(--text-mid); }
+        .moment-content { font-size: 14px; line-height: 1.6; margin-bottom: 12px; color: var(--text-dark); }
+        .moment-images { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+        .moment-images img { max-width: calc(33% - 8px); border-radius: 8px; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s; }
+        .moment-images img:hover { transform: scale(1.02); }
+        .moment-stats { font-size: 12px; color: var(--text-light); border-top: 1px solid var(--border-color); padding-top: 10px; margin-top: 4px; }
+        .moments-more { text-align: center; margin-top: 8px; }
+        .moments-more a { display: inline-block; background: var(--pink-light); padding: 6px 16px; border-radius: 24px; text-decoration: none; color: var(--text-dark); font-size: 12px; font-weight: bold; border: 1px solid var(--border-color); }
+        .moments-more a:hover { background: var(--pink); }
+        .sponsor-block { margin-top: 24px; margin-bottom: 24px; }
         .sponsor-summary {
             background: var(--pink-light);
             border: 1px solid var(--border-color);
@@ -352,38 +343,12 @@
             gap: 8px;
             user-select: none;
         }
-        .sponsor-summary:hover {
-            background: var(--pink);
-        }
-        .sponsor-summary::after {
-            content: '▼';
-            margin-left: auto;
-            font-size: 12px;
-            transition: transform 0.2s;
-        }
-        .sponsor-block.open .sponsor-summary::after {
-            transform: rotate(180deg);
-        }
-        .sponsor-content {
-            display: none;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-top: none;
-            border-radius: 0 0 12px 12px;
-            padding: 16px;
-            text-align: center;
-        }
-        .sponsor-block.open .sponsor-content {
-            display: block;
-        }
-        .sponsor-img {
-            max-width: 180px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background: #fff;
-            padding: 4px;
-            cursor: pointer;
-        }
+        .sponsor-summary:hover { background: var(--pink); }
+        .sponsor-summary::after { content: '▼'; margin-left: auto; font-size: 12px; transition: transform 0.2s; }
+        .sponsor-block.open .sponsor-summary::after { transform: rotate(180deg); }
+        .sponsor-content { display: none; background: var(--bg-card); border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 12px 12px; padding: 16px; text-align: center; }
+        .sponsor-block.open .sponsor-content { display: block; }
+        .sponsor-img { max-width: 180px; border-radius: 10px; border: 1px solid var(--border-color); background: #fff; padding: 4px; cursor: pointer; }
 
         @media (max-width: 800px) {
             .left-col { display: none; }
@@ -393,6 +358,7 @@
         }
         @media (max-width: 768px) {
             nav .links li a { padding: 6px 20px; font-size: 12px; }
+            .song-title { max-width: 150px; }
         }
     </style>
 </head>
@@ -411,15 +377,18 @@
 
     <div class="left-col">
         <div class="profile-card">
-            <div class="profile-avatar">📦</div>
+            <div class="profile-avatar">
+                <img src="images/lingsheqianbai.jpg" alt="凌社千白">
+            </div>
             <div class="profile-name">凌社千白</div>
             <div class="profile-signature">分享 · 记录 · 创造</div>
+            <!-- 播放器 -->
             <div class="player">
-                <div class="vinyl" id="vinylDisc"></div>
+                <div class="vinyl" id="vinylDisc">
+                    <img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img">
+                </div>
                 <div class="player-controls">
-                    <button id="prevBtn">⏮</button>
                     <button id="playPauseBtn">▶️</button>
-                    <button id="nextBtn">⏭</button>
                 </div>
                 <div class="song-title" id="songTitle">加载中...</div>
             </div>
@@ -428,12 +397,9 @@
     </div>
 
     <div class="right-col" id="top">
-        <!-- Banner 图片占位符：显示 pngzhuye.png -->
         <div class="banner">
             <img src="images/pngzhuye.png" alt="主页图片" class="banner-img">
         </div>
-
-        <!-- 双列：日历 + 公告栏 -->
         <div class="two-columns">
             <div class="card compact-calendar">
                 <div class="cal-header">
@@ -451,11 +417,7 @@
                 <p>📅 预计下周发布模组表格和精灵图鉴模块。</p>
             </div>
         </div>
-
-        <!-- 动态区域：从 JSON 加载最近3条 -->
         <div id="momentsContainer"></div>
-
-        <!-- 支持一下折叠块 -->
         <div class="sponsor-block" id="sponsorBlock">
             <div class="sponsor-summary">💖 支持一下</div>
             <div class="sponsor-content">
@@ -467,73 +429,80 @@
     <audio id="audioPlayer" preload="auto"></audio>
 
     <script>
-        // ==================== 音乐播放器 ====================
-        const playlist = [
-            { title: "示例曲目 1 - 轻音乐", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
-            { title: "示例曲目 2 - 钢琴曲", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
-            { title: "示例曲目 3 - 吉他", url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" }
-        ];
-        let currentTrack = 0;
+        // ==================== 根据时间/主题选择音乐 ====================
+        let currentTheme = 'day'; // 'day' 或 'night'
         const audio = document.getElementById('audioPlayer');
         const vinyl = document.getElementById('vinylDisc');
         const playPauseBtn = document.getElementById('playPauseBtn');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
         const songTitleSpan = document.getElementById('songTitle');
 
-        function loadTrack(index) {
-            const track = playlist[index % playlist.length];
-            audio.src = track.url;
-            songTitleSpan.textContent = track.title;
+        // 音乐文件路径（请根据实际存放位置修改）
+        const MUSIC_DAY = 'music/morning.mp3';
+        const MUSIC_NIGHT = 'music/night.mp3';
+        const TITLE_DAY = 'Morning BGM';
+        const TITLE_NIGHT = 'Night BGM';
+
+        // 根据当前主题加载音乐
+        function loadMusicByTheme(theme) {
+            const url = theme === 'day' ? MUSIC_DAY : MUSIC_NIGHT;
+            const title = theme === 'day' ? TITLE_DAY : TITLE_NIGHT;
+            if (audio.src && audio.src.endsWith(url)) return; // 已经是同一首
+            audio.src = url;
+            songTitleSpan.textContent = title;
             audio.load();
-            audio.play().then(() => {
-                playPauseBtn.textContent = '⏸️';
+            if (!audio.paused) {
+                audio.play().catch(() => {});
                 vinyl.classList.add('playing');
-            }).catch(() => {
-                playPauseBtn.textContent = '▶️';
-                vinyl.classList.remove('playing');
-            });
+                playPauseBtn.textContent = '⏸️';
+            }
         }
+
+        // 判断当前时间决定白天/黑夜
+        function getThemeByTime() {
+            const hour = new Date().getHours();
+            return (hour >= 6 && hour < 18) ? 'day' : 'night';
+        }
+
+        // 切换主题（手动切换背景和音乐）
+        function setTheme(theme) {
+            currentTheme = theme;
+            if (theme === 'day') {
+                document.body.classList.remove('dark');
+                document.body.style.backgroundImage = "url('images/beijin1.jpg')";
+                themeToggle.innerHTML = '🌙 黑夜';
+            } else {
+                document.body.classList.add('dark');
+                document.body.style.backgroundImage = "url('images/beijin2.jpg')";
+                themeToggle.innerHTML = '🌤️ 白天';
+            }
+            loadMusicByTheme(theme);
+        }
+
+        // 播放/暂停
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
                 audio.play();
-                playPauseBtn.textContent = '⏸️';
                 vinyl.classList.add('playing');
+                playPauseBtn.textContent = '⏸️';
             } else {
                 audio.pause();
-                playPauseBtn.textContent = '▶️';
                 vinyl.classList.remove('playing');
+                playPauseBtn.textContent = '▶️';
             }
         });
-        prevBtn.addEventListener('click', () => {
-            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-            loadTrack(currentTrack);
-        });
-        nextBtn.addEventListener('click', () => {
-            currentTrack = (currentTrack + 1) % playlist.length;
-            loadTrack(currentTrack);
-        });
-        audio.addEventListener('ended', () => {
-            currentTrack = (currentTrack + 1) % playlist.length;
-            loadTrack(currentTrack);
-        });
-        loadTrack(0);
 
-        // 主题切换
+        // 页面初始化
+        const initTheme = getThemeByTime();
+        setTheme(initTheme);
+
+        // 主题切换按钮
         const themeToggle = document.getElementById('themeToggle');
-        let isDark = false;
         themeToggle.addEventListener('click', () => {
-            isDark = !isDark;
-            if (isDark) {
-                document.body.classList.add('dark');
-                themeToggle.innerHTML = '🌙 黑夜';
-            } else {
-                document.body.classList.remove('dark');
-                themeToggle.innerHTML = '🌤️ 白天';
-            }
+            const newTheme = currentTheme === 'day' ? 'night' : 'day';
+            setTheme(newTheme);
         });
 
-        // 紧凑周历
+        // ==================== 紧凑周历（不变）====================
         let calendarTargetDate = new Date();
         const weekdayNames = ['日', '一', '二', '三', '四', '五', '六'];
         function updateCompactCalendar(targetDate) {
@@ -578,61 +547,53 @@
         });
         updateCompactCalendar(calendarTargetDate);
 
-        // 加载动态（最近3条）
+        // ==================== 动态加载（不变）====================
         async function loadMoments() {
             const container = document.getElementById('momentsContainer');
+            const defaultMoments = [
+                { avatar: "📦", nickname: "凌社千白", time: "2026-06-02T14:30:00+08:00", content: "主页终于重构完成！加了日历、公告栏，还有动态区域，以后可以在这里记录日常啦~", images: [], likes: 5, comments: 2 },
+                { avatar: "📦", nickname: "凌社千白", time: "2026-06-01T09:15:00+08:00", content: "洛克王国精灵图鉴已更新至127种，点击项目页面可查看详情。", images: [], likes: 3, comments: 1 },
+                { avatar: "📦", nickname: "凌社千白", time: "2026-05-30T20:00:00+08:00", content: "模组信息统计新增离线分享筛选功能，方便查询已上传的模组。", images: [], likes: 2, comments: 0 }
+            ];
+            let moments = [];
             try {
                 const res = await fetch('data/moments.json');
-                if (!res.ok) throw new Error('加载失败');
-                const moments = await res.json();
-                // 按时间倒序排序，取前3条
-                const recent = moments.sort((a,b) => new Date(b.time) - new Date(a.time)).slice(0, 3);
-                if (recent.length === 0) {
-                    container.innerHTML = '<div class="card" style="text-align:center; padding:20px;">暂无动态，敬请期待~</div>';
-                    return;
-                }
-                let html = '';
-                recent.forEach(m => {
-                    const imagesHtml = (m.images && m.images.length) ? 
-                        `<div class="moment-images">${m.images.map(img => `<img src="${img}" alt="配图" loading="lazy" onclick="showImageModal(this.src)">`).join('')}</div>` : '';
-                    html += `
-                        <div class="moment-item">
-                            <div class="moment-header">
-                                <div class="moment-avatar">${escapeHtml(m.avatar || '📦')}</div>
-                                <div class="moment-info">
-                                    <div class="moment-nickname">${escapeHtml(m.nickname || '凌社千白')}</div>
-                                    <div class="moment-time">${formatTime(m.time)}</div>
-                                </div>
-                            </div>
-                            <div class="moment-content">${escapeHtml(m.content)}</div>
-                            ${imagesHtml}
-                            <div class="moment-stats">
-                                <span>❤️ ${m.likes || 0}</span>&nbsp;&nbsp;
-                                <span>💬 ${m.comments || 0}</span>
+                if (res.ok) moments = await res.json();
+                else throw new Error();
+            } catch (err) {
+                moments = defaultMoments;
+            }
+            const recent = moments.sort((a,b) => new Date(b.time) - new Date(a.time)).slice(0, 3);
+            if (recent.length === 0) {
+                container.innerHTML = '<div class="card" style="text-align:center; padding:20px;">暂无动态，敬请期待~</div>';
+                return;
+            }
+            let html = '';
+            recent.forEach(m => {
+                const imagesHtml = (m.images && m.images.length) ? 
+                    `<div class="moment-images">${m.images.map(img => `<img src="${img}" alt="配图" loading="lazy" onclick="showImageModal(this.src)">`).join('')}</div>` : '';
+                html += `
+                    <div class="moment-item">
+                        <div class="moment-header">
+                            <div class="moment-avatar">${escapeHtml(m.avatar || '📦')}</div>
+                            <div class="moment-info">
+                                <div class="moment-nickname">${escapeHtml(m.nickname || '凌社千白')}</div>
+                                <div class="moment-time">${formatTime(m.time)}</div>
                             </div>
                         </div>
-                    `;
-                });
-                html += `<div class="moments-more"><a href="moments.html">📲 查看更多动态</a></div>`;
-                container.innerHTML = html;
-            } catch (err) {
-                console.error(err);
-                container.innerHTML = '<div class="card" style="text-align:center; padding:20px;">加载动态失败，请检查 data/moments.json</div>';
-            }
-        }
-        function escapeHtml(str) {
-            if (!str) return '';
-            return str.replace(/[&<>]/g, function(m) {
-                if (m === '&') return '&amp;';
-                if (m === '<') return '&lt;';
-                if (m === '>') return '&gt;';
-                return m;
+                        <div class="moment-content">${escapeHtml(m.content)}</div>
+                        ${imagesHtml}
+                        <div class="moment-stats"><span>❤️ ${m.likes || 0}</span>&nbsp;&nbsp;<span>💬 ${m.comments || 0}</span></div>
+                    </div>
+                `;
             });
+            html += `<div class="moments-more"><a href="moments.html">📲 查看更多动态</a></div>`;
+            container.innerHTML = html;
         }
+        function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, function(m) { if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; return m; }); }
         function formatTime(iso) {
             if (!iso) return '';
-            const date = new Date(iso);
-            const now = new Date();
+            const date = new Date(iso), now = new Date();
             const diff = (now - date) / 1000;
             if (diff < 60) return '刚刚';
             if (diff < 3600) return `${Math.floor(diff/60)}分钟前`;
@@ -640,31 +601,13 @@
             if (diff < 86400*7) return `${Math.floor(diff/86400)}天前`;
             return `${date.getMonth()+1}月${date.getDate()}日`;
         }
-
-        // 图片灯箱
         window.showImageModal = function(src) {
             const modal = document.createElement('div');
-            modal.style.position = 'fixed';
-            modal.style.top = '0';
-            modal.style.left = '0';
-            modal.style.width = '100%';
-            modal.style.height = '100%';
-            modal.style.backgroundColor = 'rgba(0,0,0,0.85)';
-            modal.style.display = 'flex';
-            modal.style.alignItems = 'center';
-            modal.style.justifyContent = 'center';
-            modal.style.zIndex = '10000';
-            const img = document.createElement('img');
-            img.src = src;
-            img.style.maxWidth = '90%';
-            img.style.maxHeight = '90%';
-            img.style.border = '2px solid #fff';
-            img.style.borderRadius = '8px';
-            modal.appendChild(img);
-            modal.addEventListener('click', () => modal.remove());
-            document.body.appendChild(modal);
+            modal.style.position = 'fixed'; modal.style.top = '0'; modal.style.left = '0'; modal.style.width = '100%'; modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.85)'; modal.style.display = 'flex'; modal.style.alignItems = 'center'; modal.style.justifyContent = 'center'; modal.style.zIndex = '10000';
+            const img = document.createElement('img'); img.src = src; img.style.maxWidth = '90%'; img.style.maxHeight = '90%'; img.style.border = '2px solid #fff'; img.style.borderRadius = '8px';
+            modal.appendChild(img); modal.addEventListener('click', () => modal.remove()); document.body.appendChild(modal);
         };
-
         loadMoments();
 
         // 支持一下折叠
