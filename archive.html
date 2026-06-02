@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="文章归档 - 千白分享主页">
+    <title>文章归档 - 千白分享主页</title>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id:"3PEh97IIsQ2zJUR2",ck:"3PEh97IIsQ2zJUR2"})</script>
+    <style>
+        /* ===========================
+           复古 Y2K 风格 — 与 xnmoe.com 一致
+           棋盘格背景 / 粉色系 / 像素字体 / Win98 滚动条
+           =========================== */
+
+        :root {
+            --sidebar-width: 250px;
+            --layout-gap: 14px;
+            --nav-offset: 46px;
+            --pink: #f9bddd;
+            --pink-dark: #c44569;
+            --pink-light: #ffcfe2;
+            --pink-tag: #d46493;
+            --text-dark: #2a1a2e;
+            --text-mid: #5a3e4b;
+            --text-light: #bba3ad;
+            --border-color: #000;
+            --card-bg: #fff;
+            --bg-body: navajowhite;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            line-height: 1.2;
+        }
+
+        body {
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+            font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", sans-serif;
+            background: var(--bg-body);
+            background-image: 
+                repeating-conic-gradient(#f9bddd33 0% 25%, transparent 0% 50%) 50% / 40px 40px;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* ========== Custom Scrollbar (Windows 98 Style) ========== */
+        ::-webkit-scrollbar {
+            width: 16px;
+        }
+        ::-webkit-scrollbar:horizontal {
+            height: 17px;
+        }
+        ::-webkit-scrollbar-corner {
+            background: #dfdfdf;
+        }
+        ::-webkit-scrollbar-track {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='2' height='2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1 0H0v1h1v1h1V1H1V0z' fill='silver'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 0H1v1H0v1h1V1h1V0z' fill='%23fff'/%3E%3C/svg%3E");
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #dfdfdf;
+            box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+        }
+        ::-webkit-scrollbar-button:vertical:start {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 6H7v1H6v1H5v1H4v1h7V9h-1V8H9V7H8V6z' fill='%23000'/%3E%3C/svg%3E");
+            height: 17px;
+        }
+        ::-webkit-scrollbar-button:vertical:end {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 6H4v1h1v1h1v1h1v1h1V9h1V8h1V7h1V6z' fill='%23000'/%3E%3C/svg%3E");
+            height: 17px;
+        }
+        ::-webkit-scrollbar-button:horizontal:start {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 4H8v1H7v1H6v1H5v1h1v1h1v1h1v1h1V4z' fill='%23000'/%3E%3C/svg%3E");
+            width: 16px;
+        }
+        ::-webkit-scrollbar-button:horizontal:end {
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 4H6v7h1v-1h1V9h1V8h1V7H9V6H8V5H7V4z' fill='%23000'/%3E%3C/svg%3E");
+            width: 16px;
+        }
+
+        ::selection {
+            color: #b4dffb;
+            background: #ffffe0;
+        }
+
+        /* ========== 顶部导航栏 ========== */
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            font-size: 72%;
+        }
+
+        nav .links {
+            padding: 3.5px 16px;
+            list-style: none;
+            padding-inline: 0 !important;
+            padding-bottom: 0 !important;
+            padding-top: 5px !important;
+            border-bottom: 2px solid var(--border-color);
+            background: #fff;
+            margin: 0;
+            text-align: center;
+        }
+
+        nav .links li {
+            display: inline-block;
+            min-height: 1.4em;
+            list-style: none;
+        }
+
+        nav .links li a {
+            font-size: 0;
+            width: 70px;
+            border-radius: 10px 10px 0 0;
+            border: 1px solid var(--border-color);
+            transform: translateY(1px);
+            padding: 3px 8px;
+            background: var(--pink-light);
+            white-space: nowrap;
+            margin: 0 1px;
+            display: inline-block;
+            font-family: SimSun, "Microsoft YaHei", sans-serif;
+            font-weight: 400 !important;
+            text-decoration: none !important;
+            box-shadow: 0 -2px 2px 3px rgba(255, 255, 255, 0.5) inset;
+            color: #fff !important;
+            text-shadow: 1px 1px 0 color-mix(in srgb, #f9bddd 70%, #000);
+        }
+
+        nav .links li a:after {
+            content: attr(data-label);
+            font-size: 13px;
+        }
+
+        nav .links li a:hover {
+            background: var(--pink);
+        }
+
+        nav .links li.active a {
+            background: var(--pink);
+            font-weight: bold;
+        }
+
+        /* ========== 主体布局: 两栏 ========== */
+        main {
+            background: none;
+            font-size: 80%;
+        }
+
+        /* 左侧个人资料栏 (固定) */
+        .left-col {
+            padding: 5px;
+            top: var(--nav-offset);
+            width: var(--sidebar-width);
+            position: fixed;
+            left: var(--layout-gap);
+            z-index: 950;
+        }
+
+        .left-col .profile-title {
+            position: fixed;
+            left: var(--layout-gap);
+            top: 48px;
+            background: var(--pink);
+            width: var(--sidebar-width);
+            padding: 6px 10px;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 -5px 3px 3px rgba(255, 255, 255, 0.5) inset;
+            border: 1px solid var(--border-color);
+            color: #fff !important;
+            text-shadow: 1px 1px 0 color-mix(in srgb, #f9bddd 70%, #000);
+            font-size: 1.2em;
+            margin: 0;
+            text-align: center;
+            font-weight: bold;
+            z-index: 952;
+        }
+
+        .profile-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 0 0 10px 10px;
+            padding: 12px 10px;
+            position: fixed;
+            left: var(--layout-gap);
+            top: 77px;
+            width: var(--sidebar-width);
+            z-index: 951;
+        }
+
+        .profile-card .avatar-area {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .profile-card .avatar-area .avatar-icon {
+            font-size: 48px;
+            display: block;
+        }
+
+        .profile-card .profile-name {
+            font-weight: bold;
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-top: 4px;
+        }
+
+        .profile-card .profile-status {
+            color: color-mix(in srgb, #4045ff 50%, #000);
+            font-size: 11px;
+        }
+
+        .profile-card .profile-note {
+            margin-top: 8px;
+            padding: 8px 10px;
+            border: 2px solid #8d6e6888;
+            border-radius: 12px;
+            background: linear-gradient(180deg, #fff6f9 0%, #fff 45%, #fdf3ff 100%);
+            color: #3b2b2b;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .profile-card .home-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            padding: 6px;
+            background: var(--pink-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--pink-dark) !important;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .profile-card .home-link:hover {
+            background: var(--pink);
+        }
+
+        /* 右侧内容区 */
+        .col.right {
+            display: block;
+            background: #fff;
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            position: relative;
+            width: calc(100% - var(--sidebar-width) - (var(--layout-gap) * 2));
+            max-width: 1000px;
+            min-height: calc(100vh - var(--nav-offset));
+            margin-left: calc(var(--sidebar-width) + (var(--layout-gap) * 2));
+            margin-top: var(--nav-offset);
+            margin-right: var(--layout-gap);
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 0;
+            z-index: 900;
+        }
+
+        /* ========== Archive Hero ========== */
+        .archive-hero {
+            background:
+                linear-gradient(135deg, rgba(249, 189, 221, 0.25) 0%, rgba(180, 223, 251, 0.2) 50%, rgba(249, 189, 221, 0.15) 100%),
+                repeating-conic-gradient(#f9bddd22 0% 25%, transparent 0% 50%) 50% / 40px 40px;
+            background-size: auto, 40px 40px;
+            border-bottom: 2px solid var(--border-color);
+            padding: 32px 24px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .archive-hero::before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(249, 189, 221, 0.45) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .archive-hero-title {
+            font-family: SimSun, "Microsoft YaHei", monospace;
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--border-color);
+            margin: 0 0 6px;
+            text-shadow: 2px 2px 0 rgba(249, 189, 221, 0.5);
+        }
+
+        .archive-hero-sub {
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 13px;
+            color: var(--text-mid);
+            margin: 0 0 14px;
+            line-height: 1.6;
+        }
+
+        .archive-hero-deco {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            width: 140px;
+        }
+
+        .archive-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--pink-dark);
+            flex-shrink: 0;
+        }
+
+        .archive-line {
+            flex: 1;
+            height: 1.5px;
+            background: linear-gradient(90deg, #c44569, #f9bddd, #b4dffb);
+        }
+
+        .archive-hero .total-count {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 14px;
+            border: 1px solid var(--pink-dark);
+            border-radius: 12px;
+            font-size: 12px;
+            color: var(--pink-dark);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ========== 年份分组区域 ========== */
+        .archive-section {
+            padding: 20px 24px 8px;
+        }
+
+        .archive-year-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 28px 0 8px;
+            padding: 0 24px;
+        }
+
+        .archive-year-header:first-child {
+            margin-top: 8px;
+        }
+
+        .archive-year-label {
+            font-family: SimSun, "Microsoft YaHei", monospace;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .archive-year-label .year-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--pink-dark);
+            flex-shrink: 0;
+        }
+
+        .archive-year-count {
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        .archive-year-line {
+            flex: 1;
+            height: 1px;
+            background: #e0cfd6;
+        }
+
+        /* ========== 文章卡片网格 ========== */
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 4px 24px 10px;
+        }
+
+        .archive-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            animation: archiveCardIn 0.4s ease both;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        @keyframes archiveCardIn {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .archive-card:nth-child(1) { animation-delay: 0s; }
+        .archive-card:nth-child(2) { animation-delay: 0.05s; }
+        .archive-card:nth-child(3) { animation-delay: 0.1s; }
+        .archive-card:nth-child(4) { animation-delay: 0.15s; }
+        .archive-card:nth-child(5) { animation-delay: 0.2s; }
+        .archive-card:nth-child(6) { animation-delay: 0.25s; }
+        .archive-card:nth-child(7) { animation-delay: 0.3s; }
+        .archive-card:nth-child(8) { animation-delay: 0.35s; }
+
+        .archive-card:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 6px 20px rgba(196, 69, 105, 0.1),
+                0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .archive-card-title {
+            font-size: 15px;
+            font-weight: bold;
+            color: var(--text-dark);
+            margin: 0;
+            line-height: 1.3;
+            transition: color 0.2s;
+        }
+
+        .archive-card:hover .archive-card-title {
+            color: var(--pink-dark);
+        }
+
+        .archive-card-date {
+            font-size: 11px;
+            color: var(--text-light);
+            font-family: "Consolas", "Courier New", monospace;
+        }
+
+        .archive-card-desc {
+            font-size: 12px;
+            color: var(--text-mid);
+            line-height: 1.6;
+            margin: 0;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .archive-card-action {
+            margin-top: auto;
+            padding-top: 4px;
+        }
+
+        .archive-card-link {
+            font-family: SimSun, "Microsoft YaHei", monospace;
+            font-size: 11px;
+            color: var(--pink-tag);
+            text-decoration: none;
+            border-bottom: 1px dashed transparent;
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .archive-card-link:hover {
+            color: var(--pink-dark);
+            border-bottom-color: var(--pink-dark);
+        }
+
+        /* ========== 底部结尾 ========== */
+        .archive-end {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 24px 32px;
+        }
+
+        .archive-end-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e0cfd6, transparent);
+        }
+
+        .archive-end-text {
+            font-size: 11px;
+            color: var(--text-light);
+            white-space: nowrap;
+        }
+
+        /* ========== 加载 / 空状态 ========== */
+        .archive-loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        .archive-loading .spinner {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            border: 3px solid #f0dce4;
+            border-top-color: var(--pink-dark);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 12px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .archive-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+
+        .archive-empty .empty-icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 10px;
+            animation: archiveEmptyBob 3s ease-in-out infinite;
+        }
+
+        @keyframes archiveEmptyBob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .archive-empty p {
+            font-size: 13px;
+        }
+
+        .archive-error {
+            text-align: center;
+            padding: 60px 20px;
+            color: #c0392b;
+            font-size: 13px;
+        }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 860px) {
+            .left-col {
+                display: none;
+            }
+
+            .col.right {
+                width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                border-left: none;
+                border-right: none;
+                border-top: 1px solid var(--border-color);
+            }
+
+            nav {
+                position: sticky;
+            }
+
+            nav .links {
+                padding: 3.5px 4px;
+            }
+
+            nav .links li a {
+                width: 56px;
+            }
+
+            nav .links li a:after {
+                font-size: 11px;
+            }
+
+            .archive-hero {
+                padding: 24px 16px 18px;
+            }
+
+            .archive-hero-title {
+                font-size: 22px;
+            }
+
+            .archive-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 4px 12px 10px;
+            }
+
+            .archive-year-header {
+                padding: 0 12px;
+            }
+
+            .archive-card {
+                padding: 12px 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .archive-hero {
+                padding: 20px 12px 14px;
+            }
+
+            .archive-hero-title {
+                font-size: 18px;
+            }
+
+            .archive-hero-sub {
+                font-size: 11px;
+            }
+
+            .archive-grid {
+                padding: 4px 8px 8px;
+            }
+
+            .archive-year-header {
+                padding: 0 8px;
+            }
+
+            .archive-card {
+                padding: 10px 12px;
+            }
+
+            .archive-card-title {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== 顶部导航 ========== -->
+    <nav>
+        <ul class="links">
+            <li><a href="index.html" data-label="主页"></a></li>
+            <li><a href="post.html" data-label="帖子"></a></li>
+            <li class="active"><a href="archive.html" data-label="归档"></a></li>
+            <li><a href="index.html#contact" data-label="联系"></a></li>
+        </ul>
+    </nav>
+
+    <!-- ========== 主体两栏布局 ========== -->
+    <main>
+        <!-- 左侧个人资料栏 -->
+        <div class="left-col profile">
+            <div class="profile-title">千白分享</div>
+            <div class="profile-card">
+                <div class="avatar-area">
+                    <span class="avatar-icon">📚</span>
+                    <div class="profile-name">凌社千白</div>
+                    <div class="profile-status">● ONLINE!</div>
+                </div>
+                <div class="profile-note">
+                    这里是千白的文章归档页面，记录所有帖子和分享内容。感谢你的来访 ♥
+                </div>
+                <a href="index.html" class="home-link">← 返回首页</a>
+            </div>
+        </div>
+
+        <!-- 右侧内容区 -->
+        <div class="col right">
+
+            <!-- ========== Hero Section ========== -->
+            <div class="archive-hero">
+                <h2 class="archive-hero-title">文章归档</h2>
+                <p class="archive-hero-sub">Archive —— 所有文章的年份月度索引</p>
+                <div class="archive-hero-deco">
+                    <span class="archive-dot"></span>
+                    <span class="archive-line"></span>
+                    <span class="archive-dot"></span>
+                </div>
+                <div class="total-count" id="totalCount">加载中...</div>
+            </div>
+
+            <!-- ========== 文章归档内容 ========== -->
+            <div id="archiveContent">
+                <div class="archive-loading">
+                    <div class="spinner"></div>
+                    <p>正在加载文章归档...</p>
+                </div>
+            </div>
+
+            <!-- ========== 底部结尾 ========== -->
+            <div class="archive-end">
+                <span class="archive-end-line"></span>
+                <span class="archive-end-text">- 已经到底了 -</span>
+                <span class="archive-end-line"></span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        (function() {
+            var archiveContent = document.getElementById('archiveContent');
+            var totalCountEl = document.getElementById('totalCount');
+
+            var MONTH_NAMES = [
+                '一月', '二月', '三月', '四月', '五月', '六月',
+                '七月', '八月', '九月', '十月', '十一月', '十二月'
+            ];
+
+            function parseDate(dateStr) {
+                if (!dateStr) return null;
+                var parts = dateStr.split('-');
+                if (parts.length < 3) return null;
+                var year = parseInt(parts[0], 10);
+                var month = parseInt(parts[1], 10);
+                var day = parseInt(parts[2], 10);
+                if (isNaN(year) || isNaN(month) || isNaN(day)) return null;
+                return { year: year, month: month, day: day };
+            }
+
+            function formatDate(dateStr) {
+                var parsed = parseDate(dateStr);
+                if (!parsed) return '--';
+                return String(parsed.month).padStart(2, '0') + '-' + String(parsed.day).padStart(2, '0');
+            }
+
+            function escapeHtml(str) {
+                if (!str) return '';
+                var div = document.createElement('div');
+                div.appendChild(document.createTextNode(str));
+                return div.innerHTML;
+            }
+
+            function groupByYearMonth(posts) {
+                var yearMap = {};
+                posts.forEach(function(post) {
+                    var parsed = parseDate(post.date);
+                    if (!parsed) return;
+                    var year = parsed.year;
+                    var month = parsed.month;
+                    if (!yearMap[year]) yearMap[year] = {};
+                    if (!yearMap[year][month]) yearMap[year][month] = [];
+                    yearMap[year][month].push(post);
+                });
+
+                var result = [];
+                var sortedYears = Object.keys(yearMap).sort(function(a, b) { return b - a; });
+                sortedYears.forEach(function(year) {
+                    var monthMap = yearMap[year];
+                    var sortedMonths = Object.keys(monthMap).sort(function(a, b) { return b - a; });
+                    var months = sortedMonths.map(function(month) {
+                        return {
+                            month: parseInt(month, 10),
+                            monthName: MONTH_NAMES[parseInt(month, 10) - 1],
+                            posts: monthMap[month].sort(function(a, b) {
+                                return new Date(b.date) - new Date(a.date);
+                            })
+                        };
+                    });
+                    result.push({ year: parseInt(year, 10), months: months });
+                });
+                return result;
+            }
+
+            function renderArchive(posts) {
+                var grouped = groupByYearMonth(posts);
+                var totalPosts = posts.length;
+
+                totalCountEl.textContent = '\u5171 ' + totalPosts + ' \u7BC7\u6587\u7AE0';
+
+                if (grouped.length === 0) {
+                    archiveContent.innerHTML = '<div class="archive-empty"><span class="empty-icon">📭</span><p>暂无文章</p></div>';
+                    return;
+                }
+
+                var html = '';
+                grouped.forEach(function(yearGroup) {
+                    // 年份分隔行
+                    var yearPostCount = 0;
+                    yearGroup.months.forEach(function(m) { yearPostCount += m.posts.length; });
+                    html += '<div class="archive-year-header">';
+                    html += '<div class="archive-year-label"><span class="year-dot"></span>' + yearGroup.year + '<span class="archive-year-count">\uFF08' + yearPostCount + ' \u7BC7\uFF09</span></div>';
+                    html += '<div class="archive-year-line"></div>';
+                    html += '</div>';
+
+                    html += '<div class="archive-grid">';
+                    yearGroup.months.forEach(function(monthGroup) {
+                        monthGroup.posts.forEach(function(post) {
+                            var postLink = post.link || ('post.html?id=' + encodeURIComponent(post.id));
+                            var dateFormatted = formatDate(post.date);
+                            var summary = post.summary || '';
+                            if (summary.length > 80) summary = summary.substring(0, 80) + '\u2026';
+
+                            html += '<a class="archive-card" href="' + escapeHtml(postLink) + '">';
+                            html += '<span class="archive-card-date">' + monthGroup.monthName + ' ' + escapeHtml(dateFormatted) + '</span>';
+                            html += '<div class="archive-card-title">' + escapeHtml(post.title) + '</div>';
+                            if (summary) {
+                                html += '<p class="archive-card-desc">' + escapeHtml(summary) + '</p>';
+                            }
+                            html += '<div class="archive-card-action"><span class="archive-card-link">\u67E5\u770B\u8BE6\u60C5 \u2192</span></div>';
+                            html += '</a>';
+                        });
+                    });
+                    html += '</div>';
+                });
+
+                archiveContent.innerHTML = html;
+            }
+
+            function renderError(message) {
+                archiveContent.innerHTML = '<div class="archive-error"><p>\u2716 ' + escapeHtml(message) + '</p></div>';
+                totalCountEl.textContent = '\u52A0\u8F7D\u5931\u8D25';
+            }
+
+            fetch('data/posts.json')
+                .then(function(response) {
+                    if (!response.ok) throw new Error('HTTP ' + response.status);
+                    return response.json();
+                })
+                .then(function(posts) {
+                    posts.sort(function(a, b) {
+                        return new Date(b.date) - new Date(a.date);
+                    });
+                    renderArchive(posts);
+                })
+                .catch(function(error) {
+                    console.error('\u52A0\u8F7D\u5E16\u5B50\u6570\u636E\u5931\u8D25:', error);
+                    renderError('\u6570\u636E\u52A0\u8F7D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5 data/posts.json \u6587\u4EF6\u662F\u5426\u5B58\u5728');
+                });
+        })();
+    </script>
+</body>
+</html>
