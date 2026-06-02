@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <script>
-        function adjustZoom() { document.body.style.zoom = 1; }
-        adjustZoom();
-        window.addEventListener('resize', adjustZoom);
-    </script>
     <title>帖子详情 - 千白分享</title>
     <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
     <script>LA.init({id:"3PEh97IIsQ2zJUR2",ck:"3PEh97IIsQ2zJUR2"})</script>
     <style>
+        /* ========== 帖子页原有样式 ========== */
         :root {
             --sidebar-width: 250px; --layout-gap: 14px; --nav-offset: 46px;
             --pink: #f9bddd; --pink-dark: #c44569; --pink-light: #ffcfe2;
@@ -190,9 +186,12 @@
     <nav>
         <ul class="links">
             <li><a href="index.html" data-label="主页"></a></li>
-            <li class="active"><a href="post.html" data-label="帖子"></a></li>
-            <li><a href="archive.html" data-label="归档"></a></li>
-            <li><a href="index.html#contact" data-label="联系"></a></li>
+            <li><a href="moments.html" data-label="动态"></a></li>
+            <li><a href="projects.html" data-label="项目"></a></li>
+            <li><a href="works.html" data-label="作品集"></a></li>
+            <li><a href="#" data-label="联系"></a></li>
+            <li><a href="#" data-label="致谢"></a></li>
+            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" data-label="仓库"></a></li>
         </ul>
     </nav>
 
