@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>帖子列表 - 千白分享</title>
+    <title>致谢 - 千白分享</title>
     <style>
         /* ========== 基础风格（与主页一致） ========== */
         :root {
@@ -20,15 +20,12 @@
             --pink-dark: #c44569;
             --pink-light: #ffcfe2;
         }
-
         @font-face {
             font-family: 'ZQKNNY';
             src: url('ZQKNNY-Medium-2.woff2') format('woff2');
             font-weight: 500; font-style: normal; font-display: swap;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
             background: url('images/beijin1.jpg') no-repeat center center fixed;
@@ -37,7 +34,6 @@
             padding-top: var(--nav-offset);
             color: var(--text-dark);
         }
-
         nav {
             width: 100%;
             position: fixed;
@@ -69,7 +65,6 @@
             cursor: pointer;
         }
         nav .links li a:hover { filter: brightness(0.85); }
-
         .left-col {
             position: fixed;
             left: 20px;
@@ -77,8 +72,6 @@
             width: var(--sidebar-width);
             z-index: 950;
         }
-
-        /* 右侧区域 */
         .right-col {
             margin-left: calc(var(--sidebar-width) + 40px);
             margin-right: 20px;
@@ -97,71 +90,37 @@
             border-radius: 30px;
             border: 1px solid var(--border-color);
         }
-        .posts-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .post-card-item {
-            display: flex;
+        .thanks-section {
             background: var(--bg-card);
-            border-radius: 20px;
             border: 1px solid var(--border-color);
-            overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-        }
-        .post-card-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-        }
-        .post-card-cover {
-            width: 40%;
-            background-size: cover;
-            background-position: center;
-            flex-shrink: 0;
-        }
-        .post-card-info {
-            flex: 1;
+            border-radius: 16px;
             padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
         }
-        .post-card-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        .post-card-meta {
-            font-size: 0.8rem;
-            color: var(--text-mid);
-            margin-bottom: 10px;
-        }
-        .post-card-summary {
-            font-size: 0.9rem;
-            line-height: 1.5;
+        .thanks-section h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
             color: var(--text-dark);
         }
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 30px;
+        .thanks-section ul {
+            list-style: none;
+            padding-left: 0;
         }
-        .pagination button, .pagination .page-number {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 6px 14px;
-            border-radius: 24px;
-            cursor: pointer;
-            font-size: 13px;
+        .thanks-section li {
+            padding: 4px 0;
+            font-size: 14px;
         }
-        .pagination .page-number.active {
-            background: var(--pink);
-            color: #fff;
+        .thanks-section a {
+            color: var(--pink-dark);
+            text-decoration: none;
+        }
+        .thanks-section a:hover {
+            text-decoration: underline;
         }
         @media (max-width: 800px) {
             .left-col { display: none; }
             .right-col { margin-left: 20px; }
-            .post-card-cover { width: 30%; }
         }
     </style>
 </head>
@@ -177,7 +136,7 @@
     <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>        </ul>
     </nav>
 
-    <!-- 左侧栏：复制新版 sidebar.html 的内容到这里 -->
+    <!-- 左侧栏：复制新版 sidebar.html 的内容到这里（同 posts.html） -->
     <div class="left-col">
         <div class="profile-card">
             <div class="profile-avatar">
@@ -209,16 +168,63 @@
 
     <div class="right-col">
         <div class="page-header">
-            <h2>📰 全部帖子</h2>
+            <h2>✨ 致谢</h2>
         </div>
-        <div id="postsGrid" class="posts-grid"></div>
-        <div id="pagination" class="pagination"></div>
+
+        <div class="thanks-section">
+            <h3>🌐 网页贡献致谢</h3>
+            <ul>
+                <li><a href="https://www.deepseek.com/" target="_blank">DeepSeek</a> - AI 助手</li>
+                <li><a href="https://space.bilibili.com/3493078216215098" target="_blank">小狐务器</a> - B站主页</li>
+            </ul>
+        </div>
+
+        <div class="thanks-section">
+            <h3>🎨 灵感设计</h3>
+            <ul>
+                <li><a href="https://www.xnmoe.com/index.html" target="_blank">NNNullptr's Blog</a> - 网站设计风格参考，特别感谢！</li>
+            </ul>
+        </div>
+
+        <div class="thanks-section">
+            <h3>🧟 僵尸毁灭工程汉化致谢</h3>
+            <ul>
+                <li>老版汉化组成员：Sky_Orc_Mm, Misha, HennyFishYu, Jeff</li>
+                <li>新版汉化组成员：Alexa-Hong, AZ, Flying penguin, 格兰瑞敌击剑, HansKaffee, L'Etranger, Livia, moonlight-pz, 轻轻的晚风, RunAbout, Susan Admason, taoran, 天冷就要吃火锅, TwilightRain, 战场蒲公英, zlq4863947</li>
+                <li>电台内容汉化员：HenryFishYu, Jeff, HansKaffee, TwilightRain, moonlight-pz, Susan Admason, L'Etranger, 天冷就要吃火锅, 轻轻的晚风, 格兰瑞敌击剑, 湖畔镇一枝花, Livia, Flying Penguin, AZ, taoran, eva08maicy02</li>
+                <li>特別鳴謝：YD360, Douggy_Sans, BigSmoke, Washi, Yuanmo, mraz#9738, COSeeds</li>
+                <li>社区汉化：凌社千白, DeepSeek</li>
+            </ul>
+            <p style="margin-top: 12px; font-style: italic;">注：是我制作的模组不指代其他人，因为这个网页本身是我建设汉化也是</p>
+        </div>
+
+        <div class="thanks-section">
+            <h3>📚 模组文件参考与灵感</h3>
+            <ul>
+                <li>[B42]汉化补充包（ID: 3388550747）</li>
+                <li>[B42]简体中文修复（ID: 3386522562）</li>
+                <li>[B42]统一·中文汉化（ID: 3556544454）</li>
+                <li>42传单汉化（ID: 3395823587）</li>
+                <li>[B42]出生点地图中文本地化（ID: 3401460152）</li>
+                <li>模组备注 ID: 3391537655</li>
+            </ul>
+        </div>
+
+        <div class="thanks-section">
+            <h3>🔧 原版汉化模组搭建致谢</h3>
+            <ul>
+                <li><strong>模组备注</strong> ID: 3391537655 <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3391537655" target="_blank">[创意工坊]</a> 原作者 炎天amfysky</li>
+                <li><strong>B42汉化补充包</strong> ID: 3388550747 <a href="https://steamcommunity.com/workshop/filedetails/?id=3388550747" target="_blank">[创意工坊]</a> 原作者 炎天amfysky</li>
+                <li><strong>B42简体中文修复</strong> ID: 3386522562 <a href="https://steamcommunity.com/workshop/filedetails/?id=3386522562" target="_blank">[创意工坊]</a> 原作者 喵了个球</li>
+                <li><strong>42传单汉化</strong> ID: 3395823587 <a href="https://steamcommunity.com/workshop/filedetails/?id=3395823587" target="_blank">[创意工坊]</a> 原作者 Köngwaffle</li>
+                <li><strong>[B42]出生点地图中文本地化</strong> ID: 3401460152 <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3401460152" target="_blank">[创意工坊]</a> 原作者 SillageM</li>
+            </ul>
+        </div>
     </div>
 
     <audio id="audioPlayer" preload="auto"></audio>
-
     <script>
-        // ---------- 音乐播放器 ----------
+        // 音乐播放器（同上）
         const playlist = [
             { title: "Morning BGM", url: "music/morning.mp3" },
             { title: "Night BGM", url: "music/night.mp3" }
@@ -257,96 +263,6 @@
         prevBtn.addEventListener('click', () => { currentTrack = (currentTrack - 1 + playlist.length) % playlist.length; loadTrack(currentTrack); });
         nextBtn.addEventListener('click', () => { currentTrack = (currentTrack + 1) % playlist.length; loadTrack(currentTrack); });
         loadTrack(currentTrack);
-
-        // ---------- 加载帖子数据 ----------
-        let allPosts = [];
-        let currentPage = 1;
-        const PAGE_SIZE = 5;
-
-        async function loadPosts() {
-            try {
-                const res = await fetch('data/posts.json');
-                if (!res.ok) throw new Error();
-                allPosts = await res.json();
-                allPosts.sort((a,b) => new Date(b.date) - new Date(a.date));
-                renderPage();
-                renderPagination();
-            } catch (err) {
-                document.getElementById('postsGrid').innerHTML = '<div style="text-align:center; padding:40px;">加载失败，请检查 data/posts.json</div>';
-            }
-        }
-
-        function renderPage() {
-            const start = (currentPage-1) * PAGE_SIZE;
-            const pagePosts = allPosts.slice(start, start+PAGE_SIZE);
-            const grid = document.getElementById('postsGrid');
-            if (!pagePosts.length) {
-                grid.innerHTML = '<div style="text-align:center; padding:40px;">暂无帖子</div>';
-                return;
-            }
-            grid.innerHTML = pagePosts.map(post => {
-                let summary = post.summary || '';
-                if (summary.length > 150) summary = summary.substring(0,150)+'…';
-                let coverStyle = '';
-                if (post.image) {
-                    let imgUrl = post.image.startsWith('http') ? post.image : './' + post.image;
-                    coverStyle = `background-image: url('${imgUrl}'); background-size: cover; background-position: center;`;
-                } else {
-                    coverStyle = `background-color: var(--pink-light);`;
-                }
-                return `
-                    <div class="post-card-item" onclick="location.href='post.html?id=${post.id}'">
-                        <div class="post-card-cover" style="${coverStyle}"></div>
-                        <div class="post-card-info">
-                            <div class="post-card-title">${escapeHtml(post.title)}</div>
-                            <div class="post-card-meta">📅 ${post.date}</div>
-                            <div class="post-card-summary">${escapeHtml(summary)}</div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function renderPagination() {
-            const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
-            if (totalPages <= 1) {
-                document.getElementById('pagination').innerHTML = '';
-                return;
-            }
-            let html = `<button id="prevPageBtn" ${currentPage===1?'disabled':''}>‹ 上一页</button>`;
-            for (let i=1; i<=totalPages; i++) {
-                html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`;
-            }
-            html += `<button id="nextPageBtn" ${currentPage===totalPages?'disabled':''}>下一页 ›</button>`;
-            document.getElementById('pagination').innerHTML = html;
-
-            document.querySelectorAll('.page-number').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    currentPage = parseInt(btn.dataset.page);
-                    renderPage();
-                    renderPagination();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                });
-            });
-            document.getElementById('prevPageBtn')?.addEventListener('click', () => {
-                if (currentPage > 1) { currentPage--; renderPage(); renderPagination(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-            });
-            document.getElementById('nextPageBtn')?.addEventListener('click', () => {
-                if (currentPage < totalPages) { currentPage++; renderPage(); renderPagination(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-            });
-        }
-
-        function escapeHtml(str) {
-            if (!str) return '';
-            return str.replace(/[&<>]/g, function(m) {
-                if (m === '&') return '&amp;';
-                if (m === '<') return '&lt;';
-                if (m === '>') return '&gt;';
-                return m;
-            });
-        }
-
-        loadPosts();
     </script>
 </body>
 </html>
