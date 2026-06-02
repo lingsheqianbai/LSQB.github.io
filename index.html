@@ -8,26 +8,15 @@
         adjustZoom();
         window.addEventListener('resize', adjustZoom);
     </script>
-    <meta name="description" content="千白分享主页 - 个人分享与作品展示">
-    <title>千白分享主页</title>
-    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-    <script>LA.init({id:"3PEh97IIsQ2zJUR2",ck:"3PEh97IIsQ2zJUR2"})</script>
+    <meta name="description" content="千白分享主页 - 重构测试">
+    <title>千白分享主页 - 重构中</title>
     <style>
-        /* ===========================
-           完全匹配 xnmoe.com 风格
-           navajowhite 棋盘格 / 粉色 heading / 黑色边框
-           =========================== */
+        /* ========== Win98 复古风格（仅保留基础） ========== */
         :root {
-            --sidebar-width: 250px;
-            --layout-gap: 14px;
-            --nav-offset: 46px;
             --pink: #f9bddd;
             --pink-dark: #c44569;
             --pink-light: #ffcfe2;
-            --pink-tag: #d46493;
             --text-dark: #2a1a2e;
-            --text-mid: #5a3e4b;
-            --text-light: #bba3ad;
             --border-color: #000;
         }
 
@@ -39,18 +28,16 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html { line-height: 1.2; }
-
         body {
-            position: relative; overflow-x: hidden; overflow-y: auto;
             font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
             background: navajowhite;
             background-image: repeating-conic-gradient(#f9bddd33 0% 25%, transparent 0% 50%) 50% / 40px 40px;
             background-attachment: fixed;
-            margin: 0; padding: 0; min-height: 100vh; width: 100%;
+            min-height: 100vh;
+            padding-top: 60px;
         }
 
-        /* Win98 Scrollbar */
+        /* Win98 滚动条 */
         ::-webkit-scrollbar { width: 16px; }
         ::-webkit-scrollbar:horizontal { height: 17px; }
         ::-webkit-scrollbar-corner { background: #dfdfdf; }
@@ -62,674 +49,120 @@
         ::-webkit-scrollbar-button:horizontal:end { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 4H6v7h1v-1h1V9h1V8h1V7H9V6H8V5H7V4z' fill='%23000'/%3E%3C/svg%3E"); width: 16px; }
         ::selection { color: #b4dffb; background: #ffffe0; }
 
-        /* ========== NAV ========== */
-        nav { width: 100%; position: fixed; top: 0; z-index: 999; font-size: 72%; }
+        /* 导航栏 */
+        nav { width: 100%; position: fixed; top: 0; z-index: 999; background: #fff; border-bottom: 2px solid var(--border-color); }
         nav .links {
-            padding: 3.5px 16px; list-style: none;
-            padding-inline: 0 !important; padding-bottom: 0 !important; padding-top: 5px !important;
-            border-bottom: 2px solid var(--border-color); background: #fff; margin: 0; text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            padding: 5px 16px;
+            margin: 0;
+            gap: 4px;
         }
-        nav .links li { display: inline-block; min-height: 1.4em; list-style: none; }
+        nav .links li { display: inline-block; }
         nav .links li a {
-            font-size: 0; width: 70px; border-radius: 10px 10px 0 0;
-            border: 1px solid var(--border-color); transform: translateY(1px);
-            padding: 3px 8px; background: var(--pink-light); white-space: nowrap;
-            margin: 0 1px; display: inline-block;
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 10px 10px 0 0;
+            border: 1px solid var(--border-color);
+            border-bottom: none;
+            background: var(--pink-light);
             font-family: SimSun, "Microsoft YaHei", sans-serif;
-            font-weight: 400 !important; text-decoration: none !important;
-            box-shadow: 0 -2px 2px 3px rgba(255,255,255,0.5) inset;
+            font-size: 13px;
+            font-weight: 400;
+            text-decoration: none;
             color: #fff !important;
             text-shadow: 1px 1px 0 color-mix(in srgb, #f9bddd 70%, #000);
+            box-shadow: 0 -2px 2px 3px rgba(255,255,255,0.5) inset;
+            transition: background 0.2s;
+            cursor: pointer;
         }
-        nav .links li a:after { content: attr(data-label); font-size: 13px; }
         nav .links li a:hover { background: var(--pink); }
         nav .links li.active a { background: var(--pink); font-weight: bold; }
 
-        /* ========== MAIN LAYOUT ========== */
-        main { background: none; font-size: 80%; }
-
-        .left-col { padding: 5px; top: var(--nav-offset); width: var(--sidebar-width); position: fixed; left: var(--layout-gap); z-index: 950; }
-        .left-col .profile-title {
-            position: fixed; left: var(--layout-gap); top: 48px;
-            background: var(--pink); width: var(--sidebar-width);
-            padding: 6px 10px; border-radius: 10px 10px 0 0;
-            box-shadow: 0 -5px 3px 3px rgba(255,255,255,0.5) inset;
-            border: 1px solid var(--border-color); color: #fff !important;
-            text-shadow: 1px 1px 0 color-mix(in srgb, #f9bddd 70%, #000);
-            font-size: 1.2em; margin: 0; text-align: center; font-weight: bold; z-index: 952;
-        }
-        .profile-card {
-            background: #fff; border: 1px solid var(--border-color);
-            border-radius: 0 0 10px 10px; padding: 12px 10px;
-            position: fixed; left: var(--layout-gap); top: 77px;
-            width: var(--sidebar-width); z-index: 951;
-        }
-        .profile-card .avatar-area { text-align: center; margin-bottom: 10px; }
-        .profile-card .avatar-icon { font-size: 48px; display: block; }
-        .profile-card .profile-name { font-weight: bold; font-size: 14px; color: var(--text-dark); margin-top: 4px; }
-        .profile-card .profile-status { color: color-mix(in srgb, #4045ff 50%, #000); font-size: 11px; }
-        .profile-card .profile-note {
-            margin-top: 8px; padding: 8px 10px; border: 2px solid #8d6e6888; border-radius: 12px;
-            background: linear-gradient(180deg, #fff6f9 0%, #fff 45%, #fdf3ff 100%);
-            color: #3b2b2b; font-size: 11px; line-height: 1.4;
-        }
-        .profile-card .side-nav-links { margin-top: 10px; display: flex; flex-direction: column; gap: 4px; }
-        .profile-card .side-nav-link {
-            display: block; text-align: center; padding: 5px;
-            background: var(--pink-light); border: 1px solid var(--border-color);
-            border-radius: 6px; color: var(--pink-dark) !important;
-            text-decoration: none; font-size: 11px; font-weight: bold; cursor: pointer;
-        }
-        .profile-card .side-nav-link:hover { background: var(--pink); }
-        .profile-card .site-links { margin-top: 8px; display: flex; flex-direction: column; gap: 3px; }
-        .profile-card .site-link {
-            display: block; text-align: center; padding: 4px;
-            background: #fff; border: 1px solid #e0cfd6; border-radius: 5px;
-            color: var(--pink-dark) !important; text-decoration: none; font-size: 10px;
-        }
-        .profile-card .site-link:hover { background: var(--pink-light); }
-
-        .col.right {
-            display: block; background: #fff;
-            border-left: 1px solid var(--border-color);
-            border-right: 1px solid var(--border-color);
-            position: relative;
-            width: calc(100% - var(--sidebar-width) - (var(--layout-gap) * 2));
-            max-width: 1000px;
-            min-height: calc(100vh - var(--nav-offset));
-            margin-left: calc(var(--sidebar-width) + (var(--layout-gap) * 2));
-            margin-top: var(--nav-offset);
-            margin-right: var(--layout-gap);
-            overflow-y: auto; overflow-x: hidden;
-            padding: 0 10px 20px;
-            z-index: 900;
+        /* 主内容区 - 空白占位 */
+        .content-placeholder {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            color: var(--text-dark);
         }
 
-        /* ========== HEADING BLOCK (核心样式，完全匹配 xnmoe.com) ========== */
-        .block { margin: 10px 0; }
-        .block .heading {
-            background: #f9bddd; border: 1px solid #000; border-bottom: 0;
-            border-radius: 10px 10px 0 0; padding: 2px 7px; color: #fff;
-            text-shadow: 0 0 1px color-mix(in srgb, #f9bddd 70%, #000), 1px 1px 0 color-mix(in srgb, #f9bddd 70%, #000), -1px -1px 0 color-mix(in srgb, #f9bddd 70%, #000);
-        }
-        .block .heading h4 { font-size: 14px !important; display: inline !important; font-weight: normal; }
-        .block .inner {
-            border: 1px solid #000; border-radius: 0 0 10px 10px;
-            background: #fff; padding: 10px;
+        .section-placeholder {
+            margin: 20px 0;
+            padding: 16px;
+            border: 1px dashed var(--pink-dark);
+            background: #fffbfd;
+            text-align: center;
+            color: var(--text-mid);
         }
 
-        /* ========== TOP BANNER ========== */
-        .top-banner { width: 100%; max-height: 200px; overflow: hidden; border-bottom: 1px solid #ccc; margin-bottom: 10px; }
-        .top-banner .banner-img { width: 100%; height: auto; display: block; object-fit: cover; }
-
-        /* ========== INTRO TEXT ========== */
-        .intro-block { margin: 10px 0; }
-        .intro-block .heading { display: flex; align-items: center; gap: 6px; }
-        .intro-block .inner p { font-size: 12px; color: var(--text-mid); line-height: 1.7; margin: 0 0 5px; }
-        .intro-block .inner p.highlight { color: var(--pink-dark); font-weight: bold; margin-top: 8px; }
-
-        /* ========== TABLE ========== */
-        .table-wrap { overflow-x: auto; margin: 6px 0; }
-        table.mod-table {
-            width: 100%; border-collapse: collapse;
-            font-size: 11px; color: var(--text-dark);
-            border: 1px solid #e0cfd6; min-width: 600px;
-        }
-        table.mod-table th {
-            text-align: left; padding: 7px 8px;
-            background: #fff0f5; border-bottom: 1px solid var(--border-color);
-            font-weight: bold; font-size: 10px; color: var(--pink-dark);
-        }
-        table.mod-table td { padding: 6px 8px; border-bottom: 1px solid #f0dce4; vertical-align: middle; word-wrap: break-word; }
-        table.mod-table tr:hover td { background: rgba(249,189,221,0.08); }
-        table.mod-table a { color: var(--pink-dark); text-decoration: none; }
-        table.mod-table a:hover { text-decoration: underline; }
-        .mod-id { font-size: 10px; color: var(--text-light); display: block; margin-top: 2px; }
-        .status-badge { display: inline-block; padding: 2px 7px; border-radius: 20px; font-size: 10px; font-weight: bold; white-space: nowrap; border: 1px solid; }
-        .status-complete { background: rgba(39,174,96,0.1); border-color: #27ae60; color: #1e8449; }
-        .status-incomplete { background: rgba(241,196,15,0.1); border-color: #d4ac0d; color: #9a7d0a; }
-        .status-pending { background: rgba(52,152,219,0.1); border-color: #2e86c1; color: #1a5276; }
-        .status-unneeded { background: rgba(155,89,182,0.1); border-color: #8e44ad; color: #6c3483; }
-        .status-todo { background: rgba(255,140,0,0.1); border-color: #e67e22; color: #a04000; }
-        .icon-uploaded { color: #27ae60; }
-        .icon-not-uploaded { color: var(--text-light); }
-
-        /* ========== FILTERS ========== */
-        .filter-section { margin-bottom: 8px; }
-        .filter-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; align-items: center; }
-        .filter-row label { font-size: 11px; font-weight: bold; color: var(--text-dark); white-space: nowrap; }
-        .filter-btn {
-            padding: 3px 10px; border-radius: 20px;
-            background: #fff; border: 1px solid var(--border-color);
-            color: var(--text-dark); font-size: 10px; cursor: pointer; transition: all .2s; white-space: nowrap;
-        }
-        .filter-btn:hover { background: var(--pink-light); }
-        .filter-btn.active { background: var(--pink); border-color: var(--pink-dark); color: #fff; }
-        .search-input {
-            padding: 6px 12px; border: 1px solid var(--border-color); border-radius: 20px;
-            background: #fff; font-size: 11px; outline: none; font-family: inherit; color: var(--text-dark); width: 100%;
-        }
-        .search-input:focus { border-color: var(--pink-dark); }
-        .search-input::placeholder { color: var(--text-light); }
-
-        /* ========== STATS ========== */
-        .stats-bar { display: flex; flex-wrap: wrap; gap: 10px; padding: 8px 10px; border: 1px solid #f0dce4; border-radius: 6px; margin-bottom: 8px; font-size: 10px; background: #fffbfd; }
-        .stats-item { display: flex; align-items: center; gap: 3px; }
-        .stats-number { font-weight: bold; }
-
-        /* ========== PAGINATION ========== */
-        .pagination { display: flex; justify-content: center; align-items: center; gap: 5px; margin-top: 10px; flex-wrap: wrap; }
-        .pagination button {
-            background: #fff; border: 1px solid var(--border-color); color: var(--text-dark);
-            padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 10px; transition: all .2s;
-        }
-        .pagination button:hover:not(:disabled) { background: var(--pink-light); }
-        .pagination button:disabled { opacity: .4; cursor: not-allowed; }
-        .pagination .page-numbers { display: flex; gap: 3px; flex-wrap: wrap; }
-        .pagination .page-number {
-            background: #fff; border: 1px solid var(--border-color); color: var(--text-dark);
-            padding: 4px 8px; border-radius: 4px; cursor: pointer; font-size: 10px;
-        }
-        .pagination .page-number.active { background: var(--pink); border-color: var(--pink-dark); color: #fff; }
-
-        /* ========== POSTS (Updates style) ========== */
-        .blog-child {
-            border: 1px solid #000; border-top: 0; background: #fff;
-            padding: 8px 10px; font-size: 11px; line-height: 1.7; position: relative;
-        }
-        .blog-child:first-child { border-top: 1px solid #000; }
-        .blog-child:last-child { border-radius: 0 0 10px 10px; }
-        .blog-content { font-family: "MS PGothic", "Unifont", monospace; }
-        .blog-content b { color: #c44569; font-weight: 700; font-size: 10px; letter-spacing: .3px; margin-right: 4px; }
-        .update-tag {
-            display: inline-block; font-size: 9px; padding: 0px 5px;
-            border: 1px solid #e8a0b4; border-radius: 8px;
-            background: #fff0f5; color: #c44569; line-height: 1.5; margin-right: 4px; vertical-align: middle;
-        }
-        .update-link { color: #2a1a2e; text-decoration: none; font-size: 11px; font-weight: 600; transition: color .2s; }
-        .update-link:hover { color: #c44569; text-decoration: underline; }
-        .post-card-item {
-            display: flex; background: #fff; border: 1px solid #000; border-top: 0;
-            overflow: hidden; transition: transform .2s, box-shadow .2s; cursor: pointer; text-decoration: none; color: inherit;
-        }
-        .post-card-item:first-child { border-top: 1px solid #000; }
-        .post-card-item:last-child { border-radius: 0 0 10px 10px; }
-        .post-card-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(196,69,105,0.1); }
-        .post-card-cover { background-size: cover; background-position: center; width: 40%; padding-top: 16%; flex-shrink: 0; }
-        .post-card-info { flex: 1; padding: 12px; }
-        .post-card-title { font-size: 1rem; font-weight: bold; margin-bottom: 3px; line-height: 1.3; color: var(--text-dark); }
-        .post-card-meta { display: flex; flex-wrap: wrap; gap: 6px; font-size: 10px; color: var(--text-light); margin-bottom: 4px; }
-        .post-card-summary { font-size: 11px; line-height: 1.5; color: var(--text-mid); display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-        /* ========== CONTACT ========== */
-        .contact-info { display: flex; flex-direction: column; gap: 4px; }
-        .contact-item {
-            display: flex; align-items: center; gap: 8px;
-            padding: 7px 10px; border: 1px solid var(--border-color); border-radius: 6px;
-            color: var(--text-dark) !important; text-decoration: none; font-size: 12px;
-            transition: background .2s;
-        }
-        .contact-item:hover { background: var(--pink-light); }
-
-        /* ========== THANKS ========== */
-        .thanks-section { margin-bottom: 10px; }
-        .thanks-section h4 { font-size: 11px; color: var(--pink-dark); margin-bottom: 3px; font-weight: bold; }
-        .thanks-section ul { list-style: none; padding: 0; margin: 0; }
-        .thanks-section li { padding: 1px 0; color: var(--text-mid); font-size: 10px; }
-        .thanks-section a { color: var(--pink-dark); text-decoration: none; }
-        .thanks-section a:hover { text-decoration: underline; }
-        .thanks-note { margin-top: 6px; font-style: italic; color: var(--text-light); font-size: 10px; }
-
-        /* ========== MODAL ========== */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
-        .modal-content { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 8px; border: 2px solid var(--border-color); }
-        .close-modal { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 36px; font-weight: bold; cursor: pointer; }
-        .sponsor-img { max-width: 160px; border-radius: 10px; border: 1px solid var(--border-color); padding: 4px; background: #fff; cursor: pointer; }
-
-        /* ========== END ========== */
-        .page-end { display: flex; align-items: center; gap: 12px; padding: 16px 0 10px; text-align: center; }
-        .page-end-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #e0cfd6, transparent); }
-        .page-end-text { font-size: 10px; color: var(--text-light); white-space: nowrap; }
-        .loading-text { text-align: center; padding: 16px; color: var(--text-light); font-size: 11px; }
-        .btn {
-            display: inline-block; padding: 5px 12px;
-            background: var(--pink-light); border: 1px solid var(--border-color);
-            border-radius: 20px; font-size: 11px; color: var(--pink-dark);
-            text-decoration: none; font-weight: bold; cursor: pointer; transition: all .2s;
-        }
-        .btn:hover { background: var(--pink); }
-        .btn-primary { background: var(--pink); color: #fff; }
-
-        /* ========== RESPONSIVE ========== */
+        /* 响应式 */
         @media (max-width: 768px) {
-            .left-col { display: none !important; }
-            .col.right { width: 100%; margin-left: 0; margin-right: 0; border-left: none; border-right: none; border-top: 1px solid var(--border-color); padding: 0 4px 10px; }
-            nav { position: sticky; }
-            nav .links { padding: 3.5px 4px; }
-            nav .links li a { width: 56px; }
-            nav .links li a:after { font-size: 11px; }
-            .post-card-item { flex-direction: column; }
-            .post-card-cover { width: 100%; padding-top: 45%; }
-            table.mod-table { min-width: 450px; }
-        }
-        @media (max-width: 480px) {
-            .post-card-title { font-size: .9rem; }
-            .pagination button { padding: 3px 6px; font-size: 9px; }
-            .pagination .page-number { padding: 3px 6px; font-size: 9px; }
-            table.mod-table { min-width: 380px; font-size: 10px; }
+            nav .links li a { padding: 3px 8px; font-size: 11px; }
         }
     </style>
 </head>
 <body>
-    <!-- NAV -->
     <nav>
         <ul class="links">
-            <li id="nav-about-li" class="active"><a href="#about" data-label="简介"></a></li>
-            <li id="nav-projects-li"><a href="#projects" data-label="项目"></a></li>
-            <li id="nav-posts-li"><a href="#posts" data-label="帖子"></a></li>
-            <li id="nav-contact-li"><a href="#contact" data-label="联系"></a></li>
-            <li id="nav-thanks-li"><a href="#thanks" data-label="致谢"></a></li>
+            <li><a href="#" data-target="home">主页</a></li>
+            <li><a href="#" data-target="projects">项目</a></li>
+            <li><a href="#" data-target="posts">帖子</a></li>
+            <li><a href="#" data-target="portfolio">作品集</a></li>
+            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer">仓库</a></li>
+            <li><a href="#" data-target="contact">联系</a></li>
+            <li><a href="#" data-target="thanks">致谢</a></li>
         </ul>
     </nav>
 
-    <main>
-        <!-- LEFT SIDEBAR -->
-        <div class="left-col profile">
-            <div class="profile-title">千白分享</div>
-            <div class="profile-card">
-                <div class="avatar-area">
-                    <span class="avatar-icon">📦</span>
-                    <div class="profile-name">凌社千白</div>
-                    <div class="profile-status">● ONLINE!</div>
-                </div>
-                <div class="profile-note">
-                    这里是千白的个人分享主页，记录模组、攻略、帖子和各种有趣的内容。感谢你的来访 ♥
-                </div>
-                <div class="side-nav-links">
-                    <a class="side-nav-link" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth',block:'start'})">📝 简介</a>
-                    <a class="side-nav-link" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth',block:'start'})">📂 项目</a>
-                    <a class="side-nav-link" onclick="document.getElementById('posts').scrollIntoView({behavior:'smooth',block:'start'})">📰 帖子</a>
-                    <a class="side-nav-link" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'})">💬 联系</a>
-                    <a class="side-nav-link" onclick="document.getElementById('thanks').scrollIntoView({behavior:'smooth',block:'start'})">❤ 致谢</a>
-                </div>
-                <div class="site-links">
-                    <a class="site-link" href="post.html">📖 帖子详情页</a>
-                    <a class="site-link" href="archive.html">📚 文章归档</a>
-                </div>
-            </div>
-        </div>
+    <div class="content-placeholder">
+        <div id="home" class="section-placeholder">🏠 主页区域 – 内容建设中</div>
+        <div id="projects" class="section-placeholder">📂 项目区域 – 内容建设中</div>
+        <div id="posts" class="section-placeholder">📰 帖子区域 – 内容建设中</div>
+        <div id="portfolio" class="section-placeholder">🎨 作品集区域 – 内容建设中</div>
+        <div id="contact" class="section-placeholder">💬 联系区域 – 内容建设中</div>
+        <div id="thanks" class="section-placeholder">❤️ 致谢区域 – 内容建设中</div>
+    </div>
 
-        <!-- RIGHT COLUMN -->
-        <div class="col right">
-
-            <!-- ABOUT -->
-            <div id="about" class="intro-block block">
-                <div class="heading"><h4>📝 简介</h4></div>
-                <div class="inner">
-                    <p>这个静态网页最初是为了展示个人作品、分享技术经验，以及提供模组的离线安装包。</p>
-                    <p>为了安全起见，请在安装模组离线安装包之前，确保您安装了杀毒软件或其他安全工具。</p>
-                    <p>这里收录了我所有的教程和视频链接，既是为了防止我自己游玩时忘记大部分模组的运行方式，也顺便帮助其他人。</p>
-                    <p>我目前制作了许多游戏攻略，但还没有发布，后续会慢慢更新。</p>
-                    <p>很高兴认识大家！即使您没有关注我，我也很高兴能为您提供帮助。</p>
-                    <p class="highlight">如果您通过下方的"支持一下"给予我赞助，我十分感谢。您的每一次鼓励，都是我继续创作的重要动力。谢谢您的支持！</p>
-                </div>
-            </div>
-
-            <!-- SPONSOR -->
-            <div class="block">
-                <div class="heading"><h4>💖 支持一下</h4></div>
-                <div class="inner" style="text-align:center">
-                    <img src="sponsor.png" alt="赞赏码" id="sponsorImg" class="sponsor-img" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:var(--text-light);font-size:12px\'>请放置 sponsor.png 到根目录</span>'">
-                </div>
-            </div>
-
-            <!-- PROJECTS -->
-            <div id="projects">
-                <!-- 模组备份 -->
-                <div class="block">
-                    <div class="heading"><h4>📦 模组备份与分享</h4></div>
-                    <div class="inner">
-                        <div style="margin-bottom:8px"><a href="https://wwavd.lanzoum.com/b011m04e2b" target="_blank" class="btn">📁 僵毁模组分享</a></div>
-                        <div style="margin-bottom:8px;font-size:12px;color:var(--pink-dark);font-weight:bold">🔐 密码：LSQB</div>
-                        <a href="https://wwavd.lanzoum.com/b011m04e2b" target="_blank" class="btn btn-primary">前往下载页面</a>
-                    </div>
-                </div>
-
-                <!-- 我的模组 -->
-                <div class="block">
-                    <div class="heading"><h4>⚙ 我的模组</h4></div>
-                    <div class="inner" style="font-size:12px">
-                        <div style="margin-bottom:8px;padding:8px;background:rgba(249,189,221,0.06);border-radius:4px;border:1px solid #f0dce4">
-                            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3668825372" target="_blank" style="color:var(--pink-dark);font-weight:bold">🎮 原版汉化模组</a>
-                            <div style="font-size:10px;color:var(--text-light)">Steam ID: 3668825372</div>
-                        </div>
-                        <div style="padding:8px;background:rgba(249,189,221,0.06);border-radius:4px;border:1px solid #f0dce4">
-                            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3445878532" target="_blank" style="color:var(--pink-dark);font-weight:bold">🎮 模组汉化</a>
-                            <div style="font-size:10px;color:var(--text-light)">Steam ID: 3445878532</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 模组信息统计 -->
-                <div class="block">
-                    <div class="heading"><h4>📊 模组信息统计</h4><span id="updateDate" style="font-size:10px;color:rgba(255,255,255,0.7);margin-left:8px">更新: 加载中...</span></div>
-                    <div class="inner">
-                        <div id="modStats" class="stats-bar">加载统计中...</div>
-                        <input type="text" id="modSearch" class="search-input" placeholder="搜索模组名称、中文名、ID或备注..." style="margin-bottom:8px">
-                        <div class="filter-section">
-                            <div class="filter-row"><label>游戏:</label><input type="text" id="gameSearchInput" class="search-input" placeholder="输入游戏名称..." style="width:auto;flex:1;min-width:120px"></div>
-                            <div class="filter-row"><label>翻译状态:</label><span id="statusFilterGroup"></span></div>
-                            <div class="filter-row"><label>离线分享:</label><span id="offlineFilterGroup"><span class="filter-btn active" data-group="offline" data-value="all">全部</span><span class="filter-btn" data-group="offline" data-value="yes">已上传</span><span class="filter-btn" data-group="offline" data-value="no">未上传</span></span></div>
-                            <div class="filter-row"><label>备注:</label><span id="noteFilterGroup"><span class="filter-btn active" data-group="note" data-value="all">全部</span><span class="filter-btn" data-group="note" data-value="yes">有备注</span><span class="filter-btn" data-group="note" data-value="no">无备注</span></span></div>
-                            <div class="filter-row"><label>中文名:</label><span id="chineseFilterGroup"><span class="filter-btn active" data-group="chinese" data-value="all">全部</span><span class="filter-btn" data-group="chinese" data-value="yes">有中文名</span><span class="filter-btn" data-group="chinese" data-value="no">无中文名</span></span></div>
-                            <div class="filter-row"><label>视频教程:</label><span id="videoFilterGroup"><span class="filter-btn active" data-group="video" data-value="all">全部</span><span class="filter-btn" data-group="video" data-value="yes">有教程</span><span class="filter-btn" data-group="video" data-value="no">无教程</span></span></div>
-                        </div>
-                        <div class="table-wrap"><table class="mod-table" id="modTable"><thead><tr><th>模组名称 / ID</th><th>模组中文名</th><th>翻译进度</th><th>视频教程</th><th>备注</th><th>离线分享</th></tr></thead><tbody id="modTableBody"><tr><td colspan="6" class="loading-text">加载中...</td></tr></tbody></table></div>
-                        <div class="pagination" id="pagination"></div>
-                    </div>
-                </div>
-
-                <!-- 游戏攻略 -->
-                <div class="block">
-                    <div class="heading"><h4>🎮 我制作的游戏攻略</h4></div>
-                    <div class="inner">
-                        <input type="text" id="guideSearch" class="search-input" placeholder="搜索攻略名称..." style="margin-bottom:8px">
-                        <div class="table-wrap"><table class="mod-table" id="guideTable" style="min-width:300px"><thead><tr><th>攻略名称</th><th>视频</th></tr></thead><tbody id="guideTableBody"><tr><td colspan="2" class="loading-text">加载中...</td></tr></tbody></table></div>
-                        <div class="pagination" id="guidePagination"></div>
-                    </div>
-                </div>
-
-                <!-- 精灵图鉴 -->
-                <div class="block">
-                    <div class="heading"><h4>🐉 洛克王国：世界精灵图鉴</h4></div>
-                    <div class="inner">
-                        <input type="text" id="wonderSearch" class="search-input" placeholder="搜索编号、精灵名称或备注..." style="margin-bottom:8px">
-                        <div class="table-wrap"><table class="mod-table" id="wonderTable" style="min-width:300px"><thead><tr><th>编号</th><th>精灵名称</th><th>备注</th><th>视频链接</th></tr></thead><tbody id="wonderTableBody"><tr><td colspan="4" class="loading-text">加载中...</td></tr></tbody></table></div>
-                        <div class="pagination" id="wonderPagination"></div>
-                    </div>
-                </div>
-
-                <!-- 称号获取 -->
-                <div class="block">
-                    <div class="heading"><h4>🏅 洛克王国：世界称号获取</h4></div>
-                    <div class="inner">
-                        <input type="text" id="titleSearch" class="search-input" placeholder="搜索称号名称或备注..." style="margin-bottom:8px">
-                        <div class="table-wrap"><table class="mod-table" id="titleTable" style="min-width:300px"><thead><tr><th>称号名称</th><th>备注</th><th>视频链接</th></tr></thead><tbody id="titleTableBody"><tr><td colspan="3" class="loading-text">加载中...</td></tr></tbody></table></div>
-                        <div class="pagination" id="titlePagination"></div>
-                    </div>
-                </div>
-
-                <!-- 任务攻略 -->
-                <div class="block">
-                    <div class="heading"><h4>📜 洛克王国：世界任务攻略</h4></div>
-                    <div class="inner">
-                        <input type="text" id="taskSearch" class="search-input" placeholder="搜索任务名称或备注..." style="margin-bottom:8px">
-                        <div class="table-wrap"><table class="mod-table" id="taskTable" style="min-width:300px"><thead><tr><th>任务名称</th><th>备注</th><th>视频链接</th></tr></thead><tbody id="taskTableBody"><tr><td colspan="3" class="loading-text">加载中...</td></tr></tbody></table></div>
-                        <div class="pagination" id="taskPagination"></div>
-                    </div>
-                </div>
-
-                <!-- 活动攻略 -->
-                <div class="block">
-                    <div class="heading"><h4>🎉 洛克王国：世界活动攻略</h4></div>
-                    <div class="inner">
-                        <input type="text" id="activitySearch" class="search-input" placeholder="搜索活动名称或备注..." style="margin-bottom:8px">
-                        <div class="table-wrap"><table class="mod-table" id="activityTable" style="min-width:300px"><thead><tr><th>活动名称</th><th>备注</th><th>视频链接</th></tr></thead><tbody id="activityTableBody"><tr><td colspan="3" class="loading-text">加载中...</td></tr></tbody></table></div>
-                        <div class="pagination" id="activityPagination"></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- POSTS (Updates 风格) -->
-            <div class="block" id="posts">
-                <div class="heading"><h4>📝 Updates</h4></div>
-                <div id="postsGrid"></div>
-                <div class="pagination" id="postsPagination"></div>
-            </div>
-
-            <!-- CONTACT -->
-            <div class="block" id="contact">
-                <div class="heading"><h4>💬 联系我</h4></div>
-                <div class="inner">
-                    <div class="contact-info">
-                        <a href="https://space.bilibili.com/498508670" target="_blank" class="contact-item">📺 哔哩哔哩：凌社千白</a>
-                        <a href="https://www.douyin.com/user/MS4wLjABAAAAk63wGgh1qr_pNx8CDzCy26nLh4ZAoCaop9PAmZUu93mjbSj6T5byECm4aXuGqkc_" target="_blank" class="contact-item">🎵 抖音：凌社千白</a>
-                        <a href="https://www.kuaishou.com/profile/3xcatpzc2ejba82" target="_blank" class="contact-item">▶ 快手：凌社千白</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- THANKS -->
-            <div id="thanks">
-                <div class="block">
-                    <div class="heading"><h4>🌐 网页贡献致谢</h4></div>
-                    <div class="inner">
-                        <div class="thanks-section"><ul><li><a href="https://www.deepseek.com/" target="_blank">DeepSeek</a> - AI 助手</li><li><a href="https://space.bilibili.com/3493078216215098" target="_blank">小狐务器</a> - B站主页</li></ul></div>
-                    </div>
-                </div>
-
-                <div class="block">
-                    <div class="heading"><h4>🧟 僵尸毁灭工程致谢</h4></div>
-                    <div class="inner">
-                        <div class="thanks-section"><h4>老版汉化组成员</h4><ul><li>Sky_Orc_Mm</li><li>Misha</li><li>HennyFishYu</li><li>Jeff</li></ul></div>
-                        <div class="thanks-section"><h4>新版汉化组成员</h4><ul><li>Alexa-Hong</li><li>AZ</li><li>Flying penguin</li><li>格兰瑞敌击剑</li><li>HansKaffee</li><li>L'Etranger</li><li>Livia</li><li>moonlight-pz</li><li>轻轻的晚风</li><li>RunAbout</li><li>Susan Admason</li><li>taoran</li><li>天冷就要吃火锅</li><li>TwilightRain</li><li>战场蒲公英</li><li>zlq4863947</li></ul></div>
-                        <div class="thanks-section"><h4>电台内容汉化员</h4><ul><li>HenryFishYu</li><li>Jeff</li><li>HansKaffee</li><li>TwilightRain</li><li>moonlight-pz</li><li>Susan Admason</li><li>L'Etranger</li><li>天冷就要吃火锅</li><li>轻轻的晚风</li><li>格兰瑞敌击剑</li><li>湖畔镇一枝花</li><li>Livia</li><li>Flying Penguin</li><li>AZ</li><li>taoran</li><li>eva08maicy02</li></ul></div>
-                        <div class="thanks-section"><h4>特別鳴謝</h4><ul><li>YD360</li><li>Douggy_Sans</li><li>BigSmoke</li><li>Washi</li><li>Yuanmo</li><li>mraz#9738</li><li>COSeeds</li></ul></div>
-                        <div class="thanks-section"><h4>社区汉化</h4><ul><li>凌社千白</li><li>DeepSeek</li><li>模组编程</li><li>DeepSeek (AI协作)</li></ul><p class="thanks-note">注：是我制作的模组不指代其他人，因为这个网页本身是我建设汉化也是</p></div>
-                        <div class="thanks-section"><h4>感谢以下模组提供的文件参考与灵感</h4><ul><li>[B42]汉化补充包（ID: 3388550747）</li><li>[B42]简体中文修复（ID: 3386522562）</li><li>[B42]统一·中文汉化（ID: 3556544454）</li><li>42传单汉化（ID: 3395823587）</li><li>[B42]出生点地图中文本地化（ID: 3401460152）</li><li>模组备注 ID: 3391537655</li></ul></div>
-                        <div class="thanks-section"><h4>原版汉化模组搭建致谢</h4><ul><li><strong>模组备注</strong> ID: 3391537655 <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3391537655" target="_blank">[创意工坊]</a> 原作者 炎天amfysky</li><li><strong>B42汉化补充包</strong> ID: 3388550747 <a href="https://steamcommunity.com/workshop/filedetails/?id=3388550747" target="_blank">[创意工坊]</a> 原作者 炎天amfysky</li><li><strong>B42简体中文修复</strong> ID: 3386522562 <a href="https://steamcommunity.com/workshop/filedetails/?id=3386522562" target="_blank">[创意工坊]</a> 原作者 喵了个球</li><li><strong>42传单汉化</strong> ID: 3395823587 <a href="https://steamcommunity.com/workshop/filedetails/?id=3395823587" target="_blank">[创意工坊]</a> 原作者 Köngwaffle</li><li><strong>[B42]出生点地图中文本地化</strong> ID: 3401460152 <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3401460152" target="_blank">[创意工坊]</a> 原作者 SillageM</li></ul></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- END -->
-            <div class="page-end"><span class="page-end-line"></span><span class="page-end-text">- 感谢来访 ♥ -</span><span class="page-end-line"></span></div>
-        </div>
-    </main>
-
-    <!-- MODAL -->
-    <div id="imageModal" class="modal"><span class="close-modal">&times;</span><img class="modal-content" id="modalImage"></div>
-
-    <!-- ========== SCRIPTS ========== -->
     <script>
-        (function(){var modal=document.getElementById("imageModal");var modalImg=document.getElementById("modalImage");var sponsorImg=document.getElementById("sponsorImg");var closeBtn=document.getElementsByClassName("close-modal")[0];if(sponsorImg)sponsorImg.onclick=function(){modal.style.display="flex";modalImg.src=this.src};if(closeBtn)closeBtn.onclick=function(){modal.style.display="none"};if(modal)modal.onclick=function(e){if(e.target===modal)modal.style.display="none"}})();
-    </script>
-
-    <!-- MOD DATA -->
-    <script>
-        (function() {
-            var PAGE_SIZE = 10;
-            var allMods = [], filteredMods = [], currentPage = 1;
-            var searchQuery = '', gameQuery = '', statusFilter = '全部', offlineFilter = 'all', noteFilter = 'all', chineseFilter = 'all', videoFilter = 'all';
-            var searchInput = document.getElementById('modSearch'), gameSearchInput = document.getElementById('gameSearchInput');
-            var tbody = document.getElementById('modTableBody'), paginationDiv = document.getElementById('pagination');
-            var updateDateSpan = document.getElementById('updateDate'), modStatsDiv = document.getElementById('modStats');
-            var statusFilterGroup = document.getElementById('statusFilterGroup'), offlineFilterGroup = document.getElementById('offlineFilterGroup');
-            function setUpdateDate() { if (updateDateSpan) { var today = new Date(); updateDateSpan.textContent = '更新: ' + today.getFullYear() + '-' + String(today.getMonth()+1).padStart(2,'0') + '-' + String(today.getDate()).padStart(2,'0') } }
-            function updateModStats() { if (!modStatsDiv || !allMods.length) return; var total = allMods.length; var countComplete = allMods.filter(function(m) { return m.status === '完整' }).length; var countIncomplete = allMods.filter(function(m) { return m.status === '非完整' }).length; var countPending = allMods.filter(function(m) { return m.status === '待检测' }).length; var countUnneeded = allMods.filter(function(m) { return m.status === '无需翻译' }).length; var countTodo = allMods.filter(function(m) { return m.status === '待处理' }).length; var countHasVideo = allMods.filter(function(m) { return m.videoUrl && m.videoUrl.trim() !== '' }).length; var countNoVideo = total - countHasVideo; modStatsDiv.innerHTML = '<div class="stats-item">📊 总模组: <span class="stats-number">' + total + '</span></div><div class="stats-item" style="color:#1e8449">✅ 完整: <span class="stats-number">' + countComplete + '</span></div><div class="stats-item" style="color:#a04000">⏳ 待处理: <span class="stats-number">' + countTodo + '</span></div><div class="stats-item" style="color:#1a5276">🔍 待检测: <span class="stats-number">' + countPending + '</span></div><div class="stats-item" style="color:#9a7d0a">🟡 非完整: <span class="stats-number">' + countIncomplete + '</span></div><div class="stats-item" style="color:#6c3483">🟣 无需翻译: <span class="stats-number">' + countUnneeded + '</span></div><div class="stats-item">📹 已拥有视频: <span class="stats-number">' + countHasVideo + '</span></div><div class="stats-item">🚫 未拥有视频: <span class="stats-number">' + countNoVideo + '</span></div>' }
-            function getModLink(mod) { if (mod.platform === 'steam' && mod.steamId) return 'https://steamcommunity.com/sharedfiles/filedetails/?id=' + mod.steamId; else if (mod.platform === 'mcmod' && mod.mcmodId) return 'https://www.mcmod.cn/class/' + mod.mcmodId + '.html'; else if (mod.platform === 'custom' && mod.customUrl) return mod.customUrl; else if (mod.id) return 'https://steamcommunity.com/sharedfiles/filedetails/?id=' + mod.id; else return '#' }
-            fetch('data/mods.json').then(function(r){return r.json()}).then(function(data) {
-                allMods = data;
-                var statusSet = {}; data.forEach(function(mod) { if (mod.status) statusSet[mod.status] = true });
-                var statusList = ['全部']; Object.keys(statusSet).sort().forEach(function(s) { statusList.push(s) });
-                if (statusFilterGroup) { statusFilterGroup.innerHTML = statusList.map(function(s) { return '<span class="filter-btn' + (s==='全部'?' active':'') + '" data-group="status" data-value="' + s + '">' + s + '</span>' }).join('');
-                document.querySelectorAll('[data-group="status"]').forEach(function(btn) { btn.addEventListener('click', function() { document.querySelectorAll('[data-group="status"]').forEach(function(b){b.classList.remove('active')}); this.classList.add('active'); statusFilter = this.dataset.value; applyFilters() }) }) }
-                if (offlineFilterGroup) offlineFilterGroup.querySelectorAll('[data-group="offline"]').forEach(function(btn) { btn.addEventListener('click', function() { offlineFilterGroup.querySelectorAll('[data-group="offline"]').forEach(function(b){b.classList.remove('active')}); this.classList.add('active'); offlineFilter = this.dataset.value; applyFilters() }) });
-                document.querySelectorAll('#noteFilterGroup .filter-btn').forEach(function(btn) { btn.addEventListener('click', function() { document.querySelectorAll('#noteFilterGroup .filter-btn').forEach(function(b){b.classList.remove('active')}); this.classList.add('active'); noteFilter = this.dataset.value; applyFilters() }) });
-                document.querySelectorAll('#chineseFilterGroup .filter-btn').forEach(function(btn) { btn.addEventListener('click', function() { document.querySelectorAll('#chineseFilterGroup .filter-btn').forEach(function(b){b.classList.remove('active')}); this.classList.add('active'); chineseFilter = this.dataset.value; applyFilters() }) });
-                document.querySelectorAll('#videoFilterGroup .filter-btn').forEach(function(btn) { btn.addEventListener('click', function() { document.querySelectorAll('#videoFilterGroup .filter-btn').forEach(function(b){b.classList.remove('active')}); this.classList.add('active'); videoFilter = this.dataset.value; applyFilters() }) });
-                if (gameSearchInput) gameSearchInput.addEventListener('input', function() { gameQuery = this.value.trim().toLowerCase(); applyFilters() });
-                setUpdateDate(); updateModStats(); applyFilters()
-            }).catch(function(error) { console.error('加载 mods.json 失败:', error); if (tbody) tbody.innerHTML = '<tr><td colspan="6" style="color:#c0392b; text-align:center; padding:16px;">✖ 模组数据加载失败</td></tr>'; setUpdateDate() });
-            function getStatusClass(status) { var map = { '完整':'status-complete', '非完整':'status-incomplete', '待检测':'status-pending', '无需翻译':'status-unneeded', '待处理':'status-todo' }; return map[status] || '' }
-            function applyFilters() {
-                var filtered = allMods;
-                if (searchQuery.trim()) { var q = searchQuery.toLowerCase(); filtered = filtered.filter(function(mod) { return mod.name.toLowerCase().indexOf(q) !== -1 || (mod.steamId && mod.steamId.indexOf(q) !== -1) || (mod.mcmodId && mod.mcmodId.indexOf(q) !== -1) || (mod.chineseName && mod.chineseName.toLowerCase().indexOf(q) !== -1) || (mod.note && mod.note.toLowerCase().indexOf(q) !== -1) }) }
-                if (gameQuery) filtered = filtered.filter(function(mod) { return mod.game && mod.game.toLowerCase().indexOf(gameQuery) !== -1 });
-                if (statusFilter !== '全部') filtered = filtered.filter(function(mod) { return mod.status === statusFilter });
-                if (offlineFilter !== 'all') filtered = filtered.filter(function(mod) { return mod.offline === (offlineFilter === 'yes') });
-                if (noteFilter !== 'all') filtered = filtered.filter(function(mod) { return noteFilter === 'yes' ? (mod.note && mod.note.trim()) : (!mod.note || !mod.note.trim()) });
-                if (chineseFilter !== 'all') filtered = filtered.filter(function(mod) { return chineseFilter === 'yes' ? (mod.chineseName && mod.chineseName.trim()) : (!mod.chineseName || !mod.chineseName.trim()) });
-                if (videoFilter !== 'all') filtered = filtered.filter(function(mod) { return videoFilter === 'yes' ? (mod.videoUrl && mod.videoUrl.trim() !== '') : (!mod.videoUrl || mod.videoUrl.trim() === '') });
-                filteredMods = filtered; currentPage = 1; renderTable(); renderPagination()
-            }
-            function renderTable() {
-                if (!tbody) return;
-                var start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageMods = filteredMods.slice(start,end);
-                if (pageMods.length === 0) { tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:16px; color:var(--text-light);">没有匹配的模组</td></tr>'; return }
-                var html = '';
-                pageMods.forEach(function(mod) {
-                    var videoLink = mod.videoUrl ? '<a href="' + mod.videoUrl + '" target="_blank">🔗</a>' : '-';
-                    var offlineIcon = mod.offline ? '<span class="icon-uploaded">✅</span>' : '<span class="icon-not-uploaded">✖</span>';
-                    var statusClass = getStatusClass(mod.status);
-                    var modLink = getModLink(mod);
-                    var idDisplay = '';
-                    if (mod.steamId) idDisplay = '<span class="mod-id">' + mod.steamId + '</span>';
-                    else if (mod.mcmodId) idDisplay = '<span class="mod-id">MC百科 ID: ' + mod.mcmodId + '</span>';
-                    else if (mod.id) idDisplay = '<span class="mod-id">' + mod.id + '</span>';
-                    html += '<tr><td><a href="' + modLink + '" target="_blank">' + mod.name + '</a>' + idDisplay + '</td><td>' + (mod.chineseName || '-') + '</td><td><span class="status-badge ' + statusClass + '">' + mod.status + '</span></td><td>' + videoLink + '</td><td>' + (mod.note || '-') + '</td><td>' + offlineIcon + '</td></tr>';
-                });
-                tbody.innerHTML = html;
-            }
-            function renderPagination() {
-                if (!paginationDiv) return;
-                var totalPages = Math.ceil(filteredMods.length / PAGE_SIZE);
-                if (totalPages <= 1) { paginationDiv.innerHTML = ''; return }
-                var html = '<button id="prevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">';
-                var startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4);
-                if (endPage-startPage < 4) startPage = Math.max(1, endPage-4);
-                for (var i=startPage; i<=endPage; i++) html += '<span class="page-number ' + (i===currentPage?'active':'') + '" data-page="' + i + '">' + i + '</span>';
-                html += '</div><button id="nextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>';
-                paginationDiv.innerHTML = html;
-                document.querySelectorAll('.page-number').forEach(function(span) { span.addEventListener('click', function() { var page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination() } }) });
-                document.getElementById('prevPage')?.addEventListener('click', function() { if (currentPage > 1) { currentPage--; renderTable(); renderPagination() } });
-                document.getElementById('nextPage')?.addEventListener('click', function() { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination() } })
-            }
-            if (searchInput) searchInput.addEventListener('input', function() { searchQuery = this.value; applyFilters() })
-        })();
-    </script>
-
-    <!-- GUIDES -->
-    <script>
-        (function() {
-            var PAGE_SIZE = 10;
-            var allGuides = [], filteredGuides = [], currentPage = 1;
-            var searchInput = document.getElementById('guideSearch'), tbody = document.getElementById('guideTableBody'), paginationDiv = document.getElementById('guidePagination');
-            fetch('data/guides.json').then(function(r){return r.json()}).then(function(data) { allGuides = data; filteredGuides = [].concat(allGuides); renderTable(); renderPagination() }).catch(function(error) { if (tbody) tbody.innerHTML = '<tr><td colspan="2" style="color:#c0392b; text-align:center; padding:16px;">✖ 攻略数据加载失败</td></tr>'; });
-            function renderTable() { if (!tbody) return; var start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageGuides = filteredGuides.slice(start,end); if (pageGuides.length === 0) { tbody.innerHTML = '<tr><td colspan="2" style="text-align:center; padding:16px; color:var(--text-light);">没有匹配的攻略</td></tr>'; return } var html = ''; pageGuides.forEach(function(guide) { html += '<tr><td><a href="' + guide.url + '" target="_blank">' + guide.name + '</a></td><td><a href="' + guide.url + '" target="_blank">🔗 观看</a></td></tr>' }); tbody.innerHTML = html; }
-            function renderPagination() { if (!paginationDiv) return; var totalPages = Math.ceil(filteredGuides.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return } var html = '<button id="guidePrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; var startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (var i=startPage; i<=endPage; i++) html += '<span class="page-number ' + (i===currentPage?'active':'') + '" data-page="' + i + '">' + i + '</span>'; html += '</div><button id="guideNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('#guidePagination .page-number').forEach(function(span) { span.addEventListener('click', function() { var page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination() } }) }); document.getElementById('guidePrevPage')?.addEventListener('click', function() { if (currentPage > 1) { currentPage--; renderTable(); renderPagination() } }); document.getElementById('guideNextPage')?.addEventListener('click', function() { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination() } }) }
-            if (searchInput) searchInput.addEventListener('input', function() { var query = this.value.trim().toLowerCase(); filteredGuides = allGuides.filter(function(guide) { return guide.name.toLowerCase().indexOf(query) !== -1 }); currentPage = 1; renderTable(); renderPagination() })
-        })();
-    </script>
-
-    <!-- POSTS -->
-    <script>
-        (function() {
-            var PAGE_SIZE = 5;
-            var allPosts = [], filteredPosts = [], currentPage = 1;
-            var postsGrid = document.getElementById('postsGrid'), paginationDiv = document.getElementById('postsPagination');
-            if (!postsGrid) return;
-            function escapeHtml(str) { if (!str) return ''; var div = document.createElement('div'); div.appendChild(document.createTextNode(str)); return div.innerHTML }
-            fetch('data/posts.json').then(function(r){return r.json()}).then(function(posts) {
-                allPosts = posts; allPosts.sort(function(a,b){return new Date(b.date)-new Date(a.date)}); filteredPosts = [].concat(allPosts);
-                if (allPosts.length === 0) { postsGrid.innerHTML = '<div class="blog-child" style="text-align:center;color:var(--text-light);padding:16px;">暂无帖子，敬请期待～</div>'; return }
-                var html = '';
-                filteredPosts.forEach(function(post, i) {
-                    var summary = post.summary || '';
-                    if (summary.length > 100) summary = summary.substring(0,100) + '…';
-                    var imageUrl = post.image;
-                    if (imageUrl && imageUrl.indexOf('http://') !== 0 && imageUrl.indexOf('https://') !== 0) imageUrl = './' + imageUrl;
-                    var link = post.link || ('post.html?id=' + encodeURIComponent(post.id));
-                    var dateShort = post.date ? post.date.replace(/-/g,'').slice(2) : '';
-                    html += '<a class="post-card-item" href="' + escapeHtml(link) + '"><div class="post-card-cover" style="background-image: url(\'' + escapeHtml(imageUrl) + '\');"></div><div class="post-card-info"><div class="post-card-title">' + escapeHtml(post.title) + '</div><div class="post-card-meta"><span>📅 ' + escapeHtml(post.date) + '</span></div><div class="post-card-summary">' + escapeHtml(summary) + '</div></div></a>';
-                });
-                postsGrid.innerHTML = html;
-            }).catch(function(error) { console.error('加载帖子失败:', error); postsGrid.innerHTML = '<div class="blog-child" style="text-align:center;color:#c0392b;padding:16px;">✖ 帖子数据加载失败</div>'; });
-        })();
-    </script>
-
-    <!-- WONDERS -->
-    <script>
-        (function() {
-            var wonderData = [], currentPage = 1, filteredData = [], PAGE_SIZE = 10;
-            var tbody = document.getElementById('wonderTableBody'), paginationDiv = document.getElementById('wonderPagination'), searchInput = document.getElementById('wonderSearch');
-            function escapeHtml(str) { if (!str) return ''; var div = document.createElement('div'); div.appendChild(document.createTextNode(str)); return div.innerHTML }
-            function renderTable() { if (!tbody) return; var start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageData = filteredData.slice(start,end); if (pageData.length === 0) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:16px;">没有匹配的精灵</td></tr>'; return; } var html = ''; pageData.forEach(function(item) { var videoLink = item.video && item.video.trim() !== '' ? '<a href="' + item.video + '" target="_blank">🔗 视频</a>' : '-'; html += '<tr><td>' + item.id + '</td><td>' + escapeHtml(item.name) + '</td><td>' + escapeHtml(item.note||'-') + '</td><td>' + videoLink + '</td></tr>'; }); tbody.innerHTML = html; }
-            function renderPagination() { if (!paginationDiv) return; var totalPages = Math.ceil(filteredData.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; } var html = '<button id="wonderPrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; var startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (var i=startPage; i<=endPage; i++) html += '<span class="page-number ' + (i===currentPage?'active':'') + '" data-page="' + i + '">' + i + '</span>'; html += '</div><button id="wonderNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('#wonderPagination .page-number').forEach(function(span) { span.addEventListener('click', function() { var page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); } }); }); document.getElementById('wonderPrevPage')?.addEventListener('click', function() { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } }); document.getElementById('wonderNextPage')?.addEventListener('click', function() { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } }); }
-            function filterData(filter) { var lower = filter.toLowerCase(); filteredData = wonderData.filter(function(item) { return item.id.toString().toLowerCase().indexOf(lower) !== -1 || item.name.toLowerCase().indexOf(lower) !== -1 || (item.note && item.note.toLowerCase().indexOf(lower) !== -1) }); currentPage = 1; renderTable(); renderPagination(); }
-            fetch('data/wonders.json').then(function(res){return res.json()}).then(function(data) { wonderData = data; filteredData = [].concat(wonderData); renderTable(); renderPagination(); }).catch(function(err) { if (tbody) tbody.innerHTML = '<tr><td colspan="4" style="color:#c0392b; text-align:center;">✖ 加载失败</td></tr>'; });
-            if (searchInput) searchInput.addEventListener('input', function() { filterData(this.value.trim().toLowerCase()); });
-        })();
-    </script>
-
-    <!-- TITLES -->
-    <script>
-        (function() {
-            var titlesData = [], currentPage = 1, filteredData = [], PAGE_SIZE = 10;
-            var tbody = document.getElementById('titleTableBody'), paginationDiv = document.getElementById('titlePagination'), searchInput = document.getElementById('titleSearch');
-            function escapeHtml(str) { if (!str) return ''; var div = document.createElement('div'); div.appendChild(document.createTextNode(str)); return div.innerHTML }
-            function renderTable() { if (!tbody) return; var start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageData = filteredData.slice(start,end); if (pageData.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:16px;">没有匹配的称号</td></tr>'; return; } var html = ''; pageData.forEach(function(item) { var videoLink = item.video && item.video.trim() !== '' ? '<a href="' + item.video + '" target="_blank">🔗 视频</a>' : '-'; html += '<tr><td>' + escapeHtml(item.name) + '</td><td>' + escapeHtml(item.note||'-') + '</td><td>' + videoLink + '</td></tr>'; }); tbody.innerHTML = html; }
-            function renderPagination() { if (!paginationDiv) return; var totalPages = Math.ceil(filteredData.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; } var html = '<button id="titlePrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; var startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (var i=startPage; i<=endPage; i++) html += '<span class="page-number ' + (i===currentPage?'active':'') + '" data-page="' + i + '">' + i + '</span>'; html += '</div><button id="titleNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('#titlePagination .page-number').forEach(function(span) { span.addEventListener('click', function() { var page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); } }); }); document.getElementById('titlePrevPage')?.addEventListener('click', function() { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } }); document.getElementById('titleNextPage')?.addEventListener('click', function() { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } }); }
-            function filterData(filter) { var lower = filter.toLowerCase(); filteredData = titlesData.filter(function(item) { return item.name.toLowerCase().indexOf(lower) !== -1 || (item.note && item.note.toLowerCase().indexOf(lower) !== -1) }); currentPage = 1; renderTable(); renderPagination(); }
-            fetch('data/titles.json').then(function(res){return res.json()}).then(function(data) { titlesData = data; filteredData = [].concat(titlesData); renderTable(); renderPagination(); }).catch(function(err) { titlesData = [{ name:"新手训练家", note:"初始称号", video:"" }, { name:"精灵大师", note:"收集100只精灵", video:"" }]; filteredData = [].concat(titlesData); renderTable(); renderPagination(); });
-            if (searchInput) searchInput.addEventListener('input', function() { filterData(this.value.trim().toLowerCase()); });
-        })();
-    </script>
-
-    <!-- TASKS -->
-    <script>
-        (function() {
-            var tasksData = [], currentPage = 1, filteredData = [], PAGE_SIZE = 10;
-            var tbody = document.getElementById('taskTableBody'), paginationDiv = document.getElementById('taskPagination'), searchInput = document.getElementById('taskSearch');
-            function escapeHtml(str) { if (!str) return ''; var div = document.createElement('div'); div.appendChild(document.createTextNode(str)); return div.innerHTML }
-            function renderTable() { if (!tbody) return; var start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageData = filteredData.slice(start,end); if (pageData.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:16px;">没有匹配的任务</td></tr>'; return; } var html = ''; pageData.forEach(function(item) { var videoLink = item.video && item.video.trim() !== '' ? '<a href="' + item.video + '" target="_blank">🔗 视频</a>' : '-'; html += '<tr><td>' + escapeHtml(item.name) + '</td><td>' + escapeHtml(item.note||'-') + '</td><td>' + videoLink + '</td></tr>'; }); tbody.innerHTML = html; }
-            function renderPagination() { if (!paginationDiv) return; var totalPages = Math.ceil(filteredData.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; } var html = '<button id="taskPrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; var startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (var i=startPage; i<=endPage; i++) html += '<span class="page-number ' + (i===currentPage?'active':'') + '" data-page="' + i + '">' + i + '</span>'; html += '</div><button id="taskNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('#taskPagination .page-number').forEach(function(span) { span.addEventListener('click', function() { var page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); } }); }); document.getElementById('taskPrevPage')?.addEventListener('click', function() { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } }); document.getElementById('taskNextPage')?.addEventListener('click', function() { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } }); }
-            function filterData(filter) { var lower = filter.toLowerCase(); filteredData = tasksData.filter(function(item) { return item.name.toLowerCase().indexOf(lower) !== -1 || (item.note && item.note.toLowerCase().indexOf(lower) !== -1) }); currentPage = 1; renderTable(); renderPagination(); }
-            fetch('data/tasks.json').then(function(res){return res.json()}).then(function(data) { tasksData = data; filteredData = [].concat(tasksData); renderTable(); renderPagination(); }).catch(function(err) { tasksData = [{ name:"初始冒险", note:"与草系精灵对话", video:"" }, { name:"精灵对战", note:"竞技场教学", video:"" }]; filteredData = [].concat(tasksData); renderTable(); renderPagination(); });
-            if (searchInput) searchInput.addEventListener('input', function() { filterData(this.value.trim().toLowerCase()); });
-        })();
-    </script>
-
-    <!-- ACTIVITIES -->
-    <script>
-        (function() {
-            var activitiesData = [], currentPage = 1, filteredData = [], PAGE_SIZE = 10;
-            var tbody = document.getElementById('activityTableBody'), paginationDiv = document.getElementById('activityPagination'), searchInput = document.getElementById('activitySearch');
-            function escapeHtml(str) { if (!str) return ''; var div = document.createElement('div'); div.appendChild(document.createTextNode(str)); return div.innerHTML }
-            function renderTable() { if (!tbody) return; var start = (currentPage-1)*PAGE_SIZE, end = start+PAGE_SIZE, pageData = filteredData.slice(start,end); if (pageData.length === 0) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; padding:16px;">没有匹配的活动</td></tr>'; return; } var html = ''; pageData.forEach(function(item) { var videoLink = item.video && item.video.trim() !== '' ? '<a href="' + item.video + '" target="_blank">🔗 视频</a>' : '-'; html += '<tr><td>' + escapeHtml(item.name) + '</td><td>' + escapeHtml(item.note||'-') + '</td><td>' + videoLink + '</td></tr>'; }); tbody.innerHTML = html; }
-            function renderPagination() { if (!paginationDiv) return; var totalPages = Math.ceil(filteredData.length / PAGE_SIZE); if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; } var html = '<button id="activityPrevPage" ' + (currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">'; var startPage = Math.max(1, currentPage-2), endPage = Math.min(totalPages, startPage+4); if (endPage-startPage < 4) startPage = Math.max(1, endPage-4); for (var i=startPage; i<=endPage; i++) html += '<span class="page-number ' + (i===currentPage?'active':'') + '" data-page="' + i + '">' + i + '</span>'; html += '</div><button id="activityNextPage" ' + (currentPage===totalPages?'disabled':'') + '>下一页 ›</button>'; paginationDiv.innerHTML = html; document.querySelectorAll('#activityPagination .page-number').forEach(function(span) { span.addEventListener('click', function() { var page = parseInt(this.dataset.page,10); if (page !== currentPage) { currentPage = page; renderTable(); renderPagination(); } }); }); document.getElementById('activityPrevPage')?.addEventListener('click', function() { if (currentPage > 1) { currentPage--; renderTable(); renderPagination(); } }); document.getElementById('activityNextPage')?.addEventListener('click', function() { if (currentPage < totalPages) { currentPage++; renderTable(); renderPagination(); } }); }
-            function filterData(filter) { var lower = filter.toLowerCase(); filteredData = activitiesData.filter(function(item) { return item.name.toLowerCase().indexOf(lower) !== -1 || (item.note && item.note.toLowerCase().indexOf(lower) !== -1) }); currentPage = 1; renderTable(); renderPagination(); }
-            fetch('data/activities.json').then(function(res){return res.json()}).then(function(data) { activitiesData = data; filteredData = [].concat(activitiesData); renderTable(); renderPagination(); }).catch(function(err) { activitiesData = [{ name:"夏日冰爽节", note:"收集雪花兑换奖励", video:"" }, { name:"精灵大乱斗", note:"每日挑战得称号", video:"" }]; filteredData = [].concat(activitiesData); renderTable(); renderPagination(); });
-            if (searchInput) searchInput.addEventListener('input', function() { filterData(this.value.trim().toLowerCase()); });
-        })();
-    </script>
-
-    <!-- NAV SCROLL -->
-    <script>
-        (function() {
-            var navMap = { 'about': 'nav-about-li', 'projects': 'nav-projects-li', 'posts': 'nav-posts-li', 'contact': 'nav-contact-li', 'thanks': 'nav-thanks-li' };
-            document.querySelectorAll('nav .links li a[href^="#"]').forEach(function(a) {
-                a.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var target = document.querySelector(this.getAttribute('href'));
-                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
+        // 平滑滚动
+        document.querySelectorAll('nav .links li a[data-target]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
             });
-            var sections = ['about', 'projects', 'posts', 'contact', 'thanks'];
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        document.querySelectorAll('nav .links li').forEach(function(li) { li.classList.remove('active') });
-                        var li = document.getElementById(navMap[entry.target.id]);
-                        if (li) li.classList.add('active');
-                    }
-                });
-            }, { rootMargin: '-20% 0px -70% 0px' });
-            sections.forEach(function(id) {
-                var el = document.getElementById(id);
-                if (el) observer.observe(el);
+        });
+        // 高亮当前可见区域（可选，简单实现）
+        const sections = ['home', 'projects', 'posts', 'portfolio', 'contact', 'thanks'];
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    document.querySelectorAll('nav .links li a').forEach(link => {
+                        const target = link.getAttribute('data-target');
+                        if (target === id) {
+                            link.parentElement.classList.add('active');
+                        } else if (link.getAttribute('href') !== 'https://github.com/lingsheqianbai/lingsheqianbai.github.io') {
+                            link.parentElement.classList.remove('active');
+                        }
+                    });
+                }
             });
-        })();
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
     </script>
 </body>
 </html>
