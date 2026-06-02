@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>项目 - 千白分享</title>
     <style>
-        /* ========== 基础风格（固定背景） ========== */
+        /* ========== 基础风格 ========== */
         :root {
             --sidebar-width: 260px;
             --nav-offset: 60px;
@@ -38,7 +38,6 @@
             color: var(--text-dark);
         }
 
-        /* 导航栏（彩虹色） */
         nav {
             width: 100%;
             position: fixed;
@@ -71,7 +70,6 @@
         }
         nav .links li a:hover { filter: brightness(0.85); }
 
-        /* 左侧栏 */
         .left-col {
             position: fixed;
             left: 20px;
@@ -100,7 +98,6 @@
         .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
         .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
 
-        /* 播放器 */
         .player {
             margin: 16px 0 12px;
             text-align: center;
@@ -147,7 +144,6 @@
             height: 32px;
             font-size: 14px;
             cursor: pointer;
-            color: var(--text-dark);
             transition: 0.2s;
         }
         .player-controls button:hover { background: var(--pink); }
@@ -166,7 +162,6 @@
             text-overflow: ellipsis;
         }
 
-        /* 右侧主区域 */
         .right-col {
             margin-left: calc(var(--sidebar-width) + 40px);
             margin-right: 20px;
@@ -176,6 +171,11 @@
             margin-bottom: 20px;
             padding-bottom: 8px;
             border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
         }
         .page-header h2 {
             font-size: 24px;
@@ -185,7 +185,22 @@
             border-radius: 30px;
             border: 1px solid var(--border-color);
         }
-        /* 项目卡片网格 */
+        .search-bar {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            font-size: 13px;
+            width: 180px;
+        }
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -205,26 +220,70 @@
             transform: translateY(-4px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
-        .project-icon {
-            font-size: 36px;
-            margin-bottom: 12px;
+        .project-icon { font-size: 36px; margin-bottom: 12px; }
+        .project-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; }
+        .project-desc { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+
+        /* 详情视图 */
+        .detail-view {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 20px;
         }
-        .project-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-        }
-        .project-desc {
+        .back-btn {
+            background: var(--pink-light);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 6px 16px;
+            cursor: pointer;
             font-size: 13px;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+        .content-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .content-item {
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+        .content-title {
+            font-weight: bold;
+            font-size: 15px;
+        }
+        .content-subtitle {
+            font-size: 12px;
             color: var(--text-mid);
-            line-height: 1.5;
+            margin-left: 8px;
+        }
+        .content-links {
+            margin-top: 6px;
+            display: flex;
+            gap: 12px;
+            font-size: 12px;
+        }
+        .content-links a {
+            color: var(--pink-dark);
+            text-decoration: none;
+        }
+        .content-note {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+        .empty-tip {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-mid);
         }
 
         @media (max-width: 800px) {
             .left-col { display: none; }
             .right-col { margin-left: 20px; }
-            .projects-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             nav .links li a { padding: 6px 20px; font-size: 12px; }
@@ -240,21 +299,17 @@
             <li><a href="#" style="background-color: #32CD32;">作品集</a></li>
             <li><a href="#" style="background-color: #00CED1;">联系</a></li>
             <li><a href="#" style="background-color: #1E90FF;">致谢</a></li>
-            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>
+            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" style="background-color: #9370DB;">仓库</a></li>
         </ul>
     </nav>
 
     <div class="left-col">
         <div class="profile-card">
-            <div class="profile-avatar">
-                <img src="images/lingsheqianbai.jpg" alt="凌社千白">
-            </div>
+            <div class="profile-avatar"><img src="images/lingsheqianbai.jpg" alt="凌社千白"></div>
             <div class="profile-name">凌社千白</div>
             <div class="profile-signature">分享 · 记录 · 创造</div>
             <div class="player">
-                <div class="vinyl" id="vinylDisc">
-                    <img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img">
-                </div>
+                <div class="vinyl" id="vinylDisc"><img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img"></div>
                 <div class="player-controls">
                     <button id="prevBtn">⏮</button>
                     <button id="playPauseBtn">▶️</button>
@@ -268,37 +323,23 @@
     <div class="right-col">
         <div class="page-header">
             <h2>📂 项目展示</h2>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="搜索游戏...">
+                <span>🔍</span>
+            </div>
         </div>
-        <div class="projects-grid">
-            <div class="project-card" onclick="location.href='#';">
-                <div class="project-icon">🎮</div>
-                <div class="project-title">模组信息统计</div>
-                <div class="project-desc">僵毁模组列表、翻译进度、视频教程、离线分享查询。</div>
-            </div>
-            <div class="project-card" onclick="location.href='#';">
-                <div class="project-icon">📚</div>
-                <div class="project-title">游戏攻略大全</div>
-                <div class="project-desc">僵尸毁灭工程、我的世界、恐怖学校等视频教程。</div>
-            </div>
-            <div class="project-card" onclick="location.href='#';">
-                <div class="project-icon">🐉</div>
-                <div class="project-title">洛克王国精灵图鉴</div>
-                <div class="project-desc">127种精灵数据、获取方式、视频链接。</div>
-            </div>
-            <div class="project-card" onclick="location.href='#';">
-                <div class="project-icon">📜</div>
-                <div class="project-title">任务攻略</div>
-                <div class="project-desc">洛克王国世界主线、支线任务视频合集。</div>
-            </div>
-            <div class="project-card" onclick="location.href='#';">
-                <div class="project-icon">🏅</div>
-                <div class="project-title">称号获取</div>
-                <div class="project-desc">稀有称号获取方式及视频指引。</div>
-            </div>
-            <div class="project-card" onclick="location.href='#';">
-                <div class="project-icon">🎉</div>
-                <div class="project-title">活动攻略</div>
-                <div class="project-desc">S1/S2赛季活动、限时任务攻略。</div>
+
+        <!-- 游戏卡片列表 -->
+        <div id="gamesGridView">
+            <div class="projects-grid" id="gamesGrid">加载中...</div>
+        </div>
+
+        <!-- 游戏详情视图（初始隐藏） -->
+        <div id="gameDetailView" style="display: none;">
+            <div class="detail-view">
+                <button class="back-btn" id="backToGridBtn">← 返回游戏列表</button>
+                <h3 id="detailGameName" style="margin-bottom: 16px;"></h3>
+                <div id="detailContent" class="content-list"></div>
             </div>
         </div>
     </div>
@@ -306,7 +347,7 @@
     <audio id="audioPlayer" preload="auto"></audio>
 
     <script>
-        // ==================== 音乐播放器（与主页相同） ====================
+        // ---------- 音乐播放器 ----------
         const playlist = [
             { title: "Morning BGM", url: "music/morning.mp3" },
             { title: "Night BGM", url: "music/night.mp3" }
@@ -325,7 +366,7 @@
             songTitleSpan.textContent = track.title;
             audio.load();
             if (!audio.paused) {
-                audio.play().catch(() => {});
+                audio.play().catch(()=>{});
                 vinyl.classList.add('playing');
                 playPauseBtn.textContent = '⏸️';
             } else {
@@ -333,31 +374,121 @@
                 vinyl.classList.remove('playing');
             }
         }
-
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
-                audio.play().then(() => {
-                    vinyl.classList.add('playing');
-                    playPauseBtn.textContent = '⏸️';
-                }).catch(() => {});
+                audio.play().then(() => { vinyl.classList.add('playing'); playPauseBtn.textContent = '⏸️'; }).catch(()=>{});
             } else {
                 audio.pause();
                 vinyl.classList.remove('playing');
                 playPauseBtn.textContent = '▶️';
             }
         });
-
-        prevBtn.addEventListener('click', () => {
-            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-            loadTrack(currentTrack);
-        });
-
-        nextBtn.addEventListener('click', () => {
-            currentTrack = (currentTrack + 1) % playlist.length;
-            loadTrack(currentTrack);
-        });
-
+        prevBtn.addEventListener('click', () => { currentTrack = (currentTrack - 1 + playlist.length) % playlist.length; loadTrack(currentTrack); });
+        nextBtn.addEventListener('click', () => { currentTrack = (currentTrack + 1) % playlist.length; loadTrack(currentTrack); });
         loadTrack(currentTrack);
+
+        // ---------- 项目页面核心逻辑 ----------
+        let gamesData = [];
+        let currentFilter = '';
+
+        async function loadGames() {
+            const grid = document.getElementById('gamesGrid');
+            try {
+                const res = await fetch('data/games.json');
+                if (!res.ok) throw new Error();
+                gamesData = await res.json();
+                renderGameCards();
+            } catch (err) {
+                grid.innerHTML = '<div style="text-align:center; padding:20px;">加载失败，请检查 data/games.json</div>';
+            }
+        }
+
+        function renderGameCards() {
+            const grid = document.getElementById('gamesGrid');
+            const filtered = gamesData.filter(g => 
+                currentFilter === '' || g.name.includes(currentFilter)
+            );
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div style="text-align:center; padding:20px;">没有找到相关游戏</div>';
+                return;
+            }
+            grid.innerHTML = filtered.map(g => `
+                <div class="project-card" data-id="${g.id}">
+                    <div class="project-icon">${g.icon || '🎮'}</div>
+                    <div class="project-title">${escapeHtml(g.name)}</div>
+                    <div class="project-desc">${escapeHtml(g.description)}</div>
+                </div>
+            `).join('');
+
+            // 绑定卡片点击事件
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const id = card.dataset.id;
+                    const game = gamesData.find(g => g.id === id);
+                    if (game) showGameDetail(game);
+                });
+            });
+        }
+
+        function showGameDetail(game) {
+            document.getElementById('gamesGridView').style.display = 'none';
+            document.getElementById('gameDetailView').style.display = 'block';
+            document.getElementById('detailGameName').innerHTML = `${game.icon || '🎮'} ${escapeHtml(game.name)}`;
+            const contentDiv = document.getElementById('detailContent');
+            if (!game.content || game.content.length === 0) {
+                contentDiv.innerHTML = '<div class="empty-tip">暂无内容，后续补充~</div>';
+                return;
+            }
+            contentDiv.innerHTML = game.content.map(item => {
+                let typeLabel = '';
+                switch(item.type) {
+                    case 'mod': typeLabel = '📦 模组'; break;
+                    case 'guide': typeLabel = '📖 攻略'; break;
+                    case 'wonder': typeLabel = '🐉 精灵'; break;
+                    case 'task': typeLabel = '📜 任务'; break;
+                    case 'activity': typeLabel = '🎉 活动'; break;
+                    case 'title': typeLabel = '🏅 称号'; break;
+                    default: typeLabel = '🔹';
+                }
+                let linksHtml = '';
+                if (item.url) linksHtml += `<a href="${item.url}" target="_blank">🔗 详情</a>`;
+                if (item.video) linksHtml += `<a href="${item.video}" target="_blank">🎬 视频</a>`;
+                return `
+                    <div class="content-item">
+                        <div><span class="content-title">${escapeHtml(item.title)}</span><span class="content-subtitle">${item.subtitle ? escapeHtml(item.subtitle) : ''}</span></div>
+                        <div class="content-links">${linksHtml || '—'}</div>
+                        ${item.note ? `<div class="content-note">📝 ${escapeHtml(item.note)}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function backToGrid() {
+            document.getElementById('gamesGridView').style.display = 'block';
+            document.getElementById('gameDetailView').style.display = 'none';
+            // 可选：重置搜索
+            // document.getElementById('searchInput').value = '';
+            // currentFilter = '';
+            // renderGameCards();
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            currentFilter = e.target.value;
+            renderGameCards();
+        });
+        document.getElementById('backToGridBtn').addEventListener('click', backToGrid);
+
+        loadGames();
     </script>
 </body>
 </html>

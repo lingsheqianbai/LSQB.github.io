@@ -1,0 +1,64 @@
+[
+  {
+    "id": "pz",
+    "name": "僵尸毁灭工程",
+    "icon": "🧟",
+    "description": "模组汉化、攻略教程",
+    "content": [
+      { "type": "mod", "title": "司机专家特质", "subtitle": "完整汉化", "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=3403031401", "video": "https://www.bilibili.com/video/BV1tTx5zNESW/", "note": "离线可用" },
+      { "type": "guide", "title": "僵毁模组个人自制使用教程", "subtitle": "合集篇", "url": "https://space.bilibili.com/498508670/lists/5068472", "note": "" }
+    ]
+  },
+  {
+    "id": "luoke",
+    "name": "洛克王国：世界",
+    "icon": "🐉",
+    "description": "精灵图鉴、任务攻略",
+    "content": [
+      { "type": "wonder", "title": "迪莫", "subtitle": "精灵获取", "url": "", "video": "https://www.bilibili.com/video/BV1q8oYBcErm/", "note": "待补充" },
+      { "type": "task", "title": "轻风始行 其一", "subtitle": "主线任务", "url": "", "video": "https://www.bilibili.com/video/BV1wH5M6wEgq/", "note": "" }
+    ]
+  },
+  {
+    "id": "terror",
+    "name": "恐怖学校:白色情人节",
+    "icon": "🏫",
+    "description": "攻略教程",
+    "content": [
+      { "type": "guide", "title": "结局对话选项图文教程", "subtitle": "", "url": "https://www.bilibili.com/opus/1130557420922208275/", "video": "", "note": "" },
+      { "type": "guide", "title": "通过与收集流程视频教程", "subtitle": "", "url": "https://space.bilibili.com/498508670/lists/5130310", "video": "", "note": "" }
+    ]
+  },
+  {
+    "id": "minecraft",
+    "name": "我的世界",
+    "icon": "⛏️",
+    "description": "存档投影、模组教程",
+    "content": [
+      { "type": "guide", "title": "我的世界存档投影分享", "subtitle": "视频教程", "url": "https://space.bilibili.com/498508670/lists/6737174", "video": "", "note": "" }
+    ]
+  },
+  {
+    "id": "kingdom",
+    "name": "王国：两位君主",
+    "icon": "👑",
+    "description": "暂无内容，后续补充",
+    "content": []
+  },
+  {
+    "id": "jojo",
+    "name": "JOJO群星之战",
+    "icon": "⭐",
+    "description": "暂无内容，后续补充",
+    "content": []
+  },
+  {
+    "id": "lifeisstrange",
+    "name": "奇异人生",
+    "icon": "📸",
+    "description": "通过与收集流程",
+    "content": [
+      { "type": "guide", "title": "奇异人生通过与收集流程", "subtitle": "制作中", "url": "https://space.bilibili.com/498508670/lists/5837709", "video": "", "note": "" }
+    ]
+  }
+]
