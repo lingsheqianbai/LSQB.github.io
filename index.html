@@ -114,7 +114,7 @@
         .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
         .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
 
-        /* 播放器 - 简化版，根据时间/主题切换 morning / night */
+        /* 播放器 - 简化版 */
         .player {
             margin: 16px 0 12px;
             text-align: center;
@@ -195,7 +195,7 @@
         }
         .theme-toggle:hover { background: var(--pink); }
 
-        /* 右侧主区域（其他样式不变） */
+        /* 右侧主区域 */
         .right-col {
             margin-left: calc(var(--sidebar-width) + 40px);
             margin-right: 20px;
@@ -382,7 +382,6 @@
             </div>
             <div class="profile-name">凌社千白</div>
             <div class="profile-signature">分享 · 记录 · 创造</div>
-            <!-- 播放器 -->
             <div class="player">
                 <div class="vinyl" id="vinylDisc">
                     <img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img">
@@ -429,41 +428,45 @@
     <audio id="audioPlayer" preload="auto"></audio>
 
     <script>
-        // ==================== 根据时间/主题选择音乐 ====================
-        let currentTheme = 'day'; // 'day' 或 'night'
+        // ==================== 音乐播放器（解决自动播放限制）====================
+        let currentTheme = 'day';
         const audio = document.getElementById('audioPlayer');
         const vinyl = document.getElementById('vinylDisc');
         const playPauseBtn = document.getElementById('playPauseBtn');
         const songTitleSpan = document.getElementById('songTitle');
 
-        // 音乐文件路径（请根据实际存放位置修改）
         const MUSIC_DAY = 'music/morning.mp3';
         const MUSIC_NIGHT = 'music/night.mp3';
         const TITLE_DAY = 'Morning BGM';
         const TITLE_NIGHT = 'Night BGM';
 
-        // 根据当前主题加载音乐
-        function loadMusicByTheme(theme) {
+        // 预加载但不自动播放
+        function preloadMusic(theme) {
             const url = theme === 'day' ? MUSIC_DAY : MUSIC_NIGHT;
             const title = theme === 'day' ? TITLE_DAY : TITLE_NIGHT;
-            if (audio.src && audio.src.endsWith(url)) return; // 已经是同一首
+            if (audio.src && audio.src.endsWith(url)) return;
             audio.src = url;
             songTitleSpan.textContent = title;
             audio.load();
-            if (!audio.paused) {
-                audio.play().catch(() => {});
+        }
+
+        // 播放音乐（需要用户交互）
+        function playMusic() {
+            audio.play().then(() => {
                 vinyl.classList.add('playing');
                 playPauseBtn.textContent = '⏸️';
-            }
+            }).catch(err => {
+                console.warn('播放失败，可能需要用户交互:', err);
+            });
         }
 
-        // 判断当前时间决定白天/黑夜
-        function getThemeByTime() {
-            const hour = new Date().getHours();
-            return (hour >= 6 && hour < 18) ? 'day' : 'night';
+        function pauseMusic() {
+            audio.pause();
+            vinyl.classList.remove('playing');
+            playPauseBtn.textContent = '▶️';
         }
 
-        // 切换主题（手动切换背景和音乐）
+        // 切换主题（背景 + 音乐切换，如果正在播放则继续）
         function setTheme(theme) {
             currentTheme = theme;
             if (theme === 'day') {
@@ -475,34 +478,53 @@
                 document.body.style.backgroundImage = "url('images/beijin2.jpg')";
                 themeToggle.innerHTML = '🌤️ 白天';
             }
-            loadMusicByTheme(theme);
+            const wasPlaying = !audio.paused;
+            preloadMusic(theme);
+            if (wasPlaying) {
+                playMusic();
+            }
         }
 
-        // 播放/暂停
+        // 播放/暂停按钮事件
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
-                audio.play();
-                vinyl.classList.add('playing');
-                playPauseBtn.textContent = '⏸️';
+                playMusic();
             } else {
-                audio.pause();
-                vinyl.classList.remove('playing');
-                playPauseBtn.textContent = '▶️';
+                pauseMusic();
             }
         });
 
-        // 页面初始化
+        // 首次用户交互后自动播放音乐（如果用户没有手动按播放）
+        let hasInteracted = false;
+        function onFirstInteraction() {
+            if (hasInteracted) return;
+            hasInteracted = true;
+            document.removeEventListener('click', onFirstInteraction);
+            document.removeEventListener('keydown', onFirstInteraction);
+            document.removeEventListener('touchstart', onFirstInteraction);
+            if (audio.paused) {
+                playMusic();
+            }
+        }
+        document.addEventListener('click', onFirstInteraction);
+        document.addEventListener('keydown', onFirstInteraction);
+        document.addEventListener('touchstart', onFirstInteraction);
+
+        // 初始化主题（根据时间）
+        function getThemeByTime() {
+            const hour = new Date().getHours();
+            return (hour >= 6 && hour < 18) ? 'day' : 'night';
+        }
         const initTheme = getThemeByTime();
         setTheme(initTheme);
 
-        // 主题切换按钮
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => {
             const newTheme = currentTheme === 'day' ? 'night' : 'day';
             setTheme(newTheme);
         });
 
-        // ==================== 紧凑周历（不变）====================
+        // ==================== 紧凑周历 ====================
         let calendarTargetDate = new Date();
         const weekdayNames = ['日', '一', '二', '三', '四', '五', '六'];
         function updateCompactCalendar(targetDate) {
@@ -547,7 +569,7 @@
         });
         updateCompactCalendar(calendarTargetDate);
 
-        // ==================== 动态加载（不变）====================
+        // ==================== 动态加载 ====================
         async function loadMoments() {
             const container = document.getElementById('momentsContainer');
             const defaultMoments = [
