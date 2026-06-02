@@ -422,17 +422,25 @@
             margin-top: 20px;
             flex-wrap: wrap;
         }
-        .pagination button, .pagination .page-number {
+        .pagination button, .pagination .page-number, .pagination .page-dots {
             background: #fff;
             border: 1px solid var(--border-color);
             padding: 4px 10px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 12px;
+            transition: 0.2s;
+        }
+        .pagination button:hover, .pagination .page-number:hover, .pagination .page-dots:hover {
+            background: var(--pink-light);
         }
         .pagination .page-number.active {
             background: var(--pink);
             color: #fff;
+            border-color: var(--pink-dark);
+        }
+        .pagination .page-dots {
+            cursor: pointer;
         }
         .empty-tip {
             text-align: center;
@@ -570,6 +578,67 @@
             }
         };
 
+        // ---------- 分页组件（带省略号和跳转弹窗）----------
+        function renderPaginationWithDots(containerId, currentPage, totalPages, onPageChange) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            if (totalPages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+            // 生成页码数组，带 "..." 占位符
+            let pages = [];
+            if (totalPages <= 7) {
+                for (let i = 1; i <= totalPages; i++) pages.push(i);
+            } else {
+                pages.push(1);
+                if (currentPage > 3) pages.push('...');
+                let start = Math.max(2, currentPage - 1);
+                let end = Math.min(totalPages - 1, currentPage + 1);
+                if (currentPage <= 3) {
+                    start = 2; end = 4;
+                }
+                if (currentPage >= totalPages - 2) {
+                    start = totalPages - 3; end = totalPages - 1;
+                }
+                for (let i = start; i <= end; i++) pages.push(i);
+                if (currentPage < totalPages - 2) pages.push('...');
+                pages.push(totalPages);
+            }
+            let html = `<button class="prev-page" ${currentPage===1?'disabled':''}>‹ 上一页</button>`;
+            for (let p of pages) {
+                if (p === '...') {
+                    html += `<span class="page-dots" data-dots="true">...</span>`;
+                } else {
+                    html += `<span class="page-number ${p===currentPage?'active':''}" data-page="${p}">${p}</span>`;
+                }
+            }
+            html += `<button class="next-page" ${currentPage===totalPages?'disabled':''}>下一页 ›</button>`;
+            container.innerHTML = html;
+
+            // 绑定事件
+            container.querySelectorAll('.page-number').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const page = parseInt(btn.dataset.page);
+                    if (!isNaN(page) && page !== currentPage) onPageChange(page);
+                });
+            });
+            const prevBtn = container.querySelector('.prev-page');
+            const nextBtn = container.querySelector('.next-page');
+            if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPage > 1) onPageChange(currentPage - 1); });
+            if (nextBtn) nextBtn.addEventListener('click', () => { if (currentPage < totalPages) onPageChange(currentPage + 1); });
+            container.querySelectorAll('.page-dots').forEach(dots => {
+                dots.addEventListener('click', () => {
+                    let input = prompt(`您要跳转到哪一页？（1-${totalPages}）`, currentPage);
+                    if (input !== null) {
+                        let page = parseInt(input);
+                        if (!isNaN(page) && page >= 1 && page <= totalPages) onPageChange(page);
+                        else alert(`请输入 1-${totalPages} 之间的数字`);
+                    }
+                });
+            });
+        }
+
         // ---------- 完整模组统计组件（僵毁专用）----------
         class ModStatsView {
             constructor(containerId, modsData) {
@@ -680,32 +749,13 @@
             }
 
             renderPagination() {
-                const paginationDiv = document.getElementById(`${this.containerId}-pagination`);
-                if (!paginationDiv) return;
                 const totalPages = Math.ceil(this.filteredMods.length / this.pageSize);
-                if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; }
-                let html = '<button id="prevPage" ' + (this.currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">';
-                let startPage = Math.max(1, this.currentPage-2), endPage = Math.min(totalPages, startPage+4);
-                if (endPage-startPage < 4) startPage = Math.max(1, endPage-4);
-                for (let i=startPage; i<=endPage; i++) {
-                    html += `<span class="page-number ${i===this.currentPage?'active':''}" data-page="${i}">${i}</span>`;
-                }
-                html += '</div><button id="nextPage" ' + (this.currentPage===totalPages?'disabled':'') + '>下一页 ›</button>';
-                paginationDiv.innerHTML = html;
-                document.querySelectorAll(`#${this.containerId}-pagination .page-number`).forEach(span => {
-                    span.addEventListener('click', (e) => {
-                        const page = parseInt(e.target.dataset.page, 10);
-                        if (page !== this.currentPage) {
-                            this.currentPage = page;
-                            this.renderTable();
-                            this.renderPagination();
-                        }
-                    });
+                const paginationId = `${this.containerId}-pagination`;
+                renderPaginationWithDots(paginationId, this.currentPage, totalPages, (newPage) => {
+                    this.currentPage = newPage;
+                    this.renderTable();
+                    this.renderPagination();
                 });
-                const prevBtn = document.getElementById('prevPage');
-                const nextBtn = document.getElementById('nextPage');
-                if (prevBtn) prevBtn.addEventListener('click', () => { if (this.currentPage > 1) { this.currentPage--; this.renderTable(); this.renderPagination(); } });
-                if (nextBtn) nextBtn.addEventListener('click', () => { if (this.currentPage < totalPages) { this.currentPage++; this.renderTable(); this.renderPagination(); } });
             }
 
             render() {
@@ -826,11 +876,10 @@
             }
         }
 
-        // 简单表格渲染（用于教程、精灵、任务等）
+        // ---------- 简单表格渲染（用于教程、精灵、任务等）----------
         function renderSimpleTable(containerId, data, columns, pageSize = 10) {
             let currentPage = 1;
             let filteredData = [...data];
-            let searchInput = null;
 
             function render() {
                 const start = (currentPage - 1) * pageSize;
@@ -855,25 +904,11 @@
                     }).join('');
                 }
                 const totalPages = Math.ceil(filteredData.length / pageSize);
-                const paginationDiv = document.querySelector(`#${containerId}-pagination`);
-                if (paginationDiv) {
-                    if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; }
-                    let pagesHtml = '';
-                    for (let i = 1; i <= totalPages; i++) {
-                        pagesHtml += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
-                    }
-                    paginationDiv.innerHTML = `<button class="prev-page" ${currentPage===1?'disabled':''}>‹ 上一页</button>${pagesHtml}<button class="next-page" ${currentPage===totalPages?'disabled':''}>下一页 ›</button>`;
-                    paginationDiv.querySelectorAll('.page-number').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            currentPage = parseInt(btn.dataset.page);
-                            render();
-                        });
-                    });
-                    const prevBtn = paginationDiv.querySelector('.prev-page');
-                    const nextBtn = paginationDiv.querySelector('.next-page');
-                    if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; render(); } });
-                    if (nextBtn) nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; render(); } });
-                }
+                const paginationId = `${containerId}-pagination`;
+                renderPaginationWithDots(paginationId, currentPage, totalPages, (newPage) => {
+                    currentPage = newPage;
+                    render();
+                });
             }
 
             function filterData(query) {
