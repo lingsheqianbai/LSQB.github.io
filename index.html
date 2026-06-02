@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>千白分享主页</title>
     <style>
-        /* ========== 基础风格（固定背景，不切换） ========== */
+        /* ========== 基础风格（固定背景） ========== */
         :root {
             --sidebar-width: 260px;
             --nav-offset: 60px;
@@ -19,18 +19,6 @@
             --pink: #f9bddd;
             --pink-dark: #c44569;
             --pink-light: #ffcfe2;
-        }
-        /* 深色主题（只改变卡片、文字颜色，不改变背景图） */
-        body.dark {
-            --bg-card: #16213e;
-            --bg-sidebar: #0f3460;
-            --text-dark: #e2e2e2;
-            --text-mid: #b0b0b0;
-            --text-light: #888;
-            --border-color: #3a3a5a;
-            --pink: #c44569;
-            --pink-light: #5c2e3a;
-            --shadow: 4px 4px 0 rgba(0,0,0,0.3);
         }
 
         @font-face {
@@ -47,11 +35,10 @@
             background-size: cover;
             min-height: 100vh;
             padding-top: var(--nav-offset);
-            transition: background 0.3s, color 0.2s;
             color: var(--text-dark);
         }
 
-        /* 导航栏（彩虹色，不受主题影响） */
+        /* 导航栏（彩虹色） */
         nav {
             width: 100%;
             position: fixed;
@@ -178,21 +165,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        .theme-toggle {
-            width: 100%;
-            background: var(--pink-light);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 6px 12px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: bold;
-            color: var(--text-dark);
-            text-align: center;
-            margin-top: 8px;
-            transition: 0.2s;
-        }
-        .theme-toggle:hover { background: var(--pink); }
 
         /* 右侧主区域 */
         .right-col {
@@ -366,7 +338,7 @@
         <ul class="links">
             <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
             <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
-            <li><a href="#" style="background-color: #FFD700;">项目</a></li>
+            <li><a href="projects.html" style="background-color: #FFD700;">项目</a></li>
             <li><a href="#" style="background-color: #32CD32;">作品集</a></li>
             <li><a href="#" style="background-color: #00CED1;">联系</a></li>
             <li><a href="#" style="background-color: #1E90FF;">致谢</a></li>
@@ -392,7 +364,6 @@
                 </div>
                 <div class="song-title" id="songTitle">Morning BGM</div>
             </div>
-            <button class="theme-toggle" id="themeToggle">🌙 黑夜</button>
         </div>
     </div>
 
@@ -481,31 +452,6 @@
         });
 
         loadTrack(currentTrack);
-
-        // ==================== 主题切换（手动，不改变背景图）====================
-        const themeToggle = document.getElementById('themeToggle');
-        let currentTheme = localStorage.getItem('theme') || 'light';
-        function applyTheme(theme) {
-            if (theme === 'dark') {
-                document.body.classList.add('dark');
-                themeToggle.textContent = '🌤️ 白天';
-            } else {
-                document.body.classList.remove('dark');
-                themeToggle.textContent = '🌙 黑夜';
-            }
-        }
-        applyTheme(currentTheme);
-        themeToggle.addEventListener('click', () => {
-            const newTheme = document.body.classList.contains('dark') ? 'light' : 'dark';
-            document.body.classList.toggle('dark');
-            if (newTheme === 'dark') {
-                themeToggle.textContent = '🌤️ 白天';
-                localStorage.setItem('theme', 'dark');
-            } else {
-                themeToggle.textContent = '🌙 黑夜';
-                localStorage.setItem('theme', 'light');
-            }
-        });
 
         // ==================== 紧凑周历 ====================
         let calendarTargetDate = new Date();
