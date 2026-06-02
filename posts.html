@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帖子列表 - 千白分享</title>
+    <style>
+        /* ========== 基础风格 ========== */
+        :root {
+            --sidebar-width: 260px;
+            --nav-offset: 60px;
+            --border-color: #000;
+            --bg-card: #fff;
+            --bg-sidebar: #fff;
+            --text-dark: #2a1a2e;
+            --text-mid: #5a3e4b;
+            --text-light: #bba3ad;
+            --shadow: 4px 4px 0 rgba(0,0,0,0.1);
+            --pink: #f9bddd;
+            --pink-dark: #c44569;
+            --pink-light: #ffcfe2;
+        }
+
+        @font-face {
+            font-family: 'ZQKNNY';
+            src: url('ZQKNNY-Medium-2.woff2') format('woff2');
+            font-weight: 500; font-style: normal; font-display: swap;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
+            background: url('images/beijin1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            padding-top: var(--nav-offset);
+            color: var(--text-dark);
+        }
+
+        /* 导航栏 */
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            background: #fff;
+            border-bottom: 2px solid #000;
+        }
+        nav .links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            padding: 8px 16px;
+            margin: 0;
+            gap: 12px;
+        }
+        nav .links li a {
+            display: inline-block;
+            padding: 8px 32px;
+            border-radius: 32px;
+            border: 1px solid #000;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            text-shadow: 0 0 3px rgba(0,0,0,0.5);
+            transition: filter 0.2s;
+            cursor: pointer;
+        }
+        nav .links li a:hover { filter: brightness(0.85); }
+
+        /* 左侧栏 */
+        .left-col {
+            position: fixed;
+            left: 20px;
+            top: var(--nav-offset);
+            width: var(--sidebar-width);
+            z-index: 950;
+        }
+        .profile-card {
+            background: var(--bg-sidebar);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+        }
+        .profile-avatar {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .profile-avatar img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+        .profile-name { font-size: 18px; font-weight: bold; text-align: center; }
+        .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
+
+        /* 播放器 */
+        .player {
+            margin: 16px 0 12px;
+            text-align: center;
+        }
+        .vinyl {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 35% 35%, #222, #111);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #444, 0 0 0 6px #888;
+        }
+        .vinyl.playing {
+            animation: spin 5s linear infinite;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+        .vinyl-center-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.9);
+            object-fit: cover;
+            background: #fff;
+        }
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+        .player-controls button {
+            background: var(--pink-light);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .player-controls button:hover { background: var(--pink); }
+        .song-title {
+            font-size: 10px;
+            color: var(--text-mid);
+            text-align: center;
+            background: var(--bg-card);
+            padding: 2px 8px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            display: inline-block;
+            max-width: 180px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 联系方式 */
+        .contact-info {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 12px;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 12px;
+        }
+        .contact-info p {
+            margin: 6px 0;
+        }
+        .contact-info a {
+            color: var(--pink-dark);
+            text-decoration: none;
+        }
+
+        /* 右侧内容区 */
+        .right-col {
+            margin-left: calc(var(--sidebar-width) + 40px);
+            margin-right: 20px;
+            max-width: 1200px;
+        }
+        .page-header {
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .page-header h2 {
+            font-size: 24px;
+            display: inline-block;
+            background: var(--pink-light);
+            padding: 4px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+        }
+        .posts-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .post-card-item {
+            display: flex;
+            background: var(--bg-card);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .post-card-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+        }
+        .post-card-cover {
+            width: 40%;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+        .post-card-info {
+            flex: 1;
+            padding: 20px;
+        }
+        .post-card-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .post-card-meta {
+            font-size: 0.8rem;
+            color: var(--text-mid);
+            margin-bottom: 10px;
+        }
+        .post-card-summary {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 30px;
+        }
+        .pagination button, .pagination .page-number {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 24px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .pagination .page-number.active {
+            background: var(--pink);
+            color: #fff;
+        }
+        @media (max-width: 800px) {
+            .left-col { display: none; }
+            .right-col { margin-left: 20px; }
+            .post-card-cover { width: 30%; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="links">
+            <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
+            <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
+            <li><a href="projects.html" style="background-color: #FFD700;">项目</a></li>
+            <li><a href="works.html" style="background-color: #32CD32;">作品集</a></li>
+            <li><a href="posts.html" style="background-color: #00CED1;">帖子</a></li>
+            <li><a href="thanks.html" style="background-color: #1E90FF;">致谢</a></li>
+            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" style="background-color: #9370DB;">仓库</a></li>
+        </ul>
+    </nav>
+
+    <div class="left-col">
+        <div class="profile-card">
+            <div class="profile-avatar"><img src="images/lingsheqianbai.jpg" alt="凌社千白"></div>
+            <div class="profile-name">凌社千白</div>
+            <div class="profile-signature">分享 · 记录 · 创造</div>
+            <div class="player">
+                <div class="vinyl" id="vinylDisc"><img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img"></div>
+                <div class="player-controls">
+                    <button id="prevBtn">⏮</button>
+                    <button id="playPauseBtn">▶️</button>
+                    <button id="nextBtn">⏭</button>
+                </div>
+                <div class="song-title" id="songTitle">Morning BGM</div>
+            </div>
+            <div class="contact-info">
+                <p>📧 邮箱: <a href="mailto:lingsheqianbai@example.com">lingsheqianbai@example.com</a></p>
+                <p>📺 B站: <a href="https://space.bilibili.com/498508670" target="_blank">凌社千白</a></p>
+                <p>🎵 抖音: <a href="#" target="_blank">凌社千白</a></p>
+                <p>📱 快手: <a href="#" target="_blank">凌社千白</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="page-header">
+            <h2>📰 全部帖子</h2>
+        </div>
+        <div id="postsGrid" class="posts-grid"></div>
+        <div id="pagination" class="pagination"></div>
+    </div>
+
+    <audio id="audioPlayer" preload="auto"></audio>
+
+    <script>
+        // 音乐播放器
+        const playlist = [
+            { title: "Morning BGM", url: "music/morning.mp3" },
+            { title: "Night BGM", url: "music/night.mp3" }
+        ];
+        let currentTrack = 0;
+        const audio = document.getElementById('audioPlayer');
+        const vinyl = document.getElementById('vinylDisc');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const songTitleSpan = document.getElementById('songTitle');
+
+        function loadTrack(index) {
+            const track = playlist[index % playlist.length];
+            audio.src = track.url;
+            songTitleSpan.textContent = track.title;
+            audio.load();
+            if (!audio.paused) {
+                audio.play().catch(()=>{});
+                vinyl.classList.add('playing');
+                playPauseBtn.textContent = '⏸️';
+            } else {
+                playPauseBtn.textContent = '▶️';
+                vinyl.classList.remove('playing');
+            }
+        }
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => { vinyl.classList.add('playing'); playPauseBtn.textContent = '⏸️'; }).catch(()=>{});
+            } else {
+                audio.pause();
+                vinyl.classList.remove('playing');
+                playPauseBtn.textContent = '▶️';
+            }
+        });
+        prevBtn.addEventListener('click', () => { currentTrack = (currentTrack - 1 + playlist.length) % playlist.length; loadTrack(currentTrack); });
+        nextBtn.addEventListener('click', () => { currentTrack = (currentTrack + 1) % playlist.length; loadTrack(currentTrack); });
+        loadTrack(currentTrack);
+
+        // 加载帖子列表
+        let allPosts = [];
+        let currentPage = 1;
+        const PAGE_SIZE = 5;
+
+        async function loadPosts() {
+            try {
+                const res = await fetch('data/posts.json');
+                if (!res.ok) throw new Error();
+                allPosts = await res.json();
+                allPosts.sort((a,b) => new Date(b.date) - new Date(a.date));
+                renderPage();
+                renderPagination();
+            } catch (err) {
+                document.getElementById('postsGrid').innerHTML = '<div style="text-align:center; padding:40px;">加载失败，请检查 data/posts.json</div>';
+            }
+        }
+
+        function renderPage() {
+            const start = (currentPage-1) * PAGE_SIZE;
+            const pagePosts = allPosts.slice(start, start+PAGE_SIZE);
+            const grid = document.getElementById('postsGrid');
+            if (!pagePosts.length) {
+                grid.innerHTML = '<div style="text-align:center; padding:40px;">暂无帖子</div>';
+                return;
+            }
+            grid.innerHTML = pagePosts.map(post => {
+                let summary = post.summary || '';
+                if (summary.length > 150) summary = summary.substring(0,150)+'…';
+                let coverStyle = '';
+                if (post.image) {
+                    let imgUrl = post.image.startsWith('http') ? post.image : './' + post.image;
+                    coverStyle = `background-image: url('${imgUrl}'); background-size: cover; background-position: center;`;
+                } else {
+                    coverStyle = `background-color: var(--pink-light);`;
+                }
+                return `
+                    <div class="post-card-item" onclick="location.href='post.html?id=${post.id}'">
+                        <div class="post-card-cover" style="${coverStyle}"></div>
+                        <div class="post-card-info">
+                            <div class="post-card-title">${escapeHtml(post.title)}</div>
+                            <div class="post-card-meta">📅 ${post.date}</div>
+                            <div class="post-card-summary">${escapeHtml(summary)}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
+            if (totalPages <= 1) {
+                document.getElementById('pagination').innerHTML = '';
+                return;
+            }
+            let html = `<button id="prevPageBtn" ${currentPage===1?'disabled':''}>‹ 上一页</button>`;
+            for (let i=1; i<=totalPages; i++) {
+                html += `<span class="page-number ${i===currentPage?'active':''}" data-page="${i}">${i}</span>`;
+            }
+            html += `<button id="nextPageBtn" ${currentPage===totalPages?'disabled':''}>下一页 ›</button>`;
+            document.getElementById('pagination').innerHTML = html;
+
+            document.querySelectorAll('.page-number').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    currentPage = parseInt(btn.dataset.page);
+                    renderPage();
+                    renderPagination();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+            document.getElementById('prevPageBtn')?.addEventListener('click', () => {
+                if (currentPage > 1) { currentPage--; renderPage(); renderPagination(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+            });
+            document.getElementById('nextPageBtn')?.addEventListener('click', () => {
+                if (currentPage < totalPages) { currentPage++; renderPage(); renderPagination(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+            });
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        loadPosts();
+    </script>
+</body>
+</html>
