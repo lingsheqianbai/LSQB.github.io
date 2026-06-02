@@ -20,12 +20,15 @@
             --pink-dark: #c44569;
             --pink-light: #ffcfe2;
         }
+
         @font-face {
             font-family: 'ZQKNNY';
             src: url('ZQKNNY-Medium-2.woff2') format('woff2');
             font-weight: 500; font-style: normal; font-display: swap;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
             background: url('images/beijin1.jpg') no-repeat center center fixed;
@@ -34,6 +37,8 @@
             padding-top: var(--nav-offset);
             color: var(--text-dark);
         }
+
+        /* 导航栏 */
         nav {
             width: 100%;
             position: fixed;
@@ -65,6 +70,8 @@
             cursor: pointer;
         }
         nav .links li a:hover { filter: brightness(0.85); }
+
+        /* 左侧栏（完全统一） */
         .left-col {
             position: fixed;
             left: 20px;
@@ -72,6 +79,112 @@
             width: var(--sidebar-width);
             z-index: 950;
         }
+        .profile-card {
+            background: var(--bg-sidebar);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: var(--shadow);
+        }
+        .profile-avatar {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .profile-avatar img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+        .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
+        .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
+
+        /* 播放器 */
+        .player {
+            margin: 16px 0 12px;
+            text-align: center;
+        }
+        .vinyl {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 35% 35%, #222, #111);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #444, 0 0 0 6px #888;
+        }
+        .vinyl.playing {
+            animation: spin 5s linear infinite;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+        .vinyl-center-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.9);
+            object-fit: cover;
+            z-index: 2;
+            pointer-events: none;
+            background: #fff;
+        }
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+        .player-controls button {
+            background: var(--pink-light);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .player-controls button:hover { background: var(--pink); }
+        .song-title {
+            font-size: 10px;
+            color: var(--text-mid);
+            text-align: center;
+            background: var(--bg-card);
+            padding: 2px 8px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            display: inline-block;
+            max-width: 180px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 联系方式（统一放在播放器下方） */
+        .contact-info {
+            margin-top: 16px;
+            text-align: center;
+            font-size: 12px;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 12px;
+        }
+        .contact-info p {
+            margin: 6px 0;
+        }
+        .contact-info a {
+            color: var(--pink-dark);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* 右侧主区域 */
         .right-col {
             margin-left: calc(var(--sidebar-width) + 40px);
             margin-right: 20px;
@@ -118,25 +231,36 @@
         .thanks-section a:hover {
             text-decoration: underline;
         }
+        .thanks-note {
+            margin-top: 12px;
+            font-style: italic;
+            color: var(--text-mid);
+            font-size: 13px;
+        }
+
         @media (max-width: 800px) {
             .left-col { display: none; }
             .right-col { margin-left: 20px; }
+        }
+        @media (max-width: 768px) {
+            nav .links li a { padding: 6px 20px; font-size: 12px; }
         }
     </style>
 </head>
 <body>
     <nav>
         <ul class="links">
-    <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
-    <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
-    <li><a href="projects.html" style="background-color: #FFD700;">项目</a></li>
-    <li><a href="works.html" style="background-color: #32CD32;">作品集</a></li>
-    <li><a href="posts.html" style="background-color: #00CED1;">帖子</a></li>
-    <li><a href="thanks.html" style="background-color: #1E90FF;">致谢</a></li>
-    <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>        </ul>
+            <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
+            <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
+            <li><a href="projects.html" style="background-color: #FFD700;">项目</a></li>
+            <li><a href="works.html" style="background-color: #32CD32;">作品集</a></li>
+            <li><a href="posts.html" style="background-color: #00CED1;">帖子</a></li>
+            <li><a href="thanks.html" style="background-color: #1E90FF;">致谢</a></li>
+            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>
+        </ul>
     </nav>
 
-    <!-- 左侧栏：复制新版 sidebar.html 的内容到这里（同 posts.html） -->
+    <!-- 左侧栏（统一内容） -->
     <div class="left-col">
         <div class="profile-card">
             <div class="profile-avatar">
@@ -155,14 +279,12 @@
                 </div>
                 <div class="song-title" id="songTitle">Morning BGM</div>
             </div>
-            <div class="contact-info" style="margin-top: 16px; text-align: center; font-size: 12px;">
-                <p>📧 邮箱: <a href="mailto:lingsheqianbai@example.com" target="_blank">lingsheqianbai@example.com</a></p>
-                <p>🐦 微博: <a href="#" target="_blank">凌社千白</a></p>
+            <div class="contact-info">
+                <p>📧 邮箱: <a href="mailto:lingsheqianbai@example.com">lingsheqianbai@example.com</a></p>
                 <p>📺 B站: <a href="https://space.bilibili.com/498508670" target="_blank">凌社千白</a></p>
                 <p>🎵 抖音: <a href="#" target="_blank">凌社千白</a></p>
                 <p>📱 快手: <a href="#" target="_blank">凌社千白</a></p>
             </div>
-            <button class="theme-toggle" id="themeToggle" style="display: none;">🌙 黑夜</button>
         </div>
     </div>
 
@@ -189,13 +311,13 @@
         <div class="thanks-section">
             <h3>🧟 僵尸毁灭工程汉化致谢</h3>
             <ul>
-                <li>老版汉化组成员：Sky_Orc_Mm, Misha, HennyFishYu, Jeff</li>
-                <li>新版汉化组成员：Alexa-Hong, AZ, Flying penguin, 格兰瑞敌击剑, HansKaffee, L'Etranger, Livia, moonlight-pz, 轻轻的晚风, RunAbout, Susan Admason, taoran, 天冷就要吃火锅, TwilightRain, 战场蒲公英, zlq4863947</li>
-                <li>电台内容汉化员：HenryFishYu, Jeff, HansKaffee, TwilightRain, moonlight-pz, Susan Admason, L'Etranger, 天冷就要吃火锅, 轻轻的晚风, 格兰瑞敌击剑, 湖畔镇一枝花, Livia, Flying Penguin, AZ, taoran, eva08maicy02</li>
-                <li>特別鳴謝：YD360, Douggy_Sans, BigSmoke, Washi, Yuanmo, mraz#9738, COSeeds</li>
-                <li>社区汉化：凌社千白, DeepSeek</li>
+                <li><strong>老版汉化组成员</strong>：Sky_Orc_Mm, Misha, HennyFishYu, Jeff</li>
+                <li><strong>新版汉化组成员</strong>：Alexa-Hong, AZ, Flying penguin, 格兰瑞敌击剑, HansKaffee, L'Etranger, Livia, moonlight-pz, 轻轻的晚风, RunAbout, Susan Admason, taoran, 天冷就要吃火锅, TwilightRain, 战场蒲公英, zlq4863947</li>
+                <li><strong>电台内容汉化员</strong>：HenryFishYu, Jeff, HansKaffee, TwilightRain, moonlight-pz, Susan Admason, L'Etranger, 天冷就要吃火锅, 轻轻的晚风, 格兰瑞敌击剑, 湖畔镇一枝花, Livia, Flying Penguin, AZ, taoran, eva08maicy02</li>
+                <li><strong>特別鳴謝</strong>：YD360, Douggy_Sans, BigSmoke, Washi, Yuanmo, mraz#9738, COSeeds</li>
+                <li><strong>社区汉化</strong>：凌社千白, DeepSeek</li>
             </ul>
-            <p style="margin-top: 12px; font-style: italic;">注：是我制作的模组不指代其他人，因为这个网页本身是我建设汉化也是</p>
+            <p class="thanks-note">注：是我制作的模组不指代其他人，因为这个网页本身是我建设汉化也是</p>
         </div>
 
         <div class="thanks-section">
@@ -206,7 +328,7 @@
                 <li>[B42]统一·中文汉化（ID: 3556544454）</li>
                 <li>42传单汉化（ID: 3395823587）</li>
                 <li>[B42]出生点地图中文本地化（ID: 3401460152）</li>
-                <li>模组备注 ID: 3391537655</li>
+                <li>模组备注（ID: 3391537655）</li>
             </ul>
         </div>
 
@@ -223,8 +345,9 @@
     </div>
 
     <audio id="audioPlayer" preload="auto"></audio>
+
     <script>
-        // 音乐播放器（同上）
+        // ---------- 音乐播放器 ----------
         const playlist = [
             { title: "Morning BGM", url: "music/morning.mp3" },
             { title: "Night BGM", url: "music/night.mp3" }
