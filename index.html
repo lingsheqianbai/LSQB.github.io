@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>千白分享主页</title>
     <style>
-        /* ========== 基础复古风格 ========== */
+        /* ========== 基础风格（固定背景，不切换） ========== */
         :root {
             --sidebar-width: 260px;
             --nav-offset: 60px;
-            --pink: #f9bddd;
-            --pink-dark: #c44569;
-            --pink-light: #ffcfe2;
-            --text-dark: #2a1a2e;
-            --text-mid: #5a3e4b;
-            --text-light: #bba3ad;
             --border-color: #000;
             --bg-card: #fff;
             --bg-sidebar: #fff;
+            --text-dark: #2a1a2e;
+            --text-mid: #5a3e4b;
+            --text-light: #bba3ad;
             --shadow: 4px 4px 0 rgba(0,0,0,0.1);
-            --bg-body: navajowhite;
+            --pink: #f9bddd;
+            --pink-dark: #c44569;
+            --pink-light: #ffcfe2;
         }
+        /* 深色主题（只改变卡片、文字颜色，不改变背景图） */
         body.dark {
             --bg-card: #16213e;
             --bg-sidebar: #0f3460;
@@ -31,7 +31,6 @@
             --pink: #c44569;
             --pink-light: #5c2e3a;
             --shadow: 4px 4px 0 rgba(0,0,0,0.3);
-            --bg-body: #1a1a2e;
         }
 
         @font-face {
@@ -44,23 +43,22 @@
 
         body {
             font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
-            background: var(--bg-body);
-            background-image: repeating-conic-gradient(#f9bddd33 0% 25%, transparent 0% 50%) 50% / 40px 40px;
-            background-attachment: fixed;
+            background: url('images/beijin1.jpg') no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
             padding-top: var(--nav-offset);
             transition: background 0.3s, color 0.2s;
             color: var(--text-dark);
         }
 
-        /* 导航栏（彩虹色） */
+        /* 导航栏（彩虹色，不受主题影响） */
         nav {
             width: 100%;
             position: fixed;
             top: 0;
             z-index: 999;
-            background: var(--bg-card);
-            border-bottom: 2px solid var(--border-color);
+            background: #fff;
+            border-bottom: 2px solid #000;
         }
         nav .links {
             display: flex;
@@ -75,7 +73,7 @@
             display: inline-block;
             padding: 8px 32px;
             border-radius: 32px;
-            border: 1px solid var(--border-color);
+            border: 1px solid #000;
             font-size: 14px;
             font-weight: bold;
             text-decoration: none;
@@ -366,12 +364,12 @@
 <body>
     <nav>
         <ul class="links">
-            <li><a href="#" data-target="top" style="background-color: #FF4D4D;">主页</a></li>
-            <li><a href="#" data-target="top" style="background-color: #FFA500;">动态</a></li>
-            <li><a href="#" data-target="top" style="background-color: #FFD700;">项目</a></li>
-            <li><a href="#" data-target="top" style="background-color: #32CD32;">作品集</a></li>
-            <li><a href="#" data-target="top" style="background-color: #00CED1;">联系</a></li>
-            <li><a href="#" data-target="top" style="background-color: #1E90FF;">致谢</a></li>
+            <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
+            <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
+            <li><a href="#" style="background-color: #FFD700;">项目</a></li>
+            <li><a href="#" style="background-color: #32CD32;">作品集</a></li>
+            <li><a href="#" style="background-color: #00CED1;">联系</a></li>
+            <li><a href="#" style="background-color: #1E90FF;">致谢</a></li>
             <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>
         </ul>
     </nav>
@@ -392,7 +390,7 @@
                     <button id="playPauseBtn">▶️</button>
                     <button id="nextBtn">⏭</button>
                 </div>
-                <div class="song-title" id="songTitle">加载中...</div>
+                <div class="song-title" id="songTitle">Morning BGM</div>
             </div>
             <button class="theme-toggle" id="themeToggle">🌙 黑夜</button>
         </div>
@@ -431,8 +429,7 @@
     <audio id="audioPlayer" preload="auto"></audio>
 
     <script>
-        // ==================== 音乐播放器（可切换上一首/下一首） ====================
-        // 歌单，请确保 music/morning.mp3 和 music/night.mp3 存在
+        // ==================== 音乐播放器（支持上下曲切换）====================
         const playlist = [
             { title: "Morning BGM", url: "music/morning.mp3" },
             { title: "Night BGM", url: "music/night.mp3" }
@@ -450,7 +447,6 @@
             audio.src = track.url;
             songTitleSpan.textContent = track.title;
             audio.load();
-            // 如果之前是在播放状态，则继续播放
             if (!audio.paused) {
                 audio.play().catch(() => {});
                 vinyl.classList.add('playing');
@@ -484,21 +480,30 @@
             loadTrack(currentTrack);
         });
 
-        // 初始加载第一首
         loadTrack(currentTrack);
 
-        // ==================== 主题切换（手动，不自动） ====================
+        // ==================== 主题切换（手动，不改变背景图）====================
         const themeToggle = document.getElementById('themeToggle');
-        let isDark = false;
-        themeToggle.textContent = '🌙 黑夜';
-        themeToggle.addEventListener('click', () => {
-            isDark = !isDark;
-            if (isDark) {
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        function applyTheme(theme) {
+            if (theme === 'dark') {
                 document.body.classList.add('dark');
                 themeToggle.textContent = '🌤️ 白天';
             } else {
                 document.body.classList.remove('dark');
                 themeToggle.textContent = '🌙 黑夜';
+            }
+        }
+        applyTheme(currentTheme);
+        themeToggle.addEventListener('click', () => {
+            const newTheme = document.body.classList.contains('dark') ? 'light' : 'dark';
+            document.body.classList.toggle('dark');
+            if (newTheme === 'dark') {
+                themeToggle.textContent = '🌤️ 白天';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.textContent = '🌙 黑夜';
+                localStorage.setItem('theme', 'light');
             }
         });
 
@@ -547,7 +552,7 @@
         });
         updateCompactCalendar(calendarTargetDate);
 
-        // ==================== 动态加载（前3条） ====================
+        // ==================== 动态加载 ====================
         async function loadMoments() {
             const container = document.getElementById('momentsContainer');
             const defaultMoments = [
@@ -622,13 +627,11 @@
             sponsorImg.addEventListener('click', () => showImageModal(sponsorImg.src));
         }
 
-        // 导航平滑滚动（非必要，但保留）
-        document.querySelectorAll('nav .links li a[data-target]').forEach(link => {
+        // 导航平滑滚动（主页内）
+        document.querySelectorAll('nav .links li a[href="#"]').forEach(link => {
             link.addEventListener('click', function(e) {
-                if (this.getAttribute('data-target') === 'top') {
-                    e.preventDefault();
-                    document.querySelector('.right-col').scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                e.preventDefault();
+                document.querySelector('.right-col').scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
     </script>
