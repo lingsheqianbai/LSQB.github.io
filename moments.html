@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>全部动态 - 千白分享</title>
     <style>
-        /* 完全复用主页的样式（此处与主页样式完全相同，节省篇幅，实际部署时复制完整样式） */
-        /* 由于上面已经写了一遍，这里为了完整，直接复制上面的 <style> 内容即可 */
-        /* 你可以将 index.html 中的 <style> 整个复制过来，保证左侧栏样式一致 */
+        /* 复制 index.html 中完整的 <style> 内容，此处略（否则消息过长） */
+        /* 实际使用时，请将 index.html 中的 style 完整复制到这里 */
     </style>
 </head>
 <body>
@@ -23,25 +22,7 @@
         </ul>
     </nav>
 
-    <div class="left-col">
-        <div class="profile-card">
-            <div class="profile-avatar">
-                <img src="images/lingsheqianbai.jpg" alt="凌社千白">
-            </div>
-            <div class="profile-name">凌社千白</div>
-            <div class="profile-signature">分享 · 记录 · 创造</div>
-            <div class="player">
-                <div class="vinyl" id="vinylDisc">
-                    <img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img">
-                </div>
-                <div class="player-controls">
-                    <button id="playPauseBtn">▶️</button>
-                </div>
-                <div class="song-title" id="songTitle">Morning BGM</div>
-            </div>
-            <button class="theme-toggle" id="themeToggle">🌙 黑夜</button>
-        </div>
-    </div>
+    <div class="left-col" id="sidebarContainer"></div>
 
     <div class="right-col">
         <div class="page-header">
@@ -54,42 +35,96 @@
     <audio id="audioPlayer" preload="auto"></audio>
 
     <script>
+        // 加载左侧栏组件（与主页相同）
+        async function loadSidebar() {
+            const resp = await fetch('sidebar.html');
+            const html = await resp.text();
+            document.getElementById('sidebarContainer').innerHTML = html;
+            initMusicPlayer();
+            initThemeToggle();
+        }
+
         // 音乐播放器（与主页完全一致）
-        const audio = document.getElementById('audioPlayer');
-        const vinyl = document.getElementById('vinylDisc');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const songTitleSpan = document.getElementById('songTitle');
+        let playlist = [
+            { title: "Morning BGM", url: "music/morning.mp3" },
+            { title: "Night BGM", url: "music/night.mp3" }
+        ];
+        let currentTrack = 0;
+        let audio = null;
+        let vinyl = null;
+        let playPauseBtn = null;
+        let songTitleSpan = null;
 
-        audio.src = 'music/morning.mp3';
-        songTitleSpan.textContent = 'Morning BGM';
+        function initMusicPlayer() {
+            audio = document.getElementById('audioPlayer');
+            vinyl = document.getElementById('vinylDisc');
+            playPauseBtn = document.getElementById('playPauseBtn');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            songTitleSpan = document.getElementById('songTitle');
 
-        playPauseBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play().then(() => {
+            if (!audio || !vinyl || !playPauseBtn) return;
+
+            function loadTrack(index) {
+                const track = playlist[index % playlist.length];
+                audio.src = track.url;
+                songTitleSpan.textContent = track.title;
+                audio.load();
+                if (!audio.paused) {
+                    audio.play().catch(() => {});
                     vinyl.classList.add('playing');
                     playPauseBtn.textContent = '⏸️';
-                }).catch(() => {});
-            } else {
-                audio.pause();
-                vinyl.classList.remove('playing');
-                playPauseBtn.textContent = '▶️';
+                } else {
+                    playPauseBtn.textContent = '▶️';
+                    vinyl.classList.remove('playing');
+                }
             }
-        });
 
-        // 主题切换（手动）
-        const themeToggle = document.getElementById('themeToggle');
-        let isDark = false;
-        themeToggle.textContent = '🌙 黑夜';
-        themeToggle.addEventListener('click', () => {
-            isDark = !isDark;
-            if (isDark) {
-                document.body.classList.add('dark');
-                themeToggle.textContent = '🌤️ 白天';
-            } else {
-                document.body.classList.remove('dark');
-                themeToggle.textContent = '🌙 黑夜';
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        vinyl.classList.add('playing');
+                        playPauseBtn.textContent = '⏸️';
+                    }).catch(() => {});
+                } else {
+                    audio.pause();
+                    vinyl.classList.remove('playing');
+                    playPauseBtn.textContent = '▶️';
+                }
+            });
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+                    loadTrack(currentTrack);
+                });
             }
-        });
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentTrack = (currentTrack + 1) % playlist.length;
+                    loadTrack(currentTrack);
+                });
+            }
+
+            loadTrack(currentTrack);
+        }
+
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            if (!themeToggle) return;
+            let isDark = false;
+            themeToggle.textContent = '🌙 黑夜';
+            themeToggle.addEventListener('click', () => {
+                isDark = !isDark;
+                if (isDark) {
+                    document.body.classList.add('dark');
+                    themeToggle.textContent = '🌤️ 白天';
+                } else {
+                    document.body.classList.remove('dark');
+                    themeToggle.textContent = '🌙 黑夜';
+                }
+            });
+        }
 
         // 动态分页
         let allMoments = [];
@@ -207,27 +242,13 @@
         }
         window.showImageModal = function(src) {
             const modal = document.createElement('div');
-            modal.style.position = 'fixed';
-            modal.style.top = '0';
-            modal.style.left = '0';
-            modal.style.width = '100%';
-            modal.style.height = '100%';
-            modal.style.backgroundColor = 'rgba(0,0,0,0.85)';
-            modal.style.display = 'flex';
-            modal.style.alignItems = 'center';
-            modal.style.justifyContent = 'center';
-            modal.style.zIndex = '10000';
-            const img = document.createElement('img');
-            img.src = src;
-            img.style.maxWidth = '90%';
-            img.style.maxHeight = '90%';
-            img.style.border = '2px solid #fff';
-            img.style.borderRadius = '8px';
-            modal.appendChild(img);
-            modal.addEventListener('click', () => modal.remove());
-            document.body.appendChild(modal);
+            modal.style.position = 'fixed'; modal.style.top = '0'; modal.style.left = '0'; modal.style.width = '100%'; modal.style.height = '100%';
+            modal.style.backgroundColor = 'rgba(0,0,0,0.85)'; modal.style.display = 'flex'; modal.style.alignItems = 'center'; modal.style.justifyContent = 'center'; modal.style.zIndex = '10000';
+            const img = document.createElement('img'); img.src = src; img.style.maxWidth = '90%'; img.style.maxHeight = '90%'; img.style.border = '2px solid #fff'; img.style.borderRadius = '8px';
+            modal.appendChild(img); modal.addEventListener('click', () => modal.remove()); document.body.appendChild(modal);
         };
 
+        loadSidebar();
         loadAllMoments();
     </script>
 </body>
