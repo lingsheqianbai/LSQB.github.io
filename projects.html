@@ -244,53 +244,118 @@
         }
         .back-btn:hover { background: var(--pink); }
 
-        /* 分组折叠块 */
-        .section-details {
-            margin-bottom: 20px;
+        /* 模组统计样式 */
+        .stats-bar {
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            font-size: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+        .stats-item { display: flex; align-items: center; gap: 4px; }
+        .stats-number { font-weight: 600; }
+        .stats-complete { color: #2ecc71; }
+        .stats-incomplete { color: #f1c40f; }
+        .stats-pending { color: #3498db; }
+        .stats-unneeded { color: #9b59b6; }
+        .stats-todo { color: #ff8c00; }
+
+        .search-box { margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .search-box input {
+            flex: 1;
+            padding: 8px 12px;
+            border-radius: 30px;
             border: 1px solid var(--border-color);
+            background: #fff;
+            font-size: 13px;
+        }
+        .filter-section {
+            margin-bottom: 20px;
             border-radius: 12px;
+            background: rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .filter-header {
+            padding: 12px 16px;
+            background: var(--pink-light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 500;
+        }
+        .filter-header .arrow { transition: transform .3s; }
+        .filter-header.collapsed .arrow { transform: rotate(-90deg); }
+        .filter-content {
+            padding: 16px;
+            transition: max-height .3s ease;
+            max-height: 800px;
             overflow: hidden;
         }
-        .section-details summary {
-            background: var(--pink-light);
-            padding: 12px 16px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 16px;
+        .filter-content.collapsed {
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .filter-group {
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 12px;
+        }
+        .filter-group:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .filter-group-header {
             display: flex;
             align-items: center;
             gap: 8px;
-            list-style: none;
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
         }
-        .section-details summary::-webkit-details-marker { display: none; }
-        .section-details summary::after {
-            content: '▼';
-            margin-left: auto;
-            transition: transform 0.2s;
+        .filter-group-header .group-arrow { transition: transform .2s; font-size: 12px; }
+        .filter-group-header.collapsed .group-arrow { transform: rotate(-90deg); }
+        .filter-group-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            transition: max-height .2s ease;
+            max-height: 200px;
+            overflow: hidden;
         }
-        .section-details[open] summary::after {
-            transform: rotate(180deg);
+        .filter-group-options.collapsed {
+            max-height: 0;
+            opacity: 0;
         }
-        .section-content {
-            padding: 16px;
-            background: var(--bg-card);
-        }
-        .section-search {
-            margin-bottom: 16px;
-        }
-        .section-search input {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid var(--border-color);
+        .filter-btn {
+            padding: 4px 12px;
             border-radius: 30px;
-            background: #fff;
-            font-size: 13px;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            color: #333;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .filter-btn.active {
+            background: var(--pink);
+            border-color: var(--border-color);
+            color: #fff;
+        }
+        .game-search-input {
+            width: 100%;
+            padding: 6px 10px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
         }
         .mod-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 13px;
             margin-top: 10px;
+            font-size: 13px;
         }
         .mod-table th, .mod-table td {
             border: 1px solid #ddd;
@@ -312,19 +377,20 @@
         .status-complete { background: #c8e6c9; color: #2e7d32; }
         .status-incomplete { background: #ffecb3; color: #b26a00; }
         .status-pending { background: #ffcdd2; color: #c62828; }
-        .video-link, .mod-link {
-            color: var(--pink-dark);
-            text-decoration: none;
-        }
+        .status-unneeded { background: #e1bee7; color: #6a1b9a; }
+        .status-todo { background: #ffe0b2; color: #bf360c; }
+        .icon-uploaded { color: #2ecc71; font-weight: bold; }
+        .icon-not-uploaded { color: #999; }
+        .mod-id { font-size: 11px; color: #666; display: block; }
         .pagination {
             display: flex;
             justify-content: center;
             gap: 8px;
-            margin-top: 16px;
+            margin-top: 20px;
             flex-wrap: wrap;
         }
         .pagination button, .pagination .page-number {
-            background: var(--bg-card);
+            background: #fff;
             border: 1px solid var(--border-color);
             padding: 4px 10px;
             border-radius: 20px;
@@ -447,10 +513,6 @@
         nextBtn.addEventListener('click', () => { currentTrack = (currentTrack + 1) % playlist.length; loadTrack(currentTrack); });
         loadTrack(currentTrack);
 
-        // ---------- 全局变量 ----------
-        let gamesData = [];
-        let currentFilter = '';
-
         // ---------- 辅助函数 ----------
         function escapeHtml(str) {
             if (!str) return '';
@@ -462,7 +524,276 @@
             });
         }
 
-        // 通用分页表格渲染（用于简单数据，如精灵、任务等）
+        // 全局函数，用于折叠组
+        window.toggleGroup = function(header) {
+            const options = header.nextElementSibling;
+            const arrow = header.querySelector('.group-arrow');
+            if (options.classList.contains('collapsed')) {
+                options.classList.remove('collapsed');
+                arrow.textContent = '▼';
+            } else {
+                options.classList.add('collapsed');
+                arrow.textContent = '▶';
+            }
+        };
+
+        // ---------- 完整模组统计组件 ----------
+        class ModStatsView {
+            constructor(containerId, modsData) {
+                this.containerId = containerId;
+                this.allMods = modsData;
+                this.filteredMods = [...modsData];
+                this.currentPage = 1;
+                this.pageSize = 15;
+                this.searchQuery = '';
+                this.gameQuery = '';
+                this.statusFilter = '全部';
+                this.offlineFilter = 'all';
+                this.noteFilter = 'all';
+                this.chineseFilter = 'all';
+                this.videoFilter = 'all';
+                this.filterCollapsed = false;
+                this.init();
+            }
+
+            init() {
+                this.render();
+            }
+
+            getStatusClass(status) {
+                const map = { '完整':'status-complete', '非完整':'status-incomplete', '待检测':'status-pending', '无需翻译':'status-unneeded', '待处理':'status-todo' };
+                return map[status] || '';
+            }
+
+            getModLink(mod) {
+                if (mod.platform === 'steam' && mod.steamId) return `https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.steamId}`;
+                if (mod.platform === 'mcmod' && mod.mcmodId) return `https://www.mcmod.cn/class/${mod.mcmodId}.html`;
+                return '#';
+            }
+
+            updateStats() {
+                const statsDiv = document.getElementById(`${this.containerId}-stats`);
+                if (!statsDiv) return;
+                const total = this.allMods.length;
+                const countComplete = this.allMods.filter(m => m.status === '完整').length;
+                const countIncomplete = this.allMods.filter(m => m.status === '非完整').length;
+                const countPending = this.allMods.filter(m => m.status === '待检测').length;
+                const countUnneeded = this.allMods.filter(m => m.status === '无需翻译').length;
+                const countTodo = this.allMods.filter(m => m.status === '待处理').length;
+                const countHasVideo = this.allMods.filter(m => m.videoUrl && m.videoUrl.trim() !== '' && m.videoUrl !== '视频待发布').length;
+                const countNoVideo = total - countHasVideo;
+                statsDiv.innerHTML = `
+                    <div class="stats-item"><span class="icon">📊</span> 总模组: <span class="stats-number">${total}</span></div>
+                    <div class="stats-item stats-complete"><span class="icon">✅</span> 完整: <span class="stats-number">${countComplete}</span></div>
+                    <div class="stats-item stats-todo"><span class="icon">⏳</span> 待处理: <span class="stats-number">${countTodo}</span></div>
+                    <div class="stats-item stats-pending"><span class="icon">🔍</span> 待检测: <span class="stats-number">${countPending}</span></div>
+                    <div class="stats-item stats-incomplete"><span class="icon">🟡</span> 非完整: <span class="stats-number">${countIncomplete}</span></div>
+                    <div class="stats-item stats-unneeded"><span class="icon">🟣</span> 无需翻译: <span class="stats-number">${countUnneeded}</span></div>
+                    <div class="stats-item"><span class="icon">📹</span> 已拥有视频: <span class="stats-number">${countHasVideo}</span></div>
+                    <div class="stats-item"><span class="icon">🚫</span> 未拥有视频: <span class="stats-number">${countNoVideo}</span></div>
+                `;
+            }
+
+            applyFilters() {
+                let filtered = [...this.allMods];
+                if (this.searchQuery.trim()) {
+                    const q = this.searchQuery.toLowerCase();
+                    filtered = filtered.filter(mod => mod.name.toLowerCase().includes(q) || (mod.steamId && mod.steamId.includes(q)) || (mod.mcmodId && mod.mcmodId.includes(q)) || (mod.chineseName && mod.chineseName.toLowerCase().includes(q)) || (mod.note && mod.note.toLowerCase().includes(q)));
+                }
+                if (this.gameQuery) {
+                    filtered = filtered.filter(mod => mod.game && mod.game.toLowerCase().includes(this.gameQuery));
+                }
+                if (this.statusFilter !== '全部') filtered = filtered.filter(mod => mod.status === this.statusFilter);
+                if (this.offlineFilter !== 'all') filtered = filtered.filter(mod => mod.offline === (this.offlineFilter === 'yes'));
+                if (this.noteFilter !== 'all') filtered = filtered.filter(mod => this.noteFilter === 'yes' ? (mod.note && mod.note.trim()) : (!mod.note || !mod.note.trim()));
+                if (this.chineseFilter !== 'all') filtered = filtered.filter(mod => this.chineseFilter === 'yes' ? (mod.chineseName && mod.chineseName.trim()) : (!mod.chineseName || !mod.chineseName.trim()));
+                if (this.videoFilter !== 'all') filtered = filtered.filter(mod => this.videoFilter === 'yes' ? (mod.videoUrl && mod.videoUrl.trim() !== '' && mod.videoUrl !== '视频待发布') : (!mod.videoUrl || mod.videoUrl.trim() === '' || mod.videoUrl === '视频待发布'));
+                this.filteredMods = filtered;
+                this.currentPage = 1;
+                this.renderTable();
+                this.renderPagination();
+            }
+
+            renderTable() {
+                const tbody = document.getElementById(`${this.containerId}-tbody`);
+                if (!tbody) return;
+                const start = (this.currentPage - 1) * this.pageSize;
+                const pageMods = this.filteredMods.slice(start, start + this.pageSize);
+                if (pageMods.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:40px;">没有匹配的模组</td></tr>';
+                    return;
+                }
+                let html = '';
+                pageMods.forEach(mod => {
+                    const videoLink = mod.videoUrl && mod.videoUrl !== '视频待发布' ? `<a href="${mod.videoUrl}" target="_blank" style="color:#3B82F6;">🎬 观看</a>` : '-';
+                    const offlineIcon = mod.offline ? '<span class="icon-uploaded">✅ 已上传</span>' : '<span class="icon-not-uploaded">❌ 未上传</span>';
+                    const statusClass = this.getStatusClass(mod.status);
+                    const chineseName = mod.chineseName || '-';
+                    const modLink = this.getModLink(mod);
+                    let idDisplay = '';
+                    if (mod.steamId) idDisplay = `<span class="mod-id">${mod.steamId}</span>`;
+                    else if (mod.mcmodId) idDisplay = `<span class="mod-id">MC百科 ID: ${mod.mcmodId}</span>`;
+                    else if (mod.id) idDisplay = `<span class="mod-id">${mod.id}</span>`;
+                    html += `<tr>
+                        <td><a href="${modLink}" target="_blank">${escapeHtml(mod.name)}</a>${idDisplay}</td>
+                        <td>${escapeHtml(chineseName)}</td>
+                        <td><span class="status-badge ${statusClass}">${mod.status}</span></td>
+                        <td>${videoLink}</td>
+                        <td>${escapeHtml(mod.note || '-')}</td>
+                        <td>${offlineIcon}</td>
+                    </tr>`;
+                });
+                tbody.innerHTML = html;
+            }
+
+            renderPagination() {
+                const paginationDiv = document.getElementById(`${this.containerId}-pagination`);
+                if (!paginationDiv) return;
+                const totalPages = Math.ceil(this.filteredMods.length / this.pageSize);
+                if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; }
+                let html = '<button id="prevPage" ' + (this.currentPage===1?'disabled':'') + '>‹ 上一页</button><div class="page-numbers">';
+                let startPage = Math.max(1, this.currentPage-2), endPage = Math.min(totalPages, startPage+4);
+                if (endPage-startPage < 4) startPage = Math.max(1, endPage-4);
+                for (let i=startPage; i<=endPage; i++) {
+                    html += `<span class="page-number ${i===this.currentPage?'active':''}" data-page="${i}">${i}</span>`;
+                }
+                html += '</div><button id="nextPage" ' + (this.currentPage===totalPages?'disabled':'') + '>下一页 ›</button>';
+                paginationDiv.innerHTML = html;
+                document.querySelectorAll(`#${this.containerId}-pagination .page-number`).forEach(span => {
+                    span.addEventListener('click', (e) => {
+                        const page = parseInt(e.target.dataset.page, 10);
+                        if (page !== this.currentPage) {
+                            this.currentPage = page;
+                            this.renderTable();
+                            this.renderPagination();
+                        }
+                    });
+                });
+                const prevBtn = document.getElementById('prevPage');
+                const nextBtn = document.getElementById('nextPage');
+                if (prevBtn) prevBtn.addEventListener('click', () => { if (this.currentPage > 1) { this.currentPage--; this.renderTable(); this.renderPagination(); } });
+                if (nextBtn) nextBtn.addEventListener('click', () => { if (this.currentPage < totalPages) { this.currentPage++; this.renderTable(); this.renderPagination(); } });
+            }
+
+            render() {
+                const container = document.getElementById(this.containerId);
+                if (!container) return;
+                // 构建完整UI
+                let html = `
+                    <div id="${this.containerId}-stats" class="stats-bar">加载统计中...</div>
+                    <div class="search-box"><input type="text" id="${this.containerId}-search" placeholder="搜索模组名称、中文名、ID或备注..."></div>
+                    <div class="filter-section">
+                        <div class="filter-header" id="${this.containerId}-filterToggle"><span><span>🔍</span> 高级筛选</span><span class="arrow">▼</span></div>
+                        <div class="filter-content" id="${this.containerId}-filterContent">
+                            <div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>游戏</span></div><div class="filter-group-options collapsed"><input type="text" id="${this.containerId}-gameSearch" class="game-search-input" placeholder="输入游戏名称..."></div></div>
+                            <div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>翻译状态</span></div><div class="filter-group-options collapsed" id="${this.containerId}-statusFilterGroup"></div></div>
+                            <div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>离线分享</span></div><div class="filter-group-options collapsed" id="${this.containerId}-offlineFilterGroup"><span class="filter-btn active" data-group="offline" data-value="all">全部</span><span class="filter-btn" data-group="offline" data-value="yes">已上传</span><span class="filter-btn" data-group="offline" data-value="no">未上传</span></div></div>
+                            <div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>备注</span></div><div class="filter-group-options collapsed" id="${this.containerId}-noteFilterGroup"><span class="filter-btn active" data-group="note" data-value="all">全部</span><span class="filter-btn" data-group="note" data-value="yes">有备注</span><span class="filter-btn" data-group="note" data-value="no">无备注</span></div></div>
+                            <div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>中文名</span></div><div class="filter-group-options collapsed" id="${this.containerId}-chineseFilterGroup"><span class="filter-btn active" data-group="chinese" data-value="all">全部</span><span class="filter-btn" data-group="chinese" data-value="yes">有中文名</span><span class="filter-btn" data-group="chinese" data-value="no">无中文名</span></div></div>
+                            <div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>视频教程</span></div><div class="filter-group-options collapsed" id="${this.containerId}-videoFilterGroup"><span class="filter-btn active" data-group="video" data-value="all">全部</span><span class="filter-btn" data-group="video" data-value="yes">有教程</span><span class="filter-btn" data-group="video" data-value="no">无教程</span></div></div>
+                        </div>
+                    </div>
+                    <div class="table-responsive"><table class="mod-table"><thead><tr><th>模组名称 / ID</th><th>模组中文名</th><th>翻译进度</th><th>视频教程</th><th>备注</th><th>离线分享</th></tr></thead><tbody id="${this.containerId}-tbody"></tbody></table></div>
+                    <div class="pagination" id="${this.containerId}-pagination"></div>
+                `;
+                container.innerHTML = html;
+
+                // 绑定筛选事件
+                const filterToggle = document.getElementById(`${this.containerId}-filterToggle`);
+                const filterContent = document.getElementById(`${this.containerId}-filterContent`);
+                if (filterToggle) {
+                    filterToggle.addEventListener('click', () => {
+                        this.filterCollapsed = !this.filterCollapsed;
+                        filterContent.classList.toggle('collapsed', this.filterCollapsed);
+                        filterToggle.classList.toggle('collapsed', this.filterCollapsed);
+                    });
+                }
+
+                // 状态筛选按钮
+                const statusSet = new Set();
+                this.allMods.forEach(mod => { if (mod.status) statusSet.add(mod.status); });
+                const statusList = ['全部', ...Array.from(statusSet).sort()];
+                const statusGroup = document.getElementById(`${this.containerId}-statusFilterGroup`);
+                if (statusGroup) {
+                    statusGroup.innerHTML = statusList.map(s => `<span class="filter-btn ${s==='全部'?'active':''}" data-group="status" data-value="${s}">${s}</span>`).join('');
+                    statusGroup.querySelectorAll('[data-group="status"]').forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            statusGroup.querySelectorAll('[data-group="status"]').forEach(b=>b.classList.remove('active'));
+                            btn.classList.add('active');
+                            this.statusFilter = btn.dataset.value;
+                            this.applyFilters();
+                        });
+                    });
+                }
+
+                // 离线、备注等筛选
+                const offlineGroup = document.getElementById(`${this.containerId}-offlineFilterGroup`);
+                if (offlineGroup) {
+                    offlineGroup.querySelectorAll('[data-group="offline"]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            offlineGroup.querySelectorAll('[data-group="offline"]').forEach(b=>b.classList.remove('active'));
+                            btn.classList.add('active');
+                            this.offlineFilter = btn.dataset.value;
+                            this.applyFilters();
+                        });
+                    });
+                }
+                const noteGroup = document.getElementById(`${this.containerId}-noteFilterGroup`);
+                if (noteGroup) {
+                    noteGroup.querySelectorAll('[data-group="note"]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            noteGroup.querySelectorAll('[data-group="note"]').forEach(b=>b.classList.remove('active'));
+                            btn.classList.add('active');
+                            this.noteFilter = btn.dataset.value;
+                            this.applyFilters();
+                        });
+                    });
+                }
+                const chineseGroup = document.getElementById(`${this.containerId}-chineseFilterGroup`);
+                if (chineseGroup) {
+                    chineseGroup.querySelectorAll('[data-group="chinese"]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            chineseGroup.querySelectorAll('[data-group="chinese"]').forEach(b=>b.classList.remove('active'));
+                            btn.classList.add('active');
+                            this.chineseFilter = btn.dataset.value;
+                            this.applyFilters();
+                        });
+                    });
+                }
+                const videoGroup = document.getElementById(`${this.containerId}-videoFilterGroup`);
+                if (videoGroup) {
+                    videoGroup.querySelectorAll('[data-group="video"]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            videoGroup.querySelectorAll('[data-group="video"]').forEach(b=>b.classList.remove('active'));
+                            btn.classList.add('active');
+                            this.videoFilter = btn.dataset.value;
+                            this.applyFilters();
+                        });
+                    });
+                }
+
+                // 搜索框
+                const searchBox = document.getElementById(`${this.containerId}-search`);
+                if (searchBox) {
+                    searchBox.addEventListener('input', (e) => {
+                        this.searchQuery = e.target.value;
+                        this.applyFilters();
+                    });
+                }
+                const gameSearchBox = document.getElementById(`${this.containerId}-gameSearch`);
+                if (gameSearchBox) {
+                    gameSearchBox.addEventListener('input', (e) => {
+                        this.gameQuery = e.target.value;
+                        this.applyFilters();
+                    });
+                }
+
+                this.updateStats();
+                this.applyFilters();
+            }
+        }
+
+        // 简单表格渲染（用于洛克王国等）
         function renderSimpleTable(containerId, data, columns, pageSize = 10) {
             let currentPage = 1;
             let filteredData = [...data];
@@ -481,16 +812,15 @@
                         columns.forEach(col => {
                             let value = row[col.key] || '-';
                             if (col.type === 'video' && value && value !== '') {
-                                value = `<a href="${value}" target="_blank" class="video-link">🎬 视频</a>`;
+                                value = `<a href="${value}" target="_blank" style="color:#3B82F6;">🎬 视频</a>`;
                             } else if (col.type === 'url' && value && value !== '') {
-                                value = `<a href="${value}" target="_blank" class="mod-link">🔗 详情</a>`;
+                                value = `<a href="${value}" target="_blank" style="color:#3B82F6;">🔗 详情</a>`;
                             }
                             cells += `<td>${value}</td>`;
                         });
                         return `<tr>${cells}</tr>`;
                     }).join('');
                 }
-                // 分页
                 const totalPages = Math.ceil(filteredData.length / pageSize);
                 const paginationDiv = document.querySelector(`#${containerId}-pagination`);
                 if (paginationDiv) {
@@ -518,112 +848,19 @@
                 else filteredData = data.filter(row => {
                     return columns.some(col => {
                         let val = row[col.key];
-                        return val && val.toLowerCase().includes(query.toLowerCase());
+                        return val && val.toString().toLowerCase().includes(query.toLowerCase());
                     });
                 });
                 currentPage = 1;
                 render();
             }
 
-            // 添加搜索框
-            const searchHtml = `<div class="section-search"><input type="text" placeholder="搜索..." id="${containerId}-search"></div>`;
             const container = document.getElementById(containerId);
-            if (container && !container.querySelector('.section-search')) {
+            if (container && !container.querySelector('.simple-search')) {
+                const searchHtml = `<div class="simple-search" style="margin-bottom:12px;"><input type="text" placeholder="搜索..." id="${containerId}-search" style="width:100%; padding:6px 12px; border:1px solid var(--border-color); border-radius:30px;"></div>`;
                 container.insertAdjacentHTML('afterbegin', searchHtml);
                 const searchBox = document.getElementById(`${containerId}-search`);
                 if (searchBox) searchBox.addEventListener('input', (e) => filterData(e.target.value));
-            }
-            render();
-        }
-
-        // 渲染模组表格（带状态分类筛选等，简化版）
-        function renderModsTable(containerId, mods, pageSize = 10) {
-            let currentPage = 1;
-            let filteredMods = [...mods];
-            let searchQuery = '';
-            let statusFilter = '全部';
-
-            function render() {
-                const start = (currentPage - 1) * pageSize;
-                const pageMods = filteredMods.slice(start, start + pageSize);
-                const tbody = document.querySelector(`#${containerId} tbody`);
-                if (!tbody) return;
-                if (pageMods.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" class="empty-tip">没有匹配的模组</td></tr>';
-                } else {
-                    tbody.innerHTML = pageMods.map(mod => {
-                        const statusClass = {
-                            '完整': 'status-complete',
-                            '非完整': 'status-incomplete',
-                            '待检测': 'status-pending',
-                            '无需翻译': 'status-complete',
-                            '待处理': 'status-pending'
-                        }[mod.status] || '';
-                        const videoHtml = mod.videoUrl && mod.videoUrl !== '视频待发布' ? `<a href="${mod.videoUrl}" target="_blank" class="video-link">🎬 视频</a>` : '-';
-                        const steamLink = mod.steamId ? `https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.steamId}` : '#';
-                        return `<tr>
-                            <td><a href="${steamLink}" target="_blank" class="mod-link">${escapeHtml(mod.name)}</a></td>
-                            <td>${escapeHtml(mod.chineseName || '-')}</td>
-                            <td><span class="status-badge ${statusClass}">${mod.status || '未知'}</span></td>
-                            <td>${videoHtml}</td>
-                            <td>${escapeHtml(mod.note || '-')}</td>
-                            <td>${mod.offline ? '✅ 已上传' : '❌ 未上传'}</td>
-                        </tr>`;
-                    }).join('');
-                }
-                const totalPages = Math.ceil(filteredMods.length / pageSize);
-                const paginationDiv = document.querySelector(`#${containerId}-pagination`);
-                if (paginationDiv) {
-                    if (totalPages <= 1) { paginationDiv.innerHTML = ''; return; }
-                    let pagesHtml = '';
-                    for (let i = 1; i <= totalPages; i++) {
-                        pagesHtml += `<span class="page-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</span>`;
-                    }
-                    paginationDiv.innerHTML = `<button class="prev-page" ${currentPage===1?'disabled':''}>‹ 上一页</button>${pagesHtml}<button class="next-page" ${currentPage===totalPages?'disabled':''}>下一页 ›</button>`;
-                    paginationDiv.querySelectorAll('.page-number').forEach(btn => {
-                        btn.addEventListener('click', () => { currentPage = parseInt(btn.dataset.page); render(); });
-                    });
-                    const prevBtn = paginationDiv.querySelector('.prev-page');
-                    const nextBtn = paginationDiv.querySelector('.next-page');
-                    if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; render(); } });
-                    if (nextBtn) nextBtn.addEventListener('click', () => { if (currentPage < totalPages) { currentPage++; render(); } });
-                }
-            }
-
-            function filterData() {
-                let filtered = [...mods];
-                if (searchQuery) {
-                    const q = searchQuery.toLowerCase();
-                    filtered = filtered.filter(m => m.name.toLowerCase().includes(q) || (m.chineseName && m.chineseName.toLowerCase().includes(q)) || (m.note && m.note.toLowerCase().includes(q)));
-                }
-                if (statusFilter !== '全部') {
-                    filtered = filtered.filter(m => m.status === statusFilter);
-                }
-                filteredMods = filtered;
-                currentPage = 1;
-                render();
-            }
-
-            // 添加搜索和筛选控件
-            const container = document.getElementById(containerId);
-            if (container && !container.querySelector('.mod-filters')) {
-                const filterHtml = `
-                    <div class="mod-filters" style="margin-bottom:16px; display:flex; gap:12px; flex-wrap:wrap;">
-                        <input type="text" id="${containerId}-search" placeholder="搜索模组名称/中文名/备注..." style="flex:1; padding:6px 12px; border:1px solid var(--border-color); border-radius:30px;">
-                        <select id="${containerId}-status" style="padding:6px 12px; border:1px solid var(--border-color); border-radius:30px;">
-                            <option value="全部">全部状态</option>
-                            <option value="完整">完整</option>
-                            <option value="非完整">非完整</option>
-                            <option value="待检测">待检测</option>
-                            <option value="待处理">待处理</option>
-                        </select>
-                    </div>
-                `;
-                container.insertAdjacentHTML('afterbegin', filterHtml);
-                const searchBox = document.getElementById(`${containerId}-search`);
-                const statusSelect = document.getElementById(`${containerId}-status`);
-                if (searchBox) searchBox.addEventListener('input', (e) => { searchQuery = e.target.value; filterData(); });
-                if (statusSelect) statusSelect.addEventListener('change', (e) => { statusFilter = e.target.value; filterData(); });
             }
             render();
         }
@@ -634,36 +871,18 @@
             detailDiv.innerHTML = '<div class="empty-tip">加载中...</div>';
 
             if (game.id === 'pz') {
-                // 僵尸毁灭工程：加载模组 + 攻略
-                const [modsRes, guidesRes] = await Promise.all([
-                    fetch('data/Project Zomboid Mods.json').catch(() => null),
-                    fetch('data/guides.json').catch(() => null)
-                ]);
+                // 僵尸毁灭工程：加载模组数据（新路径）
+                const modsRes = await fetch('data/Project Zomboid/Project Zomboid Mods.json').catch(() => null);
                 let mods = [];
-                let guides = [];
                 if (modsRes && modsRes.ok) mods = await modsRes.json();
-                if (guidesRes && guidesRes.ok) guides = await guidesRes.json();
-                // 筛选模组：game 字段包含“僵毁”或“僵尸毁灭工程”
-                const pzMods = mods.filter(m => m.game && (m.game.includes('僵毁') || m.game.includes('僵尸毁灭工程')));
-                // 筛选攻略：名称以 [僵尸毁灭工程] 开头
-                const pzGuides = guides.filter(g => g.name && g.name.startsWith('[僵尸毁灭工程]'));
-
-                let html = '';
-                // 模组折叠块
-                html += `<details class="section-details" open><summary>📦 模组信息 (${pzMods.length}个)</summary><div class="section-content"><div id="pzModsTableContainer"><table class="mod-table" id="pzModsTable"><thead><tr><th>模组名称</th><th>中文名</th><th>状态</th><th>视频</th><th>备注</th><th>离线分享</th></tr></thead><tbody></tbody></table><div id="pzModsTable-pagination"></div></div></div></details>`;
-                // 攻略折叠块
-                if (pzGuides.length) {
-                    html += `<details class="section-details"><summary>📖 游戏攻略 (${pzGuides.length}个)</summary><div class="section-content"><div id="pzGuidesTableContainer"><table class="mod-table" id="pzGuidesTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="pzGuidesTable-pagination"></div></div></div></details>`;
-                }
+                // 可选：筛选出 game 字段包含“僵毁”的模组（模组文件里已经全是僵毁的，但为了扩展，可以筛选）
+                const pzMods = mods.filter(m => !m.game || m.game.includes('僵毁') || m.game.includes('僵尸毁灭工程'));
+                const html = `<div id="pzModsStatsContainer"></div>`;
                 detailDiv.innerHTML = html;
-                renderModsTable('pzModsTable', pzMods, 15);
-                if (pzGuides.length) {
-                    const guideData = pzGuides.map(g => ({ name: g.name, url: g.url }));
-                    renderSimpleTable('pzGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
-                }
+                new ModStatsView('pzModsStatsContainer', pzMods);
             }
             else if (game.id === 'luoke') {
-                // 洛克王国：世界：加载 wonders, tasks, activities, titles
+                // 洛克王国：世界
                 const [wondersRes, tasksRes, activitiesRes, titlesRes] = await Promise.all([
                     fetch('data/wonders.json').catch(() => null),
                     fetch('data/tasks.json').catch(() => null),
@@ -695,7 +914,6 @@
                 if (titles.length) renderSimpleTable('luokeTitlesTable', titles, [{ key: 'name', label: '称号名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
             }
             else if (game.id === 'terror' || game.id === 'minecraft' || game.id === 'lifeisstrange') {
-                // 从 guides.json 中按前缀筛选
                 const prefix = game.id === 'terror' ? '[恐怖学校' : (game.id === 'minecraft' ? '[我的世界' : '[奇异人生');
                 const guidesRes = await fetch('data/guides.json').catch(() => null);
                 let guides = guidesRes && guidesRes.ok ? await guidesRes.json() : [];
@@ -722,6 +940,9 @@
                 grid.innerHTML = '<div style="text-align:center; padding:20px;">加载失败，请检查 data/games.json</div>';
             }
         }
+
+        let gamesData = [];
+        let currentFilter = '';
 
         function renderGameCards() {
             const grid = document.getElementById('gamesGrid');
