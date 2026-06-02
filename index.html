@@ -19,6 +19,7 @@
             --bg-card: #fff;
             --bg-sidebar: #fff;
             --shadow: 4px 4px 0 rgba(0,0,0,0.1);
+            --bg-body: navajowhite;
         }
         body.dark {
             --bg-card: #16213e;
@@ -30,8 +31,7 @@
             --pink: #c44569;
             --pink-light: #5c2e3a;
             --shadow: 4px 4px 0 rgba(0,0,0,0.3);
-            background: url('images/beijin2.jpg') no-repeat center center fixed;
-            background-size: cover;
+            --bg-body: #1a1a2e;
         }
 
         @font-face {
@@ -44,8 +44,9 @@
 
         body {
             font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
-            background: url('images/beijin1.jpg') no-repeat center center fixed;
-            background-size: cover;
+            background: var(--bg-body);
+            background-image: repeating-conic-gradient(#f9bddd33 0% 25%, transparent 0% 50%) 50% / 40px 40px;
+            background-attachment: fixed;
             min-height: 100vh;
             padding-top: var(--nav-offset);
             transition: background 0.3s, color 0.2s;
@@ -85,7 +86,7 @@
         }
         nav .links li a:hover { filter: brightness(0.85); }
 
-        /* 左侧栏 */
+        /* 左侧栏（共享） */
         .left-col {
             position: fixed;
             left: 20px;
@@ -114,7 +115,7 @@
         .profile-name { font-size: 18px; font-weight: bold; text-align: center; color: var(--text-dark); }
         .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
 
-        /* 播放器 - 简化版 */
+        /* 播放器 - 手动播放 */
         .player {
             margin: 16px 0 12px;
             text-align: center;
@@ -130,6 +131,7 @@
             background: radial-gradient(circle at 35% 35%, #222, #111);
             border-radius: 50%;
             box-shadow: 0 0 0 4px #444, 0 0 0 6px #888;
+            cursor: pointer;
         }
         .vinyl.playing {
             animation: spin 5s linear infinite;
@@ -365,7 +367,7 @@
 <body>
     <nav>
         <ul class="links">
-            <li><a href="#" data-target="top" style="background-color: #FF4D4D;">主页</a></li>
+            <li><a href="index.html" data-target="top" style="background-color: #FF4D4D;">主页</a></li>
             <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
             <li><a href="#" data-target="top" style="background-color: #FFD700;">项目</a></li>
             <li><a href="#" data-target="top" style="background-color: #32CD32;">作品集</a></li>
@@ -389,9 +391,9 @@
                 <div class="player-controls">
                     <button id="playPauseBtn">▶️</button>
                 </div>
-                <div class="song-title" id="songTitle">加载中...</div>
+                <div class="song-title" id="songTitle">Morning BGM</div>
             </div>
-            <button class="theme-toggle" id="themeToggle">🌤️ 白天</button>
+            <button class="theme-toggle" id="themeToggle">🌙 黑夜</button>
         </div>
     </div>
 
@@ -428,100 +430,43 @@
     <audio id="audioPlayer" preload="auto"></audio>
 
     <script>
-        // ==================== 音乐播放器（解决自动播放限制）====================
-        let currentTheme = 'day';
+        // ==================== 音乐播放器（纯手动，无自动播放）====================
         const audio = document.getElementById('audioPlayer');
         const vinyl = document.getElementById('vinylDisc');
         const playPauseBtn = document.getElementById('playPauseBtn');
         const songTitleSpan = document.getElementById('songTitle');
 
-        const MUSIC_DAY = 'music/morning.mp3';
-        const MUSIC_NIGHT = 'music/night.mp3';
-        const TITLE_DAY = 'Morning BGM';
-        const TITLE_NIGHT = 'Night BGM';
+        // 固定使用 morning.mp3
+        audio.src = 'music/morning.mp3';
+        songTitleSpan.textContent = 'Morning BGM';
 
-        // 预加载但不自动播放
-        function preloadMusic(theme) {
-            const url = theme === 'day' ? MUSIC_DAY : MUSIC_NIGHT;
-            const title = theme === 'day' ? TITLE_DAY : TITLE_NIGHT;
-            if (audio.src && audio.src.endsWith(url)) return;
-            audio.src = url;
-            songTitleSpan.textContent = title;
-            audio.load();
-        }
-
-        // 播放音乐（需要用户交互）
-        function playMusic() {
-            audio.play().then(() => {
-                vinyl.classList.add('playing');
-                playPauseBtn.textContent = '⏸️';
-            }).catch(err => {
-                console.warn('播放失败，可能需要用户交互:', err);
-            });
-        }
-
-        function pauseMusic() {
-            audio.pause();
-            vinyl.classList.remove('playing');
-            playPauseBtn.textContent = '▶️';
-        }
-
-        // 切换主题（背景 + 音乐切换，如果正在播放则继续）
-        function setTheme(theme) {
-            currentTheme = theme;
-            if (theme === 'day') {
-                document.body.classList.remove('dark');
-                document.body.style.backgroundImage = "url('images/beijin1.jpg')";
-                themeToggle.innerHTML = '🌙 黑夜';
-            } else {
-                document.body.classList.add('dark');
-                document.body.style.backgroundImage = "url('images/beijin2.jpg')";
-                themeToggle.innerHTML = '🌤️ 白天';
-            }
-            const wasPlaying = !audio.paused;
-            preloadMusic(theme);
-            if (wasPlaying) {
-                playMusic();
-            }
-        }
-
-        // 播放/暂停按钮事件
         playPauseBtn.addEventListener('click', () => {
             if (audio.paused) {
-                playMusic();
+                audio.play().then(() => {
+                    vinyl.classList.add('playing');
+                    playPauseBtn.textContent = '⏸️';
+                }).catch(() => {});
             } else {
-                pauseMusic();
+                audio.pause();
+                vinyl.classList.remove('playing');
+                playPauseBtn.textContent = '▶️';
             }
         });
 
-        // 首次用户交互后自动播放音乐（如果用户没有手动按播放）
-        let hasInteracted = false;
-        function onFirstInteraction() {
-            if (hasInteracted) return;
-            hasInteracted = true;
-            document.removeEventListener('click', onFirstInteraction);
-            document.removeEventListener('keydown', onFirstInteraction);
-            document.removeEventListener('touchstart', onFirstInteraction);
-            if (audio.paused) {
-                playMusic();
-            }
-        }
-        document.addEventListener('click', onFirstInteraction);
-        document.addEventListener('keydown', onFirstInteraction);
-        document.addEventListener('touchstart', onFirstInteraction);
-
-        // 初始化主题（根据时间）
-        function getThemeByTime() {
-            const hour = new Date().getHours();
-            return (hour >= 6 && hour < 18) ? 'day' : 'night';
-        }
-        const initTheme = getThemeByTime();
-        setTheme(initTheme);
-
+        // ==================== 主题切换（手动，不自动）====================
         const themeToggle = document.getElementById('themeToggle');
+        let isDark = false;
+        // 初始为白天模式（无 dark 类，背景图已在 body 样式中默认白天背景）
+        themeToggle.textContent = '🌙 黑夜';
         themeToggle.addEventListener('click', () => {
-            const newTheme = currentTheme === 'day' ? 'night' : 'day';
-            setTheme(newTheme);
+            isDark = !isDark;
+            if (isDark) {
+                document.body.classList.add('dark');
+                themeToggle.textContent = '🌤️ 白天';
+            } else {
+                document.body.classList.remove('dark');
+                themeToggle.textContent = '🌙 黑夜';
+            }
         });
 
         // ==================== 紧凑周历 ====================
