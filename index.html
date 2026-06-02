@@ -2,7 +2,12 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function adjustZoom() { document.body.style.zoom = 1; }
+        adjustZoom();
+        window.addEventListener('resize', adjustZoom);
+    </script>
     <meta name="description" content="千白分享主页 - 个人分享与作品展示">
     <title>千白分享主页</title>
     <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
@@ -296,7 +301,7 @@
         .btn-primary { background: var(--pink); color: #fff; }
 
         /* ========== RESPONSIVE ========== */
-        @media (max-width: 860px) {
+        @media (max-width: 768px) {
             .left-col { display: none !important; }
             .col.right { width: 100%; margin-left: 0; margin-right: 0; border-left: none; border-right: none; border-top: 1px solid var(--border-color); padding: 0 4px 10px; }
             nav { position: sticky; }

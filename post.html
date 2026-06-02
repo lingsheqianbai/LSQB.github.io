@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script>
+        function adjustZoom() { document.body.style.zoom = 1; }
+        adjustZoom();
+        window.addEventListener('resize', adjustZoom);
+    </script>
     <title>帖子详情 - 千白分享</title>
     <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
     <script>LA.init({id:"3PEh97IIsQ2zJUR2",ck:"3PEh97IIsQ2zJUR2"})</script>
@@ -170,7 +175,7 @@
         .loading-text { text-align: center; padding: 30px; color: var(--text-light); font-size: 12px; }
 
         /* RESPONSIVE */
-        @media (max-width: 860px) {
+        @media (max-width: 768px) {
             .left-col { display: none !important; }
             .col.right { width: 100%; margin-left: 0; margin-right: 0; border-left: none; border-right: none; border-top: 1px solid var(--border-color); padding: 0 4px 10px; }
             nav { position: sticky; }
