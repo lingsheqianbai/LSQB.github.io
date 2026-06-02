@@ -342,13 +342,13 @@
   },
   {
     "name": "Mini Health Panel",
-    "chineseName": "",
+    "chineseName": "迷你健康面板",
     "platform": "steam",
     "steamId": "2866258937",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "待处理",
-    "videoUrl": "",
-    "note": "",
+    "status": "非完整",
+    "videoUrl": "视频待发布",
+    "note": "模组设置有硬编码",
     "offline": false
   },
   {
@@ -5189,6 +5189,28 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV17ACwB3EqY?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "模组已下架",
+    "offline": false
+  },
+  {
+    "name": "Condition On Dash",
+    "chineseName": "仪表盘状态显示",
+    "platform": "steam",
+    "steamId": "3306168142",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "无需翻译",
+    "videoUrl": "视频待发布",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Become Desensitized",
+    "chineseName": "成为脱敏者",
+    "platform": "steam",
+    "steamId": "3388017161",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "视频待发布",
+    "note": "",
     "offline": false
   },
   {
