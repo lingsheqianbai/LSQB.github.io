@@ -244,6 +244,39 @@
         }
         .back-btn:hover { background: var(--pink); }
 
+        /* 折叠块样式 */
+        .section-details {
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .section-details summary {
+            background: var(--pink-light);
+            padding: 12px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+        .section-details summary::-webkit-details-marker { display: none; }
+        .section-details summary::after {
+            content: '▼';
+            margin-left: auto;
+            transition: transform 0.2s;
+        }
+        .section-details[open] summary::after {
+            transform: rotate(180deg);
+        }
+        .section-content {
+            padding: 16px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+        }
+
         /* 模组统计样式 */
         .stats-bar {
             margin-bottom: 16px;
@@ -620,7 +653,7 @@
                 const start = (this.currentPage - 1) * this.pageSize;
                 const pageMods = this.filteredMods.slice(start, start + this.pageSize);
                 if (pageMods.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:40px;">没有匹配的模组</td></tr>';
+                    tbody.innerHTML = '<table><td colspan="6" style="text-align:center; padding:40px;">没有匹配的模组</td></tr>';
                     return;
                 }
                 let html = '';
@@ -793,7 +826,7 @@
             }
         }
 
-        // 简单表格渲染（用于洛克王国等）
+        // 简单表格渲染（用于教程、精灵、任务等）
         function renderSimpleTable(containerId, data, columns, pageSize = 10) {
             let currentPage = 1;
             let filteredData = [...data];
@@ -871,15 +904,41 @@
             detailDiv.innerHTML = '<div class="empty-tip">加载中...</div>';
 
             if (game.id === 'pz') {
-                // 僵尸毁灭工程：加载模组数据（新路径）
-                const modsRes = await fetch('data/Project Zomboid/Project Zomboid Mods.json').catch(() => null);
-                let mods = [];
-                if (modsRes && modsRes.ok) mods = await modsRes.json();
-                // 可选：筛选出 game 字段包含“僵毁”的模组（模组文件里已经全是僵毁的，但为了扩展，可以筛选）
-                const pzMods = mods.filter(m => !m.game || m.game.includes('僵毁') || m.game.includes('僵尸毁灭工程'));
-                const html = `<div id="pzModsStatsContainer"></div>`;
+                // 僵尸毁灭工程：加载模组数据和教程数据
+                const [modsRes, guidesRes] = await Promise.all([
+                    fetch('data/Project Zomboid/Project Zomboid Mods.json').catch(() => null),
+                    fetch('data/Project Zomboid/guides_pz.json').catch(() => null)
+                ]);
+                let mods = modsRes && modsRes.ok ? await modsRes.json() : [];
+                let guides = guidesRes && guidesRes.ok ? await guidesRes.json() : [];
+
+                // 构建HTML：两个折叠块，默认关闭
+                let html = `
+                    <details class="section-details">
+                        <summary>📦 模组信息统计 (${mods.length}个模组)</summary>
+                        <div class="section-content">
+                            <div id="pzModsStatsContainer"></div>
+                        </div>
+                    </details>
+                    <details class="section-details">
+                        <summary>📖 自制僵尸毁灭工程教程 (${guides.length}个教程)</summary>
+                        <div class="section-content">
+                            <div id="pzGuidesTableContainer">
+                                <table class="mod-table" id="pzGuidesTable">
+                                    <thead><tr><th>教程名称</th><th>链接</th></tr></thead>
+                                    <tbody></tbody>
+                                </table>
+                                <div id="pzGuidesTable-pagination"></div>
+                            </div>
+                        </div>
+                    </details>
+                `;
                 detailDiv.innerHTML = html;
-                new ModStatsView('pzModsStatsContainer', pzMods);
+                // 初始化模组统计组件
+                new ModStatsView('pzModsStatsContainer', mods);
+                // 渲染教程表格
+                const guideData = guides.map(g => ({ name: g.name, url: g.url }));
+                renderSimpleTable('pzGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
             }
             else if (game.id === 'luoke') {
                 // 洛克王国：世界
@@ -899,13 +958,13 @@
                     html += `<details class="section-details" open><summary>🐉 精灵图鉴 (${wonders.length}个)</summary><div class="section-content"><div id="luokeWondersTableContainer"><table class="mod-table" id="luokeWondersTable"><thead><tr><th>编号</th><th>精灵名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeWondersTable-pagination"></div></div></div></details>`;
                 }
                 if (tasks.length) {
-                    html += `<details class="section-details"><summary>📜 任务攻略 (${tasks.length}个)</summary><div class="section-content"><div id="luokeTasksTableContainer"><table class="mod-table" id="luokeTasksTable"><thead><tr><th>任务名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeTasksTable-pagination"></div></div></div></details>`;
+                    html += `<details class="section-details" open><summary>📜 任务攻略 (${tasks.length}个)</summary><div class="section-content"><div id="luokeTasksTableContainer"><table class="mod-table" id="luokeTasksTable"><thead><tr><th>任务名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeTasksTable-pagination"></div></div></div></details>`;
                 }
                 if (activities.length) {
-                    html += `<details class="section-details"><summary>🎉 活动攻略 (${activities.length}个)</summary><div class="section-content"><div id="luokeActivitiesTableContainer"><table class="mod-table" id="luokeActivitiesTable"><thead><tr><th>活动名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeActivitiesTable-pagination"></div></div></div></details>`;
+                    html += `<details class="section-details" open><summary>🎉 活动攻略 (${activities.length}个)</summary><div class="section-content"><div id="luokeActivitiesTableContainer"><table class="mod-table" id="luokeActivitiesTable"><thead><tr><th>活动名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeActivitiesTable-pagination"></div></div></div></details>`;
                 }
                 if (titles.length) {
-                    html += `<details class="section-details"><summary>🏅 称号获取 (${titles.length}个)</summary><div class="section-content"><div id="luokeTitlesTableContainer"><table class="mod-table" id="luokeTitlesTable"><thead><tr><th>称号名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeTitlesTable-pagination"></div></div></div></details>`;
+                    html += `<details class="section-details" open><summary>🏅 称号获取 (${titles.length}个)</summary><div class="section-content"><div id="luokeTitlesTableContainer"><table class="mod-table" id="luokeTitlesTable"><thead><tr><th>称号名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeTitlesTable-pagination"></div></div></div></details>`;
                 }
                 detailDiv.innerHTML = html || '<div class="empty-tip">暂无内容</div>';
                 if (wonders.length) renderSimpleTable('luokeWondersTable', wonders, [{ key: 'id', label: '编号' }, { key: 'name', label: '名称' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
