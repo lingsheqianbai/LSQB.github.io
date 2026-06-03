@@ -5208,9 +5208,42 @@
     "platform": "steam",
     "steamId": "3388017161",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "视频待发布",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Equipment UI - Paper Doll Equipment Interface",
+    "chineseName": "装备界面 - 纸娃娃装备系统",
+    "platform": "steam",
+    "steamId": "2950902979",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "非完整",
+    "videoUrl": "视频待发布",
+    "note": "右键等为硬编码",
+    "offline": false
+  },
+  {
+    "name": "Combat Text",
+    "chineseName": "战斗文本",
+    "platform": "steam",
+    "steamId": "2286124931",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "待处理",
     "videoUrl": "视频待发布",
     "note": "",
+    "offline": false
+  },
+  {
+    "name": "Project Seasons",
+    "chineseName": "四季变迁",
+    "platform": "steam",
+    "steamId": "3412105017",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "非完整",
+    "videoUrl": "视频待发布",
+    "note": "右键等为硬编码",
     "offline": false
   },
   {
