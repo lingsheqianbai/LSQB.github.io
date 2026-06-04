@@ -5247,6 +5247,50 @@
     "offline": false
   },
   {
+    "name": "'89 LAND ROVER Defender",
+    "chineseName": "'89 路虎 Defender",
+    "platform": "steam",
+    "steamId": "3570973322",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "视频待发布",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Hardwood's FireFighter's Finery",
+    "chineseName": "硬木板 消防员精选装备",
+    "platform": "steam",
+    "steamId": "3671351750",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Archery Nexus",
+    "chineseName": "弓箭枢纽",
+    "platform": "steam",
+    "steamId": "3617854007",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "视频待发布",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Yumi's Meat Expansion",
+    "chineseName": "Yumi 的肉类扩展",
+    "platform": "steam",
+    "steamId": "3700009701",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "完整",
+    "videoUrl": "视频待发布",
+    "note": "",
+    "offline": false
+  },
+  {
     "name": "EnvironmentalProtectionSuit",
     "chineseName": "",
     "platform": "steam",
