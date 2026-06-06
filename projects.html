@@ -424,7 +424,7 @@
         .mod-id { font-size: 11px; color: #666; display: block; }
         .pagination {
             display: flex;
-            justify-content: center;
+            justify-content: center;  /* 修复：之前写成了 justify-center */
             gap: 8px;
             margin-top: 20px;
             flex-wrap: wrap;
@@ -724,7 +724,7 @@
                 const start = (this.currentPage - 1) * this.pageSize;
                 const pageMods = this.filteredMods.slice(start, start + this.pageSize);
                 if (pageMods.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:40px;">没有匹配的模组</td></td>';
+                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:40px;">没有匹配的模组</td></tr>';
                     return;
                 }
                 let html = '';
@@ -873,7 +873,7 @@
             }
         }
 
-        // ---------- 简单表格渲染（用于教程、精灵、任务、挑战等）----------
+        // ---------- 简单表格渲染（用于教程、精灵、任务、挑战、音乐等）----------
         function renderSimpleTable(containerId, data, columns, pageSize = 10) {
             let currentPage = 1;
             let filteredData = [...data];
@@ -964,34 +964,39 @@
                 renderSimpleTable('pzGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
             }
             else if (game.id === 'luoke') {
-                const [wondersRes, tasksRes, activitiesRes, titlesRes, challengesRes] = await Promise.all([
+                const [wondersRes, tasksRes, activitiesRes, titlesRes, challengesRes, musicRes] = await Promise.all([
                     fetch('data/Roco%20Kingdom%20World/wonders.json').catch(() => null),
                     fetch('data/Roco%20Kingdom%20World/tasks.json').catch(() => null),
                     fetch('data/Roco%20Kingdom%20World/activities.json').catch(() => null),
                     fetch('data/Roco%20Kingdom%20World/titles.json').catch(() => null),
-                    fetch('data/Roco%20Kingdom%20World/challenges.json').catch(() => null)
+                    fetch('data/Roco%20Kingdom%20World/challenges.json').catch(() => null),
+                    fetch('data/Roco%20Kingdom%20World/music.json').catch(() => null)
                 ]);
                 let wonders = wondersRes && wondersRes.ok ? await wondersRes.json() : [];
                 let tasks = tasksRes && tasksRes.ok ? await tasksRes.json() : [];
                 let activities = activitiesRes && activitiesRes.ok ? await activitiesRes.json() : [];
                 let titles = titlesRes && titlesRes.ok ? await titlesRes.json() : [];
                 let challenges = challengesRes && challengesRes.ok ? await challengesRes.json() : [];
+                let music = musicRes && musicRes.ok ? await musicRes.json() : [];
 
                 let html = '';
                 if (wonders.length) {
-                    html += `<details class="section-details"><summary>🐉 精灵图鉴 (${wonders.length}个)</summary><div class="section-content"><div id="luokeWondersTableContainer"><table class="mod-table" id="luokeWondersTable"><thead><tr><th>编号</th><th>精灵名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody><tr><div id="luokeWondersTable-pagination"></div></div></div></details>`;
+                    html += `<details class="section-details"><summary>🐉 精灵图鉴 (${wonders.length}个)</summary><div class="section-content"><div id="luokeWondersTableContainer"><table class="mod-table" id="luokeWondersTable"><thead><tr><th>编号</th><th>精灵名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeWondersTable-pagination"></div></div></div></details>`;
                 }
                 if (tasks.length) {
-                    html += `<details class="section-details"><summary>📜 任务攻略 (${tasks.length}个)</summary><div class="section-content"><div id="luokeTasksTableContainer"><table class="mod-table" id="luokeTasksTable"><thead><tr><th>任务名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeTasksTable-pagination"></div></div></div></details>`;
+                    html += `<details class="section-details"><summary>📜 任务攻略 (${tasks.length}个)</summary><div class="section-content"><div id="luokeTasksTableContainer"><table class="mod-table" id="luokeTasksTable"><thead><tr><th>任务名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody><tr><div id="luokeTasksTable-pagination"></div></div></div></details>`;
                 }
                 if (activities.length) {
-                    html += `<details class="section-details"><summary>🎉 活动攻略 (${activities.length}个)</summary><div class="section-content"><div id="luokeActivitiesTableContainer"><table class="mod-table" id="luokeActivitiesTable"><thead><tr><th>活动名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeActivitiesTable-pagination"></div></div></div></details>`;
+                    html += `<details class="section-details"><summary>🎉 活动攻略 (${activities.length}个)</summary><div class="section-content"><div id="luokeActivitiesTableContainer"><table class="mod-table" id="luokeActivitiesTable"><thead><tr><th>活动名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody><tr><div id="luokeActivitiesTable-pagination"></div></div></div></details>`;
                 }
                 if (titles.length) {
-                    html += `<details class="section-details"><summary>🏅 称号获取 (${titles.length}个)</summary><div class="section-content"><div id="luokeTitlesTableContainer"><table class="mod-table" id="luokeTitlesTable"><thead><tr><th>称号名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeTitlesTable-pagination"></div></div></div></details>`;
+                    html += `<details class="section-details"><summary>🏅 称号获取 (${titles.length}个)</summary><div class="section-content"><div id="luokeTitlesTableContainer"><table class="mod-table" id="luokeTitlesTable"><thead><tr><th>称号名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></td><div id="luokeTitlesTable-pagination"></div></div></div></details>`;
                 }
                 if (challenges.length) {
                     html += `<details class="section-details"><summary>🎪 露天挑战 (${challenges.length}个)</summary><div class="section-content"><div id="luokeChallengesTableContainer"><table class="mod-table" id="luokeChallengesTable"><thead><tr><th>挑战名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeChallengesTable-pagination"></div></div></div></details>`;
+                }
+                if (music.length) {
+                    html += `<details class="section-details"><summary>🎵 音乐收集 (${music.length}个)</summary><div class="section-content"><div id="luokeMusicTableContainer"><table class="mod-table" id="luokeMusicTable"><thead><tr><th>音乐名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeMusicTable-pagination"></div></div></div></details>`;
                 }
 
                 detailDiv.innerHTML = html || '<div class="empty-tip">暂无内容</div>';
@@ -1001,6 +1006,7 @@
                 if (activities.length) renderSimpleTable('luokeActivitiesTable', activities, [{ key: 'name', label: '活动名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
                 if (titles.length) renderSimpleTable('luokeTitlesTable', titles, [{ key: 'name', label: '称号名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
                 if (challenges.length) renderSimpleTable('luokeChallengesTable', challenges, [{ key: 'name', label: '挑战名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
+                if (music.length) renderSimpleTable('luokeMusicTable', music, [{ key: 'name', label: '音乐名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
             }
             else if (game.id === 'whiteday') {
                 const guidesRes = await fetch('data/White%20Day%20A%20Labyrinth%20Named%20School/guides.json').catch(() => null);
@@ -1013,7 +1019,7 @@
             else if (game.id === 'minecraft') {
                 const guidesRes = await fetch('data/Minecraft/guides.json').catch(() => null);
                 let guides = guidesRes && guidesRes.ok ? await guidesRes.json() : [];
-                const html = `<details class="section-details"><summary>📖 攻略教程 (${guides.length}个)</summary><div class="section-content"><div id="minecraftGuidesTableContainer"><table class="mod-table" id="minecraftGuidesTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></tr><div id="minecraftGuidesTable-pagination"></div></div></div></details>`;
+                const html = `<details class="section-details"><summary>📖 攻略教程 (${guides.length}个)</summary><div class="section-content"><div id="minecraftGuidesTableContainer"><table class="mod-table" id="minecraftGuidesTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody><table><div id="minecraftGuidesTable-pagination"></div></div></div></details>`;
                 detailDiv.innerHTML = html;
                 const guideData = guides.map(g => ({ name: g.name, url: g.url }));
                 renderSimpleTable('minecraftGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
@@ -1021,7 +1027,7 @@
             else if (game.id === 'lifeisstrange') {
                 const guidesRes = await fetch('data/Life%20is%20Strange/guides.json').catch(() => null);
                 let guides = guidesRes && guidesRes.ok ? await guidesRes.json() : [];
-                const html = `<details class="section-details"><summary>📖 攻略教程 (${guides.length}个)</summary><div class="section-content"><div id="lifeisstrangeGuidesTableContainer"><table class="mod-table" id="lifeisstrangeGuidesTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="lifeisstrangeGuidesTable-pagination"></div></div></div></details>`;
+                const html = `<details class="section-details"><summary>📖 攻略教程 (${guides.length}个)</summary><div class="section-content"><div id="lifeisstrangeGuidesTableContainer"><table class="mod-table" id="lifeisstrangeGuidesTable"><thead><tr><th>攻略名称</th><th>链接</th></td></thead><tbody></tbody></table><div id="lifeisstrangeGuidesTable-pagination"></div></div></div></details>`;
                 detailDiv.innerHTML = html;
                 const guideData = guides.map(g => ({ name: g.name, url: g.url }));
                 renderSimpleTable('lifeisstrangeGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
