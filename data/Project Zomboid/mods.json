@@ -347,7 +347,7 @@
     "steamId": "2866258937",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "非完整",
-    "videoUrl": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV1bsEn6HENZ/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "模组设置有硬编码",
     "offline": false
   },
@@ -1612,7 +1612,7 @@
     "steamId": "3428008364",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "完整",
-    "videoUrl": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV1SpEn6XE3S/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -5121,7 +5121,7 @@
     "steamId": "2956146279",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "完整",
-    "videoUrl": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV1hEEn6xEma/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -5143,7 +5143,7 @@
     "steamId": "3731578189",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "待处理",
-    "videoUrl": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV1QjEn6oEeh/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -5287,6 +5287,28 @@
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "完整",
     "videoUrl": "视频待发布",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Animal Tracks",
+    "chineseName": "动物足迹轮廓",
+    "platform": "steam",
+    "steamId": "3657097711",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "报错无法测试",
+    "offline": false
+  },
+  {
+    "name": "Anomalies",
+    "chineseName": "异常现象",
+    "platform": "steam",
+    "steamId": "3719538235",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "非完整",
+    "videoUrl": "",
     "note": "",
     "offline": false
   },
