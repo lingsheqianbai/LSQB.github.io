@@ -1,0 +1,22 @@
+<div id="lifeisstrangeGuidesTableContainer"></div>
+<script>
+    (async function() {
+        const res = await fetch('data/Life%20is%20Strange/guides.json').catch(() => null);
+        let guides = res && res.ok ? await res.json() : [];
+        if (!guides.length) {
+            document.getElementById('lifeisstrangeGuidesTableContainer').innerHTML = '<div class="empty-tip">暂无攻略内容</div>';
+            return;
+        }
+        const container = document.getElementById('lifeisstrangeGuidesTableContainer');
+        container.innerHTML = `
+            <details class="section-details">
+                <summary>📖 攻略教程 (${guides.length}个)</summary>
+                <div class="section-content">
+                    <div id="lifeisstrangeGuidesTable"><table class="mod-table"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="lifeisstrangeGuidesTable-pagination"></div></div>
+                </div>
+            </details>
+        `;
+        const guideData = guides.map(g => ({ name: g.name, url: g.url }));
+        window.renderSimpleTable('lifeisstrangeGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+    })();
+</script>

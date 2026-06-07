@@ -1,0 +1,35 @@
+<div>
+    <div id="pzModsStatsContainer"></div>
+    <div id="pzGuidesTableContainer"></div>
+</div>
+
+<script>
+    // 注意：公共函数和 ModStatsView 类在父页面中已经定义，这里直接使用
+    (async function() {
+        const [modsRes, guidesRes] = await Promise.all([
+            fetch('data/Project%20Zomboid/mods.json').catch(() => null),
+            fetch('data/Project%20Zomboid/guides.json').catch(() => null)
+        ]);
+        let mods = modsRes && modsRes.ok ? await modsRes.json() : [];
+        let guides = guidesRes && guidesRes.ok ? await guidesRes.json() : [];
+
+        // 渲染僵毁模组统计（完整组件）
+        const modsContainer = document.getElementById('pzModsStatsContainer');
+        if (window.ModStatsView) {
+            new window.ModStatsView('pzModsStatsContainer', mods);
+        } else {
+            modsContainer.innerHTML = '<div class="empty-tip">模组统计组件加载失败</div>';
+        }
+
+        // 渲染教程表格
+        const guideData = guides.map(g => ({ name: g.name, url: g.url }));
+        const guidesContainer = document.getElementById('pzGuidesTableContainer');
+        guidesContainer.innerHTML = `
+            <table class="mod-table" id="pzGuidesTable"><thead><tr><th>教程名称</th><th>链接</th></tr></thead><tbody></tbody></table>
+            <div id="pzGuidesTable-pagination"></div>
+        `;
+        if (window.renderSimpleTable) {
+            window.renderSimpleTable('pzGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+        }
+    })();
+</script>
