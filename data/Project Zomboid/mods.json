@@ -5220,7 +5220,7 @@
     "steamId": "2950902979",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "非完整",
-    "videoUrl": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV15yEt6QEkh/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "右键等为硬编码",
     "offline": false
   },
@@ -5230,7 +5230,7 @@
     "platform": "steam",
     "steamId": "2286124931",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "待处理",
+    "status": "完整",
     "videoUrl": "视频待发布",
     "note": "",
     "offline": false

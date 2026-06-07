@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>项目 - 千白分享</title>
     <style>
-        /* ========== 基础风格 ========== */
+        /* ========== 基础风格（保持不变） ========== */
         :root {
             --sidebar-width: 260px;
             --nav-offset: 60px;
@@ -424,7 +424,7 @@
         .mod-id { font-size: 11px; color: #666; display: block; }
         .pagination {
             display: flex;
-            justify-content: center;  /* 修复：之前写成了 justify-center */
+            justify-content: center;
             gap: 8px;
             margin-top: 20px;
             flex-wrap: wrap;
@@ -588,7 +588,7 @@
             }
         };
 
-        // ---------- 分页组件（带省略号和跳转弹窗）----------
+        // ---------- 分页组件（圆形按钮）----------
         function renderPaginationWithDots(containerId, currentPage, totalPages, onPageChange) {
             const container = document.getElementById(containerId);
             if (!container) return;
@@ -641,6 +641,62 @@
                     }
                 });
             });
+        }
+
+        // ---------- 简单表格渲染（用于教程、精灵等）----------
+        function renderSimpleTable(containerId, data, columns, pageSize = 10) {
+            let currentPage = 1;
+            let filteredData = [...data];
+
+            function render() {
+                const start = (currentPage - 1) * pageSize;
+                const pageData = filteredData.slice(start, start + pageSize);
+                const tbody = document.querySelector(`#${containerId} tbody`);
+                if (!tbody) return;
+                if (pageData.length === 0) {
+                    tbody.innerHTML = '<td><td colspan="999" class="empty-tip">没有匹配的内容</td></tr>';
+                } else {
+                    tbody.innerHTML = pageData.map(row => {
+                        let cells = '';
+                        columns.forEach(col => {
+                            let value = row[col.key] || '-';
+                            if (col.type === 'video' && value && value !== '') {
+                                value = `<a href="${value}" target="_blank" style="color:#3B82F6;">🎬 视频</a>`;
+                            } else if (col.type === 'url' && value && value !== '') {
+                                value = `<a href="${value}" target="_blank" style="color:#3B82F6;">🔗 详情</a>`;
+                            }
+                            cells += `<td>${value}</td>`;
+                        });
+                        return `<tr>${cells}</tr>`;
+                    }).join('');
+                }
+                const totalPages = Math.ceil(filteredData.length / pageSize);
+                renderPaginationWithDots(`${containerId}-pagination`, currentPage, totalPages, (newPage) => {
+                    currentPage = newPage;
+                    render();
+                });
+            }
+
+            function filterData(query) {
+                if (!query) filteredData = [...data];
+                else filteredData = data.filter(row => {
+                    return columns.some(col => {
+                        let val = row[col.key];
+                        return val && val.toString().toLowerCase().includes(query.toLowerCase());
+                    });
+                });
+                currentPage = 1;
+                render();
+            }
+
+            const container = document.getElementById(containerId);
+            if (container && !container.querySelector('.simple-search')) {
+                const searchHtml = `<div class="simple-search" style="margin-bottom:12px;"><input type="text" placeholder="搜索..." id="${containerId}-search" style="width:100%; padding:6px 12px; border:1px solid var(--border-color); border-radius:30px;"></div>`;
+                container.insertAdjacentHTML('afterbegin', searchHtml);
+                const searchBox = document.getElementById(`${containerId}-search`);
+                if (searchBox) searchBox.addEventListener('input', (e) => filterData(e.target.value));
+            }
+            render();
         }
 
         // ---------- 完整模组统计组件（僵毁专用）----------
@@ -752,8 +808,7 @@
 
             renderPagination() {
                 const totalPages = Math.ceil(this.filteredMods.length / this.pageSize);
-                const paginationId = `${this.containerId}-pagination`;
-                renderPaginationWithDots(paginationId, this.currentPage, totalPages, (newPage) => {
+                renderPaginationWithDots(`${this.containerId}-pagination`, this.currentPage, totalPages, (newPage) => {
                     this.currentPage = newPage;
                     this.renderTable();
                     this.renderPagination();
@@ -873,75 +928,21 @@
             }
         }
 
-        // ---------- 简单表格渲染（用于教程、精灵、任务、挑战、音乐等）----------
-        function renderSimpleTable(containerId, data, columns, pageSize = 10) {
-            let currentPage = 1;
-            let filteredData = [...data];
-
-            function render() {
-                const start = (currentPage - 1) * pageSize;
-                const pageData = filteredData.slice(start, start + pageSize);
-                const tbody = document.querySelector(`#${containerId} tbody`);
-                if (!tbody) return;
-                if (pageData.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="999" class="empty-tip">没有匹配的内容</td></tr>';
-                } else {
-                    tbody.innerHTML = pageData.map(row => {
-                        let cells = '';
-                        columns.forEach(col => {
-                            let value = row[col.key] || '-';
-                            if (col.type === 'video' && value && value !== '') {
-                                value = `<a href="${value}" target="_blank" style="color:#3B82F6;">🎬 视频</a>`;
-                            } else if (col.type === 'url' && value && value !== '') {
-                                value = `<a href="${value}" target="_blank" style="color:#3B82F6;">🔗 详情</a>`;
-                            }
-                            cells += `<td>${value}</td>`;
-                        });
-                        return `<tr>${cells}</tr>`;
-                    }).join('');
-                }
-                const totalPages = Math.ceil(filteredData.length / pageSize);
-                const paginationId = `${containerId}-pagination`;
-                renderPaginationWithDots(paginationId, currentPage, totalPages, (newPage) => {
-                    currentPage = newPage;
-                    render();
-                });
-            }
-
-            function filterData(query) {
-                if (!query) filteredData = [...data];
-                else filteredData = data.filter(row => {
-                    return columns.some(col => {
-                        let val = row[col.key];
-                        return val && val.toString().toLowerCase().includes(query.toLowerCase());
-                    });
-                });
-                currentPage = 1;
-                render();
-            }
-
-            const container = document.getElementById(containerId);
-            if (container && !container.querySelector('.simple-search')) {
-                const searchHtml = `<div class="simple-search" style="margin-bottom:12px;"><input type="text" placeholder="搜索..." id="${containerId}-search" style="width:100%; padding:6px 12px; border:1px solid var(--border-color); border-radius:30px;"></div>`;
-                container.insertAdjacentHTML('afterbegin', searchHtml);
-                const searchBox = document.getElementById(`${containerId}-search`);
-                if (searchBox) searchBox.addEventListener('input', (e) => filterData(e.target.value));
-            }
-            render();
-        }
-
         // ---------- 游戏详情加载 ----------
         async function loadGameDetail(game) {
             const detailDiv = document.getElementById('detailContent');
             detailDiv.innerHTML = '<div class="empty-tip">加载中...</div>';
 
             if (game.id === 'pz') {
-                const [modsRes, guidesRes] = await Promise.all([
+                // 加载三个数据源
+                const [modsRes, guidesRes, modTutorialsRes] = await Promise.all([
                     fetch('data/Project%20Zomboid/mods.json').catch(() => null),
-                    fetch('data/Project%20Zomboid/guides.json').catch(() => null)
+                    fetch('data/Project%20Zomboid/guides.json').catch(() => null),
+                    fetch('data/Project%20Zomboid/mod_tutorials.json').catch(() => null)
                 ]);
                 let mods = modsRes && modsRes.ok ? await modsRes.json() : [];
                 let guides = guidesRes && guidesRes.ok ? await guidesRes.json() : [];
+                let modTutorials = modTutorialsRes && modTutorialsRes.ok ? await modTutorialsRes.json() : [];
 
                 let html = `
                     <details class="section-details">
@@ -949,7 +950,7 @@
                         <div class="section-content"><div id="pzModsStatsContainer"></div></div>
                     </details>
                     <details class="section-details">
-                        <summary>📖 自制僵尸毁灭工程教程 (${guides.length}个教程)</summary>
+                        <summary>📖 自制僵尸毁灭工程教程 (${guides.length}个)</summary>
                         <div class="section-content">
                             <div id="pzGuidesTableContainer">
                                 <table class="mod-table" id="pzGuidesTable"><thead><tr><th>教程名称</th><th>链接</th></tr></thead><tbody></tbody></table>
@@ -958,12 +959,31 @@
                         </div>
                     </details>
                 `;
+                if (modTutorials.length) {
+                    html += `
+                        <details class="section-details">
+                            <summary>🔧 僵尸毁灭工程模组教程合集 (${modTutorials.length}个)</summary>
+                            <div class="section-content">
+                                <div id="pzModTutorialsTableContainer">
+                                    <table class="mod-table" id="pzModTutorialsTable"><thead><tr><th>教程名称</th><th>链接</th></tr></thead><tbody></tbody></table>
+                                    <div id="pzModTutorialsTable-pagination"></div>
+                                </div>
+                            </div>
+                        </details>
+                    `;
+                }
+
                 detailDiv.innerHTML = html;
                 new ModStatsView('pzModsStatsContainer', mods);
                 const guideData = guides.map(g => ({ name: g.name, url: g.url }));
                 renderSimpleTable('pzGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                if (modTutorials.length) {
+                    const modTutorialData = modTutorials.map(t => ({ name: t.name, url: t.url }));
+                    renderSimpleTable('pzModTutorialsTable', modTutorialData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                }
             }
             else if (game.id === 'luoke') {
+                // 洛克王国部分保持不变（省略，与之前一致）
                 const [wondersRes, tasksRes, activitiesRes, titlesRes, challengesRes, musicRes] = await Promise.all([
                     fetch('data/Roco%20Kingdom%20World/wonders.json').catch(() => null),
                     fetch('data/Roco%20Kingdom%20World/tasks.json').catch(() => null),
@@ -980,27 +1000,14 @@
                 let music = musicRes && musicRes.ok ? await musicRes.json() : [];
 
                 let html = '';
-                if (wonders.length) {
-                    html += `<details class="section-details"><summary>🐉 精灵图鉴 (${wonders.length}个)</summary><div class="section-content"><div id="luokeWondersTableContainer"><table class="mod-table" id="luokeWondersTable"><thead><tr><th>编号</th><th>精灵名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeWondersTable-pagination"></div></div></div></details>`;
-                }
-                if (tasks.length) {
-                    html += `<details class="section-details"><summary>📜 任务攻略 (${tasks.length}个)</summary><div class="section-content"><div id="luokeTasksTableContainer"><table class="mod-table" id="luokeTasksTable"><thead><tr><th>任务名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody><tr><div id="luokeTasksTable-pagination"></div></div></div></details>`;
-                }
-                if (activities.length) {
-                    html += `<details class="section-details"><summary>🎉 活动攻略 (${activities.length}个)</summary><div class="section-content"><div id="luokeActivitiesTableContainer"><table class="mod-table" id="luokeActivitiesTable"><thead><tr><th>活动名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody><tr><div id="luokeActivitiesTable-pagination"></div></div></div></details>`;
-                }
-                if (titles.length) {
-                    html += `<details class="section-details"><summary>🏅 称号获取 (${titles.length}个)</summary><div class="section-content"><div id="luokeTitlesTableContainer"><table class="mod-table" id="luokeTitlesTable"><thead><tr><th>称号名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></td><div id="luokeTitlesTable-pagination"></div></div></div></details>`;
-                }
-                if (challenges.length) {
-                    html += `<details class="section-details"><summary>🎪 露天挑战 (${challenges.length}个)</summary><div class="section-content"><div id="luokeChallengesTableContainer"><table class="mod-table" id="luokeChallengesTable"><thead><tr><th>挑战名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeChallengesTable-pagination"></div></div></div></details>`;
-                }
-                if (music.length) {
-                    html += `<details class="section-details"><summary>🎵 音乐收集 (${music.length}个)</summary><div class="section-content"><div id="luokeMusicTableContainer"><table class="mod-table" id="luokeMusicTable"><thead><tr><th>音乐名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeMusicTable-pagination"></div></div></div></details>`;
-                }
+                if (wonders.length) html += `<details class="section-details"><summary>🐉 精灵图鉴 (${wonders.length}个)</summary><div class="section-content"><div id="luokeWondersTableContainer"><table class="mod-table" id="luokeWondersTable"><thead><tr><th>编号</th><th>精灵名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeWondersTable-pagination"></div></div></div></details>`;
+                if (tasks.length) html += `<details class="section-details"><summary>📜 任务攻略 (${tasks.length}个)</summary><div class="section-content"><div id="luokeTasksTableContainer"><table class="mod-table" id="luokeTasksTable"><thead><tr><th>任务名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></tr><div id="luokeTasksTable-pagination"></div></div></div></details>`;
+                if (activities.length) html += `<details class="section-details"><summary>🎉 活动攻略 (${activities.length}个)</summary><div class="section-content"><div id="luokeActivitiesTableContainer"><table class="mod-table" id="luokeActivitiesTable"><thead><tr><th>活动名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeActivitiesTable-pagination"></div></div></div></details>`;
+                if (titles.length) html += `<details class="section-details"><summary>🏅 称号获取 (${titles.length}个)</summary><div class="section-content"><div id="luokeTitlesTableContainer"><table class="mod-table" id="luokeTitlesTable"><thead><tr><th>称号名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeTitlesTable-pagination"></div></div></div></details>`;
+                if (challenges.length) html += `<details class="section-details"><summary>🎪 露天挑战 (${challenges.length}个)</summary><div class="section-content"><div id="luokeChallengesTableContainer"><table class="mod-table" id="luokeChallengesTable"><thead><tr><th>挑战名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></tr><div id="luokeChallengesTable-pagination"></div></div></div></details>`;
+                if (music.length) html += `<details class="section-details"><summary>🎵 音乐收集 (${music.length}个)</summary><div class="section-content"><div id="luokeMusicTableContainer"><table class="mod-table" id="luokeMusicTable"><thead><tr><th>音乐名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeMusicTable-pagination"></div></div></div></details>`;
 
                 detailDiv.innerHTML = html || '<div class="empty-tip">暂无内容</div>';
-
                 if (wonders.length) renderSimpleTable('luokeWondersTable', wonders, [{ key: 'id', label: '编号' }, { key: 'name', label: '名称' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
                 if (tasks.length) renderSimpleTable('luokeTasksTable', tasks, [{ key: 'name', label: '任务名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
                 if (activities.length) renderSimpleTable('luokeActivitiesTable', activities, [{ key: 'name', label: '活动名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
@@ -1019,7 +1026,7 @@
             else if (game.id === 'minecraft') {
                 const guidesRes = await fetch('data/Minecraft/guides.json').catch(() => null);
                 let guides = guidesRes && guidesRes.ok ? await guidesRes.json() : [];
-                const html = `<details class="section-details"><summary>📖 攻略教程 (${guides.length}个)</summary><div class="section-content"><div id="minecraftGuidesTableContainer"><table class="mod-table" id="minecraftGuidesTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody><table><div id="minecraftGuidesTable-pagination"></div></div></div></details>`;
+                const html = `<details class="section-details"><summary>📖 攻略教程 (${guides.length}个)</summary><div class="section-content"><div id="minecraftGuidesTableContainer"><table class="mod-table" id="minecraftGuidesTable"><thead><tr><th>攻略名称</th><th>链接</th></td></thead><tbody></tbody></table><div id="minecraftGuidesTable-pagination"></div></div></div></details>`;
                 detailDiv.innerHTML = html;
                 const guideData = guides.map(g => ({ name: g.name, url: g.url }));
                 renderSimpleTable('minecraftGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
