@@ -1016,12 +1016,30 @@
                 if (music.length) renderSimpleTable('luokeMusicTable', music, [{ key: 'name', label: '音乐名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
             }
             else if (game.id === 'whiteday') {
-                const guidesRes = await fetch('data/White%20Day%20A%20Labyrinth%20Named%20School/guides.json').catch(() => null);
-                let guides = guidesRes && guidesRes.ok ? await guidesRes.json() : [];
-                const html = `<details class="section-details"><summary>📖 攻略教程 (${guides.length}个)</summary><div class="section-content"><div id="whitedayGuidesTableContainer"><table class="mod-table" id="whitedayGuidesTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="whitedayGuidesTable-pagination"></div></div></div></details>`;
-                detailDiv.innerHTML = html;
-                const guideData = guides.map(g => ({ name: g.name, url: g.url }));
-                renderSimpleTable('whitedayGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                const [endingsRes, otherRes] = await Promise.all([
+                    fetch('data/White%20Day%20A%20Labyrinth%20Named%20School/endings.json').catch(() => null),
+                    fetch('data/White%20Day%20A%20Labyrinth%20Named%20School/other.json').catch(() => null)
+                ]);
+                let endings = endingsRes && endingsRes.ok ? await endingsRes.json() : [];
+                let other = otherRes && otherRes.ok ? await otherRes.json() : [];
+
+                let html = '';
+                if (endings.length) {
+                    html += `<details class="section-details" open><summary>🎭 恐怖学校白色情人节结局收集 (${endings.length}个)</summary><div class="section-content"><div id="whitedayEndingsTableContainer"><table class="mod-table" id="whitedayEndingsTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="whitedayEndingsTable-pagination"></div></div></div></details>`;
+                }
+                if (other.length) {
+                    html += `<details class="section-details"><summary>📖 其他项目 (${other.length}个)</summary><div class="section-content"><div id="whitedayOtherTableContainer"><table class="mod-table" id="whitedayOtherTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="whitedayOtherTable-pagination"></div></div></div></details>`;
+                }
+                detailDiv.innerHTML = html || '<div class="empty-tip">暂无内容</div>';
+
+                if (endings.length) {
+                    const endingsData = endings.map(g => ({ name: g.name, url: g.url }));
+                    renderSimpleTable('whitedayEndingsTable', endingsData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                }
+                if (other.length) {
+                    const otherData = other.map(g => ({ name: g.name, url: g.url }));
+                    renderSimpleTable('whitedayOtherTable', otherData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                }
             }
             else if (game.id === 'minecraft') {
                 const guidesRes = await fetch('data/Minecraft/guides.json').catch(() => null);
