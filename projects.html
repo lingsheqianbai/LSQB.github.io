@@ -1016,12 +1016,14 @@
                 if (music.length) renderSimpleTable('luokeMusicTable', music, [{ key: 'name', label: '音乐名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
             }
             else if (game.id === 'whiteday') {
-                const [endingsRes, otherRes] = await Promise.all([
+                const [endingsRes, otherRes, ghostsRes] = await Promise.all([
                     fetch('data/White%20Day%20A%20Labyrinth%20Named%20School/endings.json').catch(() => null),
-                    fetch('data/White%20Day%20A%20Labyrinth%20Named%20School/other.json').catch(() => null)
+                    fetch('data/White%20Day%20A%20Labyrinth%20Named%20School/other.json').catch(() => null),
+                    fetch('data/White%20Day%20A%20Labyrinth%20Named%20School/ghosts.json').catch(() => null)
                 ]);
                 let endings = endingsRes && endingsRes.ok ? await endingsRes.json() : [];
                 let other = otherRes && otherRes.ok ? await otherRes.json() : [];
+                let ghosts = ghostsRes && ghostsRes.ok ? await ghostsRes.json() : [];
 
                 let html = '';
                 if (endings.length) {
@@ -1029,6 +1031,9 @@
                 }
                 if (other.length) {
                     html += `<details class="section-details"><summary>📖 其他项目 (${other.length}个)</summary><div class="section-content"><div id="whitedayOtherTableContainer"><table class="mod-table" id="whitedayOtherTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="whitedayOtherTable-pagination"></div></div></div></details>`;
+                }
+                if (ghosts.length) {
+                    html += `<details class="section-details"><summary>👻 鬼魂收集 (${ghosts.length}个)</summary><div class="section-content"><div id="whitedayGhostsTableContainer"><table class="mod-table" id="whitedayGhostsTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="whitedayGhostsTable-pagination"></div></div></div></details>`;
                 }
                 detailDiv.innerHTML = html || '<div class="empty-tip">暂无内容</div>';
 
@@ -1039,6 +1044,10 @@
                 if (other.length) {
                     const otherData = other.map(g => ({ name: g.name, url: g.url }));
                     renderSimpleTable('whitedayOtherTable', otherData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                }
+                if (ghosts.length) {
+                    const ghostsData = ghosts.map(g => ({ name: g.name, url: g.url }));
+                    renderSimpleTable('whitedayGhostsTable', ghostsData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
                 }
             }
             else if (game.id === 'minecraft') {

@@ -2498,12 +2498,12 @@
   },
   {
     "name": "Township Community Center",
-    "chineseName": "",
+    "chineseName": "乡镇社区中心地图",
     "platform": "steam",
     "steamId": "3426283674",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "待处理",
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1xQLqzTEA4/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -5309,6 +5309,39 @@
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "非完整",
     "videoUrl": "",
+    "note": "",
+    "offline": false
+  },
+  {
+    "name": "Bunker: Last Minute Prepper",
+    "chineseName": "地堡：最后一刻的准备者",
+    "platform": "steam",
+    "steamId": "3428165477",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "https://www.bilibili.com/video/BV16XRmY5Eh4/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "42",
+    "offline": false
+  },
+  {
+    "name": "Bunker: Last Minute Prepper",
+    "chineseName": "地堡：最后一刻的准备者",
+    "platform": "steam",
+    "steamId": "2889983340",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "https://www.bilibili.com/video/BV16XRmY5Eh4/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "41",
+    "offline": false
+  },
+  {
+    "name": "SHELTER Echo Creek B42",
+    "chineseName": "避难所 - 回音溪 B42",
+    "platform": "steam",
+    "steamId": "3450258411",
+    "game": "僵毁 僵尸毁灭工程 Project Zomboid",
+    "status": "待处理",
+    "videoUrl": "https://www.bilibili.com/video/BV1qmLBzoEQS/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
