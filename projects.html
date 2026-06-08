@@ -875,6 +875,9 @@
                     filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>中文名</span></div><div class="filter-group-options collapsed" id="${this.containerId}-chineseFilterGroup"><span class="filter-btn active" data-group="chinese" data-value="all">全部</span><span class="filter-btn" data-group="chinese" data-value="yes">有中文名</span><span class="filter-btn" data-group="chinese" data-value="no">无中文名</span></div></div>`;
                 }
                 filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>视频教程</span></div><div class="filter-group-options collapsed" id="${this.containerId}-videoFilterGroup"><span class="filter-btn active" data-group="video" data-value="all">全部</span><span class="filter-btn" data-group="video" data-value="yes">有教程</span><span class="filter-btn" data-group="video" data-value="no">无教程</span></div></div>`;
+                if (this.simplified) {
+                    filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>兼容加载器</span></div><div class="filter-group-options collapsed" id="${this.containerId}-loaderFilterGroup"></div></div>`;
+                }
 
                 const placeholder = this.simplified ? '搜索模组名称、中文名或链接...' : '搜索模组名称、中文名、ID或备注...';
                 let html = `
@@ -943,6 +946,27 @@
                             this.applyFilters();
                         });
                     });
+                }
+
+                // 兼容加载器筛选（精简模式）
+                if (this.simplified) {
+                    const loaderSet = new Set();
+                    this.allMods.forEach(mod => {
+                        if (mod.loaders) mod.loaders.split('/').forEach(l => { if (l.trim()) loaderSet.add(l.trim()); });
+                    });
+                    const loaderList = ['全部', ...Array.from(loaderSet).sort()];
+                    const loaderGroup = document.getElementById(`${this.containerId}-loaderFilterGroup`);
+                    if (loaderGroup) {
+                        loaderGroup.innerHTML = loaderList.map(l => `<span class="filter-btn ${l==='全部'?'active':''}" data-group="loader" data-value="${l}">${l}</span>`).join('');
+                        loaderGroup.querySelectorAll('[data-group="loader"]').forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                loaderGroup.querySelectorAll('[data-group="loader"]').forEach(b=>b.classList.remove('active'));
+                                btn.classList.add('active');
+                                this.loaderFilter = btn.dataset.value;
+                                this.applyFilters();
+                            });
+                        });
+                    }
                 }
 
                 // 搜索框
@@ -1016,13 +1040,14 @@
             }
             else if (game.id === 'luoke') {
                 // 洛克王国部分保持不变（省略，与之前一致）
-                const [wondersRes, tasksRes, activitiesRes, titlesRes, challengesRes, musicRes] = await Promise.all([
+                const [wondersRes, tasksRes, activitiesRes, titlesRes, challengesRes, musicRes, otherRes] = await Promise.all([
                     fetch('data/Roco%20Kingdom%20World/wonders.json').catch(() => null),
                     fetch('data/Roco%20Kingdom%20World/tasks.json').catch(() => null),
                     fetch('data/Roco%20Kingdom%20World/activities.json').catch(() => null),
                     fetch('data/Roco%20Kingdom%20World/titles.json').catch(() => null),
                     fetch('data/Roco%20Kingdom%20World/challenges.json').catch(() => null),
-                    fetch('data/Roco%20Kingdom%20World/music.json').catch(() => null)
+                    fetch('data/Roco%20Kingdom%20World/music.json').catch(() => null),
+                    fetch('data/Roco%20Kingdom%20World/other.json').catch(() => null)
                 ]);
                 let wonders = wondersRes && wondersRes.ok ? await wondersRes.json() : [];
                 let tasks = tasksRes && tasksRes.ok ? await tasksRes.json() : [];
@@ -1030,6 +1055,7 @@
                 let titles = titlesRes && titlesRes.ok ? await titlesRes.json() : [];
                 let challenges = challengesRes && challengesRes.ok ? await challengesRes.json() : [];
                 let music = musicRes && musicRes.ok ? await musicRes.json() : [];
+                let other = otherRes && otherRes.ok ? await otherRes.json() : [];
 
                 let html = '';
                 if (wonders.length) html += `<details class="section-details"><summary>🐉 精灵图鉴 (${wonders.length}个)</summary><div class="section-content"><div id="luokeWondersTableContainer"><table class="mod-table" id="luokeWondersTable"><thead><tr><th>编号</th><th>精灵名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeWondersTable-pagination"></div></div></div></details>`;
@@ -1038,6 +1064,7 @@
                 if (titles.length) html += `<details class="section-details"><summary>🏅 称号获取 (${titles.length}个)</summary><div class="section-content"><div id="luokeTitlesTableContainer"><table class="mod-table" id="luokeTitlesTable"><thead><tr><th>称号名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeTitlesTable-pagination"></div></div></div></details>`;
                 if (challenges.length) html += `<details class="section-details"><summary>🎪 露天挑战 (${challenges.length}个)</summary><div class="section-content"><div id="luokeChallengesTableContainer"><table class="mod-table" id="luokeChallengesTable"><thead><tr><th>挑战名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></tr><div id="luokeChallengesTable-pagination"></div></div></div></details>`;
                 if (music.length) html += `<details class="section-details"><summary>🎵 音乐收集 (${music.length}个)</summary><div class="section-content"><div id="luokeMusicTableContainer"><table class="mod-table" id="luokeMusicTable"><thead><tr><th>音乐名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeMusicTable-pagination"></div></div></div></details>`;
+                if (other.length) html += `<details class="section-details"><summary>📖 其他项目 (${other.length}个)</summary><div class="section-content"><div id="luokeOtherTableContainer"><table class="mod-table" id="luokeOtherTable"><thead><tr><th>项目名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeOtherTable-pagination"></div></div></div></details>`;
 
                 detailDiv.innerHTML = html || '<div class="empty-tip">暂无内容</div>';
                 if (wonders.length) renderSimpleTable('luokeWondersTable', wonders, [{ key: 'id', label: '编号' }, { key: 'name', label: '名称' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
@@ -1046,6 +1073,7 @@
                 if (titles.length) renderSimpleTable('luokeTitlesTable', titles, [{ key: 'name', label: '称号名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
                 if (challenges.length) renderSimpleTable('luokeChallengesTable', challenges, [{ key: 'name', label: '挑战名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
                 if (music.length) renderSimpleTable('luokeMusicTable', music, [{ key: 'name', label: '音乐名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
+                if (other.length) renderSimpleTable('luokeOtherTable', other, [{ key: 'name', label: '项目名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
             }
             else if (game.id === 'whiteday') {
                 const [endingsRes, otherRes, ghostsRes, modelsRes] = await Promise.all([
