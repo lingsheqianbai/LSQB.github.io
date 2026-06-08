@@ -2762,12 +2762,12 @@
   },
   {
     "name": "Legendary Katana",
-    "chineseName": "",
+    "chineseName": "传奇武士刀",
     "platform": "steam",
     "steamId": "3418366499",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "待处理",
-    "videoUrl": "",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1ZtTMzDEGw/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -3004,7 +3004,7 @@
   },
   {
     "name": "The Defiler from DR2",
-    "chineseName": "",
+    "chineseName": "亵渎者",
     "platform": "steam",
     "steamId": "3492621786",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
@@ -3058,7 +3058,7 @@
     "offline": false
   },
   {
-    "name": "JunkFoodsPH (WIP)",
+    "name": "JunkFoodsPH",
     "chineseName": "菲律宾风味零食",
     "platform": "steam",
     "steamId": "3390901679",
