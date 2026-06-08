@@ -2882,13 +2882,13 @@
     "offline": false
   },
   {
-    "name": "SecretZ Pandemic (Alpha) 3494374578",
+    "name": "SecretZ Pandemic (Alpha)",
     "chineseName": "",
     "platform": "steam",
     "steamId": "3494374578",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "待处理",
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV1xK39zMErX/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "offline": false
   },
@@ -3818,7 +3818,7 @@
   },
   {
     "name": "Legendary Tactical Knife",
-    "chineseName": "",
+    "chineseName": "传奇战术刀",
     "platform": "steam",
     "steamId": "3575320927",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
@@ -4027,7 +4027,7 @@
   },
   {
     "name": "Scrap Weapons!",
-    "chineseName": "",
+    "chineseName": "废铁武器",
     "platform": "steam",
     "steamId": "2122265954",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
@@ -4350,7 +4350,7 @@
     "platform": "steam",
     "steamId": "2674541310",
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
-    "status": "待检测",
+    "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV11dGnzUErH?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
     "offline": false
