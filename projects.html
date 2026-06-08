@@ -1075,6 +1075,32 @@
                 const guideData = guides.map(g => ({ name: g.name, url: g.url }));
                 renderSimpleTable('lifeisstrangeGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
             }
+            else if (game.id === 'jojo') {
+                const [guidesRes, otherRes] = await Promise.all([
+                    fetch('data/JOJO/guides.json').catch(() => null),
+                    fetch('data/JOJO/other.json').catch(() => null)
+                ]);
+                let guides = guidesRes && guidesRes.ok ? await guidesRes.json() : [];
+                let other = otherRes && otherRes.ok ? await otherRes.json() : [];
+
+                let html = '';
+                if (guides.length) {
+                    html += `<details class="section-details"><summary>⭐ JOJO群星之战攻略 (${guides.length}个)</summary><div class="section-content"><div id="jojoGuidesTableContainer"><table class="mod-table" id="jojoGuidesTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="jojoGuidesTable-pagination"></div></div></div></details>`;
+                }
+                if (other.length) {
+                    html += `<details class="section-details"><summary>📖 其他项目 (${other.length}个)</summary><div class="section-content"><div id="jojoOtherTableContainer"><table class="mod-table" id="jojoOtherTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="jojoOtherTable-pagination"></div></div></div></details>`;
+                }
+                detailDiv.innerHTML = html || '<div class="empty-tip">暂无内容</div>';
+
+                if (guides.length) {
+                    const guideData = guides.map(g => ({ name: g.name, url: g.url }));
+                    renderSimpleTable('jojoGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                }
+                if (other.length) {
+                    const otherData = other.map(g => ({ name: g.name, url: g.url }));
+                    renderSimpleTable('jojoOtherTable', otherData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                }
+            }
             else {
                 detailDiv.innerHTML = '<div class="empty-tip">暂无内容，后续补充~</div>';
             }
