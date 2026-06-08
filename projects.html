@@ -699,22 +699,29 @@
             render();
         }
 
-        // ---------- 完整模组统计组件（僵毁专用）----------
+        // ---------- 完整模组统计组件（支持自定义列）----------
         class ModStatsView {
-            constructor(containerId, modsData) {
+            constructor(containerId, modsData, options = {}) {
                 this.containerId = containerId;
                 this.allMods = modsData;
                 this.filteredMods = [...modsData];
                 this.currentPage = 1;
                 this.pageSize = 15;
                 this.searchQuery = '';
-                this.gameQuery = '';
                 this.statusFilter = '全部';
-                this.offlineFilter = 'all';
-                this.noteFilter = 'all';
-                this.chineseFilter = 'all';
-                this.videoFilter = 'all';
                 this.filterCollapsed = false;
+                // 自定义列配置（不传则使用僵毁默认列）
+                this.customColumns = options.columns || null;
+                this.simplified = options.simplified || false;
+                // 僵毁专用筛选器
+                if (!this.simplified) {
+                    this.gameQuery = '';
+                    this.offlineFilter = 'all';
+                    this.noteFilter = 'all';
+                    this.chineseFilter = 'all';
+                }
+                this.videoFilter = 'all';
+                this.loaderFilter = '全部';
                 this.init();
             }
 
@@ -726,10 +733,24 @@
             }
 
             getModLink(mod) {
+                if (this.customColumns) return '#';
                 if (mod.platform === 'steam' && mod.steamId) return `https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.steamId}`;
                 if (mod.platform === 'mcmod' && mod.mcmodId) return `https://www.mcmod.cn/class/${mod.mcmodId}.html`;
                 return '#';
             }
+
+            getDefaultColumns() {
+                return [
+                    { key: 'name', label: '模组名称 / ID', type: 'modName' },
+                    { key: 'chineseName', label: '模组中文名', type: 'text' },
+                    { key: 'status', label: '翻译进度', type: 'status' },
+                    { key: 'videoUrl', label: '视频教程', type: 'videoLink' },
+                    { key: 'note', label: '备注', type: 'text' },
+                    { key: 'offline', label: '离线分享', type: 'offline' }
+                ];
+            }
+
+            getColumns() { return this.customColumns || this.getDefaultColumns(); }
 
             updateStats() {
                 const statsDiv = document.getElementById(`${this.containerId}-stats`);
@@ -741,7 +762,6 @@
                 const countUnneeded = this.allMods.filter(m => m.status === '无需翻译').length;
                 const countTodo = this.allMods.filter(m => m.status === '待处理').length;
                 const countHasVideo = this.allMods.filter(m => m.videoUrl && m.videoUrl.trim() !== '' && m.videoUrl !== '视频待发布').length;
-                const countNoVideo = total - countHasVideo;
                 statsDiv.innerHTML = `
                     <div class="stats-item"><span class="icon">📊</span> 总模组: <span class="stats-number">${total}</span></div>
                     <div class="stats-item stats-complete"><span class="icon">✅</span> 完整: <span class="stats-number">${countComplete}</span></div>
@@ -750,24 +770,31 @@
                     <div class="stats-item stats-incomplete"><span class="icon">🟡</span> 非完整: <span class="stats-number">${countIncomplete}</span></div>
                     <div class="stats-item stats-unneeded"><span class="icon">🟣</span> 无需翻译: <span class="stats-number">${countUnneeded}</span></div>
                     <div class="stats-item"><span class="icon">📹</span> 已拥有视频: <span class="stats-number">${countHasVideo}</span></div>
-                    <div class="stats-item"><span class="icon">🚫</span> 未拥有视频: <span class="stats-number">${countNoVideo}</span></div>
                 `;
             }
 
             applyFilters() {
                 let filtered = [...this.allMods];
+                const columns = this.getColumns();
                 if (this.searchQuery.trim()) {
                     const q = this.searchQuery.toLowerCase();
-                    filtered = filtered.filter(mod => mod.name.toLowerCase().includes(q) || (mod.steamId && mod.steamId.includes(q)) || (mod.mcmodId && mod.mcmodId.includes(q)) || (mod.chineseName && mod.chineseName.toLowerCase().includes(q)) || (mod.note && mod.note.toLowerCase().includes(q)));
+                    filtered = filtered.filter(mod => {
+                        return columns.some(col => {
+                            if (col.type === 'status' || col.type === 'offline') return false;
+                            const val = mod[col.key];
+                            return val && val.toString().toLowerCase().includes(q);
+                        });
+                    });
                 }
-                if (this.gameQuery) {
-                    filtered = filtered.filter(mod => mod.game && mod.game.toLowerCase().includes(this.gameQuery));
+                if (!this.simplified) {
+                    if (this.gameQuery) filtered = filtered.filter(mod => mod.game && mod.game.toLowerCase().includes(this.gameQuery));
+                    if (this.offlineFilter !== 'all') filtered = filtered.filter(mod => mod.offline === (this.offlineFilter === 'yes'));
+                    if (this.noteFilter !== 'all') filtered = filtered.filter(mod => this.noteFilter === 'yes' ? (mod.note && mod.note.trim()) : (!mod.note || !mod.note.trim()));
+                    if (this.chineseFilter !== 'all') filtered = filtered.filter(mod => this.chineseFilter === 'yes' ? (mod.chineseName && mod.chineseName.trim()) : (!mod.chineseName || !mod.chineseName.trim()));
                 }
                 if (this.statusFilter !== '全部') filtered = filtered.filter(mod => mod.status === this.statusFilter);
-                if (this.offlineFilter !== 'all') filtered = filtered.filter(mod => mod.offline === (this.offlineFilter === 'yes'));
-                if (this.noteFilter !== 'all') filtered = filtered.filter(mod => this.noteFilter === 'yes' ? (mod.note && mod.note.trim()) : (!mod.note || !mod.note.trim()));
-                if (this.chineseFilter !== 'all') filtered = filtered.filter(mod => this.chineseFilter === 'yes' ? (mod.chineseName && mod.chineseName.trim()) : (!mod.chineseName || !mod.chineseName.trim()));
                 if (this.videoFilter !== 'all') filtered = filtered.filter(mod => this.videoFilter === 'yes' ? (mod.videoUrl && mod.videoUrl.trim() !== '' && mod.videoUrl !== '视频待发布') : (!mod.videoUrl || mod.videoUrl.trim() === '' || mod.videoUrl === '视频待发布'));
+                if (this.loaderFilter !== '全部') filtered = filtered.filter(mod => mod.loaders && mod.loaders.includes(this.loaderFilter));
                 this.filteredMods = filtered;
                 this.currentPage = 1;
                 this.renderTable();
@@ -777,31 +804,46 @@
             renderTable() {
                 const tbody = document.getElementById(`${this.containerId}-tbody`);
                 if (!tbody) return;
+                const columns = this.getColumns();
                 const start = (this.currentPage - 1) * this.pageSize;
                 const pageMods = this.filteredMods.slice(start, start + this.pageSize);
                 if (pageMods.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:40px;">没有匹配的模组</td></tr>';
+                    tbody.innerHTML = `<tr><td colspan="${columns.length}" style="text-align:center; padding:40px;">没有匹配的模组</td></tr>`;
                     return;
                 }
                 let html = '';
                 pageMods.forEach(mod => {
-                    const videoLink = mod.videoUrl && mod.videoUrl !== '视频待发布' ? `<a href="${mod.videoUrl}" target="_blank" style="color:#3B82F6;">🎬 观看</a>` : '-';
-                    const offlineIcon = mod.offline ? '<span class="icon-uploaded">✅ 已上传</span>' : '<span class="icon-not-uploaded">❌ 未上传</span>';
-                    const statusClass = this.getStatusClass(mod.status);
-                    const chineseName = mod.chineseName || '-';
-                    const modLink = this.getModLink(mod);
-                    let idDisplay = '';
-                    if (mod.steamId) idDisplay = `<span class="mod-id">${mod.steamId}</span>`;
-                    else if (mod.mcmodId) idDisplay = `<span class="mod-id">MC百科 ID: ${mod.mcmodId}</span>`;
-                    else if (mod.id) idDisplay = `<span class="mod-id">${mod.id}</span>`;
-                    html += `<tr>
-                        <td><a href="${modLink}" target="_blank">${escapeHtml(mod.name)}</a>${idDisplay}</td>
-                        <td>${escapeHtml(chineseName)}</td>
-                        <td><span class="status-badge ${statusClass}">${mod.status}</span></td>
-                        <td>${videoLink}</td>
-                        <td>${escapeHtml(mod.note || '-')}</td>
-                        <td>${offlineIcon}</td>
-                    </tr>`;
+                    html += '<tr>';
+                    columns.forEach(col => {
+                        const val = mod[col.key];
+                        html += '<td>';
+                        switch (col.type) {
+                            case 'modName':
+                                const mLink = this.getModLink(mod);
+                                let idDisp = '';
+                                if (mod.steamId) idDisp = `<span class="mod-id">${mod.steamId}</span>`;
+                                else if (mod.mcmodId) idDisp = `<span class="mod-id">MC百科 ID: ${mod.mcmodId}</span>`;
+                                else if (mod.id) idDisp = `<span class="mod-id">${mod.id}</span>`;
+                                html += `<a href="${mLink}" target="_blank">${escapeHtml(mod.name)}</a>${idDisp}`;
+                                break;
+                            case 'status':
+                                html += `<span class="status-badge ${this.getStatusClass(val)}">${escapeHtml(val || '-')}</span>`;
+                                break;
+                            case 'videoLink':
+                            case 'link':
+                                if (val && val.trim()) {
+                                    html += `<a href="${val}" target="_blank" style="color:#3B82F6;">${col.linkText || '🔗 链接'}</a>`;
+                                } else { html += '-'; }
+                                break;
+                            case 'offline':
+                                html += val ? '<span class="icon-uploaded">✅ 已上传</span>' : '<span class="icon-not-uploaded">❌ 未上传</span>';
+                                break;
+                            default:
+                                html += escapeHtml(val || '-');
+                        }
+                        html += '</td>';
+                    });
+                    html += '</tr>';
                 });
                 tbody.innerHTML = html;
             }
@@ -818,25 +860,36 @@
             render() {
                 const container = document.getElementById(this.containerId);
                 if (!container) return;
+                const columns = this.getColumns();
+                const headerHtml = columns.map(c => `<th>${c.label}</th>`).join('');
+
+                // 构建筛选区
+                let filterInner = '';
+                if (!this.simplified) {
+                    filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>游戏</span></div><div class="filter-group-options collapsed"><input type="text" id="${this.containerId}-gameSearch" class="game-search-input" placeholder="输入游戏名称..."></div></div>`;
+                }
+                filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>翻译状态</span></div><div class="filter-group-options collapsed" id="${this.containerId}-statusFilterGroup"></div></div>`;
+                if (!this.simplified) {
+                    filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>离线分享</span></div><div class="filter-group-options collapsed" id="${this.containerId}-offlineFilterGroup"><span class="filter-btn active" data-group="offline" data-value="all">全部</span><span class="filter-btn" data-group="offline" data-value="yes">已上传</span><span class="filter-btn" data-group="offline" data-value="no">未上传</span></div></div>`;
+                    filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>备注</span></div><div class="filter-group-options collapsed" id="${this.containerId}-noteFilterGroup"><span class="filter-btn active" data-group="note" data-value="all">全部</span><span class="filter-btn" data-group="note" data-value="yes">有备注</span><span class="filter-btn" data-group="note" data-value="no">无备注</span></div></div>`;
+                    filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>中文名</span></div><div class="filter-group-options collapsed" id="${this.containerId}-chineseFilterGroup"><span class="filter-btn active" data-group="chinese" data-value="all">全部</span><span class="filter-btn" data-group="chinese" data-value="yes">有中文名</span><span class="filter-btn" data-group="chinese" data-value="no">无中文名</span></div></div>`;
+                }
+                filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>视频教程</span></div><div class="filter-group-options collapsed" id="${this.containerId}-videoFilterGroup"><span class="filter-btn active" data-group="video" data-value="all">全部</span><span class="filter-btn" data-group="video" data-value="yes">有教程</span><span class="filter-btn" data-group="video" data-value="no">无教程</span></div></div>`;
+
+                const placeholder = this.simplified ? '搜索模组名称、中文名或链接...' : '搜索模组名称、中文名、ID或备注...';
                 let html = `
                     <div id="${this.containerId}-stats" class="stats-bar">加载统计中...</div>
-                    <div class="search-box"><input type="text" id="${this.containerId}-search" placeholder="搜索模组名称、中文名、ID或备注..."></div>
+                    <div class="search-box"><input type="text" id="${this.containerId}-search" placeholder="${placeholder}"></div>
                     <div class="filter-section">
                         <div class="filter-header" id="${this.containerId}-filterToggle"><span><span>🔍</span> 高级筛选</span><span class="arrow">▼</span></div>
-                        <div class="filter-content" id="${this.containerId}-filterContent">
-                            <div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>游戏</span></div><div class="filter-group-options collapsed"><input type="text" id="${this.containerId}-gameSearch" class="game-search-input" placeholder="输入游戏名称..."></div></div>
-                            <div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>翻译状态</span></div><div class="filter-group-options collapsed" id="${this.containerId}-statusFilterGroup"></div></div>
-                            <div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>离线分享</span></div><div class="filter-group-options collapsed" id="${this.containerId}-offlineFilterGroup"><span class="filter-btn active" data-group="offline" data-value="all">全部</span><span class="filter-btn" data-group="offline" data-value="yes">已上传</span><span class="filter-btn" data-group="offline" data-value="no">未上传</span></div></div>
-                            <div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>备注</span></div><div class="filter-group-options collapsed" id="${this.containerId}-noteFilterGroup"><span class="filter-btn active" data-group="note" data-value="all">全部</span><span class="filter-btn" data-group="note" data-value="yes">有备注</span><span class="filter-btn" data-group="note" data-value="no">无备注</span></div></div>
-                            <div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>中文名</span></div><div class="filter-group-options collapsed" id="${this.containerId}-chineseFilterGroup"><span class="filter-btn active" data-group="chinese" data-value="all">全部</span><span class="filter-btn" data-group="chinese" data-value="yes">有中文名</span><span class="filter-btn" data-group="chinese" data-value="no">无中文名</span></div></div>
-                            <div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>视频教程</span></div><div class="filter-group-options collapsed" id="${this.containerId}-videoFilterGroup"><span class="filter-btn active" data-group="video" data-value="all">全部</span><span class="filter-btn" data-group="video" data-value="yes">有教程</span><span class="filter-btn" data-group="video" data-value="no">无教程</span></div></div>
-                        </div>
+                        <div class="filter-content" id="${this.containerId}-filterContent">${filterInner}</div>
                     </div>
-                    <div class="table-responsive"><table class="mod-table"><thead><tr><th>模组名称 / ID</th><th>模组中文名</th><th>翻译进度</th><th>视频教程</th><th>备注</th><th>离线分享</th></tr></thead><tbody id="${this.containerId}-tbody"></tbody></table></div>
+                    <div class="table-responsive"><table class="mod-table"><thead><tr>${headerHtml}</tr></thead><tbody id="${this.containerId}-tbody"></tbody></table></div>
                     <div class="pagination" id="${this.containerId}-pagination"></div>
                 `;
                 container.innerHTML = html;
 
+                // 折叠切换
                 const filterToggle = document.getElementById(`${this.containerId}-filterToggle`);
                 const filterContent = document.getElementById(`${this.containerId}-filterContent`);
                 if (filterToggle) {
@@ -847,6 +900,7 @@
                     });
                 }
 
+                // 翻译状态筛选
                 const statusSet = new Set();
                 this.allMods.forEach(mod => { if (mod.status) statusSet.add(mod.status); });
                 const statusList = ['全部', ...Array.from(statusSet).sort()];
@@ -863,39 +917,22 @@
                     });
                 }
 
-                const offlineGroup = document.getElementById(`${this.containerId}-offlineFilterGroup`);
-                if (offlineGroup) {
-                    offlineGroup.querySelectorAll('[data-group="offline"]').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            offlineGroup.querySelectorAll('[data-group="offline"]').forEach(b=>b.classList.remove('active'));
-                            btn.classList.add('active');
-                            this.offlineFilter = btn.dataset.value;
-                            this.applyFilters();
+                // 僵毁专用筛选器绑定
+                if (!this.simplified) {
+                    ['offline','note','chinese'].forEach(group => {
+                        const g = document.getElementById(`${this.containerId}-${group}FilterGroup`);
+                        if (g) g.querySelectorAll(`[data-group="${group}"]`).forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                g.querySelectorAll(`[data-group="${group}"]`).forEach(b=>b.classList.remove('active'));
+                                btn.classList.add('active');
+                                this[group+'Filter'] = btn.dataset.value;
+                                this.applyFilters();
+                            });
                         });
                     });
                 }
-                const noteGroup = document.getElementById(`${this.containerId}-noteFilterGroup`);
-                if (noteGroup) {
-                    noteGroup.querySelectorAll('[data-group="note"]').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            noteGroup.querySelectorAll('[data-group="note"]').forEach(b=>b.classList.remove('active'));
-                            btn.classList.add('active');
-                            this.noteFilter = btn.dataset.value;
-                            this.applyFilters();
-                        });
-                    });
-                }
-                const chineseGroup = document.getElementById(`${this.containerId}-chineseFilterGroup`);
-                if (chineseGroup) {
-                    chineseGroup.querySelectorAll('[data-group="chinese"]').forEach(btn => {
-                        btn.addEventListener('click', () => {
-                            chineseGroup.querySelectorAll('[data-group="chinese"]').forEach(b=>b.classList.remove('active'));
-                            btn.classList.add('active');
-                            this.chineseFilter = btn.dataset.value;
-                            this.applyFilters();
-                        });
-                    });
-                }
+
+                // 视频筛选（通用）
                 const videoGroup = document.getElementById(`${this.containerId}-videoFilterGroup`);
                 if (videoGroup) {
                     videoGroup.querySelectorAll('[data-group="video"]').forEach(btn => {
@@ -908,19 +945,14 @@
                     });
                 }
 
+                // 搜索框
                 const searchBox = document.getElementById(`${this.containerId}-search`);
                 if (searchBox) {
-                    searchBox.addEventListener('input', (e) => {
-                        this.searchQuery = e.target.value;
-                        this.applyFilters();
-                    });
+                    searchBox.addEventListener('input', (e) => { this.searchQuery = e.target.value; this.applyFilters(); });
                 }
-                const gameSearchBox = document.getElementById(`${this.containerId}-gameSearch`);
-                if (gameSearchBox) {
-                    gameSearchBox.addEventListener('input', (e) => {
-                        this.gameQuery = e.target.value;
-                        this.applyFilters();
-                    });
+                if (!this.simplified) {
+                    const gameSearchBox = document.getElementById(`${this.containerId}-gameSearch`);
+                    if (gameSearchBox) gameSearchBox.addEventListener('input', (e) => { this.gameQuery = e.target.value; this.applyFilters(); });
                 }
 
                 this.updateStats();
@@ -1060,12 +1092,21 @@
                 }
             }
             else if (game.id === 'minecraft') {
-                const guidesRes = await fetch('data/Minecraft/guides.json').catch(() => null);
-                let guides = guidesRes && guidesRes.ok ? await guidesRes.json() : [];
-                const html = `<details class="section-details"><summary>📖 攻略教程 (${guides.length}个)</summary><div class="section-content"><div id="minecraftGuidesTableContainer"><table class="mod-table" id="minecraftGuidesTable"><thead><tr><th>攻略名称</th><th>链接</th></td></thead><tbody></tbody></table><div id="minecraftGuidesTable-pagination"></div></div></div></details>`;
+                const modsRes = await fetch('data/Minecraft/mods.json').catch(() => null);
+                let mods = modsRes && modsRes.ok ? await modsRes.json() : [];
+                const MC_COLUMNS = [
+                    { key: 'name', label: '模组名称', type: 'text' },
+                    { key: 'chineseName', label: '模组中文名', type: 'text' },
+                    { key: 'status', label: '翻译进度', type: 'status' },
+                    { key: 'videoUrl', label: '视频教程', type: 'link', linkText: '🎬 观看' },
+                    { key: 'mcmodUrl', label: 'MC百科', type: 'link', linkText: '📖 百科' },
+                    { key: 'modrinthUrl', label: 'Modrinth', type: 'link', linkText: '🔗 Modrinth' },
+                    { key: 'curseforgeUrl', label: 'CurseForge', type: 'link', linkText: '🔗 CurseForge' },
+                    { key: 'loaders', label: '兼容加载器', type: 'text' }
+                ];
+                const html = `<details class="section-details"><summary>📦 模组信息统计 (${mods.length}个)</summary><div class="section-content"><div id="mcModsStatsContainer"></div></div></details>`;
                 detailDiv.innerHTML = html;
-                const guideData = guides.map(g => ({ name: g.name, url: g.url }));
-                renderSimpleTable('minecraftGuidesTable', guideData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                new ModStatsView('mcModsStatsContainer', mods, { columns: MC_COLUMNS, simplified: true });
             }
             else if (game.id === 'lifeisstrange') {
                 const guidesRes = await fetch('data/Life%20is%20Strange/guides.json').catch(() => null);
