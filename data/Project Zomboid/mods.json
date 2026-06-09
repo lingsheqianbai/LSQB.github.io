@@ -8,7 +8,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1tTx5zNESW/",
     "note": "",
-    "offline": true
+    "category": "特性/职业类"
   },
   {
     "name": "Pallontras Crossbows",
@@ -19,7 +19,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1MCf3BfEqn/",
     "note": "",
-    "offline": true
+    "category": "枪械类"
   },
   {
     "name": "Medieval Z",
@@ -30,7 +30,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1msfHBQEBP/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "原作者少了DisplayName无法正常翻译,添加脚本复制翻译日后需调整。",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "KATTAJ1 Clothes Core",
@@ -41,7 +41,7 @@
     "status": "完整",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "[J&G] Flecktarn Uniform",
@@ -52,7 +52,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Starlit Library",
@@ -63,7 +63,7 @@
     "status": "无需翻译",
     "videoUrl": "",
     "note": "前置",
-    "offline": true
+    "category": "待分类"
   },
   {
     "name": "Legion Weaponry",
@@ -74,7 +74,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1L8f3BBELG/",
     "note": "需要前置[3378285185]但需日后需要由于前置等多个问题导致汉化出现中英问题",
-    "offline": true
+    "category": "枪械类"
   },
   {
     "name": "[J&G] Desert Multicam Uniform",
@@ -85,7 +85,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "[J&G] Caution Pack",
@@ -96,7 +96,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "offline": true
+    "category": "服装类"
   },
   {
     "name": "[J&G] Trauma Responder Uniform",
@@ -107,7 +107,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "offline": true
+    "category": "服装类"
   },
   {
     "name": "[J&G] XKU Uniform",
@@ -118,7 +118,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "[J&G] Alpine Multicam Uniform",
@@ -129,7 +129,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "[J&G] Forest Multicam Uniform",
@@ -140,7 +140,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "[J&G] Black Multicam Uniform",
@@ -151,7 +151,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Project Fallout The Caravan Shotgun",
@@ -162,7 +162,7 @@
     "status": "非完整",
     "videoUrl": "",
     "note": "物品提示写进PFO_CRVN.txt没有lua等定义无法翻译。",
-    "offline": true
+    "category": "枪械类"
   },
   {
     "name": "PaniqeurTrait",
@@ -173,7 +173,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1YLAUz7EjE/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "特性/职业类"
   },
   {
     "name": "RestoreUtilities",
@@ -184,7 +184,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1tiAazfEBo/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": true
+    "category": "服装类"
   },
   {
     "name": "Vanilla-Like Traits and Occupations",
@@ -195,7 +195,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "目前模组没有更新无法在新版本中使用与测试",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Melee-matician Trait",
@@ -206,7 +206,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1USPvz6EhH/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "模组模组已经废弃改为3427091746，然后低版本的比如B41还可以继续使用。",
-    "offline": false
+    "category": "特性/职业类"
   },
   {
     "name": "Combat Traits",
@@ -217,7 +217,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1KYPezYEuu/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "特性/职业类"
   },
   {
     "name": "ArcherLib",
@@ -228,7 +228,7 @@
     "status": "完整",
     "videoUrl": "",
     "note": "这个模组在新更新中无法使用。修复的时间尚不清楚。",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Know Your Calories!",
@@ -239,7 +239,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "未更新版本无法测试",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "PZLinux",
@@ -250,7 +250,7 @@
     "status": "非完整",
     "videoUrl": "",
     "note": "由于硬编码问题，经过不断设计之后发现的问题就是如果改成中文会报错不适配。",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Picking Meister",
@@ -261,7 +261,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1kLxvzJE4k?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Ammo Maker",
@@ -272,7 +272,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "枪械类"
   },
   {
     "name": "FactoryPieces",
@@ -283,7 +283,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "IndustrialRevolution",
@@ -294,7 +294,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "IndustrialRevolutionGenericAddOn",
@@ -305,7 +305,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "IndustrialRevolutionMiraAmmoMaker",
@@ -316,7 +316,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "IndustrialRevolutionVehicleParts",
@@ -327,7 +327,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Surviving Through Seasons",
@@ -338,7 +338,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Mini Health Panel",
@@ -349,7 +349,7 @@
     "status": "非完整",
     "videoUrl": "https://www.bilibili.com/video/BV1bsEn6HENZ/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "模组设置有硬编码",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "Check Upstairs",
@@ -360,7 +360,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Axe's Recrafting",
@@ -371,7 +371,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "EfficiencySkillMod",
@@ -382,7 +382,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1xW7GzTET6?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "技能类"
   },
   {
     "name": "Auto Cook",
@@ -393,7 +393,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1MZuLzwEq6?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "Excavation - Basement Expansion",
@@ -404,7 +404,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Wild Fruits",
@@ -415,7 +415,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1JYuLzEEum?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "AutoMechanics",
@@ -426,7 +426,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Has Been Read",
@@ -437,7 +437,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "B42 Rain's Axes & Blades",
@@ -448,7 +448,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Simple Overhaul: Traits and Occupations (SOTO)",
@@ -459,7 +459,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Repairable Windows",
@@ -470,7 +470,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV11oHvz2Ebw?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Auto Reload",
@@ -481,7 +481,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Functional Clothesline",
@@ -492,7 +492,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Rechargeable Batteries",
@@ -503,7 +503,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Wearable Towels",
@@ -514,7 +514,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Starving Zombies",
@@ -525,7 +525,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Proximity Inventory",
@@ -536,7 +536,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Yaki's Hair Salon",
@@ -547,7 +547,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Spongie's Hair",
@@ -558,7 +558,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Herbalist",
@@ -569,7 +569,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Antibodies",
@@ -580,7 +580,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Car Parts Repair",
@@ -591,7 +591,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "The Motorious Zone Vehicle Pack",
@@ -602,7 +602,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1MnJSzQERg?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "附加包为2841969842",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Fancy Lanterns",
@@ -613,7 +613,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "FirstAidVHSTapes",
@@ -624,7 +624,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Firearms",
@@ -635,7 +635,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Show Sowing Season In Seed Tooltip",
@@ -646,7 +646,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Tactical Weapons",
@@ -657,7 +657,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Pomp's Items - Just the Food",
@@ -668,7 +668,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Melee Weapon Upgrade",
@@ -679,7 +679,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "More Traits Antique Upgrade",
@@ -690,7 +690,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Ammo Converter",
@@ -701,7 +701,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Jarred and dried mushroom",
@@ -712,7 +712,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Make Dried Fruit",
@@ -723,7 +723,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1k8uLznEA1?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Make Dried Vegetables",
@@ -734,7 +734,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Fruits in jars",
@@ -745,7 +745,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Make egg jar",
@@ -756,7 +756,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Expanded Professions",
@@ -767,7 +767,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Manage Containers",
@@ -778,7 +778,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Modern & Historical Firearms Bundle",
@@ -789,7 +789,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Nep Slower Discomfort",
@@ -800,7 +800,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Reduced sickness inside the vehicle",
@@ -811,7 +811,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "BarricadesHurtZombies",
@@ -822,7 +822,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Extended Battery Life",
@@ -833,7 +833,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Point Blank",
@@ -844,7 +844,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Exercise With Corpses",
@@ -855,7 +855,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "FlipVehiclePlusTrailer",
@@ -866,7 +866,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "[J&G] KATTAJ1 Military Pack",
@@ -877,7 +877,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Gauss Firearms",
@@ -888,7 +888,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV16MT3zwEuG?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "枪械类"
   },
   {
     "name": "Militek Clothing",
@@ -899,7 +899,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "My So-Called Bag",
@@ -910,7 +910,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Vanilla DuffelBag Tweak",
@@ -921,7 +921,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Military Ponchos: Reloaded",
@@ -932,7 +932,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Moodle Framework",
@@ -943,7 +943,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Vehicle Repair Overhaul",
@@ -954,7 +954,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Dynamic Emergency TV Channel",
@@ -965,7 +965,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Knox Event Expanded NPC mod",
@@ -976,7 +976,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Rangers 7: [Operator] [Armor Pack]",
@@ -987,7 +987,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Pomp's Items - My Little Pony",
@@ -998,7 +998,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'77 Hayosiko Pace",
@@ -1009,7 +1009,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Simple Show XP",
@@ -1020,7 +1020,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Map Mod Manager (41 and 42)",
@@ -1031,7 +1031,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1jJRiYMEcw/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "地图类"
   },
   {
     "name": "Caster Plus Fishing Mod",
@@ -1042,7 +1042,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1TnZZYZEC1?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "模组已经下架",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "Character Save",
@@ -1053,7 +1053,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1bfd3YtEGS?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "[J&G] SWAT Uniform",
@@ -1064,7 +1064,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Skateboard!",
@@ -1075,7 +1075,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Sound Stress Soother (thumping stress reduction)",
@@ -1086,7 +1086,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Light Switch Plus",
@@ -1097,7 +1097,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "No Stress From Tree Chopping",
@@ -1108,7 +1108,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Bone Scavenger",
@@ -1119,7 +1119,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1BYxTzPEdw?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "技能类"
   },
   {
     "name": "SafeLogin",
@@ -1130,7 +1130,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Viperel's Recycling Center",
@@ -1141,7 +1141,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Viperel's Recycling Center",
@@ -1152,7 +1152,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Easy Laundry",
@@ -1163,7 +1163,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Read Book Bypassing Level Restrictions",
@@ -1174,7 +1174,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Spear Traps",
@@ -1185,7 +1185,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Driving Skill",
@@ -1196,7 +1196,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1JU7Ez5EFi?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "KillCount",
@@ -1207,7 +1207,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Functional Appliances 2",
@@ -1218,7 +1218,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1MhGHzRErm?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "NAVIGATION",
@@ -1229,7 +1229,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Ladders!?",
@@ -1240,7 +1240,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "常识",
@@ -1251,7 +1251,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1uxGJznEZK?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Draw On The Map - Free Hand Drawing",
@@ -1262,7 +1262,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "HydeCo. Bees!",
@@ -1273,7 +1273,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1611EBeEJs?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "HydeCo. Unlimited Cars [Extended Sandbox Options]",
@@ -1284,7 +1284,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Escape From Tarkov Backpacks",
@@ -1295,7 +1295,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Project Fallout: Rob-Co Pip-Boy 3000",
@@ -1306,7 +1306,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Project Fallout: GunRunner",
@@ -1317,7 +1317,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "[Project Fallout] The Beginning",
@@ -1328,7 +1328,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Trailers!",
@@ -1339,7 +1339,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV19yV46PE5F/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "'91 RANGE ROVER Classic",
@@ -1350,7 +1350,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1TcsmzsEcC?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "'93 Ford F-Series",
@@ -1361,7 +1361,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'82 Porsche 911",
@@ -1372,7 +1372,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'90 BMW 3 Series (E30)",
@@ -1383,7 +1383,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'91 Ford LTD Crown Victoria / Country Squire",
@@ -1394,7 +1394,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Farming Expansion",
@@ -1405,7 +1405,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1TBGWzZEjP?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "生存/建造类"
   },
   {
     "name": "Kick Scooter!",
@@ -1416,7 +1416,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'89 Dodge Caravan",
@@ -1427,7 +1427,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'84 Jeep XJ Cherokee",
@@ -1438,7 +1438,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'63 Volkswagen 1300 Beetle",
@@ -1449,7 +1449,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'76 Chevrolet K Series",
@@ -1460,7 +1460,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'85 Chevrolet Caprice / Impala",
@@ -1471,7 +1471,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'85 Pontiac Parisienne",
@@ -1482,7 +1482,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'92 Jeep YJ Wrangler",
@@ -1493,7 +1493,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'87 Buick Regal",
@@ -1504,7 +1504,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Containers!",
@@ -1515,7 +1515,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'85 Buick LeSabre",
@@ -1526,7 +1526,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'85 Oldsmobile Delta 88",
@@ -1537,7 +1537,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'93 Chevrolet Suburban / Silverado",
@@ -1548,7 +1548,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'67 Cadillac Gage Commando",
@@ -1559,7 +1559,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'90 Pierce Arrow Pumper",
@@ -1570,7 +1570,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'69 Chevrolet Camaro",
@@ -1581,7 +1581,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'70 Plymouth Barracuda",
@@ -1592,7 +1592,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'70 Dodge Challenger",
@@ -1603,7 +1603,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'86 Chevrolet CUCVs + M101A2 Trailer",
@@ -1614,7 +1614,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1SpEn6XE3S/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "'81 DeLorean DMC-12",
@@ -1625,7 +1625,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'92 NISSAN Skyline GT-R (R32)",
@@ -1636,7 +1636,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'92 AM General M998 + M101A3 Cargo trailer",
@@ -1647,7 +1647,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'88 Toyota Hilux",
@@ -1658,7 +1658,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'91 Geo Metro",
@@ -1669,7 +1669,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'66 Pontiac LeMans / GTO",
@@ -1680,7 +1680,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'67 Shelby GT500 + Eleanor",
@@ -1691,7 +1691,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'49 Dodge Power Wagon Crew Cab",
@@ -1702,7 +1702,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'69 Mini Mk2",
@@ -1713,7 +1713,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'86 Ford Econoline E-150 + Pop Culture vans",
@@ -1724,7 +1724,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'89 Volvo 200 Series",
@@ -1735,7 +1735,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'93 Ford CF8000 Elgin Street Sweeper",
@@ -1746,7 +1746,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'86 Oshkosh P19A + Military Trailers",
@@ -1757,7 +1757,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'92 Ford Crown Victoria",
@@ -1768,7 +1768,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Bag Upgrade Plus",
@@ -1779,7 +1779,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Bag Upgrade Ultra",
@@ -1790,7 +1790,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "McCoy Estate, KY",
@@ -1801,7 +1801,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Brandenburg, Ekron and Irvington Spawns (With animated previews)",
@@ -1812,7 +1812,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Bandits Creator",
@@ -1823,7 +1823,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "True Smoking",
@@ -1834,7 +1834,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Louisville Quarantine Zone",
@@ -1845,7 +1845,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "N&C's Narcotics",
@@ -1856,7 +1856,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Just Some Hair Styles",
@@ -1867,7 +1867,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Nik's Hairstyles",
@@ -1878,7 +1878,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Ash & Mae's Hair Salon: New Frontier V6",
@@ -1889,7 +1889,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "[A&M] New Frontier: Hair Salon",
@@ -1900,7 +1900,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Reaper's Hair & Beard",
@@ -1911,7 +1911,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Tariq's Beards",
@@ -1922,7 +1922,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Imperial Chops! (More Beards!)",
@@ -1933,7 +1933,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Food Brazil - Comida Brasil",
@@ -1944,7 +1944,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Lock Interiors",
@@ -1955,7 +1955,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Sound Scouter",
@@ -1966,7 +1966,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Thief Expansion",
@@ -1977,7 +1977,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1JP5uzkExc?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.player.switch&trackid=web_related_0.router-related-2481894-jwmft.1772100386978.631",
     "note": "",
-    "offline": false
+    "category": "技能类"
   },
   {
     "name": "Addicted To Weight",
@@ -1988,7 +1988,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Video Meister",
@@ -1999,7 +1999,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1wZ5Mz2EiC?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "图书/媒体类"
   },
   {
     "name": "Stealth Camo",
@@ -2010,7 +2010,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Tidy Up Meister",
@@ -2021,7 +2021,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Love and Perfume",
@@ -2032,7 +2032,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Excalibar",
@@ -2043,7 +2043,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "My So-Called Snack",
@@ -2054,7 +2054,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Pump Pury",
@@ -2065,7 +2065,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Dried Flower",
@@ -2076,7 +2076,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "On the Door",
@@ -2087,7 +2087,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Excalibolg",
@@ -2098,7 +2098,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Medical Meister",
@@ -2109,7 +2109,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Decoholic",
@@ -2120,7 +2120,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Prism Power",
@@ -2131,7 +2131,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Alarm Syndrome",
@@ -2142,7 +2142,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "HDCP Immersive Vehicle Paint",
@@ -2153,7 +2153,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "KR FriOS (Mobile Fridge/Cooler/Freezer/Stove - Solar Battery Charger)",
@@ -2164,7 +2164,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1w7gBzQEBh?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "生存/建造类"
   },
   {
     "name": "More Description for Traits",
@@ -2175,7 +2175,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Post Apocalyptic Weapons",
@@ -2186,7 +2186,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1b4Tuz3Ecy?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Eat Smart",
@@ -2197,7 +2197,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Drink Smart",
@@ -2208,7 +2208,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Bicycle!",
@@ -2219,7 +2219,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1HLMvzBE5t?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "Simple Skill Books",
@@ -2230,7 +2230,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Woodcutting Skill",
@@ -2241,7 +2241,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Combat Mastering Skill",
@@ -2252,7 +2252,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Bloodlust Trait",
@@ -2263,7 +2263,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Night Vision",
@@ -2274,7 +2274,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Scavenger Skill",
@@ -2285,7 +2285,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Anthro Traits",
@@ -2296,7 +2296,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1oE7pznE55?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "特性/职业类"
   },
   {
     "name": "Pack Mule",
@@ -2307,7 +2307,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Lynx Pack",
@@ -2318,7 +2318,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Cerberus Pack",
@@ -2329,7 +2329,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Night Vision Googles",
@@ -2340,7 +2340,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'68 Pontiac Firebird",
@@ -2351,7 +2351,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'77 Pontiac Firebird",
@@ -2362,7 +2362,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'82 Pontiac Firebird",
@@ -2373,7 +2373,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'04 Volkswagen Touran",
@@ -2384,7 +2384,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Support Goods Mega Mod - Blizzard Update - SEMI-STABLE",
@@ -2395,7 +2395,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1xDKpzuEbC?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "损坏待修复后制作翻译，新版为3512993822",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Party System",
@@ -2406,7 +2406,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Risky Unarmed",
@@ -2417,7 +2417,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Wandering Zombies",
@@ -2428,7 +2428,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "S4 Economy[Shop]",
@@ -2439,7 +2439,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1U3J3zVE8L?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Toppling Zombies",
@@ -2450,7 +2450,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "BM Super Speed Settings",
@@ -2461,7 +2461,7 @@
     "status": "非完整",
     "videoUrl": "https://www.bilibili.com/video/BV1WwJczzEcQ?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "原作者以硬编码形式制作如果制作补丁到汉化中是无法启用ID检查会一直调用为了性能不制作",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Frogtown (BETA) by TwinCrows",
@@ -2472,7 +2472,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Constown",
@@ -2483,7 +2483,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Asakusa lake town",
@@ -2494,7 +2494,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Township Community Center",
@@ -2505,7 +2505,7 @@
     "status": "待处理",
     "videoUrl": "https://www.bilibili.com/video/BV1xQLqzTEA4/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "地图类"
   },
   {
     "name": "Grapeseed [B42 Unstable Remake]",
@@ -2516,7 +2516,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Intuitive Crafting",
@@ -2527,7 +2527,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV15wjBzWEVX/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Louisville Riverboat",
@@ -2538,7 +2538,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Louisville River Marina",
@@ -2549,7 +2549,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "RaccoonCity",
@@ -2560,7 +2560,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Taibeiroad4 test",
@@ -2571,7 +2571,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Tikitown",
@@ -2582,7 +2582,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Lilypool (Beta) by TwinCrows",
@@ -2593,7 +2593,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Shield Mode (Secondary Hand Equip)",
@@ -2604,7 +2604,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV19JjZzkEQ9?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Bonus Exp",
@@ -2615,7 +2615,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1Tn7GzuEnw?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "特性/职业类"
   },
   {
     "name": "Traits Purchase System",
@@ -2626,7 +2626,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1Kx75zCE3Q?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "特性/职业类"
   },
   {
     "name": "Sandbox Options",
@@ -2637,7 +2637,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Washing Menus Improved",
@@ -2648,7 +2648,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Dreams",
@@ -2659,7 +2659,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Tetriz - Arcade Minigame",
@@ -2670,7 +2670,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1xnTWzkEcg?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Spongie's Character Customisation",
@@ -2681,7 +2681,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Spongie's Character Retexture",
@@ -2692,7 +2692,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Joke Customisation Pack",
@@ -2703,7 +2703,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Mystic's Face Retexture for Spongie's Character Customisation",
@@ -2714,7 +2714,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "VSMR Face for Spongie's Character Customisation",
@@ -2725,7 +2725,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "柳溪要塞",
@@ -2736,7 +2736,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Tomb's Player Body Overhaul",
@@ -2747,7 +2747,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Birget's Head Collection",
@@ -2758,7 +2758,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Legendary Katana",
@@ -2769,7 +2769,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1ZtTMzDEGw/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "近战武器类"
   },
   {
     "name": "H&K VP70",
@@ -2780,7 +2780,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1P7TgzTERN?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Inspect Weapon",
@@ -2791,7 +2791,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1bUg6zMEVv/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Infection Scanner",
@@ -2802,7 +2802,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Mexiox's - Mexican Firearm Weapons",
@@ -2813,7 +2813,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Hephas Occupations and Traits",
@@ -2824,7 +2824,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Easy Spare Magazine Reload",
@@ -2835,7 +2835,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Foldable Survival Rifle",
@@ -2846,7 +2846,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1q5MQzVEFc?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "枪械类"
   },
   {
     "name": "Vanilla Gear Expanded",
@@ -2857,7 +2857,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1VJGb6KE51/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "技能类"
   },
   {
     "name": "Mod Load Order Sorter",
@@ -2868,7 +2868,7 @@
     "status": "非完整",
     "videoUrl": "https://www.bilibili.com/video/BV1NK3MzrE32/?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "如category等为硬编码待日后调整制作补丁",
-    "offline": true
+    "category": "功能/机制类"
   },
   {
     "name": "榛果庄园Hazelnut Manor",
@@ -2879,7 +2879,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "SecretZ Pandemic (Alpha)",
@@ -2890,7 +2890,7 @@
     "status": "待处理",
     "videoUrl": "https://www.bilibili.com/video/BV1xK39zMErX/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "More Item Information",
@@ -2901,7 +2901,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1iWNvzHE3C?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "[J&G] Neon Vandals Uniform",
@@ -2912,7 +2912,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Lac",
@@ -2923,7 +2923,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "IKEA",
@@ -2934,7 +2934,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Fort Preston",
@@ -2945,7 +2945,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Miller, SD(Alpha 0.4.1)",
@@ -2956,7 +2956,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Fort Boonesborough",
@@ -2967,7 +2967,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "三湖镇夏令营",
@@ -2978,7 +2978,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Ashenwood (with no custom tiles)",
@@ -2989,7 +2989,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Home Inventory",
@@ -3000,7 +3000,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1vjyvBeEhB?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "背包/存储类"
   },
   {
     "name": "The Defiler from DR2",
@@ -3011,7 +3011,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1mmNzzHE9s?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Frockin Shirts & Ties!",
@@ -3022,7 +3022,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Halo Marine Armor",
@@ -3033,7 +3033,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV181g6zgESQ?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Universal Gun Repair",
@@ -3044,7 +3044,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1wCgrzhEjR?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "枪械类"
   },
   {
     "name": "Fallout - NCR Trooper Pack",
@@ -3055,7 +3055,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1sg3HzLEZQ?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "JunkFoodsPH",
@@ -3066,7 +3066,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1Pr34z8EfX/?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "原作者已经放弃该模组",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "My Favorite Jobs - v2",
@@ -3077,7 +3077,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "darlak's H.E.C.U.",
@@ -3088,7 +3088,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1sT3JzzEMn?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Ducks+",
@@ -3099,7 +3099,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV16t3UzmEiC?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "US Military Pack",
@@ -3110,7 +3110,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1Ao3yzVEum?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "无法在游戏中看见物品",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Seesaw Game",
@@ -3121,7 +3121,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Ash's MK8 Trusty FireFighter Axe",
@@ -3132,7 +3132,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Random Clothing",
@@ -3143,7 +3143,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1aegwzPEVc?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "'90 Ford F350 Ambulance",
@@ -3154,7 +3154,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "that DAMN Library",
@@ -3165,7 +3165,7 @@
     "status": "完整",
     "videoUrl": "",
     "note": "框架无需视频教程",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "'93 Ford Mustang SSP",
@@ -3176,7 +3176,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'87 Toyota MR2",
@@ -3187,7 +3187,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'73 Ford Falcon",
@@ -3198,7 +3198,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'93 Lincoln Town Car + Limo",
@@ -3209,7 +3209,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Vanilla MRE",
@@ -3220,7 +3220,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1jzuLz5Ey7?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "The Last of Us: Factions & Gear",
@@ -3231,7 +3231,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1SRMRzkEyP?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Zombaroid",
@@ -3242,7 +3242,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1uLMRzgEaM?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Spiffomon 3D",
@@ -3253,7 +3253,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1bSgMz7E8U?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "KelTec PR-57",
@@ -3264,7 +3264,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1GeuXzVEy3?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Grendal P10",
@@ -3275,7 +3275,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1dtuXzjETj?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "ExtraMoney",
@@ -3286,7 +3286,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "ExtraBombs",
@@ -3297,7 +3297,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Extended Spices",
@@ -3308,7 +3308,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1iX8KzKEL7?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "Boots Expanded 11",
@@ -3319,7 +3319,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1LDbCzuE8J?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "模组不适配新版",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Long-standing Metal Constructions",
@@ -3330,7 +3330,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Immersive Roleplay Professions and Traits",
@@ -3341,7 +3341,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Spear fishing | Рыбалка копьём",
@@ -3352,7 +3352,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1u6toz8Euk?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "目前已经下架处理。",
-    "offline": false
+    "category": "近战武器类"
   },
   {
     "name": "Toughness Skill",
@@ -3363,7 +3363,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1ueYJzqEr3?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "特性/职业类"
   },
   {
     "name": "Water Pipes (aka Plumbing)",
@@ -3374,7 +3374,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1HMYJzsEY2?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "生存/建造类"
   },
   {
     "name": "My So-Called Toy",
@@ -3385,7 +3385,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1iZhDzeE2X?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Smart Hutch",
@@ -3396,7 +3396,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1ZhaHzWEec?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "生存/建造类"
   },
   {
     "name": "Moats",
@@ -3407,7 +3407,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1L3HCznExT?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "生存/建造类"
   },
   {
     "name": "Functional Gutters",
@@ -3418,7 +3418,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1TmH9ziEJU?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "生存/建造类"
   },
   {
     "name": "Guns of 93: Test Build (Unstable)",
@@ -3429,7 +3429,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Show Wall Health",
@@ -3440,7 +3440,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Ellie's Clothing Shop",
@@ -3451,7 +3451,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "M1 Abrams",
@@ -3462,7 +3462,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "ZAW Sputnik 26 (Trabant 601 Sedan & Universal)",
@@ -3473,7 +3473,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Z.R.A.P",
@@ -3484,7 +3484,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "XM93 CBRN",
@@ -3495,7 +3495,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Water Trailer",
@@ -3506,7 +3506,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "W900 Semi-Truck",
@@ -3517,7 +3517,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Volkswagen Transporter T3",
@@ -3528,7 +3528,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Volkswagen Bora MK4 '99",
@@ -3539,7 +3539,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Trap Catch Timer Fix",
@@ -3550,7 +3550,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1D1pDzPETm?spm_id_from=333.788.player.switch&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Trap Manager",
@@ -3561,7 +3561,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1a6pDzqE5z?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Pocket Kittens",
@@ -3572,7 +3572,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV15SpizNEno?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "背包/存储类"
   },
   {
     "name": "Milk Them All",
@@ -3583,7 +3583,7 @@
     "status": "非完整",
     "videoUrl": "https://www.bilibili.com/video/BV1BUJkzEEH8/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "挤奶按钮为官方的而非模组的",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "Make Salami",
@@ -3594,7 +3594,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Anthro Survivors (the \"Furry Mod\")",
@@ -3605,7 +3605,7 @@
     "status": "非完整",
     "videoUrl": "https://www.bilibili.com/video/BV1sJsyzyEpS?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "该模组为硬编码处理丢失了许多文件名，待日后修复。",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "Wildcats for Anthro Survivors",
@@ -3616,7 +3616,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Malwart Plain Moodles",
@@ -3627,7 +3627,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Home Inventory Improved",
@@ -3638,7 +3638,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Useful Barrels",
@@ -3649,7 +3649,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1LgG46eEka/",
     "note": "翻译贡献[浪里个浪2346134]https://steamcommunity.com/profiles/76561198022328017",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Inventory Tetris - Grid Based Inventory Overhaul",
@@ -3660,7 +3660,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Vilespring's M113A1 Armored Personnel Carrier [Updated 2023]",
@@ -3671,7 +3671,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Gavril D-Series",
@@ -3682,7 +3682,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "'03 Subaru WRX",
@@ -3693,7 +3693,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "They Knew",
@@ -3704,7 +3704,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Mod Manager",
@@ -3715,7 +3715,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1KjPxzGE5N/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "[为模组管理器[3423660713]额外提供]",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Eggon's Worthwhile Cars 2.0",
@@ -3726,7 +3726,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Leyland Princess",
@@ -3737,7 +3737,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Bugatti Chiron",
@@ -3748,7 +3748,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Project Summer Car",
@@ -3759,7 +3759,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Bushcraft Gear - Rare Weapons",
@@ -3770,7 +3770,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1eynhzjEe4?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "Pack Pantry",
@@ -3781,7 +3781,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1evnPzqEBf?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "背包/存储类"
   },
   {
     "name": "Armor Wearing Skill",
@@ -3792,7 +3792,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1igJQzKETJ?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "TwisTonFire - Better Trapping",
@@ -3803,7 +3803,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1CAHPzpEhN?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "生存/建造类"
   },
   {
     "name": "[NPDM] PuppyGirl",
@@ -3814,7 +3814,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1BjHPzCEFK?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "Legendary Tactical Knife",
@@ -3825,7 +3825,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1wsHAzJE26?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "目前已经下架处理。",
-    "offline": false
+    "category": "近战武器类"
   },
   {
     "name": "Animals do not attack buildings",
@@ -3836,7 +3836,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV18BgizbEQV?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "功能性模组",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "SCP - Foundation pack",
@@ -3847,7 +3847,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1CsxTzzE5b?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "[B42 NPCs] Homunculus",
@@ -3858,7 +3858,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1WNxMzGEAt?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "Chocolate Milk From Brown Cows",
@@ -3869,7 +3869,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1EnxGzmEZt?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "功能性模组",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "Bandits NPC",
@@ -3880,7 +3880,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Zombie Butcher",
@@ -3891,7 +3891,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV11xx3zsErC?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "Tame-able Wolves",
@@ -3902,7 +3902,7 @@
     "status": "非完整",
     "videoUrl": "https://www.bilibili.com/video/BV12YxLzKEY2?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "由于硬编码问题，经过不断设计之后发现的问题就是如果改成中文会报错不适配。",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Zevon's Medieval Armory",
@@ -3913,7 +3913,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1C6xSzbEpk?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "枪械类"
   },
   {
     "name": "Baby Animal Food",
@@ -3924,7 +3924,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1yuxyzLENQ?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "Ramshackle Recipes",
@@ -3935,7 +3935,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1iUx1zqEaa?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Legendary Naginata",
@@ -3946,7 +3946,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1fU4HzVE7J?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "近战武器类"
   },
   {
     "name": "[NPDM] Puppy Play",
@@ -3957,7 +3957,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1iV4HzMEuA?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "Kill Cell - Armory",
@@ -3968,7 +3968,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1p142zpE6S?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "枪械类"
   },
   {
     "name": "高级战争:社区武器框架",
@@ -3979,7 +3979,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Improvised Backpack!",
@@ -3990,7 +3990,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1Vt4UzkEn1?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "背包/存储类"
   },
   {
     "name": "Somewhat Companions",
@@ -4001,7 +4001,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Hephas Stalker PDA",
@@ -4012,7 +4012,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1eb4tzHEwL?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Mod Manager",
@@ -4023,7 +4023,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1UP48zjEss?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Scrap Weapons!",
@@ -4034,7 +4034,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1uj4BzgEEz?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Scrap Armor!",
@@ -4045,7 +4045,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "The Workshop",
@@ -4056,7 +4056,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Scrap Guns",
@@ -4067,7 +4067,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Craft Helper Continued",
@@ -4078,7 +4078,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1WY46zTE8U/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Incubator Egg Acelered",
@@ -4089,7 +4089,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Bushcraft Gear - Tools",
@@ -4100,7 +4100,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1DcWozHEnr?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "Distant Inventory Access",
@@ -4111,7 +4111,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1cEsbzcERh?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "背包/存储类"
   },
   {
     "name": "Lost Media",
@@ -4122,7 +4122,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1UZsvzoEJQ?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "图书/媒体类"
   },
   {
     "name": "All In One Tool!",
@@ -4133,7 +4133,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1pMsVzQEE6?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "[VFE] VANILLA FIREARMS EXPANSION",
@@ -4144,7 +4144,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1ivsHzPE4Z?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "枪械类"
   },
   {
     "name": "Canteens And Bottles",
@@ -4155,7 +4155,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1bbsnznEjg?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "植物培育机",
@@ -4166,7 +4166,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1BQsnzvEiT?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "国人制作模组",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Somewhat Traits",
@@ -4177,7 +4177,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1yisrzKE4i?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Craftable Metal molds",
@@ -4188,7 +4188,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1ZJsmz3Ee5?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "模组备注",
@@ -4199,7 +4199,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1e1AoeJEoi?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "国人制作模组",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "BackpackPlusSatchels",
@@ -4210,7 +4210,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1Qg7WzyEaM?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "功能性模组；",
-    "offline": false
+    "category": "背包/存储类"
   },
   {
     "name": "Bigger Character Avatar",
@@ -4221,7 +4221,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1HD7pzbEv9/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "UI功能性模组",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Legendary Katana Wakizashi",
@@ -4232,7 +4232,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1ZtTMzDEGw?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "换皮而已3418366499是前身（曾用名：传奇武士刀胁差）",
-    "offline": false
+    "category": "近战武器类"
   },
   {
     "name": "服装幻化",
@@ -4243,7 +4243,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV17jojYxEb1?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "国人制作模组",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Rake Feathers Too",
@@ -4254,7 +4254,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1ePaZzmE4U/?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "功能性模组",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Livestock zones expanded",
@@ -4265,7 +4265,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV16Daoz4EeN?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "地图类"
   },
   {
     "name": "Automatic Stove Shutoff",
@@ -4276,7 +4276,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1ttu9zKEAv/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Two Chicks At The Same Time",
@@ -4287,7 +4287,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1y7skzMEKh/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "More Car Features + Spawn Zones Expansion",
@@ -4298,7 +4298,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1WLyaBBE3g?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "Put Animals In Bags",
@@ -4309,7 +4309,7 @@
     "status": "非完整",
     "videoUrl": "https://www.bilibili.com/video/BV1CG1fBEEsS?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "原作者使用硬编码，使用硬编码翻译出现异常包括翻译键无效。",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "枪托攻击",
@@ -4320,7 +4320,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1xPCcBQEft?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "国人制作",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Animals Can Chill Above Ground Level",
@@ -4331,7 +4331,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1mcCcBXEZW?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "功能性模组",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "Where are the animals?",
@@ -4342,7 +4342,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1tcCcB9EXr?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "Energy Drinks",
@@ -4353,7 +4353,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV11dGnzUErH?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "Pushpop's FurbyZ",
@@ -4364,7 +4364,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1bksbzCEm1?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Support Goods Mega Mod - PREDATOR",
@@ -4375,7 +4375,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "DiamondAxe",
@@ -4386,7 +4386,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1aP8uziEYy?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "国人制作模组",
-    "offline": false
+    "category": "近战武器类"
   },
   {
     "name": "B42 Rain's Firearms & Gun Parts",
@@ -4397,7 +4397,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1fDkCBxEAc?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "枪械类"
   },
   {
     "name": "Motorious Zone - Hot Pursuit Add-on",
@@ -4408,7 +4408,7 @@
     "status": "待检测",
     "videoUrl": "https://www.bilibili.com/video/BV1MnJSzQERg?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "主包为2791656602",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "HGO Expansion",
@@ -4419,7 +4419,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1eskfBbEex?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "技能类"
   },
   {
     "name": "Susceptible Trait - Airborne Infection",
@@ -4430,7 +4430,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1im2uBNEEr?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "特性/职业类"
   },
   {
     "name": "Susceptible Trait - Airborne Infection",
@@ -4441,7 +4441,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1im2uBNEEr?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "特性/职业类"
   },
   {
     "name": "Zombies are still people, in a way",
@@ -4452,7 +4452,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1R2CFBAERn?spm_id_from=333.788.videopod.sections&vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "功能性模组",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "dustinguished bolt cutters",
@@ -4463,7 +4463,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1t8ADz1E6p/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Weapon Experience",
@@ -4474,7 +4474,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1HXAezdEQG/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "技能类"
   },
   {
     "name": "[J&G] Umbrella Corp Uniform",
@@ -4485,7 +4485,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Girls und die Toten",
@@ -4496,7 +4496,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1uCPgzBEzF?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Tanks Have Propane",
@@ -4507,7 +4507,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1mQPvzuE13/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "Simple Status MP • CO-OP",
@@ -4518,7 +4518,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1tQPvzuELv/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Frockin Splendor!",
@@ -4529,7 +4529,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Milk Rats",
@@ -4540,7 +4540,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "Cone Vision Outline",
@@ -4551,7 +4551,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1aZPazBEv6/",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "There Goes My Hero",
@@ -4562,7 +4562,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1ZSNMzUEn3/",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Goose's Kentucky National Guard Professions",
@@ -4573,7 +4573,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1dRNMzLEYA/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "特性/职业类"
   },
   {
     "name": "Architect",
@@ -4584,7 +4584,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1oXNMz2EaS/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "The Peacekeeper Pack",
@@ -4595,7 +4595,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "[SWAT-4] OutBreak & Riot Containment",
@@ -4606,7 +4606,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "ERS - Energy Routing System",
@@ -4617,7 +4617,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Filibuster Rhymes' Acceptable Guns DEMO!",
@@ -4628,7 +4628,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Fabric API",
@@ -4639,7 +4639,7 @@
     "status": "无需翻译",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "FTB Ultimine",
@@ -4650,7 +4650,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1iqwoz3EG4/",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "True Model Z | Body Optimizer + Customizer",
@@ -4661,7 +4661,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Functional Contact Lenses (New Moodle)",
@@ -4672,7 +4672,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1GmQBBxEaD/",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Nearby Animals v1.0.5 - DBD",
@@ -4683,7 +4683,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1xcQzB2Ee3/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "SnackTime 89",
@@ -4694,7 +4694,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1jaQ1BSEs4/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "Reactive Sound Events",
@@ -4705,7 +4705,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Minimal Hotbar",
@@ -4716,7 +4716,7 @@
     "status": "完整",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Minimal Sidebar (Auto Hide)",
@@ -4727,7 +4727,7 @@
     "status": "非完整",
     "videoUrl": "",
     "note": "代码混淆更改会成乱码，无法翻译",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Watch Your Step",
@@ -4738,7 +4738,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Legendary Tactical Weapons",
@@ -4749,7 +4749,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "枪械类"
   },
   {
     "name": "DebugMenu",
@@ -4760,7 +4760,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Frockin Splendor! Vol.2",
@@ -4771,7 +4771,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1CqRJBcENC/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "调试菜单(Debug)",
@@ -4782,7 +4782,7 @@
     "status": "完整",
     "videoUrl": "",
     "note": "此为UP（凌社千白自主接手维护）",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Playable Pool",
@@ -4793,7 +4793,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1yv5E6AEkm/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "硬编码翻译",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "JB's Bugs In Lights",
@@ -4804,7 +4804,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Military Tents",
@@ -4815,7 +4815,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1T85E6iEtF/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "生存/建造类"
   },
   {
     "name": "Carry Visible Log Stacks",
@@ -4826,7 +4826,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1rk5E64Eg4/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "[J&G] ODST",
@@ -4837,7 +4837,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV11Y5E6YE4U/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Hardwood's Swat Pack",
@@ -4848,7 +4848,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Open All Containers",
@@ -4859,7 +4859,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV19yV46PEss/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "背包/存储类"
   },
   {
     "name": "GoM - Guns of Marz",
@@ -4870,7 +4870,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "枪械类"
   },
   {
     "name": "Take A Bath And Shower",
@@ -4881,7 +4881,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1kz5E6bEKB/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Manual Save & Slot Manager",
@@ -4892,7 +4892,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1pg5f6rEQM/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Tactical Pistol Hold",
@@ -4903,7 +4903,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1k95f63EBi/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "枪械类"
   },
   {
     "name": "Tactical Hold",
@@ -4914,7 +4914,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1k95f63EBi/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "属于3693258802分支",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Tactical Pistol Hold",
@@ -4925,7 +4925,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1k95f63EBi/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "属于3693258802分支",
-    "offline": false
+    "category": "枪械类"
   },
   {
     "name": "Faded's Faithful Friends",
@@ -4936,7 +4936,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV186Ly6mEMi/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Antique Swords",
@@ -4947,7 +4947,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV186Ly6mEpn/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "近战武器类"
   },
   {
     "name": "Hide Clothing Slot",
@@ -4958,7 +4958,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "作者使用硬编码无法翻译",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Fallout: Riot Armor Pack",
@@ -4969,7 +4969,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1GeLy6XEQX/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Infested Lair Conquest",
@@ -4980,7 +4980,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV18zLy6EE2e/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "OG Homestead Dairy",
@@ -4991,7 +4991,7 @@
     "status": "完整",
     "videoUrl": "",
     "note": "无法在游戏中看见制作菜单",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Upgradeable Storage",
@@ -5002,7 +5002,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "背包/存储类"
   },
   {
     "name": "Buildable Garage Doors",
@@ -5013,7 +5013,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1QaLh61EHi/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "门框引体向上",
@@ -5024,7 +5024,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1KwLh6TEGE/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "待分类"
   },
   {
     "name": "Horse Mod",
@@ -5035,7 +5035,7 @@
     "status": "非完整",
     "videoUrl": "https://www.bilibili.com/video/BV1nVLh6fEvG/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "由于版本在更新所以部分东西可能没有翻译",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "More Damaged Objects",
@@ -5046,7 +5046,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1PKLh6eEG5?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "TV & Radio ReInvented",
@@ -5057,7 +5057,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1VJGb6KEpB/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "图书/媒体类"
   },
   {
     "name": "Here Goes the Sun",
@@ -5068,7 +5068,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1LGG46AEF6/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Campers!",
@@ -5079,7 +5079,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1igG46eEPc/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "生存/建造类"
   },
   {
     "name": "Tomb's Wardrobe - Alternative",
@@ -5090,7 +5090,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1VLG46cE6T/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Vanilla vehicles animated",
@@ -5101,7 +5101,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV1ggV46tE8s/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "Detailed Descriptions for Occupations and",
@@ -5112,7 +5112,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1ggV46tEgG/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "注：模组翻译键名可能与原版或者其他翻译键名冲突",
-    "offline": false
+    "category": "特性/职业类"
   },
   {
     "name": "Rain Cleans Blood",
@@ -5123,7 +5123,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1hEEn6xEma/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "生存/建造类"
   },
   {
     "name": "Smarter Storage",
@@ -5134,7 +5134,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1cLEJ6zEka/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "模组自带翻译",
-    "offline": false
+    "category": "背包/存储类"
   },
   {
     "name": "Functional Clothing Pockets",
@@ -5145,7 +5145,7 @@
     "status": "待处理",
     "videoUrl": "https://www.bilibili.com/video/BV1QjEn6oEeh/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Seed Season Indicator",
@@ -5156,7 +5156,7 @@
     "status": "完整",
     "videoUrl": "",
     "note": "由于模组有bug无法阅读，视频待制作",
-    "offline": false
+    "category": "功能/机制类"
   },
   {
     "name": "Vanilla Foods Expanded",
@@ -5167,7 +5167,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1zKEp6GEiH/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "Lifestyle: Hobbies",
@@ -5178,7 +5178,7 @@
     "status": "完整",
     "videoUrl": "视频待制作",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "DFMFoodMod",
@@ -5189,7 +5189,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV17ACwB3EqY?vd_source=73e550a3569a193e56d345c2b1e1a721&spm_id_from=333.788.videopod.sections",
     "note": "模组已下架",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "Condition On Dash",
@@ -5200,7 +5200,7 @@
     "status": "无需翻译",
     "videoUrl": "https://www.bilibili.com/video/BV19vEH6YE4p/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Become Desensitized",
@@ -5211,7 +5211,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV12DEH6pEk5/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "特性/职业类"
   },
   {
     "name": "Equipment UI - Paper Doll Equipment Interface",
@@ -5222,7 +5222,7 @@
     "status": "非完整",
     "videoUrl": "https://www.bilibili.com/video/BV15yEt6QEkh/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "右键等为硬编码",
-    "offline": false
+    "category": "服装类"
   },
   {
     "name": "Combat Text",
@@ -5233,7 +5233,7 @@
     "status": "完整",
     "videoUrl": "视频待发布",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Project Seasons",
@@ -5244,7 +5244,7 @@
     "status": "非完整",
     "videoUrl": "视频待发布",
     "note": "右键等为硬编码",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "'89 LAND ROVER Defender",
@@ -5255,7 +5255,7 @@
     "status": "完整",
     "videoUrl": "视频待发布",
     "note": "",
-    "offline": false
+    "category": "车辆类"
   },
   {
     "name": "Hardwood's FireFighter's Finery",
@@ -5266,7 +5266,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "生存/建造类"
   },
   {
     "name": "Archery Nexus",
@@ -5277,7 +5277,7 @@
     "status": "待处理",
     "videoUrl": "视频待发布",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Yumi's Meat Expansion",
@@ -5288,7 +5288,7 @@
     "status": "完整",
     "videoUrl": "视频待发布",
     "note": "",
-    "offline": false
+    "category": "物品/食物类"
   },
   {
     "name": "Animal Tracks",
@@ -5299,7 +5299,7 @@
     "status": "待处理",
     "videoUrl": "",
     "note": "报错无法测试",
-    "offline": false
+    "category": "NPC/生物类"
   },
   {
     "name": "Anomalies",
@@ -5310,7 +5310,7 @@
     "status": "非完整",
     "videoUrl": "",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "Bunker: Last Minute Prepper",
@@ -5321,7 +5321,7 @@
     "status": "待处理",
     "videoUrl": "https://www.bilibili.com/video/BV16XRmY5Eh4/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "42",
-    "offline": false
+    "category": "地图类"
   },
   {
     "name": "Bunker: Last Minute Prepper",
@@ -5332,7 +5332,7 @@
     "status": "待处理",
     "videoUrl": "https://www.bilibili.com/video/BV16XRmY5Eh4/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "41",
-    "offline": false
+    "category": "地图类"
   },
   {
     "name": "SHELTER Echo Creek B42",
@@ -5343,7 +5343,7 @@
     "status": "待处理",
     "videoUrl": "https://www.bilibili.com/video/BV1qmLBzoEQS/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "offline": false
+    "category": "其他"
   },
   {
     "name": "EnvironmentalProtectionSuit",
@@ -5354,6 +5354,6 @@
     "status": "待处理",
     "videoUrl": "视频待发布",
     "note": "",
-    "offline": false
+    "category": "待分类"
   }
 ]

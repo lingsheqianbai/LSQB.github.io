@@ -419,8 +419,7 @@
         .status-pending { background: #ffcdd2; color: #c62828; }
         .status-unneeded { background: #e1bee7; color: #6a1b9a; }
         .status-todo { background: #ffe0b2; color: #bf360c; }
-        .icon-uploaded { color: #2ecc71; font-weight: bold; }
-        .icon-not-uploaded { color: #999; }
+
         .mod-id { font-size: 11px; color: #666; display: block; }
         .pagination {
             display: flex;
@@ -716,12 +715,12 @@
                 // 僵毁专用筛选器
                 if (!this.simplified) {
                     this.gameQuery = '';
-                    this.offlineFilter = 'all';
                     this.noteFilter = 'all';
                     this.chineseFilter = 'all';
                 }
                 this.videoFilter = 'all';
                 this.loaderFilter = '全部';
+                this.categoryFilter = '全部';
                 this.init();
             }
 
@@ -746,7 +745,7 @@
                     { key: 'status', label: '翻译进度', type: 'status' },
                     { key: 'videoUrl', label: '视频教程', type: 'videoLink' },
                     { key: 'note', label: '备注', type: 'text' },
-                    { key: 'offline', label: '离线分享', type: 'offline' }
+                    { key: 'category', label: '模组分类', type: 'text' }
                 ];
             }
 
@@ -780,7 +779,7 @@
                     const q = this.searchQuery.toLowerCase();
                     filtered = filtered.filter(mod => {
                         return columns.some(col => {
-                            if (col.type === 'status' || col.type === 'offline') return false;
+                            if (col.type === 'status') return false;
                             const val = mod[col.key];
                             return val && val.toString().toLowerCase().includes(q);
                         });
@@ -788,7 +787,7 @@
                 }
                 if (!this.simplified) {
                     if (this.gameQuery) filtered = filtered.filter(mod => mod.game && mod.game.toLowerCase().includes(this.gameQuery));
-                    if (this.offlineFilter !== 'all') filtered = filtered.filter(mod => mod.offline === (this.offlineFilter === 'yes'));
+                    if (this.categoryFilter !== '全部') filtered = filtered.filter(mod => mod.category && mod.category.split('/').some(c => c.trim() === this.categoryFilter));
                     if (this.noteFilter !== 'all') filtered = filtered.filter(mod => this.noteFilter === 'yes' ? (mod.note && mod.note.trim()) : (!mod.note || !mod.note.trim()));
                     if (this.chineseFilter !== 'all') filtered = filtered.filter(mod => this.chineseFilter === 'yes' ? (mod.chineseName && mod.chineseName.trim()) : (!mod.chineseName || !mod.chineseName.trim()));
                 }
@@ -835,9 +834,6 @@
                                     html += `<a href="${val}" target="_blank" style="color:#3B82F6;">${col.linkText || '🔗 链接'}</a>`;
                                 } else { html += '-'; }
                                 break;
-                            case 'offline':
-                                html += val ? '<span class="icon-uploaded">✅ 已上传</span>' : '<span class="icon-not-uploaded">❌ 未上传</span>';
-                                break;
                             default:
                                 html += escapeHtml(val || '-');
                         }
@@ -870,7 +866,7 @@
                 }
                 filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>翻译状态</span></div><div class="filter-group-options collapsed" id="${this.containerId}-statusFilterGroup"></div></div>`;
                 if (!this.simplified) {
-                    filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>离线分享</span></div><div class="filter-group-options collapsed" id="${this.containerId}-offlineFilterGroup"><span class="filter-btn active" data-group="offline" data-value="all">全部</span><span class="filter-btn" data-group="offline" data-value="yes">已上传</span><span class="filter-btn" data-group="offline" data-value="no">未上传</span></div></div>`;
+                    filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>模组分类</span></div><div class="filter-group-options collapsed" id="${this.containerId}-categoryFilterGroup"></div></div>`;
                     filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>备注</span></div><div class="filter-group-options collapsed" id="${this.containerId}-noteFilterGroup"><span class="filter-btn active" data-group="note" data-value="all">全部</span><span class="filter-btn" data-group="note" data-value="yes">有备注</span><span class="filter-btn" data-group="note" data-value="no">无备注</span></div></div>`;
                     filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>中文名</span></div><div class="filter-group-options collapsed" id="${this.containerId}-chineseFilterGroup"><span class="filter-btn active" data-group="chinese" data-value="all">全部</span><span class="filter-btn" data-group="chinese" data-value="yes">有中文名</span><span class="filter-btn" data-group="chinese" data-value="no">无中文名</span></div></div>`;
                 }
@@ -920,9 +916,30 @@
                     });
                 }
 
+                // 模组分类筛选（僵毁专用）
+                if (!this.simplified) {
+                    const catSet = new Set();
+                    this.allMods.forEach(mod => {
+                        if (mod.category) mod.category.split('/').forEach(c => { if (c.trim()) catSet.add(c.trim()); });
+                    });
+                    const catList = ['全部', ...Array.from(catSet).sort()];
+                    const catGroup = document.getElementById(`${this.containerId}-categoryFilterGroup`);
+                    if (catGroup) {
+                        catGroup.innerHTML = catList.map(c => `<span class="filter-btn ${c==='全部'?'active':''}" data-group="category" data-value="${c}">${c}</span>`).join('');
+                        catGroup.querySelectorAll('[data-group="category"]').forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                catGroup.querySelectorAll('[data-group="category"]').forEach(b=>b.classList.remove('active'));
+                                btn.classList.add('active');
+                                this.categoryFilter = btn.dataset.value;
+                                this.applyFilters();
+                            });
+                        });
+                    }
+                }
+
                 // 僵毁专用筛选器绑定
                 if (!this.simplified) {
-                    ['offline','note','chinese'].forEach(group => {
+                    ['note','chinese'].forEach(group => {
                         const g = document.getElementById(`${this.containerId}-${group}FilterGroup`);
                         if (g) g.querySelectorAll(`[data-group="${group}"]`).forEach(btn => {
                             btn.addEventListener('click', () => {
@@ -1169,6 +1186,14 @@
                     const otherData = other.map(g => ({ name: g.name, url: g.url }));
                     renderSimpleTable('jojoOtherTable', otherData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
                 }
+            }
+            else if (game.id === 'onlyyou') {
+                const endingsRes = await fetch('data/Only%20You/endings.json').catch(() => null);
+                let endings = endingsRes && endingsRes.ok ? await endingsRes.json() : [];
+                const html = `<details class="section-details"><summary>🎬 结局流程 (${endings.length}个)</summary><div class="section-content"><div id="onlyyouEndingsTableContainer"><table class="mod-table" id="onlyyouEndingsTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="onlyyouEndingsTable-pagination"></div></div></div></details>`;
+                detailDiv.innerHTML = html;
+                const endingsData = endings.map(g => ({ name: g.name, url: g.url }));
+                renderSimpleTable('onlyyouEndingsTable', endingsData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
             }
             else {
                 detailDiv.innerHTML = '<div class="empty-tip">暂无内容，后续补充~</div>';

@@ -5,5 +5,6 @@
   { "id": "minecraft", "name": "我的世界", "icon": "⛏️", "description": "存档投影、模组教程" },
   { "id": "lifeisstrange", "name": "奇异人生", "icon": "📸", "description": "通过与收集流程" },
   { "id": "kingdom", "name": "王国：两位君主", "icon": "👑", "description": "暂无内容，后续补充" },
-  { "id": "jojo", "name": "JOJO群星之战", "icon": "⭐", "description": "暂无内容，后续补充" }
+  { "id": "jojo", "name": "JOJO群星之战", "icon": "⭐", "description": "暂无内容，后续补充" },
+  { "id": "onlyyou", "name": "仅你一人", "icon": "🌸", "description": "结局流程攻略" }
 ]
