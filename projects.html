@@ -713,7 +713,6 @@
                 this.simplified = options.simplified || false;
                 // 僵毁专用筛选器
                 if (!this.simplified) {
-                    this.gameQuery = '';
                     this.noteFilter = 'all';
                     this.chineseFilter = 'all';
                 }
@@ -788,7 +787,6 @@
                     });
                 }
                 if (!this.simplified) {
-                    if (this.gameQuery) filtered = filtered.filter(mod => mod.game && mod.game.toLowerCase().includes(this.gameQuery));
                     if (this.categoryFilter !== '全部') filtered = filtered.filter(mod => mod.category && mod.category.split('/').some(c => c.trim() === this.categoryFilter));
                     if (this.noteFilter !== 'all') filtered = filtered.filter(mod => this.noteFilter === 'yes' ? (mod.note && mod.note.trim()) : (!mod.note || !mod.note.trim()));
                     if (this.chineseFilter !== 'all') filtered = filtered.filter(mod => this.chineseFilter === 'yes' ? (mod.chineseName && mod.chineseName.trim()) : (!mod.chineseName || !mod.chineseName.trim()));
@@ -863,9 +861,6 @@
 
                 // 构建筛选区
                 let filterInner = '';
-                if (!this.simplified) {
-                    filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>游戏</span></div><div class="filter-group-options collapsed"><input type="text" id="${this.containerId}-gameSearch" class="game-search-input" placeholder="输入游戏名称..."></div></div>`;
-                }
                 filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>翻译状态</span></div><div class="filter-group-options collapsed" id="${this.containerId}-statusFilterGroup"></div></div>`;
                 if (!this.simplified) {
                     filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>模组分类</span></div><div class="filter-group-options collapsed" id="${this.containerId}-categoryFilterGroup"></div></div>`;
@@ -993,11 +988,6 @@
                 if (searchBox) {
                     searchBox.addEventListener('input', (e) => { this.searchQuery = e.target.value; this.applyFilters(); });
                 }
-                if (!this.simplified) {
-                    const gameSearchBox = document.getElementById(`${this.containerId}-gameSearch`);
-                    if (gameSearchBox) gameSearchBox.addEventListener('input', (e) => { this.gameQuery = e.target.value; this.applyFilters(); });
-                }
-
                 this.updateStats();
                 this.applyFilters();
             }
