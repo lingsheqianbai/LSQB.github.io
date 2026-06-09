@@ -4745,7 +4745,7 @@
     "platform": "steam",
     "steamId": "3412105017",
     "status": "非完整",
-    "videoUrl": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV1LrEU65EpN/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "右键等为硬编码",
     "category": "美化类"
   },
@@ -4755,7 +4755,7 @@
     "platform": "steam",
     "steamId": "3570973322",
     "status": "完整",
-    "videoUrl": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV1eyEU6GEze/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "category": "载具类"
   },
