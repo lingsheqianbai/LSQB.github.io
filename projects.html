@@ -679,10 +679,9 @@
             function filterData(query) {
                 if (!query) filteredData = [...data];
                 else filteredData = data.filter(row => {
-                    return columns.some(col => {
-                        let val = row[col.key];
-                        return val && val.toString().toLowerCase().includes(query.toLowerCase());
-                    });
+                    // 搜索对象的所有字段
+                    const q = query.toLowerCase();
+                    return Object.values(row).some(val => val && val.toString().toLowerCase().includes(q));
                 });
                 currentPage = 1;
                 render();
@@ -778,11 +777,14 @@
                 if (this.searchQuery.trim()) {
                     const q = this.searchQuery.toLowerCase();
                     filtered = filtered.filter(mod => {
-                        return columns.some(col => {
-                            if (col.type === 'status') return false;
-                            const val = mod[col.key];
-                            return val && val.toString().toLowerCase().includes(q);
-                        });
+                        // 搜索所有字段（不仅是表格列）
+                        const searchFields = [
+                            mod.name, mod.chineseName, mod.note, mod.steamId,
+                            mod.mcmodId, mod.game, mod.videoUrl, mod.category,
+                            mod.loaders, mod.platform, mod.mcmodUrl,
+                            mod.modrinthUrl, mod.curseforgeUrl
+                        ];
+                        return searchFields.some(val => val && val.toString().toLowerCase().includes(q));
                     });
                 }
                 if (!this.simplified) {

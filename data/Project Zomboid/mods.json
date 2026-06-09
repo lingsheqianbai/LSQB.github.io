@@ -8,7 +8,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1tTx5zNESW/",
     "note": "",
-    "category": "待分类"
+    "category": "特质类"
   },
   {
     "name": "Pallontras Crossbows",
@@ -19,7 +19,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1MCf3BfEqn/",
     "note": "",
-    "category": "待分类"
+    "category": "武器类"
   },
   {
     "name": "Medieval Z",
@@ -30,7 +30,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1msfHBQEBP/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "原作者少了DisplayName无法正常翻译,添加脚本复制翻译日后需调整。",
-    "category": "待分类"
+    "category": "武器类/装备类"
   },
   {
     "name": "KATTAJ1 Clothes Core",
@@ -41,7 +41,7 @@
     "status": "完整",
     "videoUrl": "",
     "note": "",
-    "category": "待分类"
+    "category": "框架类"
   },
   {
     "name": "[J&G] Flecktarn Uniform",
@@ -52,7 +52,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "category": "待分类"
+    "category": "服装类"
   },
   {
     "name": "Starlit Library",
@@ -62,8 +62,8 @@
     "game": "僵毁 僵尸毁灭工程 Project Zomboid",
     "status": "无需翻译",
     "videoUrl": "",
-    "note": "前置",
-    "category": "待分类"
+    "note": "",
+    "category": "框架类"
   },
   {
     "name": "Legion Weaponry",
@@ -74,7 +74,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1L8f3BBELG/",
     "note": "需要前置[3378285185]但需日后需要由于前置等多个问题导致汉化出现中英问题",
-    "category": "待分类"
+    "category": "武器类"
   },
   {
     "name": "[J&G] Desert Multicam Uniform",
@@ -85,7 +85,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "category": "待分类"
+    "category": "服装类"
   },
   {
     "name": "[J&G] Caution Pack",
@@ -96,7 +96,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "category": "待分类"
+    "category": "服装类"
   },
   {
     "name": "[J&G] Trauma Responder Uniform",
@@ -107,7 +107,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "category": "待分类"
+    "category": "服装类"
   },
   {
     "name": "[J&G] XKU Uniform",
@@ -118,7 +118,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "category": "待分类"
+    "category": "服装类"
   },
   {
     "name": "[J&G] Alpine Multicam Uniform",
@@ -129,7 +129,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "category": "待分类"
+    "category": "服装类"
   },
   {
     "name": "[J&G] Forest Multicam Uniform",
@@ -140,7 +140,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "category": "待分类"
+    "category": "服装类"
   },
   {
     "name": "[J&G] Black Multicam Uniform",
@@ -151,7 +151,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "无法在游戏中看见物品",
-    "category": "待分类"
+    "category": "服装类"
   },
   {
     "name": "Project Fallout The Caravan Shotgun",
@@ -162,7 +162,7 @@
     "status": "非完整",
     "videoUrl": "",
     "note": "物品提示写进PFO_CRVN.txt没有lua等定义无法翻译。",
-    "category": "待分类"
+    "category": "武器类"
   },
   {
     "name": "PaniqeurTrait",
@@ -173,7 +173,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1YLAUz7EjE/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "category": "待分类"
+    "category": "特质类"
   },
   {
     "name": "RestoreUtilities",
@@ -184,7 +184,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1tiAazfEBo/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "category": "待分类"
+    "category": "工具类/地图类"
   },
   {
     "name": "Vanilla-Like Traits and Occupations",
@@ -195,7 +195,7 @@
     "status": "待检测",
     "videoUrl": "",
     "note": "目前模组没有更新无法在新版本中使用与测试",
-    "category": "待分类"
+    "category": "特质类/职业类"
   },
   {
     "name": "Melee-matician Trait",
@@ -206,7 +206,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1USPvz6EhH/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "模组模组已经废弃改为3427091746，然后低版本的比如B41还可以继续使用。",
-    "category": "待分类"
+    "category": "特质类"
   },
   {
     "name": "Combat Traits",
@@ -217,7 +217,7 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1KYPezYEuu/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
-    "category": "待分类"
+    "category": "特质类"
   },
   {
     "name": "ArcherLib",
@@ -228,7 +228,7 @@
     "status": "完整",
     "videoUrl": "",
     "note": "这个模组在新更新中无法使用。修复的时间尚不清楚。",
-    "category": "待分类"
+    "category": ""
   },
   {
     "name": "Know Your Calories!",
