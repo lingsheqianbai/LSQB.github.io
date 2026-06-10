@@ -182,19 +182,41 @@
             border-radius: 30px;
             border: 1px solid var(--border-color);
         }
-        .thanks-section {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 20px;
+        .section-details {
             margin-bottom: 20px;
-            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
         }
-        .thanks-section h3 { font-size: 18px; margin-bottom: 12px; color: var(--text-dark); }
-        .thanks-section ul { list-style: none; padding-left: 0; }
-        .thanks-section li { padding: 4px 0; font-size: 14px; }
-        .thanks-section a { color: var(--pink-dark); text-decoration: none; }
-        .thanks-section a:hover { text-decoration: underline; }
+        .section-details summary {
+            background: var(--pink-light);
+            padding: 12px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+        .section-details summary::-webkit-details-marker { display: none; }
+        .section-details summary::after {
+            content: '▼';
+            margin-left: auto;
+            transition: transform 0.2s;
+        }
+        .section-details[open] summary::after {
+            transform: rotate(180deg);
+        }
+        .section-content {
+            padding: 16px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border-color);
+        }
+        .section-content ul { list-style: none; padding-left: 0; }
+        .section-content li { padding: 4px 0; font-size: 14px; }
+        .section-content a { color: var(--pink-dark); text-decoration: none; }
+        .section-content a:hover { text-decoration: underline; }
         .thanks-note { margin-top: 12px; font-style: italic; color: var(--text-mid); font-size: 13px; }
         @media (max-width: 800px) { .left-col { display: none; } .right-col { margin-left: 20px; } }
         @media (max-width: 768px) { nav .links li a { padding: 6px 20px; font-size: 12px; } }
@@ -209,7 +231,8 @@
             <li><a href="works.html" style="background-color: #32CD32;">作品集</a></li>
             <li><a href="posts.html" style="background-color: #00CED1;">帖子</a></li>
             <li><a href="thanks.html" style="background-color: #1E90FF;">致谢</a></li>
-            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">仓库</a></li>
+            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io/commits/main" target="_blank" rel="noopener noreferrer" style="background-color: #9370DB;">更新日志</a></li>
+            <li><a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank" rel="noopener noreferrer" style="background-color: #8B5CF6;">GitHub仓库</a></li>
         </ul>
     </nav>
 
@@ -239,39 +262,39 @@
     <div class="right-col">
         <div class="page-header"><h2>✨ 致谢</h2></div>
 
-        <div class="thanks-section">
-            <h3>🌐 网页贡献致谢</h3>
-            <ul><li><a href="https://www.deepseek.com/" target="_blank">DeepSeek</a> - AI 助手</li><li><a href="https://space.bilibili.com/3493078216215098" target="_blank">小狐务器</a> - B站主页</li></ul>
-        </div>
-        <div class="thanks-section">
-            <h3>🎨 灵感设计</h3>
-            <ul><li><a href="https://www.xnmoe.com/index.html" target="_blank">NNNullptr's Blog</a> - 网站设计风格参考，特别感谢！</li></ul>
-        </div>
-        <div class="thanks-section">
-            <h3>🧟 僵尸毁灭工程汉化致谢</h3>
-            <ul>
+        <details class="section-details">
+            <summary>🌐 网页贡献致谢</summary>
+            <div class="section-content"><ul><li><a href="https://www.deepseek.com/" target="_blank">DeepSeek</a> - AI 助手</li><li><a href="https://space.bilibili.com/3493078216215098" target="_blank">小狐务器</a> - B站主页</li></ul></div>
+        </details>
+        <details class="section-details">
+            <summary>🎨 灵感设计</summary>
+            <div class="section-content"><ul><li><a href="https://www.xnmoe.com/index.html" target="_blank">NNNullptr's Blog</a> - 网站设计风格参考，特别感谢！</li></ul></div>
+        </details>
+        <details class="section-details">
+            <summary>🧟 僵尸毁灭工程汉化致谢</summary>
+            <div class="section-content"><ul>
                 <li>老版汉化组成员：Sky_Orc_Mm, Misha, HennyFishYu, Jeff</li>
                 <li>新版汉化组成员：Alexa-Hong, AZ, Flying penguin, 格兰瑞敌击剑, HansKaffee, L'Etranger, Livia, moonlight-pz, 轻轻的晚风, RunAbout, Susan Admason, taoran, 天冷就要吃火锅, TwilightRain, 战场蒲公英, zlq4863947</li>
                 <li>电台内容汉化员：HenryFishYu, Jeff, HansKaffee, TwilightRain, moonlight-pz, Susan Admason, L'Etranger, 天冷就要吃火锅, 轻轻的晚风, 格兰瑞敌击剑, 湖畔镇一枝花, Livia, Flying Penguin, AZ, taoran, eva08maicy02</li>
                 <li>特別鳴謝：YD360, Douggy_Sans, BigSmoke, Washi, Yuanmo, mraz#9738, COSeeds</li>
                 <li>社区汉化：凌社千白, DeepSeek</li>
             </ul>
-            <p class="thanks-note">注：是我制作的模组不指代其他人，因为这个网页本身是我建设汉化也是</p>
-        </div>
-        <div class="thanks-section">
-            <h3>📚 模组文件参考与灵感</h3>
-            <ul><li>[B42]汉化补充包（ID: 3388550747）</li><li>[B42]简体中文修复（ID: 3386522562）</li><li>[B42]统一·中文汉化（ID: 3556544454）</li><li>42传单汉化（ID: 3395823587）</li><li>[B42]出生点地图中文本地化（ID: 3401460152）</li><li>模组备注（ID: 3391537655）</li></ul>
-        </div>
-        <div class="thanks-section">
-            <h3>🔧 原版汉化模组搭建致谢</h3>
-            <ul>
+            <p class="thanks-note">注：是我制作的模组不指代其他人，因为这个网页本身是我建设汉化也是</p></div>
+        </details>
+        <details class="section-details">
+            <summary>📚 模组文件参考与灵感</summary>
+            <div class="section-content"><ul><li>[B42]汉化补充包（ID: 3388550747）</li><li>[B42]简体中文修复（ID: 3386522562）</li><li>[B42]统一·中文汉化（ID: 3556544454）</li><li>42传单汉化（ID: 3395823587）</li><li>[B42]出生点地图中文本地化（ID: 3401460152）</li><li>模组备注（ID: 3391537655）</li></ul></div>
+        </details>
+        <details class="section-details">
+            <summary>🔧 原版汉化模组搭建致谢</summary>
+            <div class="section-content"><ul>
                 <li><strong>模组备注</strong> ID: 3391537655 <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3391537655" target="_blank">[创意工坊]</a> 原作者 炎天amfysky</li>
                 <li><strong>B42汉化补充包</strong> ID: 3388550747 <a href="https://steamcommunity.com/workshop/filedetails/?id=3388550747" target="_blank">[创意工坊]</a> 原作者 炎天amfysky</li>
                 <li><strong>B42简体中文修复</strong> ID: 3386522562 <a href="https://steamcommunity.com/workshop/filedetails/?id=3386522562" target="_blank">[创意工坊]</a> 原作者 喵了个球</li>
                 <li><strong>42传单汉化</strong> ID: 3395823587 <a href="https://steamcommunity.com/workshop/filedetails/?id=3395823587" target="_blank">[创意工坊]</a> 原作者 Köngwaffle</li>
                 <li><strong>[B42]出生点地图中文本地化</strong> ID: 3401460152 <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3401460152" target="_blank">[创意工坊]</a> 原作者 SillageM</li>
-            </ul>
-        </div>
+            </ul></div>
+        </details>
     </div>
 
     <audio id="audioPlayer" preload="auto"></audio>
