@@ -98,37 +98,90 @@
             font-size: 24px; display: inline-block; background: var(--pink-light);
             padding: 4px 20px; border-radius: 30px; border: 1px solid var(--border-color);
         }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .project-icon { font-size: 36px; margin-bottom: 12px; }
+        .project-title { font-size: 18px; font-weight: bold; margin-bottom: 8px; }
+        .project-desc { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+        .detail-view {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .back-btn {
+            background: var(--pink-light);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 6px 16px;
+            cursor: pointer;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .back-btn:hover { background: var(--pink); }
         .section-details {
-            margin-bottom: 20px; border: 1px solid var(--border-color);
-            border-radius: 12px; overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
         }
         .section-details summary {
-            background: var(--pink-light); padding: 12px 16px;
-            cursor: pointer; font-weight: bold; font-size: 16px;
-            display: flex; align-items: center; gap: 8px; list-style: none;
+            background: var(--pink-light);
+            padding: 12px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
         }
         .section-details summary::-webkit-details-marker { display: none; }
         .section-details summary::after {
-            content: '▼'; margin-left: auto; transition: transform 0.2s;
+            content: '▼';
+            margin-left: auto;
+            transition: transform 0.2s;
         }
         .section-details[open] summary::after { transform: rotate(180deg); }
         .section-content { padding: 16px; background: var(--bg-card); border-top: 1px solid var(--border-color); }
-        .changelog-item {
-            border-bottom: 1px dashed #ddd; padding: 12px 0;
-        }
+        .changelog-item { border-bottom: 1px dashed #ddd; padding: 12px 0; cursor: pointer; transition: background 0.2s; }
+        .changelog-item:hover { background: rgba(0,0,0,0.02); }
         .changelog-item:last-child { border-bottom: none; }
-        .changelog-date {
-            font-size: 12px; color: var(--text-light); margin-bottom: 4px;
-        }
-        .changelog-title {
-            font-size: 16px; font-weight: bold; color: var(--pink-dark); margin-bottom: 6px;
-        }
+        .changelog-date { font-size: 12px; color: var(--text-light); margin-bottom: 4px; }
+        .changelog-title { font-size: 16px; font-weight: bold; color: var(--pink-dark); margin-bottom: 6px; }
         .changelog-body { font-size: 14px; line-height: 1.6; color: var(--text-mid); }
         .changelog-body ul { padding-left: 20px; }
         .changelog-body li { padding: 2px 0; }
-        .repo-card {
-            text-align: center; padding: 20px;
-        }
+        /* 文章格式 */
+        .article-post { max-width: 800px; margin: 0 auto; }
+        .article-post .post-header { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--border-color); }
+        .article-post .post-header h1 { font-size: 24px; color: var(--text-dark); margin-bottom: 8px; }
+        .article-post .post-header .post-meta { font-size: 13px; color: var(--text-light); }
+        .article-post .post-body { font-size: 15px; line-height: 1.8; color: var(--text-dark); }
+        .article-post .post-body h2 { font-size: 20px; margin: 24px 0 12px; color: var(--pink-dark); }
+        .article-post .post-body ul { padding-left: 24px; margin: 12px 0; }
+        .article-post .post-body li { padding: 6px 0; }
+        .article-post .post-body strong { color: var(--text-dark); }
+        .repo-card { text-align: center; padding: 20px; }
         .repo-card a {
             display: inline-block; padding: 12px 32px; background: var(--pink);
             border: 1px solid var(--border-color); border-radius: 30px;
@@ -178,42 +231,18 @@
     <div class="right-col">
         <div class="page-header"><h2>📦 仓库</h2></div>
 
-        <details class="section-details">
-            <summary>📝 更新日志</summary>
-            <div class="section-content">
-                <div class="changelog-item">
-                    <div class="changelog-date">2026-06-10</div>
-                    <div class="changelog-title">网站功能大更新</div>
-                    <div class="changelog-body">
-                        <ul>
-                            <li><strong>恐怖学校白色情人节</strong> — 重构为多折叠块布局：结局收集、其他项目、鬼魂收集（21个视频）、模型收集（8个视频）</li>
-                            <li><strong>僵尸毁灭工程模组统计</strong> — 离线分享列改为模组分类，支持分类筛选；搜索功能修复，现可搜索 Steam ID / 备注等所有字段；清理无用 game 字段和游戏筛选器</li>
-                            <li><strong>我的世界</strong> — 升级为完整 ModStatsView 统计页面（8列：模组名称/中文名/翻译进度/视频教程/MC百科/Modrinth/CurseForge/兼容加载器），支持加载器筛选</li>
-                            <li><strong>JOJO群星之战</strong> — 新增游戏数据页（攻略 + 其他项目折叠块）</li>
-                            <li><strong>洛克王国世界</strong> — 新增「其他项目」折叠块</li>
-                            <li><strong>奇异人生</strong> — 折叠块标题改为 Life is Strange - Episode 1攻略</li>
-                            <li><strong>仅你一人</strong> — 新增游戏数据页（结局流程折叠块）</li>
-                            <li><strong>致谢页</strong> — 改为折叠块展示，5个分类区块可独立展开收起</li>
-                            <li><strong>动态页</strong> — 内容重置为模板</li>
-                            <li><strong>导航栏</strong> — 仓库链接指向本页面</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </details>
+        <!-- 卡片列表 -->
+        <div id="cardsGridView">
+            <div class="projects-grid" id="cardsGrid"></div>
+        </div>
 
-        <details class="section-details">
-            <summary>🔗 GitHub 仓库</summary>
-            <div class="section-content">
-                <div class="repo-card">
-                    <p style="font-size:16px; margin-bottom:16px;">网站源码托管在 GitHub，欢迎 Star ⭐</p>
-                    <a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank">📁 lingsheqianbai.github.io</a>
-                    <p style="margin-top:16px; font-size:13px; color:var(--text-mid);">
-                        如需反馈问题或建议，请通过左侧联系方式或 GitHub Issues 告知
-                    </p>
-                </div>
+        <!-- 详情视图 -->
+        <div id="cardDetailView" style="display: none;">
+            <div class="detail-view">
+                <button class="back-btn" id="backToGridBtn">← 返回卡片列表</button>
+                <div id="detailContent"></div>
             </div>
-        </details>
+        </div>
     </div>
 
     <audio id="audioPlayer" preload="auto"></audio>
@@ -229,33 +258,131 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const songTitleSpan = document.getElementById('songTitle');
-
         function loadTrack(index) {
             const track = playlist[index % playlist.length];
-            audio.src = track.url;
-            songTitleSpan.textContent = track.title;
-            audio.load();
-            if (!audio.paused) {
-                audio.play().catch(()=>{});
-                vinyl.classList.add('playing');
-                playPauseBtn.textContent = '⏸️';
-            } else {
-                playPauseBtn.textContent = '▶️';
-                vinyl.classList.remove('playing');
-            }
+            audio.src = track.url; songTitleSpan.textContent = track.title; audio.load();
+            if (!audio.paused) { audio.play().catch(()=>{}); vinyl.classList.add('playing'); playPauseBtn.textContent = '⏸️'; }
+            else { playPauseBtn.textContent = '▶️'; vinyl.classList.remove('playing'); }
         }
         playPauseBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play().then(() => { vinyl.classList.add('playing'); playPauseBtn.textContent = '⏸️'; }).catch(()=>{});
-            } else {
-                audio.pause();
-                vinyl.classList.remove('playing');
-                playPauseBtn.textContent = '▶️';
-            }
+            if (audio.paused) { audio.play().then(() => { vinyl.classList.add('playing'); playPauseBtn.textContent = '⏸️'; }).catch(()=>{}); }
+            else { audio.pause(); vinyl.classList.remove('playing'); playPauseBtn.textContent = '▶️'; }
         });
         prevBtn.addEventListener('click', () => { currentTrack = (currentTrack - 1 + playlist.length) % playlist.length; loadTrack(currentTrack); });
         nextBtn.addEventListener('click', () => { currentTrack = (currentTrack + 1) % playlist.length; loadTrack(currentTrack); });
         loadTrack(currentTrack);
+
+        // 卡片数据
+        const cards = [
+            { id: 'changelog', icon: '📝', name: '更新日志', description: '网站更新记录与改动说明' },
+            { id: 'github', icon: '🔗', name: 'GitHub 仓库', description: '网站源码托管，欢迎 Star ⭐' }
+        ];
+
+        function renderCards() {
+            document.getElementById('cardsGrid').innerHTML = cards.map(c => `
+                <div class="project-card" data-id="${c.id}">
+                    <div class="project-icon">${c.icon}</div>
+                    <div class="project-title">${c.name}</div>
+                    <div class="project-desc">${c.description}</div>
+                </div>
+            `).join('');
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const id = card.dataset.id;
+                    document.getElementById('cardsGridView').style.display = 'none';
+                    document.getElementById('cardDetailView').style.display = 'block';
+                    showDetail(id);
+                });
+            });
+        }
+
+        const changelogData = [{
+            id: 1,
+            date: '2026-06-10',
+            title: '网站功能大更新',
+            summary: '项目页全面重构，新增游戏数据，修复搜索Bug，致谢页改为折叠块',
+            content: `<p>本次更新对网站进行了全面优化，涉及多个游戏数据页和核心功能。</p>
+                <h2>🎮 游戏数据页</h2>
+                <ul>
+                    <li><strong>恐怖学校白色情人节</strong> — 重构为多折叠块布局：结局收集、其他项目、鬼魂收集（21个视频）、模型收集（8个视频），支持搜索与分页</li>
+                    <li><strong>僵尸毁灭工程模组统计</strong> — 离线分享列改为模组分类，支持分类筛选；搜索功能修复，现可搜索 Steam ID / 备注等所有字段；清理无用 game 字段和游戏筛选器</li>
+                    <li><strong>我的世界</strong> — 升级为完整统计页面（8列：模组名称/中文名/翻译进度/视频教程/MC百科/Modrinth/CurseForge/兼容加载器），支持加载器筛选</li>
+                    <li><strong>JOJO群星之战</strong> — 新增游戏数据页（攻略 + 其他项目折叠块）</li>
+                    <li><strong>洛克王国世界</strong> — 新增「其他项目」折叠块</li>
+                    <li><strong>奇异人生</strong> — 折叠块标题改为 Life is Strange - Episode 1攻略</li>
+                    <li><strong>仅你一人</strong> — 新增游戏数据页（结局流程折叠块）</li>
+                </ul>
+                <h2>🛠 功能优化</h2>
+                <ul>
+                    <li><strong>搜索修复</strong> — 修复搜索框无法搜索 Steam ID、备注等隐藏字段的问题，现覆盖所有数据字段</li>
+                    <li><strong>筛选系统</strong> — 我的世界新增兼容加载器筛选（Forge/Fabric/NeoForge），僵毁新增模组分类筛选</li>
+                    <li><strong>Bug修复</strong> — 修复多个 HTML 标签错误、空状态渲染异常等细节问题</li>
+                </ul>
+                <h2>📄 页面改动</h2>
+                <ul>
+                    <li><strong>致谢页</strong> — 改为折叠块展示，5个分类区块可独立展开收起</li>
+                    <li><strong>动态页</strong> — 内容重置为模板</li>
+                    <li><strong>仓库页</strong> — 新增本页面，卡片式布局，含更新日志与 GitHub 入口</li>
+                    <li><strong>导航栏</strong> — 仓库按钮指向本页面</li>
+                </ul>`
+        }];
+
+        let currentArticle = null;
+
+        function showDetail(id) {
+            const detailDiv = document.getElementById('detailContent');
+            if (id === 'changelog') {
+                if (currentArticle) {
+                    // 显示文章内容
+                    detailDiv.innerHTML = `
+                        <div class="article-post">
+                            <div class="post-header">
+                                <h1>${currentArticle.title}</h1>
+                                <div class="post-meta">📅 ${currentArticle.date}</div>
+                            </div>
+                            <div class="post-body">${currentArticle.content}</div>
+                        </div>`;
+                } else {
+                    // 显示文章列表
+                    let listHtml = changelogData.map(item => `
+                        <div class="changelog-item" data-cid="${item.id}">
+                            <div class="changelog-date">📅 ${item.date}</div>
+                            <div class="changelog-title">${item.title}</div>
+                            <div class="changelog-body">${item.summary}</div>
+                        </div>
+                    `).join('');
+                    detailDiv.innerHTML = `<div class="section-content">${listHtml}</div>`;
+                    // 点击条目进入文章
+                    detailDiv.querySelectorAll('.changelog-item').forEach(item => {
+                        item.addEventListener('click', () => {
+                            const cid = parseInt(item.dataset.cid);
+                            currentArticle = changelogData.find(c => c.id === cid);
+                            showDetail('changelog');
+                        });
+                    });
+                }
+            } else if (id === 'github') {
+                detailDiv.innerHTML = `
+                    <details class="section-details" open>
+                        <summary>🔗 GitHub 仓库</summary>
+                        <div class="section-content">
+                            <div class="repo-card">
+                                <p style="font-size:16px; margin-bottom:16px;">网站源码托管在 GitHub，欢迎 Star ⭐</p>
+                                <a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank">📁 lingsheqianbai.github.io</a>
+                                <p style="margin-top:16px; font-size:13px; color:var(--text-mid);">如需反馈问题或建议，请通过左侧联系方式或 GitHub Issues 告知</p>
+                            </div>
+                        </div>
+                    </details>`;
+            }
+        }
+
+        document.getElementById('backToGridBtn').addEventListener('click', () => {
+            currentArticle = null;
+            document.getElementById('cardsGridView').style.display = 'block';
+            document.getElementById('cardDetailView').style.display = 'none';
+        });
+
+        renderCards();
     </script>
 </body>
 </html>
