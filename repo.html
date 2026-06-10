@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仓库 - 千白分享</title>
+    <style>
+        :root {
+            --sidebar-width: 260px;
+            --nav-offset: 60px;
+            --border-color: #000;
+            --bg-card: #fff;
+            --bg-sidebar: #fff;
+            --text-dark: #2a1a2e;
+            --text-mid: #5a3e4b;
+            --text-light: #bba3ad;
+            --shadow: 4px 4px 0 rgba(0,0,0,0.1);
+            --pink: #f9bddd;
+            --pink-dark: #c44569;
+            --pink-light: #ffcfe2;
+        }
+        @font-face {
+            font-family: 'ZQKNNY';
+            src: url('ZQKNNY-Medium-2.woff2') format('woff2');
+            font-weight: 500; font-style: normal; font-display: swap;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
+            background: url('images/beijin1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            padding-top: var(--nav-offset);
+            color: var(--text-dark);
+        }
+        nav {
+            width: 100%; position: fixed; top: 0; z-index: 999;
+            background: #fff; border-bottom: 2px solid #000;
+        }
+        nav .links {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            list-style: none; padding: 8px 16px; margin: 0; gap: 12px;
+        }
+        nav .links li a {
+            display: inline-block; padding: 8px 32px; border-radius: 32px;
+            border: 1px solid #000; font-size: 14px; font-weight: bold;
+            text-decoration: none; color: #fff;
+            text-shadow: 0 0 3px rgba(0,0,0,0.5); transition: filter 0.2s; cursor: pointer;
+        }
+        nav .links li a:hover { filter: brightness(0.85); }
+        .left-col {
+            position: fixed; left: 20px; top: var(--nav-offset);
+            width: var(--sidebar-width); z-index: 950;
+        }
+        .profile-card {
+            background: var(--bg-sidebar); border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 16px; box-shadow: var(--shadow);
+        }
+        .profile-avatar { text-align: center; margin-bottom: 8px; }
+        .profile-avatar img {
+            width: 64px; height: 64px; border-radius: 50%;
+            object-fit: cover; border: 2px solid var(--border-color);
+        }
+        .profile-name { font-size: 18px; font-weight: bold; text-align: center; }
+        .profile-signature { font-size: 11px; text-align: center; color: var(--text-mid); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border-color); }
+        .player { margin: 16px 0 12px; text-align: center; }
+        .vinyl {
+            position: relative; width: 80px; height: 80px; margin: 0 auto 8px;
+            display: flex; align-items: center; justify-content: center;
+            background: radial-gradient(circle at 35% 35%, #222, #111);
+            border-radius: 50%; box-shadow: 0 0 0 4px #444, 0 0 0 6px #888;
+        }
+        .vinyl.playing { animation: spin 5s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .vinyl-center-img {
+            width: 40px; height: 40px; border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.9); object-fit: cover; background: #fff;
+        }
+        .player-controls { display: flex; justify-content: center; gap: 12px; margin-bottom: 6px; }
+        .player-controls button {
+            background: var(--pink-light); border: 1px solid var(--border-color);
+            border-radius: 50%; width: 32px; height: 32px; font-size: 14px; cursor: pointer; transition: 0.2s;
+        }
+        .player-controls button:hover { background: var(--pink); }
+        .song-title {
+            font-size: 10px; color: var(--text-mid); text-align: center;
+            background: var(--bg-card); padding: 2px 8px; border-radius: 20px;
+            border: 1px solid var(--border-color); display: inline-block;
+            max-width: 180px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .contact-info { margin-top: 16px; text-align: center; font-size: 12px; border-top: 1px dashed var(--border-color); padding-top: 12px; }
+        .contact-info p { margin: 6px 0; }
+        .contact-info a { color: var(--pink-dark); text-decoration: none; }
+        .contact-info a:hover { text-decoration: underline; }
+        .right-col { margin-left: calc(var(--sidebar-width) + 40px); margin-right: 20px; max-width: 1200px; }
+        .page-header { margin-bottom: 20px; padding-bottom: 8px; border-bottom: 2px solid var(--border-color); }
+        .page-header h2 {
+            font-size: 24px; display: inline-block; background: var(--pink-light);
+            padding: 4px 20px; border-radius: 30px; border: 1px solid var(--border-color);
+        }
+        .section-details {
+            margin-bottom: 20px; border: 1px solid var(--border-color);
+            border-radius: 12px; overflow: hidden;
+        }
+        .section-details summary {
+            background: var(--pink-light); padding: 12px 16px;
+            cursor: pointer; font-weight: bold; font-size: 16px;
+            display: flex; align-items: center; gap: 8px; list-style: none;
+        }
+        .section-details summary::-webkit-details-marker { display: none; }
+        .section-details summary::after {
+            content: '▼'; margin-left: auto; transition: transform 0.2s;
+        }
+        .section-details[open] summary::after { transform: rotate(180deg); }
+        .section-content { padding: 16px; background: var(--bg-card); border-top: 1px solid var(--border-color); }
+        .changelog-item {
+            border-bottom: 1px dashed #ddd; padding: 12px 0;
+        }
+        .changelog-item:last-child { border-bottom: none; }
+        .changelog-date {
+            font-size: 12px; color: var(--text-light); margin-bottom: 4px;
+        }
+        .changelog-title {
+            font-size: 16px; font-weight: bold; color: var(--pink-dark); margin-bottom: 6px;
+        }
+        .changelog-body { font-size: 14px; line-height: 1.6; color: var(--text-mid); }
+        .changelog-body ul { padding-left: 20px; }
+        .changelog-body li { padding: 2px 0; }
+        .repo-card {
+            text-align: center; padding: 20px;
+        }
+        .repo-card a {
+            display: inline-block; padding: 12px 32px; background: var(--pink);
+            border: 1px solid var(--border-color); border-radius: 30px;
+            font-size: 16px; font-weight: bold; color: #fff; text-decoration: none;
+            transition: filter 0.2s;
+        }
+        .repo-card a:hover { filter: brightness(0.9); }
+        @media (max-width: 800px) { .left-col { display: none; } .right-col { margin-left: 20px; } }
+        @media (max-width: 768px) { nav .links li a { padding: 6px 20px; font-size: 12px; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="links">
+            <li><a href="index.html" style="background-color: #FF4D4D;">主页</a></li>
+            <li><a href="moments.html" style="background-color: #FFA500;">动态</a></li>
+            <li><a href="projects.html" style="background-color: #FFD700;">项目</a></li>
+            <li><a href="works.html" style="background-color: #32CD32;">作品集</a></li>
+            <li><a href="posts.html" style="background-color: #00CED1;">帖子</a></li>
+            <li><a href="thanks.html" style="background-color: #1E90FF;">致谢</a></li>
+            <li><a href="repo.html" style="background-color: #9370DB;">仓库</a></li>
+        </ul>
+    </nav>
+
+    <div class="left-col">
+        <div class="profile-card">
+            <div class="profile-avatar"><img src="images/lingsheqianbai.jpg" alt="凌社千白"></div>
+            <div class="profile-name">凌社千白</div>
+            <div class="profile-signature">分享 · 记录 · 创造</div>
+            <div class="player">
+                <div class="vinyl" id="vinylDisc"><img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img"></div>
+                <div class="player-controls">
+                    <button id="prevBtn">⏮</button>
+                    <button id="playPauseBtn">▶️</button>
+                    <button id="nextBtn">⏭</button>
+                </div>
+                <div class="song-title" id="songTitle">Morning BGM</div>
+            </div>
+            <div class="contact-info">
+                <p>📺 B站: <a href="https://space.bilibili.com/498508670?spm_id_from=333.1007.0.0" target="_blank">凌社千白</a></p>
+                <p>🎵 抖音: <a href="https://www.douyin.com/user/self" target="_blank">凌社千白</a></p>
+                <p>📱 快手: <a href="https://www.kuaishou.com/profile/3xcatpzc2ejba82" target="_blank">凌社千白</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-col">
+        <div class="page-header"><h2>📦 仓库</h2></div>
+
+        <details class="section-details">
+            <summary>📝 更新日志</summary>
+            <div class="section-content">
+                <div class="changelog-item">
+                    <div class="changelog-date">2026-06-10</div>
+                    <div class="changelog-title">网站功能大更新</div>
+                    <div class="changelog-body">
+                        <ul>
+                            <li><strong>恐怖学校白色情人节</strong> — 重构为多折叠块布局：结局收集、其他项目、鬼魂收集（21个视频）、模型收集（8个视频）</li>
+                            <li><strong>僵尸毁灭工程模组统计</strong> — 离线分享列改为模组分类，支持分类筛选；搜索功能修复，现可搜索 Steam ID / 备注等所有字段；清理无用 game 字段和游戏筛选器</li>
+                            <li><strong>我的世界</strong> — 升级为完整 ModStatsView 统计页面（8列：模组名称/中文名/翻译进度/视频教程/MC百科/Modrinth/CurseForge/兼容加载器），支持加载器筛选</li>
+                            <li><strong>JOJO群星之战</strong> — 新增游戏数据页（攻略 + 其他项目折叠块）</li>
+                            <li><strong>洛克王国世界</strong> — 新增「其他项目」折叠块</li>
+                            <li><strong>奇异人生</strong> — 折叠块标题改为 Life is Strange - Episode 1攻略</li>
+                            <li><strong>仅你一人</strong> — 新增游戏数据页（结局流程折叠块）</li>
+                            <li><strong>致谢页</strong> — 改为折叠块展示，5个分类区块可独立展开收起</li>
+                            <li><strong>动态页</strong> — 内容重置为模板</li>
+                            <li><strong>导航栏</strong> — 仓库链接指向本页面</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </details>
+
+        <details class="section-details">
+            <summary>🔗 GitHub 仓库</summary>
+            <div class="section-content">
+                <div class="repo-card">
+                    <p style="font-size:16px; margin-bottom:16px;">网站源码托管在 GitHub，欢迎 Star ⭐</p>
+                    <a href="https://github.com/lingsheqianbai/lingsheqianbai.github.io" target="_blank">📁 lingsheqianbai.github.io</a>
+                    <p style="margin-top:16px; font-size:13px; color:var(--text-mid);">
+                        如需反馈问题或建议，请通过左侧联系方式或 GitHub Issues 告知
+                    </p>
+                </div>
+            </div>
+        </details>
+    </div>
+
+    <audio id="audioPlayer" preload="auto"></audio>
+    <script>
+        const playlist = [
+            { title: "Morning BGM", url: "music/morning.mp3" },
+            { title: "Night BGM", url: "music/night.mp3" }
+        ];
+        let currentTrack = 0;
+        const audio = document.getElementById('audioPlayer');
+        const vinyl = document.getElementById('vinylDisc');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const songTitleSpan = document.getElementById('songTitle');
+
+        function loadTrack(index) {
+            const track = playlist[index % playlist.length];
+            audio.src = track.url;
+            songTitleSpan.textContent = track.title;
+            audio.load();
+            if (!audio.paused) {
+                audio.play().catch(()=>{});
+                vinyl.classList.add('playing');
+                playPauseBtn.textContent = '⏸️';
+            } else {
+                playPauseBtn.textContent = '▶️';
+                vinyl.classList.remove('playing');
+            }
+        }
+        playPauseBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => { vinyl.classList.add('playing'); playPauseBtn.textContent = '⏸️'; }).catch(()=>{});
+            } else {
+                audio.pause();
+                vinyl.classList.remove('playing');
+                playPauseBtn.textContent = '▶️';
+            }
+        });
+        prevBtn.addEventListener('click', () => { currentTrack = (currentTrack - 1 + playlist.length) % playlist.length; loadTrack(currentTrack); });
+        nextBtn.addEventListener('click', () => { currentTrack = (currentTrack + 1) % playlist.length; loadTrack(currentTrack); });
+        loadTrack(currentTrack);
+    </script>
+</body>
+</html>
