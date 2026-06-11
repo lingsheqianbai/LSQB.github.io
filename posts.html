@@ -437,6 +437,8 @@
                 const res = await fetch('data/posts.json');
                 if (!res.ok) throw new Error();
                 allPosts = await res.json();
+                // 过滤掉更新日志（只在仓库页显示）
+                allPosts = allPosts.filter(p => !p.id || !p.id.startsWith('changelog-'));
                 allPosts.sort((a,b) => new Date(b.date) - new Date(a.date));
                 renderPage();
                 renderPagination();
