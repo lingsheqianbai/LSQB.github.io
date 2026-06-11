@@ -183,7 +183,7 @@
             <div class="profile-card">
                 <div class="avatar-area"><span class="avatar-icon">📖</span><div class="profile-name">凌社千白</div><div class="profile-status">● ONLINE!</div></div>
                 <div class="profile-note">阅读帖子详情。</div>
-                <a href="index.html" class="side-link">← 返回首页</a>
+                <a href="posts.html" id="backLink" class="side-link">← 返回帖子列表</a>
             </div>
         </div>
 
@@ -225,6 +225,15 @@
                         document.getElementById('articleContainer').innerHTML = post.content;
                         document.getElementById('postLink').href = window.location.href;
                         document.getElementById('postLink').textContent = window.location.href;
+                        // 根据文章类型设置返回链接
+                        const backLink = document.getElementById('backLink');
+                        if (post.id && post.id.startsWith('changelog-')) {
+                            backLink.href = 'repo.html';
+                            backLink.textContent = '← 返回仓库';
+                        } else {
+                            backLink.href = 'posts.html';
+                            backLink.textContent = '← 返回帖子列表';
+                        }
                     } else {
                         document.getElementById('postTitle').textContent = '未找到该帖子';
                         document.getElementById('articleContainer').innerHTML = '<p>帖子不存在或已被删除。</p>';
