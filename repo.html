@@ -296,70 +296,28 @@
             });
         }
 
-        const changelogData = [{
-            id: 1,
-            date: '2026-06-10',
-            title: '网站功能大更新',
-            summary: '项目页全面重构，新增游戏数据，修复搜索Bug，致谢页改为折叠块',
-            content: `<p>本次更新对网站进行了全面优化，涉及多个游戏数据页和核心功能。</p>
-                <h2>🎮 游戏数据页</h2>
-                <ul>
-                    <li><strong>恐怖学校白色情人节</strong> — 重构为多折叠块布局：结局收集、其他项目、鬼魂收集（21个视频）、模型收集（8个视频），支持搜索与分页</li>
-                    <li><strong>僵尸毁灭工程模组统计</strong> — 离线分享列改为模组分类，支持分类筛选；搜索功能修复，现可搜索 Steam ID / 备注等所有字段；清理无用 game 字段和游戏筛选器</li>
-                    <li><strong>我的世界</strong> — 升级为完整统计页面（8列：模组名称/中文名/翻译进度/视频教程/MC百科/Modrinth/CurseForge/兼容加载器），支持加载器筛选</li>
-                    <li><strong>JOJO群星之战</strong> — 新增游戏数据页（攻略 + 其他项目折叠块）</li>
-                    <li><strong>洛克王国世界</strong> — 新增「其他项目」折叠块</li>
-                    <li><strong>奇异人生</strong> — 折叠块标题改为 Life is Strange - Episode 1攻略</li>
-                    <li><strong>仅你一人</strong> — 新增游戏数据页（结局流程折叠块）</li>
-                </ul>
-                <h2>🛠 功能优化</h2>
-                <ul>
-                    <li><strong>搜索修复</strong> — 修复搜索框无法搜索 Steam ID、备注等隐藏字段的问题，现覆盖所有数据字段</li>
-                    <li><strong>筛选系统</strong> — 我的世界新增兼容加载器筛选（Forge/Fabric/NeoForge），僵毁新增模组分类筛选</li>
-                    <li><strong>Bug修复</strong> — 修复多个 HTML 标签错误、空状态渲染异常等细节问题</li>
-                </ul>
-                <h2>📄 页面改动</h2>
-                <ul>
-                    <li><strong>致谢页</strong> — 改为折叠块展示，5个分类区块可独立展开收起</li>
-                    <li><strong>动态页</strong> — 内容重置为模板</li>
-                    <li><strong>仓库页</strong> — 新增本页面，卡片式布局，含更新日志与 GitHub 入口</li>
-                    <li><strong>导航栏</strong> — 仓库按钮指向本页面</li>
-                </ul>`
-        }];
-
-        let currentArticle = null;
-
-        function showDetail(id) {
+        async function showDetail(id) {
             const detailDiv = document.getElementById('detailContent');
             if (id === 'changelog') {
-                if (currentArticle) {
-                    // 显示文章内容
-                    detailDiv.innerHTML = `
-                        <div class="article-post">
-                            <div class="post-header">
-                                <h1>${currentArticle.title}</h1>
-                                <div class="post-meta">📅 ${currentArticle.date}</div>
-                            </div>
-                            <div class="post-body">${currentArticle.content}</div>
-                        </div>`;
-                } else {
-                    // 显示文章列表
-                    let listHtml = changelogData.map(item => `
-                        <div class="changelog-item" data-cid="${item.id}">
+                detailDiv.innerHTML = '<div class="section-content" style="text-align:center;padding:20px;">加载中...</div>';
+                try {
+                    const res = await fetch('data/posts.json');
+                    const posts = await res.json();
+                    const changelogs = posts.filter(p => p.id && p.id.startsWith('changelog-'));
+                    if (changelogs.length === 0) {
+                        detailDiv.innerHTML = '<div class="section-content"><p style="text-align:center;color:var(--text-mid);">暂无更新日志</p></div>';
+                        return;
+                    }
+                    let listHtml = changelogs.map(item => `
+                        <div class="changelog-item" onclick="window.location.href='post.html?id=${item.id}'">
                             <div class="changelog-date">📅 ${item.date}</div>
                             <div class="changelog-title">${item.title}</div>
                             <div class="changelog-body">${item.summary}</div>
                         </div>
                     `).join('');
                     detailDiv.innerHTML = `<div class="section-content">${listHtml}</div>`;
-                    // 点击条目进入文章
-                    detailDiv.querySelectorAll('.changelog-item').forEach(item => {
-                        item.addEventListener('click', () => {
-                            const cid = parseInt(item.dataset.cid);
-                            currentArticle = changelogData.find(c => c.id === cid);
-                            showDetail('changelog');
-                        });
-                    });
+                } catch (e) {
+                    detailDiv.innerHTML = '<div class="section-content"><p style="text-align:center;color:var(--text-mid);">加载失败</p></div>';
                 }
             } else if (id === 'github') {
                 detailDiv.innerHTML = `
@@ -377,7 +335,6 @@
         }
 
         document.getElementById('backToGridBtn').addEventListener('click', () => {
-            currentArticle = null;
             document.getElementById('cardsGridView').style.display = 'block';
             document.getElementById('cardDetailView').style.display = 'none';
         });

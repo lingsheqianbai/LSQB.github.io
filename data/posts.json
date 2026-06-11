@@ -1,5 +1,21 @@
 [
   {
+    "id": "changelog-2",
+    "title": "Bug修复与细节优化",
+    "date": "2026-06-11",
+    "summary": "修复分页按钮样式不一致，音乐收集加编号，清理无用代码，仓库页新增。",
+    "content": "<p>本次更新主要针对昨日改动的 Bug 修复和细节打磨。</p><h2>🐛 Bug 修复</h2><ul><li><strong>分页按钮样式修复</strong> — 修复简单表格（攻略/教程/音乐等）分页按钮圆形样式不生效的问题。原因是分页容器缺少 <code>pagination</code> CSS 类名，在渲染函数中自动添加后全部统一</li><li><strong>HTML 标签修复</strong> — 修复洛克王国任务攻略和露天挑战表格多余标签、奇异人生表格标签错误、空状态行标签不完整等问题</li></ul><h2>✨ 细节优化</h2><ul><li><strong>音乐收集编号</strong> — 洛克王国世界音乐收集表新增「编号」列，与精灵图鉴格式统一</li><li><strong>仓库页</strong> — 新增 repo.html，卡片式布局含更新日志与 GitHub 入口。更新日志列表可点击进入文章详情（帖子格式）</li><li><strong>致谢页</strong> — 5个分类区块改为折叠块，默认折叠点击展开</li><li><strong>导航栏</strong> — 仓库按钮统一指向 repo.html</li></ul><h2>🧹 代码清理</h2><ul><li>移除僵毁 mods.json 中无用的 game 字段（486条）</li><li>移除 offline 相关全部死代码（列定义、筛选逻辑、渲染 case、CSS）</li><li>移除游戏筛选器相关代码和 CSS</li></ul>",
+    "image": ""
+  },
+  {
+    "id": "changelog-1",
+    "title": "网站功能大更新",
+    "date": "2026-06-10",
+    "summary": "项目页全面重构，新增游戏数据，修复搜索Bug，致谢页改为折叠块。",
+    "content": "<p>本次更新对网站进行了全面优化，涉及多个游戏数据页和核心功能。</p><h2>🎮 游戏数据页</h2><ul><li><strong>恐怖学校白色情人节</strong> — 重构为多折叠块布局：结局收集、其他项目、鬼魂收集（21个视频）、模型收集（8个视频），支持搜索与分页</li><li><strong>僵尸毁灭工程模组统计</strong> — 离线分享列改为模组分类，支持分类筛选；搜索功能修复，现可搜索 Steam ID / 备注等所有字段；清理无用 game 字段和游戏筛选器</li><li><strong>我的世界</strong> — 升级为完整统计页面（8列：模组名称/中文名/翻译进度/视频教程/MC百科/Modrinth/CurseForge/兼容加载器），支持加载器筛选</li><li><strong>JOJO群星之战</strong> — 新增游戏数据页（攻略 + 其他项目折叠块）</li><li><strong>洛克王国世界</strong> — 新增「其他项目」和「音乐编号」折叠块</li><li><strong>奇异人生</strong> — 折叠块标题改为 Life is Strange - Episode 1攻略</li><li><strong>仅你一人</strong> — 新增游戏数据页（结局流程折叠块）</li></ul><h2>🛠 功能优化</h2><ul><li><strong>搜索修复</strong> — 修复搜索框无法搜索 Steam ID、备注等隐藏字段的问题，现覆盖所有数据字段</li><li><strong>筛选系统</strong> — 我的世界新增兼容加载器筛选，僵毁新增模组分类筛选</li><li><strong>Bug修复</strong> — 修复多个 HTML 标签错误、空状态渲染异常等细节问题</li></ul><h2>📄 页面改动</h2><ul><li><strong>致谢页</strong> — 改为折叠块展示，5个分类区块可独立展开收起</li><li><strong>动态页</strong> — 内容重置为模板</li><li><strong>导航栏</strong> — 仓库按钮指向新建的 repo.html</li></ul>",
+    "image": ""
+  },
+  {
     "id": "Agent17",
     "title": "Agent17(特工17)攻略",
     "date": "2026-03-28",
