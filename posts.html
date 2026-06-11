@@ -466,7 +466,7 @@
                     coverStyle = `background-color: var(--pink-light);`;
                 }
                 return `
-                    <div class="post-card-item" onclick="location.href='post.html?id=${post.id}'">
+                    <div class="post-card-item" onclick="location.href='${post.externalUrl || 'post.html?id=' + post.id}'">
                         <div class="post-card-cover" style="${coverStyle}"></div>
                         <div class="post-card-info">
                             <div class="post-card-title">${escapeHtml(post.title)}</div>

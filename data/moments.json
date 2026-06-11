@@ -1,5 +1,14 @@
 [
   {
+    "avatar": "📋",
+    "nickname": "凌社千白",
+    "time": "2026-06-11T18:00:00+08:00",
+    "content": "📌 待办计划：双站分离方案\n\n当前 posts.json 已预留 externalUrl 字段（空值不影响现有功能），等以后图床站建好再启用。\n\n🔜 步骤：\n1. 创建第二个仓库 lingsheqianbai.githubimages.io\n2. 把 post.html 和 data/posts.json 复制过去（样式一样）\n3. 帖子正文大图/视频放图床站\n4. 主站 posts.json 对应帖子填 externalUrl 链接\n5. 点击帖子自动折跃到图床站 ✨\n\n📝 目前无需操作，不影响现有网站。",
+    "images": [],
+    "likes": 0,
+    "comments": 0
+  },
+  {
     "avatar": "📦",
     "nickname": "凌社千白",
     "time": "2026-06-10T12:00:00+08:00",

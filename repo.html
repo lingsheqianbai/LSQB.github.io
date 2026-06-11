@@ -309,7 +309,7 @@
                         return;
                     }
                     let listHtml = changelogs.map(item => `
-                        <div class="changelog-item" onclick="window.location.href='post.html?id=${item.id}'">
+                        <div class="changelog-item" onclick="window.location.href='${item.externalUrl || 'post.html?id=' + item.id}'">
                             <div class="changelog-date">📅 ${item.date}</div>
                             <div class="changelog-title">${item.title}</div>
                             <div class="changelog-body">${item.summary}</div>
