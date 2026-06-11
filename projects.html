@@ -585,6 +585,7 @@
         function renderPaginationWithDots(containerId, currentPage, totalPages, onPageChange) {
             const container = document.getElementById(containerId);
             if (!container) return;
+            container.classList.add('pagination');
             if (totalPages <= 1) {
                 container.innerHTML = '';
                 return;
@@ -1065,7 +1066,7 @@
                 if (activities.length) html += `<details class="section-details"><summary>🎉 活动攻略 (${activities.length}个)</summary><div class="section-content"><div id="luokeActivitiesTableContainer"><table class="mod-table" id="luokeActivitiesTable"><thead><tr><th>活动名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeActivitiesTable-pagination"></div></div></div></details>`;
                 if (titles.length) html += `<details class="section-details"><summary>🏅 称号获取 (${titles.length}个)</summary><div class="section-content"><div id="luokeTitlesTableContainer"><table class="mod-table" id="luokeTitlesTable"><thead><tr><th>称号名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeTitlesTable-pagination"></div></div></div></details>`;
                 if (challenges.length) html += `<details class="section-details"><summary>🎪 露天挑战 (${challenges.length}个)</summary><div class="section-content"><div id="luokeChallengesTableContainer"><table class="mod-table" id="luokeChallengesTable"><thead><tr><th>挑战名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeChallengesTable-pagination"></div></div></div></details>`;
-                if (music.length) html += `<details class="section-details"><summary>🎵 音乐收集 (${music.length}个)</summary><div class="section-content"><div id="luokeMusicTableContainer"><table class="mod-table" id="luokeMusicTable"><thead><tr><th>音乐名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeMusicTable-pagination"></div></div></div></details>`;
+                if (music.length) html += `<details class="section-details"><summary>🎵 音乐收集 (${music.length}个)</summary><div class="section-content"><div id="luokeMusicTableContainer"><table class="mod-table" id="luokeMusicTable"><thead><tr><th>编号</th><th>音乐名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeMusicTable-pagination"></div></div></div></details>`;
                 if (other.length) html += `<details class="section-details"><summary>📖 其他项目 (${other.length}个)</summary><div class="section-content"><div id="luokeOtherTableContainer"><table class="mod-table" id="luokeOtherTable"><thead><tr><th>项目名称</th><th>备注</th><th>视频</th></tr></thead><tbody></tbody></table><div id="luokeOtherTable-pagination"></div></div></div></details>`;
 
                 detailDiv.innerHTML = html || '<div class="empty-tip">暂无内容</div>';
@@ -1074,7 +1075,7 @@
                 if (activities.length) renderSimpleTable('luokeActivitiesTable', activities, [{ key: 'name', label: '活动名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
                 if (titles.length) renderSimpleTable('luokeTitlesTable', titles, [{ key: 'name', label: '称号名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
                 if (challenges.length) renderSimpleTable('luokeChallengesTable', challenges, [{ key: 'name', label: '挑战名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
-                if (music.length) renderSimpleTable('luokeMusicTable', music, [{ key: 'name', label: '音乐名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
+                if (music.length) renderSimpleTable('luokeMusicTable', music, [{ key: 'id', label: '编号' }, { key: 'name', label: '音乐名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
                 if (other.length) renderSimpleTable('luokeOtherTable', other, [{ key: 'name', label: '项目名' }, { key: 'note', label: '备注' }, { key: 'video', type: 'video', label: '视频' }], 15);
             }
             else if (game.id === 'whiteday') {

@@ -1,11 +1,19 @@
 [
   {
+    "id": 1,
     "name": "[洛克王国：世界]追忆回想：初触魔法之约",
     "note": "",
     "video": "https://www.bilibili.com/video/BV1isEb6WEpB/?vd_source=73e550a3569a193e56d345c2b1e1a721"
   },
   {
-    "name": "[洛克王国：世界]崭新乐章 浪尖的黎明：沉睡的波涛",
+    "id": 2,
+    "name": "[洛克王国：世界]崭新乐章 浪尖的黎明",
+    "note": "",
+    "video": "https://www.bilibili.com/video/BV1J7Eb6FETj/?vd_source=73e550a3569a193e56d345c2b1e1a721"
+  },
+  {
+    "id": 3,
+    "name": "[洛克王国：世界]崭新乐章 沉睡的波涛",
     "note": "",
     "video": "https://www.bilibili.com/video/BV1J7Eb6FETj/?vd_source=73e550a3569a193e56d345c2b1e1a721"
   }
