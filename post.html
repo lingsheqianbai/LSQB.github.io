@@ -66,12 +66,13 @@
         main { background: none; font-size: 80%; }
         .left-col { padding: 5px; top: var(--nav-offset); width: var(--sidebar-width); position: fixed; left: var(--layout-gap); z-index: 950; }
         /* 右侧目录 */
-        .toc-col { position: fixed; right: var(--layout-gap); top: var(--nav-offset); width: 200px; z-index: 940; }
+        .content-wrapper { display: flex; gap: 14px; align-items: flex-start; margin-left: calc(var(--sidebar-width) + (var(--layout-gap) * 2)); margin-right: var(--layout-gap); }
+        .toc-col { width: 200px; position: sticky; top: var(--nav-offset); flex-shrink: 0; z-index: 940; }
         .toc-card { background: #fff; border: 1px solid var(--border-color); border-radius: 0 0 10px 10px; padding: 12px; font-size: 12px; }
         .toc-card .toc-title { font-weight: bold; font-size: 13px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #ddd; }
         .toc-card a { display: block; padding: 3px 6px; color: var(--text-dark); text-decoration: none; border-radius: 4px; margin: 2px 0; }
         .toc-card a:hover, .toc-card a.active { background: var(--pink-light); color: var(--pink-dark); }
-        @media (max-width: 1200px) { .toc-col { display: none; } }
+        @media (max-width: 1200px) { .toc-col { display: none; } .content-wrapper { margin-right: var(--layout-gap); } }
         .left-col .profile-title {
             position: fixed; left: var(--layout-gap); top: 48px;
             background: var(--pink); width: var(--sidebar-width);
@@ -109,15 +110,13 @@
             border-left: 1px solid var(--border-color);
             border-right: 1px solid var(--border-color);
             position: relative;
-            width: calc(100% - var(--sidebar-width) - (var(--layout-gap) * 2));
             max-width: 900px;
             min-height: calc(100vh - var(--nav-offset));
-            margin-left: calc(var(--sidebar-width) + (var(--layout-gap) * 2));
             margin-top: var(--nav-offset);
-            margin-right: var(--layout-gap);
             overflow-y: auto; overflow-x: hidden;
             padding: 0 10px 20px;
             z-index: 900;
+            flex: 1;
         }
 
         /* BLOCK STYLE */
@@ -195,14 +194,8 @@
             </div>
         </div>
 
-        <div class="toc-col">
-            <div class="toc-card">
-                <div class="toc-title">📑 目录</div>
-                <div id="tocList"></div>
-            </div>
-        </div>
-
-        <div class="col right">
+        <div class="content-wrapper">
+            <div class="col right">
             <div class="block">
                 <div class="heading"><h4>📖 帖子详情</h4></div>
                 <div class="inner">
@@ -219,6 +212,13 @@
                 </div>
             </div>
         </div>
+        <div class="toc-col">
+            <div class="toc-card">
+                <div class="toc-title">📑 目录</div>
+                <div id="tocList"></div>
+            </div>
+        </div>
+    </div>
     </main>
 
     <script>
