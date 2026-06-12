@@ -189,13 +189,13 @@
 
         <div class="col right">
             <div class="block">
-                <div class="heading"><h4>📖 帖子详情</h4></div>
+                <div class="heading" id="postHeading"><h4>📖 帖子详情</h4></div>
                 <div class="inner">
                     <h2 id="postTitle" style="font-size:1.4rem;font-weight:bold;color:var(--text-dark);margin:0 0 4px;">加载中...</h2>
                     <div class="post-meta" id="postMeta"></div>
-                    <hr style="border:none;border-top:1px solid #e0cfd6;margin:10px 0">
+                    <hr id="postTitleHr" style="border:none;border-top:1px solid #e0cfd6;margin:10px 0">
                     <div class="article-container" id="articleContainer"><p class="loading-text">加载中...</p></div>
-                    <hr style="border:none;border-top:1px solid #e0cfd6;margin:10px 0">
+                    <hr id="postCopyHr" style="border:none;border-top:1px solid #e0cfd6;margin:10px 0">
                     <div class="post-copyright" id="postCopyright">
                         <span>文章作者: 凌社千白</span><br>
                         <span id="postLinkSpan">文章链接: <a id="postLink" href="#">加载中</a></span><br>
@@ -220,8 +220,20 @@
                     const post = posts.find(p => p.id == postId);
                     if (post) {
                         document.title = post.title + ' - 千白分享';
-                        document.getElementById('postTitle').textContent = post.title;
-                        document.getElementById('postMeta').innerHTML = `<span>📅 发布时间：${post.date}</span>`;
+                        // 模组私帖：隐藏文章外壳，只显示卡片内容
+                        if (post.id === 'mod-posts') {
+                            document.getElementById('postHeading').style.display = 'none';
+                            document.getElementById('postTitle').style.display = 'none';
+                            document.getElementById('postMeta').style.display = 'none';
+                            document.getElementById('postTitleHr').style.display = 'none';
+                            document.getElementById('postCopyHr').style.display = 'none';
+                            document.getElementById('postCopyright').style.display = 'none';
+                            document.getElementById('backLink').textContent = '← 返回帖子列表';
+                            document.getElementById('backLink').href = 'posts.html';
+                        } else {
+                            document.getElementById('postTitle').textContent = post.title;
+                            document.getElementById('postMeta').innerHTML = `<span>📅 发布时间：${post.date}</span>`;
+                        }
                         document.getElementById('articleContainer').innerHTML = post.content;
                         document.getElementById('postLink').href = window.location.href;
                         document.getElementById('postLink').textContent = window.location.href;
@@ -230,7 +242,7 @@
                         if (post.id && post.id.startsWith('changelog-')) {
                             backLink.href = 'repo.html';
                             backLink.textContent = '← 返回仓库';
-                        } else {
+                        } else if (post.id !== 'mod-posts') {
                             backLink.href = 'posts.html';
                             backLink.textContent = '← 返回帖子列表';
                         }

@@ -406,17 +406,6 @@
                 <span>🔍</span>
             </div>
         </div>
-        <!-- 模组私帖卡片 -->
-        <div id="modPostCard" class="posts-grid" style="margin-bottom:30px;">
-            <div class="post-card-item" onclick="location.href='post.html?id=mod-posts'" style="background:linear-gradient(135deg, #fff5f9, #fff);">
-                <div class="post-card-cover" style="background-color:var(--pink); min-width:180px; display:flex; align-items:center; justify-content:center; font-size:48px;">📦</div>
-                <div class="post-card-info">
-                    <div class="post-card-title">模组私帖</div>
-                    <div class="post-card-summary">模组相关帖子合集</div>
-                    <div style="font-size:11px; color:var(--text-light); margin-top:6px;">📅 点击查看模组相关帖子</div>
-                </div>
-            </div>
-        </div>
         <div id="postsGrid" class="posts-grid"></div>
         <div id="pagination" class="pagination"></div>
     </div>
@@ -478,7 +467,6 @@
         if (categoryFilter) {
             document.getElementById('pageTitle').textContent = categoryFilter === 'pz-mod' ? '🧟 僵尸毁灭工程 · 模组帖子' : '⛏️ 我的世界 · 模组帖子';
             document.getElementById('backAllBtn').style.display = 'inline-block';
-            document.getElementById('modPostCard').style.display = 'none';
         }
 
         async function loadPosts() {
@@ -519,35 +507,50 @@
             applySearch();
         });
 
+        function renderPostCard(post) {
+            let summary = post.summary || '';
+            if (summary.length > 200) summary = summary.substring(0,200)+'…';
+            let coverStyle = '';
+            if (post.image) {
+                let imgUrl = post.image.startsWith('http') ? post.image : './' + post.image;
+                coverStyle = `background-image: url('${imgUrl}'); background-size: cover; background-position: center;`;
+            } else {
+                coverStyle = `background-color: var(--pink-light);`;
+            }
+            return `<div class="post-card-item" onclick="location.href='${post.externalUrl || 'post.html?id=' + post.id}'">
+                <div class="post-card-cover" style="${coverStyle}"></div>
+                <div class="post-card-info">
+                    <div class="post-card-title">${escapeHtml(post.title)}</div>
+                    <div class="post-card-meta">📅 ${post.date}</div>
+                    <div class="post-card-summary">${summary}</div>
+                </div>
+            </div>`;
+        }
+
         function renderPage() {
             const start = (currentPage-1) * PAGE_SIZE;
             const pagePosts = filteredPosts.slice(start, start + PAGE_SIZE);
             const grid = document.getElementById('postsGrid');
-            if (!pagePosts.length) {
+
+            let html = '';
+            // 首页无筛选时，前面加模组私帖卡片
+            if (currentPage === 1 && !categoryFilter && !searchQuery.trim()) {
+                html += `<div class="post-card-item" onclick="location.href='post.html?id=mod-posts'" style="background:linear-gradient(135deg, #fff5f9, #fff);">
+                    <div class="post-card-cover" style="background-color:var(--pink); min-width:180px; display:flex; align-items:center; justify-content:center; font-size:48px;">📦</div>
+                    <div class="post-card-info">
+                        <div class="post-card-title">模组私帖</div>
+                        <div class="post-card-meta">📅 模组合集</div>
+                        <div class="post-card-summary">僵尸毁灭工程 & 我的世界模组相关帖子合集</div>
+                    </div>
+                </div>`;
+            }
+
+            if (!pagePosts.length && !html) {
                 grid.innerHTML = '<div style="text-align:center; padding:40px;">暂无帖子</div>';
                 return;
             }
-            grid.innerHTML = pagePosts.map(post => {
-                let summary = post.summary || '';
-                if (summary.length > 200) summary = summary.substring(0,200)+'…';
-                let coverStyle = '';
-                if (post.image) {
-                    let imgUrl = post.image.startsWith('http') ? post.image : './' + post.image;
-                    coverStyle = `background-image: url('${imgUrl}'); background-size: cover; background-position: center;`;
-                } else {
-                    coverStyle = `background-color: var(--pink-light);`;
-                }
-                return `
-                    <div class="post-card-item" onclick="location.href='${post.externalUrl || 'post.html?id=' + post.id}'">
-                        <div class="post-card-cover" style="${coverStyle}"></div>
-                        <div class="post-card-info">
-                            <div class="post-card-title">${escapeHtml(post.title)}</div>
-                            <div class="post-card-meta">📅 ${post.date}</div>
-                            <div class="post-card-summary">${escapeHtml(summary)}</div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
+            html += pagePosts.map(post => renderPostCard(post)).join('');
+            grid.innerHTML = html;
         }
 
         function renderPagination() {
