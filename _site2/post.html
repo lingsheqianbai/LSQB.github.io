@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帖子 - 千白分享</title>
+    <style>
+        :root { --pink:#f9bddd; --pink-dark:#c44569; --pink-light:#ffcfe2; --text-dark:#2a1a2e; --text-mid:#5a3e4b; --border-color:#000; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: "MS PGothic","SimSun","Microsoft YaHei",sans-serif;
+            background: url('images/beijin1.jpg') no-repeat center center fixed;
+            background-size: cover; min-height:100vh; color:var(--text-dark);
+            display:flex; justify-content:center; padding:40px 20px;
+        }
+        .container { max-width:900px; width:100%; }
+        .back-link {
+            display:inline-block; padding:8px 20px; background:var(--pink-light);
+            border:1px solid var(--border-color); border-radius:24px;
+            text-decoration:none; color:var(--text-dark); font-size:14px; margin-bottom:20px;
+        }
+        .article {
+            background:#fff; border:1px solid var(--border-color); border-radius:16px;
+            padding:32px; box-shadow:4px 4px 0 rgba(0,0,0,.1);
+        }
+        .article h1 { font-size:24px; color:var(--text-dark); margin-bottom:8px; }
+        .article .meta { font-size:13px; color:var(--text-light); margin-bottom:20px; padding-bottom:16px; border-bottom:2px solid var(--border-color); }
+        .article .body { font-size:15px; line-height:1.8; color:var(--text-dark); }
+        .article .body h2 { font-size:20px; margin:24px 0 12px; color:var(--pink-dark); }
+        .article .body ul { padding-left:24px; margin:12px 0; }
+        .article .body li { padding:6px 0; }
+        .article .body img { max-width:100%; border-radius:8px; margin:12px 0; }
+        .article .body a { color:var(--pink-dark); }
+        .article .body code { background:#fff0f5; padding:2px 6px; border-radius:4px; font-size:.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="javascript:history.back()" class="back-link">← 返回</a>
+        <div class="article">
+            <h1 id="postTitle">加载中...</h1>
+            <div class="meta" id="postMeta"></div>
+            <div class="body" id="postBody"></div>
+        </div>
+    </div>
+    <script>
+        const id = new URLSearchParams(window.location.search).get('id');
+        if (!id) {
+            document.getElementById('postTitle').textContent = '未指定帖子';
+            document.getElementById('postBody').innerHTML = '<p>请从帖子列表点击进入。</p>';
+        } else {
+            fetch('data/posts.json')
+                .then(r => r.json())
+                .then(posts => {
+                    const post = posts.find(p => p.id == id);
+                    if (post) {
+                        document.title = post.title + ' - 千白分享';
+                        document.getElementById('postTitle').textContent = post.title;
+                        document.getElementById('postMeta').innerHTML = '📅 ' + post.date;
+                        document.getElementById('postBody').innerHTML = post.content;
+                    } else {
+                        document.getElementById('postTitle').textContent = '未找到';
+                        document.getElementById('postBody').innerHTML = '<p>帖子不存在。</p>';
+                    }
+                })
+                .catch(() => {
+                    document.getElementById('postTitle').textContent = '加载失败';
+                });
+        }
+    </script>
+</body>
+</html>
