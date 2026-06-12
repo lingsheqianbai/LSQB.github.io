@@ -401,7 +401,7 @@
         <div class="page-header">
             <h2 id="pageTitle">📰 全部帖子</h2>
             <a href="posts.html" id="backAllBtn" style="display:none;background:var(--pink-light);border:1px solid var(--border-color);border-radius:24px;padding:6px 16px;cursor:pointer;font-size:13px;text-decoration:none;color:var(--text-dark);">← 返回全部帖子</a>
-            <div class="search-bar">
+            <div class="search-bar" id="search-bar">
                 <input type="text" id="postSearch" placeholder="搜索帖子...">
                 <span>🔍</span>
             </div>
@@ -460,9 +460,31 @@
         let searchQuery = '';
         const PAGE_SIZE = 10;
 
-        // URL 分类筛选
+        // URL 参数
         const urlParams = new URLSearchParams(window.location.search);
         const categoryFilter = urlParams.get('filter') || '';
+        const viewMode = urlParams.get('view') || '';
+
+        // 模组卡片视图
+        if (viewMode === 'modcards') {
+            document.getElementById('pageTitle').textContent = '📦 模组私帖';
+            document.getElementById('backAllBtn').style.display = 'inline-block';
+            document.getElementById('search-bar').style.display = 'none';
+            document.getElementById('postsGrid').innerHTML = `
+                <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:20px;">
+                    <div class="post-card-item" onclick="location.href='posts.html?filter=pz-mod'" style="flex-direction:column; text-align:center; padding:30px;">
+                        <div style="font-size:64px; margin-bottom:16px;">🧟</div>
+                        <div class="post-card-title" style="font-size:20px;">僵尸毁灭工程</div>
+                        <div class="post-card-summary" style="margin-top:8px;">模组汉化、分类、使用教程等模组帖子</div>
+                    </div>
+                    <div class="post-card-item" onclick="location.href='posts.html?filter=mc-mod'" style="flex-direction:column; text-align:center; padding:30px;">
+                        <div style="font-size:64px; margin-bottom:16px;">⛏️</div>
+                        <div class="post-card-title" style="font-size:20px;">我的世界</div>
+                        <div class="post-card-summary" style="margin-top:8px;">模组介绍、配置教程等模组帖子</div>
+                    </div>
+                </div>`;
+            document.getElementById('pagination').innerHTML = '';
+        }
 
         if (categoryFilter) {
             document.getElementById('pageTitle').textContent = categoryFilter === 'pz-mod' ? '🧟 僵尸毁灭工程 · 模组帖子' : '⛏️ 我的世界 · 模组帖子';
@@ -470,6 +492,8 @@
         }
 
         async function loadPosts() {
+            // 模组卡片视图不需要加载帖子
+            if (viewMode === 'modcards') return;
             try {
                 const res = await fetch('data/posts.json');
                 if (!res.ok) throw new Error();
@@ -535,7 +559,7 @@
             let html = '';
             // 首页无筛选时，前面加模组私帖卡片
             if (currentPage === 1 && !categoryFilter && !searchQuery.trim()) {
-                html += `<div class="post-card-item" onclick="location.href='post.html?id=mod-posts'" style="background:linear-gradient(135deg, #fff5f9, #fff);">
+                html += `<div class="post-card-item" onclick="location.href='posts.html?view=modcards'" style="background:linear-gradient(135deg, #fff5f9, #fff);">
                     <div class="post-card-cover" style="background-color:var(--pink); min-width:180px; display:flex; align-items:center; justify-content:center; font-size:48px;">📦</div>
                     <div class="post-card-info">
                         <div class="post-card-title">模组私帖</div>
