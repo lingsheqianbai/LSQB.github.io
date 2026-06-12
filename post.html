@@ -2,132 +2,259 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>帖子详情 - 千白分享</title>
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id:"3PEh97IIsQ2zJUR2",ck:"3PEh97IIsQ2zJUR2"})</script>
     <style>
         :root {
-            --sidebar-width: 260px; --nav-offset: 60px; --border-color: #000;
-            --bg-card: #fff; --bg-sidebar: #fff; --text-dark: #2a1a2e;
-            --text-mid: #5a3e4b; --text-light: #bba3ad; --shadow: 4px 4px 0 rgba(0,0,0,0.1);
+            --sidebar-width: 250px; --layout-gap: 14px; --nav-offset: 46px;
             --pink: #f9bddd; --pink-dark: #c44569; --pink-light: #ffcfe2;
+            --text-dark: #2a1a2e; --text-mid: #5a3e4b; --text-light: #bba3ad;
+            --border-color: #000;
         }
-        @font-face { font-family:'ZQKNNY'; src:url('ZQKNNY-Medium-2.woff2') format('woff2'); font-weight:500; font-style:normal; font-display:swap; }
-        * { margin:0; padding:0; box-sizing:border-box; }
+        @font-face {
+            font-family: 'ZQKNNY';
+            src: url('ZQKNNY-Medium-2.woff2') format('woff2');
+            font-weight: 500; font-style: normal; font-display: swap;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { line-height: 1.2; }
         body {
-            font-family:"MS PGothic","Unifont","SimSun","Microsoft YaHei","ZQKNNY",sans-serif;
-            background:url('images/beijin1.jpg') no-repeat center center fixed; background-size:cover;
-            min-height:100vh; padding-top:var(--nav-offset); color:var(--text-dark);
+            position: relative; overflow-x: hidden; overflow-y: auto;
+            font-family: "MS PGothic", "Unifont", "SimSun", "Microsoft YaHei", "ZQKNNY", sans-serif;
+            background: navajowhite;
+            background-image: repeating-conic-gradient(#f9bddd33 0% 25%, transparent 0% 50%) 50% / 40px 40px;
+            background-attachment: fixed;
+            margin: 0; padding: 0; min-height: 100vh; width: 100%;
         }
-        nav { width:100%; position:fixed; top:0; z-index:999; background:#fff; border-bottom:2px solid #000; }
-        nav .links { display:flex; flex-wrap:wrap; justify-content:center; list-style:none; padding:8px 16px; margin:0; gap:12px; }
-        nav .links li a { display:inline-block; padding:8px 32px; border-radius:32px; border:1px solid #000; font-size:14px; font-weight:bold; text-decoration:none; color:#fff; text-shadow:0 0 3px rgba(0,0,0,0.5); transition:filter 0.2s; cursor:pointer; }
-        nav .links li a:hover { filter:brightness(0.85); }
-        .left-col { position:fixed; left:20px; top:var(--nav-offset); width:var(--sidebar-width); z-index:950; }
-        .profile-card { background:var(--bg-sidebar); border:1px solid var(--border-color); border-radius:12px; padding:16px; box-shadow:var(--shadow); }
-        .profile-avatar { text-align:center; margin-bottom:8px; }
-        .profile-avatar img { width:64px; height:64px; border-radius:50%; object-fit:cover; border:2px solid var(--border-color); }
-        .profile-name { font-size:18px; font-weight:bold; text-align:center; }
-        .profile-signature { font-size:11px; text-align:center; color:var(--text-mid); margin-top:6px; padding-top:6px; border-top:1px dashed var(--border-color); }
-        .player { margin:16px 0 12px; text-align:center; }
-        .vinyl { position:relative; width:80px; height:80px; margin:0 auto 8px; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 35% 35%, #222, #111); border-radius:50%; box-shadow:0 0 0 4px #444, 0 0 0 6px #888; }
-        .vinyl.playing { animation:spin 5s linear infinite; }
-        @keyframes spin { 100% { transform:rotate(360deg); } }
-        .vinyl-center-img { width:40px; height:40px; border-radius:50%; border:2px solid rgba(255,255,255,0.9); object-fit:cover; background:#fff; }
-        .player-controls { display:flex; justify-content:center; gap:12px; margin-bottom:6px; }
-        .player-controls button { background:var(--pink-light); border:1px solid var(--border-color); border-radius:50%; width:32px; height:32px; font-size:14px; cursor:pointer; transition:0.2s; }
-        .player-controls button:hover { background:var(--pink); }
-        .song-title { font-size:10px; color:var(--text-mid); text-align:center; background:var(--bg-card); padding:2px 8px; border-radius:20px; border:1px solid var(--border-color); display:inline-block; max-width:180px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-        .contact-info { margin-top:16px; text-align:center; font-size:12px; border-top:1px dashed var(--border-color); padding-top:12px; }
-        .contact-info p { margin:6px 0; } .contact-info a { color:var(--pink-dark); text-decoration:none; } .contact-info a:hover { text-decoration:underline; }
-        .right-col { margin-left:calc(var(--sidebar-width) + 40px); margin-right:20px; max-width:900px; }
-        .back-btn { display:inline-block; background:var(--pink-light); border:1px solid var(--border-color); border-radius:24px; padding:6px 16px; cursor:pointer; font-size:13px; margin-bottom:16px; text-decoration:none; color:var(--text-dark); }
-        .back-btn:hover { background:var(--pink); }
-        .article-card { background:var(--bg-card); border:1px solid var(--border-color); border-radius:16px; padding:32px; box-shadow:var(--shadow); }
-        .article-card h1 { font-size:24px; color:var(--text-dark); margin-bottom:8px; }
-        .article-card .meta { font-size:13px; color:var(--text-light); margin-bottom:20px; padding-bottom:16px; border-bottom:2px solid var(--border-color); }
-        .article-card .body { font-size:15px; line-height:1.8; color:var(--text-dark); }
-        .article-card .body h2 { font-size:20px; margin:24px 0 12px; color:var(--pink-dark); }
-        .article-card .body ul { padding-left:24px; margin:12px 0; }
-        .article-card .body li { padding:6px 0; }
-        .article-card .body img { max-width:100%; border-radius:8px; margin:12px 0; }
-        .article-card .body a { color:var(--pink-dark); }
-        .article-card .body code { background:#fff0f5; padding:2px 6px; border-radius:4px; font-size:.9em; }
-        @media (max-width:800px) { .left-col { display:none; } .right-col { margin-left:20px; } }
-        @media (max-width:768px) { nav .links li a { padding:6px 20px; font-size:12px; } }
+        ::-webkit-scrollbar { width: 16px; }
+        ::-webkit-scrollbar:horizontal { height: 17px; }
+        ::-webkit-scrollbar-corner { background: #dfdfdf; }
+        ::-webkit-scrollbar-track { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='2' height='2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1 0H0v1h1v1h1V1H1V0z' fill='silver'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 0H1v1H0v1h1V1h1V0z' fill='%23fff'/%3E%3C/svg%3E"); }
+        ::-webkit-scrollbar-thumb { background-color: #dfdfdf; box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf; }
+        ::-webkit-scrollbar-button:vertical:start { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8 6H7v1H6v1H5v1H4v1h7V9h-1V8H9V7H8V6z' fill='%23000'/%3E%3C/svg%3E"); height: 17px; }
+        ::-webkit-scrollbar-button:vertical:end { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11 6H4v1h1v1h1v1h1v1h1V9h1V8h1V7h1V6z' fill='%23000'/%3E%3C/svg%3E"); height: 17px; }
+        ::-webkit-scrollbar-button:horizontal:start { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 4H8v1H7v1H6v1H5v1h1v1h1v1h1v1h1V4z' fill='%23000'/%3E%3C/svg%3E"); width: 16px; }
+        ::-webkit-scrollbar-button:horizontal:end { background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='16' height='17' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 0H0v16h1V1h14V0z' fill='%23DFDFDF'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M2 1H1v14h1V2h12V1H2z' fill='%23fff'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M16 17H0v-1h15V0h1v17z' fill='%23000'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M15 1h-1v14H1v1h14V1z' fill='gray'/%3E%3Cpath fill='silver' d='M2 2h12v13H2z'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7 4H6v7h1v-1h1V9h1V8h1V7H9V6H8V5H7V4z' fill='%23000'/%3E%3C/svg%3E"); width: 16px; }
+        ::selection { color: #b4dffb; background: #ffffe0; }
+
+        /* NAV */
+        nav { width: 100%; position: fixed; top: 0; z-index: 999; font-size: 72%; }
+        nav .links {
+            padding: 3.5px 16px; list-style: none;
+            padding-inline: 0 !important; padding-bottom: 0 !important; padding-top: 5px !important;
+            border-bottom: 2px solid var(--border-color); background: #fff; margin: 0; text-align: center;
+        }
+        nav .links li { display: inline-block; min-height: 1.4em; list-style: none; }
+        nav .links li a {
+            font-size: 0; width: 70px; border-radius: 10px 10px 0 0;
+            border: 1px solid var(--border-color); transform: translateY(1px);
+            padding: 3px 8px; background: var(--pink-light); white-space: nowrap;
+            margin: 0 1px; display: inline-block;
+            font-family: SimSun, "Microsoft YaHei", sans-serif;
+            font-weight: 400 !important; text-decoration: none !important;
+            box-shadow: 0 -2px 2px 3px rgba(255,255,255,0.5) inset;
+            color: #fff !important;
+            text-shadow: 1px 1px 0 color-mix(in srgb, #f9bddd 70%, #000);
+        }
+        nav .links li a:after { content: attr(data-label); font-size: 13px; }
+        nav .links li a:hover, nav .links li.active a { background: var(--pink); }
+        nav .links li.active a { font-weight: bold; }
+
+        /* MAIN LAYOUT */
+        main { background: none; font-size: 80%; }
+        .left-col { padding: 5px; top: var(--nav-offset); width: var(--sidebar-width); position: fixed; left: var(--layout-gap); z-index: 950; }
+        .left-col .profile-title {
+            position: fixed; left: var(--layout-gap); top: 48px;
+            background: var(--pink); width: var(--sidebar-width);
+            padding: 6px 10px; border-radius: 10px 10px 0 0;
+            box-shadow: 0 -5px 3px 3px rgba(255,255,255,0.5) inset;
+            border: 1px solid var(--border-color); color: #fff !important;
+            text-shadow: 1px 1px 0 color-mix(in srgb, #f9bddd 70%, #000);
+            font-size: 1.2em; margin: 0; text-align: center; font-weight: bold; z-index: 952;
+        }
+        .profile-card {
+            background: #fff; border: 1px solid var(--border-color);
+            border-radius: 0 0 10px 10px; padding: 12px 10px;
+            position: fixed; left: var(--layout-gap); top: 77px;
+            width: var(--sidebar-width); z-index: 951;
+        }
+        .profile-card .avatar-area { text-align: center; margin-bottom: 10px; }
+        .profile-card .avatar-icon { font-size: 48px; display: block; }
+        .profile-card .profile-name { font-weight: bold; font-size: 14px; color: var(--text-dark); margin-top: 4px; }
+        .profile-card .profile-status { color: color-mix(in srgb, #4045ff 50%, #000); font-size: 11px; }
+        .profile-card .profile-note {
+            margin-top: 8px; padding: 8px 10px; border: 2px solid #8d6e6888; border-radius: 12px;
+            background: linear-gradient(180deg, #fff6f9 0%, #fff 45%, #fdf3ff 100%);
+            color: #3b2b2b; font-size: 11px; line-height: 1.4;
+        }
+        .profile-card .side-link {
+            display: block; text-align: center; padding: 5px; margin-top: 8px;
+            background: var(--pink-light); border: 1px solid var(--border-color);
+            border-radius: 6px; color: var(--pink-dark) !important;
+            text-decoration: none; font-size: 11px; font-weight: bold;
+        }
+        .profile-card .side-link:hover { background: var(--pink); }
+
+        .col.right {
+            display: block; background: #fff;
+            border-left: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            position: relative;
+            width: calc(100% - var(--sidebar-width) - (var(--layout-gap) * 2));
+            max-width: 900px;
+            min-height: calc(100vh - var(--nav-offset));
+            margin-left: calc(var(--sidebar-width) + (var(--layout-gap) * 2));
+            margin-top: var(--nav-offset);
+            margin-right: var(--layout-gap);
+            overflow-y: auto; overflow-x: hidden;
+            padding: 0 10px 20px;
+            z-index: 900;
+        }
+
+        /* BLOCK STYLE */
+        .block { margin: 10px 0; }
+        .block .heading {
+            background: #f9bddd; border: 1px solid #000; border-bottom: 0;
+            border-radius: 10px 10px 0 0; padding: 2px 7px; color: #fff;
+            text-shadow: 0 0 1px color-mix(in srgb, #f9bddd 70%, #000), 1px 1px 0 color-mix(in srgb, #f9bddd 70%, #000), -1px -1px 0 color-mix(in srgb, #f9bddd 70%, #000);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .block .heading h4 { font-size: 14px !important; display: inline !important; font-weight: normal; }
+        .block .inner {
+            border: 1px solid #000; border-radius: 0 0 10px 10px;
+            background: #fff; padding: 16px;
+        }
+
+        /* ARTICLE STYLES */
+        .article-container { font-size: 13px; line-height: 1.7; color: var(--text-dark); }
+        .article-container h2 {
+            font-size: 1.3rem; font-weight: bold; margin: 1.5rem 0 .8rem;
+            padding-bottom: .3rem; border-bottom: 1px solid #e0cfd6; color: var(--text-dark);
+        }
+        .article-container h3 { font-size: 1.1rem; font-weight: bold; margin: 1.2rem 0 .6rem; color: var(--text-dark); }
+        .article-container p { margin: 0 0 .8rem; }
+        .article-container img { max-width: 100%; height: auto; border-radius: 6px; border: 1px solid #e0cfd6; margin: .8rem 0; }
+        .article-container a { color: var(--pink-dark); text-decoration: none; }
+        .article-container a:hover { text-decoration: underline; }
+        .article-container blockquote {
+            margin: .8rem 0; padding: .5rem 0 .5rem 1rem;
+            border-left: 4px solid var(--pink-dark); background: #fffbfd;
+            border-radius: 0 6px 6px 0; color: var(--text-mid); font-style: italic;
+        }
+        .article-container code { background: #fff0f5; padding: .2rem .4rem; border-radius: 4px; font-family: monospace; font-size: .9em; }
+        .article-container pre { background: #fdf6f9; padding: .8rem; border-radius: 6px; overflow-x: auto; border: 1px solid #f0dce4; font-size: .8rem; margin: .8rem 0; }
+        .article-container pre code { background: none; padding: 0; }
+        .article-container ul, .article-container ol { margin: 0 0 .8rem 1.5rem; }
+        .article-container li { margin: .3rem 0; }
+
+        .post-meta { font-size: 11px; color: var(--text-light); margin-top: 6px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .post-copyright { font-size: 10px; color: var(--text-light); line-height: 1.6; margin-top: 8px; }
+        .post-copyright a { color: var(--pink-dark); }
+        .loading-text { text-align: center; padding: 30px; color: var(--text-light); font-size: 12px; }
+
+        @media (max-width: 768px) {
+            .left-col { display: none !important; }
+            .col.right { width: 100%; margin-left: 0; margin-right: 0; border-left: none; border-right: none; border-top: 1px solid var(--border-color); padding: 0 4px 10px; }
+            nav { position: sticky; }
+            nav .links { padding: 3.5px 4px; }
+            nav .links li a { width: 56px; }
+            nav .links li a:after { font-size: 11px; }
+        }
     </style>
 </head>
 <body>
     <nav>
         <ul class="links">
-            <li><a href="index.html" style="background-color:#FF4D4D;">主页</a></li>
-            <li><a href="moments.html" style="background-color:#FFA500;">动态</a></li>
-            <li><a href="projects.html" style="background-color:#FFD700;">项目</a></li>
-            <li><a href="works.html" style="background-color:#32CD32;">作品集</a></li>
-            <li><a href="posts.html" style="background-color:#00CED1;">帖子</a></li>
-            <li><a href="thanks.html" style="background-color:#1E90FF;">致谢</a></li>
-            <li><a href="repo.html" style="background-color:#9370DB;">仓库</a></li>
+            <li><a href="index.html" data-label="主页"></a></li>
+            <li><a href="moments.html" data-label="动态"></a></li>
+            <li><a href="projects.html" data-label="项目"></a></li>
+            <li><a href="works.html" data-label="作品集"></a></li>
+            <li><a href="posts.html" data-label="帖子"></a></li>
+            <li><a href="thanks.html" data-label="致谢"></a></li>
+            <li><a href="repo.html" data-label="仓库"></a></li>
         </ul>
     </nav>
 
-    <div class="left-col">
-        <div class="profile-card">
-            <div class="profile-avatar"><img src="images/lingsheqianbai.jpg" alt="凌社千白"></div>
-            <div class="profile-name">凌社千白</div>
-            <div class="profile-signature">分享 · 记录 · 创造</div>
-            <div class="player">
-                <div class="vinyl" id="vinylDisc"><img src="images/yonri.jpg" alt="友利奈绪" class="vinyl-center-img"></div>
-                <div class="player-controls">
-                    <button id="prevBtn">⏮</button><button id="playPauseBtn">▶️</button><button id="nextBtn">⏭</button>
+    <main>
+        <div class="left-col profile">
+            <div class="profile-title">千白分享</div>
+            <div class="profile-card">
+                <div class="avatar-area"><span class="avatar-icon">📖</span><div class="profile-name">凌社千白</div><div class="profile-status">● ONLINE!</div></div>
+                <div class="profile-note">阅读帖子详情。</div>
+                <a href="posts.html" id="backLink" class="side-link">← 返回帖子列表</a>
+            </div>
+        </div>
+
+        <div class="col right">
+            <div class="block">
+                <div class="heading"><h4>📖 帖子详情</h4></div>
+                <div class="inner">
+                    <h2 id="postTitle" style="font-size:1.4rem;font-weight:bold;color:var(--text-dark);margin:0 0 4px;">加载中...</h2>
+                    <div class="post-meta" id="postMeta"></div>
+                    <hr style="border:none;border-top:1px solid #e0cfd6;margin:10px 0">
+                    <div class="article-container" id="articleContainer"><p class="loading-text">加载中...</p></div>
+                    <hr style="border:none;border-top:1px solid #e0cfd6;margin:10px 0">
+                    <div class="post-copyright" id="postCopyright">
+                        <span>文章作者: 凌社千白</span><br>
+                        <span id="postLinkSpan">文章链接: <a id="postLink" href="#">加载中</a></span><br>
+                        <span>版权声明: 本作品采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处。</span>
+                    </div>
                 </div>
-                <div class="song-title" id="songTitle">Morning BGM</div>
-            </div>
-            <div class="contact-info">
-                <p>📺 B站: <a href="https://space.bilibili.com/498508670" target="_blank">凌社千白</a></p>
-                <p>🎵 抖音: <a href="https://www.douyin.com/user/self" target="_blank">凌社千白</a></p>
-                <p>📱 快手: <a href="https://www.kuaishou.com/profile/3xcatpzc2ejba82" target="_blank">凌社千白</a></p>
             </div>
         </div>
-    </div>
+    </main>
 
-    <div class="right-col">
-        <a href="posts.html" id="backLink" class="back-btn">← 返回帖子列表</a>
-        <div class="article-card">
-            <h1 id="postTitle">加载中...</h1>
-            <div class="meta" id="postMeta"></div>
-            <div class="body" id="postBody"></div>
-        </div>
-    </div>
-
-    <audio id="audioPlayer" preload="auto"></audio>
     <script>
-        // 音乐播放器
-        const playlist=[{title:"Morning BGM",url:"music/morning.mp3"},{title:"Night BGM",url:"music/night.mp3"}];
-        let currentTrack=0;
-        const audio=document.getElementById('audioPlayer'),vinyl=document.getElementById('vinylDisc'),
-              playPauseBtn=document.getElementById('playPauseBtn'),prevBtn=document.getElementById('prevBtn'),
-              nextBtn=document.getElementById('nextBtn'),songTitleSpan=document.getElementById('songTitle');
-        function loadTrack(i){const t=playlist[i%playlist.length];audio.src=t.url;songTitleSpan.textContent=t.title;audio.load();if(!audio.paused){audio.play().catch(()=>{});vinyl.classList.add('playing');playPauseBtn.textContent='⏸️';}else{playPauseBtn.textContent='▶️';vinyl.classList.remove('playing');}}
-        playPauseBtn.addEventListener('click',()=>{if(audio.paused){audio.play().then(()=>{vinyl.classList.add('playing');playPauseBtn.textContent='⏸️';}).catch(()=>{});}else{audio.pause();vinyl.classList.remove('playing');playPauseBtn.textContent='▶️';}});
-        prevBtn.addEventListener('click',()=>{currentTrack=(currentTrack-1+playlist.length)%playlist.length;loadTrack(currentTrack);});
-        nextBtn.addEventListener('click',()=>{currentTrack=(currentTrack+1)%playlist.length;loadTrack(currentTrack);});
-        loadTrack(currentTrack);
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
 
-        // 文章加载
-        const postId=new URLSearchParams(window.location.search).get('id');
-        if(!postId){document.getElementById('postTitle').textContent='未指定帖子';document.getElementById('postBody').innerHTML='<p>请从帖子列表点击进入。</p>';}
-        else{(async()=>{
-            const sources=['data/posts.json','data/Project%20Zomboid/mod_posts.json','data/Minecraft/mod_posts.json'];
-            let post=null;
-            for(const src of sources){try{const r=await fetch(src);if(!r.ok)continue;const d=await r.json();post=d.find(p=>p.id==postId);if(post)break;}catch(e){continue;}}
-            if(post){
-                document.title=post.title+' - 千白分享';
-                document.getElementById('postTitle').textContent=post.title;
-                document.getElementById('postMeta').innerHTML='📅 '+post.date;
-                document.getElementById('postBody').innerHTML=post.content;
-                const bl=document.getElementById('backLink');
-                if(post.id&&post.id.startsWith('changelog-')){bl.href='repo.html';bl.textContent='← 返回仓库';}
-            }else{document.getElementById('postTitle').textContent='未找到';document.getElementById('postBody').innerHTML='<p>帖子不存在。</p>';}
-        })().catch(e=>{document.getElementById('postTitle').textContent='加载失败';document.getElementById('postBody').innerHTML='<p>数据加载失败</p>';});}
+        if (!postId) {
+            document.getElementById('postTitle').textContent = '未指定帖子';
+            document.getElementById('articleContainer').innerHTML = '<p>请从帖子列表页点击进入。</p>';
+        } else {
+            (async () => {
+                const sources = [
+                    'data/posts.json',
+                    'data/Project%20Zomboid/mod_posts.json',
+                    'data/Minecraft/mod_posts.json'
+                ];
+                let post = null;
+                for (const src of sources) {
+                    try {
+                        const res = await fetch(src);
+                        if (!res.ok) continue;
+                        const data = await res.json();
+                        post = data.find(p => p.id == postId);
+                        if (post) break;
+                    } catch(e) { continue; }
+                }
+                if (post) {
+                    document.title = post.title + ' - 千白分享';
+                    document.getElementById('postTitle').textContent = post.title;
+                    document.getElementById('postMeta').innerHTML = `<span>📅 发布时间：${post.date}</span>`;
+                    document.getElementById('articleContainer').innerHTML = post.content;
+                    document.getElementById('postLink').href = window.location.href;
+                    document.getElementById('postLink').textContent = window.location.href;
+                    const backLink = document.getElementById('backLink');
+                    if (post.id && post.id.startsWith('changelog-')) {
+                        backLink.href = 'repo.html';
+                        backLink.textContent = '← 返回仓库';
+                    } else {
+                        backLink.href = 'posts.html';
+                        backLink.textContent = '← 返回帖子列表';
+                    }
+                } else {
+                    document.getElementById('postTitle').textContent = '未找到该帖子';
+                    document.getElementById('articleContainer').innerHTML = '<p>帖子不存在或已被删除。</p>';
+                }
+            })().catch(err => {
+                console.error(err);
+                document.getElementById('postTitle').textContent = '加载失败';
+                document.getElementById('articleContainer').innerHTML = '<p>数据加载失败</p>';
+            });
+        }
     </script>
 </body>
 </html>
