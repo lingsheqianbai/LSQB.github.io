@@ -65,6 +65,13 @@
         /* MAIN LAYOUT */
         main { background: none; font-size: 80%; }
         .left-col { padding: 5px; top: var(--nav-offset); width: var(--sidebar-width); position: fixed; left: var(--layout-gap); z-index: 950; }
+        /* 右侧目录 */
+        .toc-col { position: fixed; right: var(--layout-gap); top: var(--nav-offset); width: 200px; z-index: 940; }
+        .toc-card { background: #fff; border: 1px solid var(--border-color); border-radius: 0 0 10px 10px; padding: 12px; font-size: 12px; }
+        .toc-card .toc-title { font-weight: bold; font-size: 13px; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #ddd; }
+        .toc-card a { display: block; padding: 3px 6px; color: var(--text-dark); text-decoration: none; border-radius: 4px; margin: 2px 0; }
+        .toc-card a:hover, .toc-card a.active { background: var(--pink-light); color: var(--pink-dark); }
+        @media (max-width: 1200px) { .toc-col { display: none; } }
         .left-col .profile-title {
             position: fixed; left: var(--layout-gap); top: 48px;
             background: var(--pink); width: var(--sidebar-width);
@@ -188,6 +195,13 @@
             </div>
         </div>
 
+        <div class="toc-col">
+            <div class="toc-card">
+                <div class="toc-title">📑 目录</div>
+                <div id="tocList"></div>
+            </div>
+        </div>
+
         <div class="col right">
             <div class="block">
                 <div class="heading"><h4>📖 帖子详情</h4></div>
@@ -236,6 +250,20 @@
                     document.getElementById('postTitle').textContent = post.title;
                     document.getElementById('postMeta').innerHTML = `<span>📅 发布时间：${post.date}</span>`;
                     document.getElementById('articleContainer').innerHTML = post.content;
+                    // 构建目录
+                    setTimeout(() => {
+                        const h2s = document.querySelectorAll('.article-container h2');
+                        const toc = document.getElementById('tocList');
+                        if (h2s.length && toc) {
+                            let html = '';
+                            h2s.forEach((h, i) => {
+                                const id = 'sec-' + i;
+                                h.id = id;
+                                html += `<a href="#${id}" onclick="document.getElementById('${id}').scrollIntoView({behavior:'smooth'});return false">${h.textContent}</a>`;
+                            });
+                            toc.innerHTML = html;
+                        }
+                    }, 100);
                     document.getElementById('postLink').href = window.location.href;
                     document.getElementById('postLink').textContent = window.location.href;
                     const backLink = document.getElementById('backLink');
