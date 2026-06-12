@@ -192,6 +192,11 @@
             margin-bottom: 20px;
             padding-bottom: 8px;
             border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
         }
         .page-header h2 {
             font-size: 24px;
@@ -200,6 +205,22 @@
             padding: 4px 20px;
             border-radius: 30px;
             border: 1px solid var(--border-color);
+        }
+        .search-bar {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            font-size: 13px;
+            width: 180px;
         }
 
         /* 网格布局：每行2个卡片 */
@@ -378,7 +399,23 @@
 
     <div class="right-col">
         <div class="page-header">
-            <h2>📰 全部帖子</h2>
+            <h2 id="pageTitle">📰 全部帖子</h2>
+            <a href="posts.html" id="backAllBtn" style="display:none;background:var(--pink-light);border:1px solid var(--border-color);border-radius:24px;padding:6px 16px;cursor:pointer;font-size:13px;text-decoration:none;color:var(--text-dark);">← 返回全部帖子</a>
+            <div class="search-bar">
+                <input type="text" id="postSearch" placeholder="搜索帖子...">
+                <span>🔍</span>
+            </div>
+        </div>
+        <!-- 模组私帖卡片 -->
+        <div id="modPostCard" class="posts-grid" style="margin-bottom:30px;">
+            <div class="post-card-item" onclick="location.href='post.html?id=mod-posts'" style="background:linear-gradient(135deg, #fff5f9, #fff);">
+                <div class="post-card-cover" style="background-color:var(--pink); min-width:180px; display:flex; align-items:center; justify-content:center; font-size:48px;">📦</div>
+                <div class="post-card-info">
+                    <div class="post-card-title">模组私帖</div>
+                    <div class="post-card-summary">模组相关帖子合集</div>
+                    <div style="font-size:11px; color:var(--text-light); margin-top:6px;">📅 点击查看模组相关帖子</div>
+                </div>
+            </div>
         </div>
         <div id="postsGrid" class="posts-grid"></div>
         <div id="pagination" class="pagination"></div>
@@ -429,27 +466,62 @@
 
         // 加载帖子数据，一页显示10个
         let allPosts = [];
+        let filteredPosts = [];
         let currentPage = 1;
-        const PAGE_SIZE = 10;   // 每页10个帖子
+        let searchQuery = '';
+        const PAGE_SIZE = 10;
+
+        // URL 分类筛选
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryFilter = urlParams.get('filter') || '';
+
+        if (categoryFilter) {
+            document.getElementById('pageTitle').textContent = categoryFilter === 'pz-mod' ? '🧟 僵尸毁灭工程 · 模组帖子' : '⛏️ 我的世界 · 模组帖子';
+            document.getElementById('backAllBtn').style.display = 'inline-block';
+            document.getElementById('modPostCard').style.display = 'none';
+        }
 
         async function loadPosts() {
             try {
                 const res = await fetch('data/posts.json');
                 if (!res.ok) throw new Error();
                 allPosts = await res.json();
-                // 过滤掉更新日志（只在仓库页显示）
-                allPosts = allPosts.filter(p => !p.id || !p.id.startsWith('changelog-'));
+                // 过滤掉更新日志和特殊条目
+                allPosts = allPosts.filter(p => !p.id || (!p.id.startsWith('changelog-') && p.id !== 'mod-posts'));
+                // 如果有分类筛选，只显示对应分类
+                if (categoryFilter) {
+                    allPosts = allPosts.filter(p => p.category === categoryFilter);
+                }
                 allPosts.sort((a,b) => new Date(b.date) - new Date(a.date));
-                renderPage();
-                renderPagination();
+                applySearch();
             } catch (err) {
                 document.getElementById('postsGrid').innerHTML = '<div style="text-align:center; padding:40px;">加载失败，请检查 data/posts.json</div>';
             }
         }
 
+        function applySearch() {
+            if (searchQuery.trim()) {
+                const q = searchQuery.toLowerCase();
+                filteredPosts = allPosts.filter(p =>
+                    (p.title && p.title.toLowerCase().includes(q)) ||
+                    (p.summary && p.summary.toLowerCase().includes(q))
+                );
+            } else {
+                filteredPosts = [...allPosts];
+            }
+            currentPage = 1;
+            renderPage();
+            renderPagination();
+        }
+
+        document.getElementById('postSearch').addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            applySearch();
+        });
+
         function renderPage() {
             const start = (currentPage-1) * PAGE_SIZE;
-            const pagePosts = allPosts.slice(start, start+PAGE_SIZE);
+            const pagePosts = filteredPosts.slice(start, start + PAGE_SIZE);
             const grid = document.getElementById('postsGrid');
             if (!pagePosts.length) {
                 grid.innerHTML = '<div style="text-align:center; padding:40px;">暂无帖子</div>';
@@ -479,7 +551,7 @@
         }
 
         function renderPagination() {
-            const totalPages = Math.ceil(allPosts.length / PAGE_SIZE);
+            const totalPages = Math.ceil(filteredPosts.length / PAGE_SIZE);
             if (totalPages <= 1) {
                 document.getElementById('pagination').innerHTML = '';
                 return;
