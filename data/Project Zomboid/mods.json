@@ -4850,6 +4850,16 @@
     "category": "服装类"
   },
   {
+    "name": "Pat's NPC - Project Remnants",
+    "chineseName": "Pat 的 NPC - 残存者计划",
+    "platform": "steam",
+    "steamId": "3738362476",
+    "status": "待处理",
+    "videoUrl": "https://www.bilibili.com/video/BV1MSEy6WEWr/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "模组目前不支持中文，中文会出现乱码情况。",
+    "category": "NPC类"
+  },
+  {
     "name": "模版",
     "chineseName": "",
     "platform": "steam",
