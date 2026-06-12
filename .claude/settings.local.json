@@ -6,7 +6,10 @@
       "Bash(/usr/bin/diff \"A:\\\\SteamLibrary\\\\steamapps\\\\workshop\\\\content\\\\108600\\\\3386556284\\\\mods\\\\DebugMenu\\\\42\\\\media\\\\lua\\\\client\\\\DebugMenuMode.lua\" \"C:\\\\Users\\\\admin、\\\\Zomboid\\\\Workshop\\\\ModTemplate - debug\\\\Contents\\\\mods\\\\DebugMenu\\\\42\\\\media\\\\lua\\\\client\\\\DebugMenuMode.lua\")",
       "Bash(/usr/bin/head -80)",
       "Bash(nslookup steamcommunity.com)",
-      "Bash(nslookup google.com)"
+      "Bash(nslookup google.com)",
+      "Bash(mkdir -p \"A:/LSQB.github.io-main/_archive/posts-system\")",
+      "Bash(mv posts.html \"_archive/posts-system/\")",
+      "Bash(mv data/posts.json \"_archive/posts-system/\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\admin、\\Zomboid\\Lua"
