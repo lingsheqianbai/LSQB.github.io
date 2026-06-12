@@ -727,7 +727,6 @@
             getModLink(mod) {
                 if (this.customColumns) return '#';
                 if (mod.platform === 'steam' && mod.steamId) return `https://steamcommunity.com/sharedfiles/filedetails/?id=${mod.steamId}`;
-                if (mod.platform === 'mcmod' && mod.mcmodId) return `https://www.mcmod.cn/class/${mod.mcmodId}.html`;
                 return '#';
             }
 
@@ -738,7 +737,8 @@
                     { key: 'status', label: '翻译进度', type: 'status' },
                     { key: 'videoUrl', label: '视频教程', type: 'videoLink' },
                     { key: 'note', label: '备注', type: 'text' },
-                    { key: 'category', label: '模组分类', type: 'text' }
+                    { key: 'category', label: '模组分类', type: 'text' },
+                    { key: 'postUrl', label: '模组私帖', type: 'link', linkText: '📝 私帖' }
                 ];
             }
 
@@ -773,7 +773,7 @@
                         // 搜索所有字段（不仅是表格列）
                         const searchFields = [
                             mod.name, mod.chineseName, mod.note, mod.steamId,
-                            mod.mcmodId, mod.videoUrl, mod.category,
+                            mod.mcmodId, mod.videoUrl, mod.category, mod.postUrl,
                             mod.loaders, mod.platform, mod.mcmodUrl,
                             mod.modrinthUrl, mod.curseforgeUrl
                         ];
@@ -815,7 +815,6 @@
                                 const mLink = this.getModLink(mod);
                                 let idDisp = '';
                                 if (mod.steamId) idDisp = `<span class="mod-id">${mod.steamId}</span>`;
-                                else if (mod.mcmodId) idDisp = `<span class="mod-id">MC百科 ID: ${mod.mcmodId}</span>`;
                                 else if (mod.id) idDisp = `<span class="mod-id">${mod.id}</span>`;
                                 html += `<a href="${mLink}" target="_blank">${escapeHtml(mod.name)}</a>${idDisp}`;
                                 break;
