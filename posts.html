@@ -495,19 +495,22 @@
             // 模组卡片视图不需要加载帖子
             if (viewMode === 'modcards') return;
             try {
-                const res = await fetch('data/posts.json');
+                // 模组帖子：从独立文件加载
+                let url = 'data/posts.json';
+                if (categoryFilter === 'pz-mod') url = 'data/Project%20Zomboid/mod_posts.json';
+                else if (categoryFilter === 'mc-mod') url = 'data/Minecraft/mod_posts.json';
+
+                const res = await fetch(url);
                 if (!res.ok) throw new Error();
                 allPosts = await res.json();
-                // 过滤掉更新日志和特殊条目
-                allPosts = allPosts.filter(p => !p.id || (!p.id.startsWith('changelog-') && p.id !== 'mod-posts'));
-                // 如果有分类筛选，只显示对应分类
-                if (categoryFilter) {
-                    allPosts = allPosts.filter(p => p.category === categoryFilter);
+                // 普通帖子：过滤掉更新日志和特殊条目
+                if (!categoryFilter) {
+                    allPosts = allPosts.filter(p => !p.id || (!p.id.startsWith('changelog-') && p.id !== 'mod-posts'));
                 }
                 allPosts.sort((a,b) => new Date(b.date) - new Date(a.date));
                 applySearch();
             } catch (err) {
-                document.getElementById('postsGrid').innerHTML = '<div style="text-align:center; padding:40px;">加载失败，请检查 data/posts.json</div>';
+                document.getElementById('postsGrid').innerHTML = '<div style="text-align:center; padding:40px;">加载失败</div>';
             }
         }
 
