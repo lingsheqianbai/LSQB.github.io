@@ -9,7 +9,9 @@
       "Bash(nslookup google.com)",
       "Bash(mkdir -p \"A:/LSQB.github.io-main/_archive/posts-system\")",
       "Bash(mv posts.html \"_archive/posts-system/\")",
-      "Bash(mv data/posts.json \"_archive/posts-system/\")"
+      "Bash(mv data/posts.json \"_archive/posts-system/\")",
+      "Bash(python -c ' *)",
+      "Bash(rm \"A:/temp_clean.json\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\admin、\\Zomboid\\Lua"
