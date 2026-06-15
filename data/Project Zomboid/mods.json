@@ -5351,7 +5351,7 @@
     "platform": "steam",
     "steamId": "3542759372",
     "status": "待处理",
-    "videoUrl": "视频待发布",
+    "videoUrl": "视频链接待获取",
     "note": "",
     "category": "功能类",
     "postUrl": "https://lingsheqianbai.github.io/lingsheqianbai.githubimages.io/post.html?id=fruit-tree-chop"
@@ -5361,11 +5361,55 @@
     "chineseName": "同伴犬",
     "platform": "steam",
     "steamId": "3740052292",
-    "status": "待处理",
-    "videoUrl": "视频待发布",
+    "status": "完整",
+    "videoUrl": "视频链接待获取",
     "note": "",
     "category": "NPC类",
     "postUrl": "https://lingsheqianbai.github.io/lingsheqianbai.githubimages.io/post.html?id=companion-dogs"
+  },
+  {
+    "name": "TwisTonFire - Better Fishing",
+    "chineseName": "更好的钓鱼体验",
+    "platform": "steam",
+    "steamId": "3570485296",
+    "status": "待处理",
+    "videoUrl": "视频待发布",
+    "note": "",
+    "category": "功能类",
+    "postUrl": ""
+  },
+  {
+    "name": "New Hartburg",
+    "chineseName": "新哈特堡",
+    "platform": "steam",
+    "steamId": "3741334453",
+    "status": "待处理",
+    "videoUrl": "视频待制作",
+    "note": "",
+    "category": "地图类",
+    "postUrl": ""
+  },
+  {
+    "name": "Private bunker",
+    "chineseName": "私人地堡",
+    "platform": "steam",
+    "steamId": "3740552108",
+    "status": "待处理",
+    "videoUrl": "视频待制作",
+    "note": "",
+    "category": "地图类",
+    "postUrl": ""
+  },
+  {
+    "name": "Clean HotBar",
+    "chineseName": "更干净的装备栏",
+    "platform": "steam",
+    "steamId": "3461263912",
+    "status": "无需翻译",
+    "videoUrl": "视频待发布",
+    "note": "国人制作",
+    "category": "待分类",
+    "postUrl": ""
   },
   {
     "name": "模版",
