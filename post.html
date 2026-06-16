@@ -248,7 +248,7 @@
                 if (post) {
                     document.title = post.title + ' - 千白分享';
                     document.getElementById('postTitle').textContent = post.title;
-                    document.getElementById('postMeta').innerHTML = `<span>📅 发布时间：${post.date}</span>`;
+                    document.getElementById('postMeta').innerHTML = `<span>📅 发布时间：${post.date}</span>` + (post.updated ? `<span> · 🔄 更新时间：${post.updated}</span>` : '');
                     document.getElementById('articleContainer').innerHTML = post.content;
                     // 构建目录
                     setTimeout(() => {
