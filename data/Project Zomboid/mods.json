@@ -419,12 +419,12 @@
   },
   {
     "name": "AutoMechanics",
-    "chineseName": "",
+    "chineseName": "自动技工",
     "platform": "steam",
     "steamId": "3387539308",
-    "status": "待处理",
-    "videoUrl": "",
-    "note": "",
+    "status": "非完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1WGLd6iEHg/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "提示为硬编码",
     "category": "自动化类",
     "postUrl": ""
   },
@@ -1651,11 +1651,11 @@
   },
   {
     "name": "'88 Toyota Hilux",
-    "chineseName": "",
+    "chineseName": "'88 丰田 Hilux",
     "platform": "steam",
     "steamId": "3435796523",
-    "status": "待处理",
-    "videoUrl": "",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1Jsja6PEov/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "category": "载具类",
     "postUrl": ""
@@ -5240,8 +5240,8 @@
     "chineseName": "硬木板 消防员精选装备",
     "platform": "steam",
     "steamId": "3671351750",
-    "status": "待处理",
-    "videoUrl": "",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1p5Ld6NEjt/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "category": "武器类/服装类",
     "postUrl": ""
@@ -5372,8 +5372,8 @@
     "chineseName": "更好的钓鱼体验",
     "platform": "steam",
     "steamId": "3570485296",
-    "status": "待处理",
-    "videoUrl": "视频待发布",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1DULD6iERZ/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "category": "功能类",
     "postUrl": ""
@@ -5406,9 +5406,9 @@
     "platform": "steam",
     "steamId": "3461263912",
     "status": "无需翻译",
-    "videoUrl": "视频待发布",
+    "videoUrl": "https://www.bilibili.com/video/BV1EHLd68EpA/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "国人制作",
-    "category": "待分类",
+    "category": "UI类",
     "postUrl": ""
   },
   {
@@ -5417,7 +5417,7 @@
     "platform": "steam",
     "steamId": "3635591071",
     "status": "待处理",
-    "videoUrl": "视频待发布",
+    "videoUrl": "",
     "note": "",
     "category": "待分类",
     "postUrl": ""
@@ -5428,9 +5428,31 @@
     "platform": "steam",
     "steamId": "3437629766",
     "status": "待处理",
-    "videoUrl": "视频待发布",
+    "videoUrl": "",
     "note": "",
     "category": "待分类",
+    "postUrl": ""
+  },
+  {
+    "name": "Counter Strike 2 93's Definitive Edition",
+    "chineseName": "反恐精英2 93版 终极版",
+    "platform": "steam",
+    "steamId": "3741747172",
+    "status": "完整",
+    "videoUrl": "",
+    "note": "",
+    "category": "武器类",
+    "postUrl": ""
+  },
+  {
+    "name": "Map Symbol Size Slider",
+    "chineseName": "地图符号大小滑块",
+    "platform": "steam",
+    "steamId": "2734705913",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1npja6vEph/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "category": "UI类",
     "postUrl": ""
   },
   {
