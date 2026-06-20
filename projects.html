@@ -1181,12 +1181,30 @@
                 renderSimpleTable('onlyyouEndingsTable', endingsData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
             }
             else if (game.id === '7days') {
-                const endingsRes = await fetch('data/7%20Days/endings.json').catch(() => null);
+                const [endingsRes, cgRes] = await Promise.all([
+                    fetch('data/7%20Days/endings.json').catch(() => null),
+                    fetch('data/7%20Days/cg.json').catch(() => null)
+                ]);
                 let endings = endingsRes && endingsRes.ok ? await endingsRes.json() : [];
-                const html = `<details class="section-details"><summary>🎬 结局流程 (${endings.length}个)</summary><div class="section-content"><div id="sevendaysEndingsTableContainer"><table class="mod-table" id="sevendaysEndingsTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="sevendaysEndingsTable-pagination"></div></div></div></details>`;
-                detailDiv.innerHTML = html;
-                const endingsData = endings.map(g => ({ name: g.name, url: g.url }));
-                renderSimpleTable('sevendaysEndingsTable', endingsData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                let cg = cgRes && cgRes.ok ? await cgRes.json() : [];
+
+                let html = '';
+                if (endings.length) {
+                    html += `<details class="section-details"><summary>🎬 结局流程 (${endings.length}个)</summary><div class="section-content"><div id="sevendaysEndingsTableContainer"><table class="mod-table" id="sevendaysEndingsTable"><thead><tr><th>攻略名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="sevendaysEndingsTable-pagination"></div></div></div></details>`;
+                }
+                if (cg.length) {
+                    html += `<details class="section-details"><summary>🖼️ 官方CG包 (${cg.length}个)</summary><div class="section-content"><div id="sevendaysCgTableContainer"><table class="mod-table" id="sevendaysCgTable"><thead><tr><th>名称</th><th>链接</th></tr></thead><tbody></tbody></table><div id="sevendaysCgTable-pagination"></div></div></div></details>`;
+                }
+                detailDiv.innerHTML = html || '<div class="empty-tip">暂无内容</div>';
+
+                if (endings.length) {
+                    const endingsData = endings.map(g => ({ name: g.name, url: g.url }));
+                    renderSimpleTable('sevendaysEndingsTable', endingsData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                }
+                if (cg.length) {
+                    const cgData = cg.map(g => ({ name: g.name, url: g.url }));
+                    renderSimpleTable('sevendaysCgTable', cgData, [{ key: 'name', label: '名称' }, { key: 'url', type: 'url', label: '链接' }], 15);
+                }
             }
             else {
                 detailDiv.innerHTML = '<div class="empty-tip">暂无内容，后续补充~</div>';
