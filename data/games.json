@@ -4,6 +4,7 @@
   { "id": "whiteday", "name": "恐怖学校:白色情人节", "icon": "🏫", "description": "攻略教程" },
   { "id": "minecraft", "name": "我的世界", "icon": "⛏️", "description": "存档投影、模组教程" },
   { "id": "lifeisstrange", "name": "奇异人生", "icon": "📸", "description": "通过与收集流程" },
+  { "id": "7days", "name": "我与你共度的七日", "icon": "📅", "description": "结局流程攻略" },
   { "id": "kingdom", "name": "王国：两位君主", "icon": "👑", "description": "暂无内容，后续补充" },
   { "id": "jojo", "name": "JOJO群星之战", "icon": "⭐", "description": "暂无内容，后续补充" },
   { "id": "onlyyou", "name": "仅你一人", "icon": "🌸", "description": "结局流程攻略" }
