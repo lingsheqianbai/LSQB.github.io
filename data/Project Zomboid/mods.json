@@ -5465,5 +5465,16 @@
     "note": "",
     "category": "待分类",
     "postUrl": ""
+  },
+  {
+    "name": "模版",
+    "chineseName": "",
+    "platform": "steam",
+    "steamId": "1234567890",
+    "status": "待处理",
+    "videoUrl": "视频待发布",
+    "note": "",
+    "category": "待分类",
+    "postUrl": ""
   }
 ]
