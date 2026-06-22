@@ -5461,7 +5461,7 @@
     "platform": "steam",
     "steamId": "2847406722",
     "status": "无需翻译",
-    "videoUrl": "",
+    "videoUrl": "https://www.bilibili.com/video/BV18X7M6DEMH/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "category": "UI类",
     "postUrl": ""
@@ -5471,11 +5471,22 @@
     "chineseName": "地下室",
     "platform": "steam",
     "steamId": "2849247394",
-    "status": "待处理",
-    "videoUrl": "",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1uQ7M6HEqp/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "category": "建筑/家具类",
     "postUrl": "https://lingsheqianbai.github.io/lingsheqianbai.githubimages.io/post.html?id=basements"
+  },
+  {
+    "name": "Angry Turrets",
+    "chineseName": "愤怒炮塔",
+    "platform": "steam",
+    "steamId": "2855343540",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "",
+    "category": "武器类",
+    "postUrl": ""
   },
   {
     "name": "模版",
