@@ -5456,15 +5456,26 @@
     "postUrl": ""
   },
   {
-    "name": "模版",
-    "chineseName": "",
+    "name": "AnimeTV",
+    "chineseName": "动漫电视",
     "platform": "steam",
-    "steamId": "1234567890",
-    "status": "待处理",
-    "videoUrl": "视频待发布",
+    "steamId": "2847406722",
+    "status": "无需翻译",
+    "videoUrl": "",
     "note": "",
-    "category": "待分类",
+    "category": "UI类",
     "postUrl": ""
+  },
+  {
+    "name": "Basements",
+    "chineseName": "地下室",
+    "platform": "steam",
+    "steamId": "2849247394",
+    "status": "待处理",
+    "videoUrl": "",
+    "note": "",
+    "category": "建筑/家具类",
+    "postUrl": "https://lingsheqianbai.github.io/lingsheqianbai.githubimages.io/post.html?id=basements"
   },
   {
     "name": "模版",
