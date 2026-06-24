@@ -5467,8 +5467,8 @@
     "postUrl": ""
   },
   {
-    "name": "Basements",
-    "chineseName": "地下室",
+    "name": "地下室",
+    "chineseName": "",
     "platform": "steam",
     "steamId": "2849247394",
     "status": "完整",
@@ -5482,10 +5482,54 @@
     "chineseName": "愤怒炮塔",
     "platform": "steam",
     "steamId": "2855343540",
-    "status": "待处理",
-    "videoUrl": "",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1GAj16dERk/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "note": "",
     "category": "武器类",
+    "postUrl": ""
+  },
+  {
+    "name": "对情绪的清晰描述",
+    "chineseName": "",
+    "platform": "steam",
+    "steamId": "2763647806",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1fzjS62Eq3/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "category": "功能类/UI类",
+    "postUrl": ""
+  },
+  {
+    "name": "More Traits",
+    "chineseName": "更多特质",
+    "platform": "steam",
+    "steamId": "1299328280",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1oyjS6VEn7/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "category": "职业/特质类",
+    "postUrl": ""
+  },
+  {
+    "name": "Better Sorting",
+    "chineseName": "更好的分类",
+    "platform": "steam",
+    "steamId": "2313387159",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1JAj96ZEo7/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "category": "UI类",
+    "postUrl": ""
+  },
+  {
+    "name": "Skill Recovery Journal",
+    "chineseName": "技能恢复日志",
+    "platform": "steam",
+    "steamId": "2503622437",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1JAj96ZEWS/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "note": "",
+    "category": "功能类",
     "postUrl": ""
   },
   {
