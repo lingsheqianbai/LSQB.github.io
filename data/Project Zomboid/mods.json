@@ -5533,12 +5533,23 @@
     "postUrl": ""
   },
   {
+    "name": "重新排序热栏",
+    "chineseName": "",
+    "platform": "steam",
+    "steamId": "2903771337",
+    "status": "无需翻译",
+    "videoUrl": "",
+    "note": "",
+    "category": "功能类",
+    "postUrl": ""
+  },
+  {
     "name": "模版",
     "chineseName": "",
     "platform": "steam",
     "steamId": "1234567890",
     "status": "待处理",
-    "videoUrl": "视频待发布",
+    "videoUrl": "",
     "note": "",
     "category": "待分类",
     "postUrl": ""
