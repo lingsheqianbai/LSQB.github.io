@@ -1132,7 +1132,9 @@
                     { key: 'mcmodUrl', label: 'MC百科', type: 'link', linkText: '📖 百科' },
                     { key: 'modrinthUrl', label: 'Modrinth', type: 'link', linkText: '🔗 Modrinth' },
                     { key: 'curseforgeUrl', label: 'CurseForge', type: 'link', linkText: '🔗 CurseForge' },
-                    { key: 'loaders', label: '兼容加载器', type: 'text' }
+                    { key: 'loaders', label: '兼容加载器', type: 'text' },
+                    { key: 'category', label: '模组分类', type: 'text' },
+                    { key: 'note', label: '备注', type: 'text' }
                 ];
                 const html = `<details class="section-details"><summary>📦 模组信息统计 (${mods.length}个)</summary><div class="section-content"><div id="mcModsStatsContainer"></div></div></details>`;
                 detailDiv.innerHTML = html;

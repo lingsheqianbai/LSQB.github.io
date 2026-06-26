@@ -7,6 +7,20 @@
     "mcmodUrl": "https://www.mcmod.cn/class/3004.html",
     "modrinthUrl": "",
     "curseforgeUrl": "https://www.curseforge.com/minecraft/mc-mods/ftb-ultimine-fabric",
-    "loaders": "Forge/Fabric/NeoForge"
+    "loaders": "Forge/Fabric/NeoForge",
+    "category": "",
+    "note": ""
+  },
+  {
+    "name": "Cat Burger",
+    "chineseName": "猫猫汉堡",
+    "status": "无需翻译",
+    "videoUrl": "",
+    "mcmodUrl": "https://www.mcmod.cn/class/19219.html",
+    "modrinthUrl": "",
+    "curseforgeUrl": "https://www.curseforge.com/minecraft/mc-mods/cat-burger",
+    "loaders": "Forge/Fabric/NeoForge",
+    "category": "",
+    "note": ""
   }
 ]
