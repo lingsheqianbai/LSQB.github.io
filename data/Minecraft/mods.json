@@ -9,7 +9,7 @@
     "curseforgeUrl": "https://www.curseforge.com/minecraft/mc-mods/ftb-ultimine-fabric",
     "loaders": "Forge/Fabric/NeoForge",
     "category": "功能类",
-    "note": ""
+    "note": "硬编码未翻译"
   },
   {
     "name": "Cat Burger",
@@ -22,5 +22,35 @@
     "loaders": "Forge/Fabric/NeoForge",
     "category": "饰品类",
     "note": "国创"
+  },
+  {
+    "name": "I Wanna Skate",
+    "chineseName": "我要玩滑板",
+    "status": "非完整",
+    "videoUrl": "",
+    "mcmodUrl": "https://www.mcmod.cn/class/8004.html",
+    "modrinthUrl": "",
+    "curseforgeUrl": "https://www.curseforge.com/minecraft/mc-mods/i-wanna-skate",
+    "loaders": "Forge/NeoForge",
+    "category": "冒险/实用类",
+    "note": "硬编码未翻译"
+  },
+  {
+    "name": "Scout",
+    "chineseName": "侦察兵",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1hv7p6bEpc/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "mcmodUrl": "https://www.mcmod.cn/class/7560.html",
+    "modrinthUrl": "",
+    "curseforgeUrl": "https://www.curseforge.com/minecraft/mc-mods/scout",
+    "loaders": "Fabric/Quilt",
+    "category": "存储/实用类",
+    "note": ""
   }
+
+
+
+
+
+
 ]
