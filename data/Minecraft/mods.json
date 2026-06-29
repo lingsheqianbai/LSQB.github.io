@@ -29,7 +29,7 @@
     "status": "非完整",
     "videoUrl": "",
     "mcmodUrl": "https://www.mcmod.cn/class/8004.html",
-    "modrinthUrl": "",
+    "modrinthUrl": "https://modrinth.com/mod/i-wanna-skate",
     "curseforgeUrl": "https://www.curseforge.com/minecraft/mc-mods/i-wanna-skate",
     "loaders": "Forge/NeoForge",
     "category": "冒险/实用类",
@@ -41,16 +41,70 @@
     "status": "完整",
     "videoUrl": "https://www.bilibili.com/video/BV1hv7p6bEpc/?vd_source=73e550a3569a193e56d345c2b1e1a721",
     "mcmodUrl": "https://www.mcmod.cn/class/7560.html",
-    "modrinthUrl": "",
+    "modrinthUrl": "https://modrinth.com/mod/scout",
     "curseforgeUrl": "https://www.curseforge.com/minecraft/mc-mods/scout",
     "loaders": "Fabric/Quilt",
     "category": "存储/实用类",
     "note": ""
+  },
+  {
+    "name": "Sodium",
+    "chineseName": "钠",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1E4TK6eEgn/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "mcmodUrl": "https://www.mcmod.cn/class/3333.html",
+    "modrinthUrl": "https://modrinth.com/mod/sodium",
+    "curseforgeUrl": "https://www.curseforge.com/minecraft/mc-mods/sodium",
+    "loaders": "Fabric/Quilt/NeoForge",
+    "category": "优化/修复类",
+    "note": ""
+  },
+  {
+    "name": "Iris Shaders",
+    "chineseName": "Iris 光影",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV174TK6eEDm/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "mcmodUrl": "https://www.mcmod.cn/class/3998.html",
+    "modrinthUrl": "https://modrinth.com/mod/iris",
+    "curseforgeUrl": "https://www.curseforge.com/minecraft/mc-mods/irisshaders",
+    "loaders": "Fabric/Quilt/NeoForge",
+    "category": "优化/视觉类",
+    "note": ""
+  },
+  {
+    "name": "Configured",
+    "chineseName": "Configured",
+    "status": "完整",
+    "videoUrl": "",
+    "mcmodUrl": "https://www.mcmod.cn/class/4435.html",
+    "modrinthUrl": "https://modrinth.com/mod/configured",
+    "curseforgeUrl": "https://www.curseforge.com/minecraft/mc-mods/configured",
+    "loaders": "Forge/Fabric/NeoForge",
+    "category": "功能/工具类",
+    "note": ""
+  },
+  {
+    "name": "Just Enough Items",
+    "chineseName": "[JEI]JEI物品管理器",
+    "status": "完整",
+    "videoUrl": "https://www.bilibili.com/video/BV1ExTK6NE9m/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "mcmodUrl": "https://www.mcmod.cn/class/459.html",
+    "modrinthUrl": "",
+    "curseforgeUrl": "",
+    "loaders": "Forge/Fabric/NeoForge",
+    "category": "功能类",
+    "note": ""
+  },
+  {
+    "name": "Durability101",
+    "chineseName": "",
+    "status": "无需翻译",
+    "videoUrl": "https://www.bilibili.com/video/BV1fxTK6NEsY/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "mcmodUrl": "https://www.mcmod.cn/class/5253.html",
+    "modrinthUrl": "https://modrinth.com/mod/durability101",
+    "curseforgeUrl": "",
+    "loaders": "Forge/Fabric",
+    "category": "功能/UI类",
+    "note": ""
   }
-
-
-
-
-
-
 ]
