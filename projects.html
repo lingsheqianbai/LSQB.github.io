@@ -780,8 +780,8 @@
                         return searchFields.some(val => val && val.toString().toLowerCase().includes(q));
                     });
                 }
+                if (this.categoryFilter !== '全部') filtered = filtered.filter(mod => mod.category && mod.category.split('/').some(c => c.trim() === this.categoryFilter));
                 if (!this.simplified) {
-                    if (this.categoryFilter !== '全部') filtered = filtered.filter(mod => mod.category && mod.category.split('/').some(c => c.trim() === this.categoryFilter));
                     if (this.noteFilter !== 'all') filtered = filtered.filter(mod => this.noteFilter === 'yes' ? (mod.note && mod.note.trim()) : (!mod.note || !mod.note.trim()));
                     if (this.chineseFilter !== 'all') filtered = filtered.filter(mod => this.chineseFilter === 'yes' ? (mod.chineseName && mod.chineseName.trim()) : (!mod.chineseName || !mod.chineseName.trim()));
                 }
@@ -863,6 +863,7 @@
                 filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>视频教程</span></div><div class="filter-group-options collapsed" id="${this.containerId}-videoFilterGroup"><span class="filter-btn active" data-group="video" data-value="all">全部</span><span class="filter-btn" data-group="video" data-value="yes">有教程</span><span class="filter-btn" data-group="video" data-value="no">无教程</span></div></div>`;
                 if (this.simplified) {
                     filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>兼容加载器</span></div><div class="filter-group-options collapsed" id="${this.containerId}-loaderFilterGroup"></div></div>`;
+                    filterInner += `<div class="filter-group"><div class="filter-group-header" onclick="window.toggleGroup(this)"><span class="group-arrow">▶</span><span>模组分类</span></div><div class="filter-group-options collapsed" id="${this.containerId}-categoryFilterGroup"></div></div>`;
                 }
 
                 const placeholder = this.simplified ? '搜索模组名称、中文名或链接...' : '搜索模组名称、中文名、ID或备注...';
@@ -970,6 +971,24 @@
                                 loaderGroup.querySelectorAll('[data-group="loader"]').forEach(b=>b.classList.remove('active'));
                                 btn.classList.add('active');
                                 this.loaderFilter = btn.dataset.value;
+                                this.applyFilters();
+                            });
+                        });
+                    }
+                    // 模组分类筛选
+                    const catSet = new Set();
+                    this.allMods.forEach(mod => {
+                        if (mod.category) mod.category.split('/').forEach(c => { if (c.trim()) catSet.add(c.trim()); });
+                    });
+                    const catList = ['全部', ...Array.from(catSet).sort()];
+                    const catGroup = document.getElementById(`${this.containerId}-categoryFilterGroup`);
+                    if (catGroup) {
+                        catGroup.innerHTML = catList.map(c => `<span class="filter-btn ${c==='全部'?'active':''}" data-group="category" data-value="${c}">${c}</span>`).join('');
+                        catGroup.querySelectorAll('[data-group="category"]').forEach(btn => {
+                            btn.addEventListener('click', () => {
+                                catGroup.querySelectorAll('[data-group="category"]').forEach(b=>b.classList.remove('active'));
+                                btn.classList.add('active');
+                                this.categoryFilter = btn.dataset.value;
                                 this.applyFilters();
                             });
                         });

@@ -106,5 +106,17 @@
     "loaders": "Forge/Fabric",
     "category": "功能/UI类",
     "note": ""
+  },
+  {
+    "name": "Stack to Nearby Chests",
+    "chineseName": "堆叠到附近的箱子",
+    "status": "无需翻译",
+    "videoUrl": "https://www.bilibili.com/video/BV1fxTK6NEsY/?vd_source=73e550a3569a193e56d345c2b1e1a721",
+    "mcmodUrl": "https://www.mcmod.cn/class/5253.html",
+    "modrinthUrl": "",
+    "curseforgeUrl": "",
+    "loaders": "Fabric",
+    "category": "功能类",
+    "note": "国创"
   }
 ]
